@@ -5,6 +5,8 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# GitHub Pages is configured to publish from this workflow.
+
 permissions:
   contents: read
   pages: write
