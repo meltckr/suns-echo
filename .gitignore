@@ -1,0 +1,6 @@
+.next/
+out/
+node_modules/
+.netlify/
+mobile-verification.png
+desktop-verification.png
