@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import {
   audioBrief,
   audienceSignals,
@@ -52,7 +52,41 @@ function AudioBrief() {
   const [current, setCurrent] = useState(0);
   const [duration, setDuration] = useState(0);
   const [speed, setSpeed] = useState(1);
+  const progress = duration > 0 ? Math.min(100, Math.max(0, (current / duration) * 100)) : 0;
   const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+
+  useEffect(() => {
+    if (!playing) return;
+
+    let frame = 0;
+    const syncProgress = () => {
+      if (audio.current) setCurrent(audio.current.currentTime);
+      frame = window.requestAnimationFrame(syncProgress);
+    };
+
+    frame = window.requestAnimationFrame(syncProgress);
+    return () => window.cancelAnimationFrame(frame);
+  }, [playing]);
+
+  useEffect(() => {
+    const element = audio.current;
+    if (!element) return;
+
+    const syncDuration = () => {
+      if (Number.isFinite(element.duration) && element.duration > 0) setDuration(element.duration);
+    };
+
+    syncDuration();
+    element.addEventListener("loadedmetadata", syncDuration);
+    element.addEventListener("durationchange", syncDuration);
+    element.addEventListener("canplay", syncDuration);
+    return () => {
+      element.removeEventListener("loadedmetadata", syncDuration);
+      element.removeEventListener("durationchange", syncDuration);
+      element.removeEventListener("canplay", syncDuration);
+    };
+  }, []);
+
   const toggle = async () => {
     if (!audio.current) return;
     if (audio.current.paused) await audio.current.play();
@@ -68,7 +102,7 @@ function AudioBrief() {
     <div className="audio-controls">
       <button type="button" onClick={() => seek(-15)} aria-label="Back 15 seconds">−15</button>
       <button type="button" className="audio-play" onClick={toggle} aria-label={playing ? "Pause The Echo audio brief" : "Play The Echo audio brief"}>{playing ? "Ⅱ" : "▶"}</button>
-      <div className="audio-timeline"><span>{clock(current)}</span><input type="range" min="0" max={duration || 0} step="0.1" value={current} onChange={(event) => { if (audio.current) audio.current.currentTime = Number(event.target.value); }} aria-label="Audio timeline" /><span>{duration ? clock(duration) : "~2:00"}</span></div>
+      <div className="audio-timeline"><span>{clock(current)}</span><input type="range" min="0" max={duration || 0} step="0.1" value={current} style={{ "--audio-progress": `${progress}%` } as CSSProperties} onChange={(event) => { const next = Number(event.target.value); setCurrent(next); if (audio.current) audio.current.currentTime = next; }} aria-label="Audio timeline" aria-valuetext={`${clock(current)} of ${duration ? clock(duration) : "approximately 2 minutes"}`} /><span>{duration ? clock(duration) : "~2:00"}</span></div>
       <button type="button" onClick={() => seek(15)} aria-label="Forward 15 seconds">+15</button>
       <select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audio.current) audio.current.playbackRate = next; }} aria-label="Playback speed"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select>
     </div>
