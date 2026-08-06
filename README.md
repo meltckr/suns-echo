@@ -13,7 +13,7 @@ This repository reuses the approved Mercury Echo edition, **The Plum Effect**, w
 ## Update the next Suns edition
 
 1. Replace the edition copy, audience signals, themes, watch items, implications and source records in `data/edition.ts`.
-2. Replace the share-card source image in `public/assets/share/` and update the crop in `scripts/generate-og.mjs`.
+2. Replace the share-card background in `public/assets/share/` and update the deterministic 1200×630 composition in `scripts/generate-og.mjs`. Every edition requires a professional, title-led Open Graph card designed to remain legible at Messages/social-preview size; a plain page screenshot is not release-ready.
 3. Update page metadata in `app/layout.tsx`.
 4. Generate the matching audio brief and run `npm run release:check`.
 5. Commit and push to `main`; the GitHub Pages workflow publishes the static `out/` directory.

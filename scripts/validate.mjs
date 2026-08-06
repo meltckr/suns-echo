@@ -1,4 +1,5 @@
 import { readFile, access } from "node:fs/promises";
+import sharp from "sharp";
 import { sources, edition, audioBrief } from "../data/edition.ts";
 
 const dashboard = await readFile("app/Dashboard.tsx", "utf8");
@@ -23,12 +24,15 @@ for (const source of sources) {
   if (source.quote && source.category !== "Fans" && (!source.speaker || !source.quoteContext)) failures.push(`Quote lacks speaker/context: ${source.id}`);
 }
 if (audioTranscript !== audioBrief.paragraphs.join("\n\n")) failures.push("Visible audio transcript does not match generation transcript");
-await access("public/og-image.png");
+await access("public/og-image-v2.png");
+const ogMetadata = await sharp("public/og-image-v2.png").metadata();
+if (ogMetadata.width !== 1200 || ogMetadata.height !== 630 || ogMetadata.format !== "png") failures.push(`OG image must be a 1200×630 PNG; received ${ogMetadata.width}×${ogMetadata.height} ${ogMetadata.format}`);
 await access("public/audio/the-echo-suns-001-aligned-and-extended.mp3");
 await access("public/assets/brand/AVC-logo-horizontal-dark.svg");
 await access("public/assets/teams/suns-logo.svg");
 await access("public/assets/share/dillon-brooks-extension-source.png");
-if (!layout.includes("https://meltckr.github.io") || !layout.includes("/suns-echo/og-image.png")) failures.push("GitHub Pages metadata is not current");
+await access("public/assets/share/dillon-brooks-og-background-v2.png");
+for (const token of ["https://suns-echo.netlify.app", "summary_large_image", "publishedTime", "siteName", "1200", "630", "/suns-echo/og-image-v2.png"]) if (!layout.includes(token)) failures.push(`Incomplete social metadata: ${token}`);
 
 if (failures.length) {
   console.error(failures.join("\n"));
