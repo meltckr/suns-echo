@@ -32,6 +32,8 @@ await access("public/assets/brand/AVC-logo-horizontal-dark.svg");
 await access("public/assets/teams/suns-logo.svg");
 await access("public/assets/share/dillon-brooks-extension-source.png");
 await access("public/assets/share/dillon-brooks-og-background-v2.png");
+await access("public/assets/share/dillon-brooks-hero-v2.webp");
+if (styles.includes("dillon-brooks-extension-source.png")) failures.push("Source article screenshot must not be used as a page background");
 for (const token of ["https://suns-echo.netlify.app", "summary_large_image", "publishedTime", "siteName", "1200", "630", "/suns-echo/og-image-v2.png"]) if (!layout.includes(token)) failures.push(`Incomplete social metadata: ${token}`);
 
 if (failures.length) {

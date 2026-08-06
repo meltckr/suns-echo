@@ -51,6 +51,11 @@ const base = await sharp(background)
   .modulate({ saturation: 1.06, brightness: 0.94 })
   .toBuffer();
 
+await sharp(background)
+  .resize(1600, 840, { fit: "cover", position: "center" })
+  .webp({ quality: 88, effort: 5 })
+  .toFile("public/assets/share/dillon-brooks-hero-v2.webp");
+
 await sharp(base)
   .composite([
     { input: overlay, top: 0, left: 0 },
@@ -59,4 +64,4 @@ await sharp(base)
   .png({ quality: 96, compressionLevel: 8 })
   .toFile("public/og-image-v2.png");
 
-console.log("Generated premium public/og-image-v2.png (1200×630)");
+console.log("Generated premium public/og-image-v2.png and clean responsive hero");
