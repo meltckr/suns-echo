@@ -1,0 +1,73 @@
+{
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-29T23:33:05.075Z",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v3.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "transcriptSha256": "67b84e2e8db00c97f7378deabadb2b705ee0e4bc96ab6c3e6dc975ea4e6775cf",
+  "audioSha256": "e47982290a51caaed64def97f466bd2e95ef6b99611ce914295e38a5c5326ecb",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 147.32,
+  "integratedLufs": -16.77,
+  "truePeakDbtp": -2.3,
+  "trailingSilenceSeconds": 0.12,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "finishing": {
+    "renderer": "echo-audio-render.py",
+    "rendererSha256": "18c67ba05bc25194423d5ff9767d8401970105fa4b27b3701af62bea61956f9e",
+    "spokenInputSha256": "e6c75dae7570bdb5648eb6b3bcd8e1af1980e782f850580d824de7cbdd4d168f",
+    "pronunciationConfigSha256": "b3d2271abe829a331edf67add4073147fd102f51fd495bd0ddb9f20f10cc91c0",
+    "maxTokens": 1536,
+    "trailingPaddingSeconds": 0.2,
+    "sentencePauseSeconds": 0.22,
+    "paragraphPauseSeconds": 0.4,
+    "maximumBoundaryPauseSeconds": 0.73,
+    "tempoMultiplier": 1,
+    "crossfadeSeconds": 0,
+    "globalPauseCollapse": false,
+    "endpointRmsThresholdDb": -65,
+    "endpointWindowMilliseconds": 10,
+    "unexpectedSilenceThresholdSeconds": 1.2
+  },
+  "listeningConfirmed": false,
+  "playerVerified": true,
+  "asrVerification": {
+    "engine": "Local cached Whisper large-v3-turbo through mlx-audio",
+    "fullFileChecked": true,
+    "endingCheckedSeconds": 15,
+    "endingRecognized": "These relationships give us concrete examples to recognize and revisit. Dominate.",
+    "completeClosingRecognized": true,
+    "notes": "Full-file ASR covers all sentences and the complete close. Names are recognized as phonetic forms; supplied/supplies, his/its and camp-and-games/camping-games remain recognition ambiguities. ASR is not a pronunciation or listening approval."
+  },
+  "playerVerification": {
+    "viewports": [
+      1440,
+      390
+    ],
+    "checks": [
+      "play",
+      "pause",
+      "seek to end and start",
+      "back 15 seconds",
+      "forward 15 seconds",
+      "speed 1.5",
+      "Audio label and edition title",
+      "no overflow"
+    ],
+    "transport": "Byte-range-capable exported v3 review build",
+    "humanListeningConfirmed": false
+  },
+  "pronunciationResearch": {
+    "canonicalNames": [
+      "Oso Ighodaro",
+      "Khaman Maluach"
+    ],
+    "officialAudioGuide": "https://www.nba.com/news/phoenix-suns-2025-26-pronunciation-guide",
+    "writtenTeamGuide": "https://www.nba.com/gamenotes/suns.pdf",
+    "listeningComparisonConfirmed": false
+  }
+}

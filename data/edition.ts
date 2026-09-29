@@ -823,7 +823,7 @@ export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v2.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v3.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
   "Mat, the most revealing detail of Media Day came from two players competing for opportunity.",

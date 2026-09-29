@@ -1,6 +1,6 @@
 # September 29 morning review verification
 
-State: editorial complete; Arizona audio technically verified. Review PR remains draft. Perceptual listening, the isolated Pages preview and release approval remain open.
+Current state: editorial complete; corrected Arizona audio v3 technically verified. The isolated Pages review is live; PR remains draft. Perceptual listening and production-release approval remain open. See AUDIO-V3-QA.md for current audio evidence; earlier version records below are historical.
 
 ## Editorial
 

@@ -14,7 +14,7 @@ const environment = {
   AVC_MODEL: model,
   AVC_REF_WAV: "/Users/meltucker/avc-tools/breeze-proof/mel-az-2026-decl-18s.wav",
   AVC_REF_TXT: "/Users/meltucker/avc-tools/breeze-proof/mel-az-2026-decl-18s.txt",
-  AVC_TRAIL_KEEP_MS: "120",
+  HF_HUB_DISABLE_XET: "1",
   AVC_GENERATE: "1",
 };
 const input = resolve("content/audio-brief-transcript.txt");
@@ -42,40 +42,50 @@ if (!edition.editorialFinal) throw new Error("Morning editorial update remains o
 try { await access(output); throw new Error("Output already exists. Increment the versioned filename after any transcript change."); }
 catch (error) { if (error.code !== "ENOENT") throw error; }
 await mkdir(dirname(output), { recursive: true });
-const raw = join(work, "factory.mp3");
-const rendered = spawnSync(factory, [input, raw], { env: environment, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
+const configIndex = process.argv.indexOf("--pronunciation-config");
+if (configIndex >= 0 && !process.argv[configIndex + 1]) throw new Error("Pronunciation configuration path required.");
+const pronunciationConfig = configIndex >= 0 ? resolve(process.argv[configIndex + 1]) : null;
+const raw = join(work, "finished.mp3");
+const renderer = resolve("scripts/echo-audio-render.py");
+const rendered = spawnSync(`${environment.AVC_VENV}/bin/python`, [renderer, input, raw, "--workdir", work,
+  ...(pronunciationConfig ? ["--pronunciation-config", pronunciationConfig] : [])],
+  { env: environment, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
 await writeFile(join(work, "render.log"), (rendered.stdout ?? "") + (rendered.stderr ?? ""), { mode: 0o600 });
 if (rendered.error || rendered.status !== 0) throw new Error(`Arizona render failed; private diagnostic ${work}. No provider fallback.`);
 const probe = JSON.parse(run("ffprobe", ["-v", "error", "-show_streams", "-show_format", "-of", "json", raw]).stdout);
 const stream = probe.streams.find(value => value.codec_type === "audio");
 if (Number(stream.sample_rate) !== 24000 || stream.channels !== 1 || Number(stream.bit_rate) !== 160000) throw new Error("Arizona output does not match approved audio format.");
-const decoded = spawnSync("ffmpeg", ["-v", "error", "-i", raw, "-f", "s16le", "-ac", "1", "-ar", "24000", "pipe:1"], { maxBuffer: 64 * 1024 * 1024 });
-if (decoded.status !== 0) throw new Error("Audio decoding failed.");
-const pcm = decoded.stdout;
-let last = pcm.length / 2 - 1;
-while (last >= 0 && Math.abs(pcm.readInt16LE(last * 2)) < 104) last--;
-if (last < 0) throw new Error("Audio is silent.");
-const tail = (pcm.length / 2 - last - 1) / 24000;
-const end = (last + 1) / 24000 + 0.12;
+// Copy the finished bitstream without a second lossy encode or amplitude-based cut.
 const transcriptSha256 = createHash("sha256").update(transcript).digest("hex");
-run("ffmpeg", ["-v", "error", "-y", "-i", raw, ...(tail > 0.3 ? ["-t", end.toFixed(6)] : []), "-ar", "24000", "-ac", "1", "-c:a", "libmp3lame", "-b:a", "160k", "-write_xing", "1", "-metadata", `title=${edition.title}`, "-metadata", "artist=Accelerated Velocity Consulting", "-metadata", `comment=transcript-sha256:${transcriptSha256}`, output]);
-const silence = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "silencedetect=noise=-50dB:d=0.3", "-f", "null", "-"]);
-if (silence.stderr.includes("silence_start")) throw new Error("Final MP3 has a silence interval over 0.3 seconds. Keep audio readiness open.");
+run("ffmpeg", ["-v", "error", "-y", "-i", raw, "-c:a", "copy", "-write_xing", "1", "-metadata", `title=${edition.title}`, "-metadata", "artist=Accelerated Velocity Consulting", "-metadata", `comment=transcript-sha256:${transcriptSha256}`, output]);
+const silence = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "silencedetect=noise=-65dB:d=1.2", "-f", "null", "-"]);
+if (silence.stderr.includes("silence_start")) throw new Error("Unexpected silence interval of at least 1.2 seconds. Inspect private sentence renders; never collapse speech pauses to pass QA.");
 const loudness = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11:dual_mono=true:print_format=json", "-f", "null", "-"]);
 const measured = JSON.parse(loudness.stderr.slice(loudness.stderr.lastIndexOf("{"), loudness.stderr.lastIndexOf("}") + 1));
 if (Math.abs(Number(measured.input_i) + 16) > 1.5 || Number(measured.input_tp) > -1.5) throw new Error("Final loudness/true-peak gate failed.");
 const finished = JSON.parse(run("ffprobe", ["-v", "error", "-show_streams", "-show_format", "-of", "json", output]).stdout);
 const finalDecoded = spawnSync("ffmpeg", ["-v", "error", "-i", output, "-f", "s16le", "-ac", "1", "-ar", "24000", "pipe:1"], { maxBuffer: 64 * 1024 * 1024 });
 if (finalDecoded.status !== 0) throw new Error("Final audio decoding failed.");
-let finalLast = finalDecoded.stdout.length / 2 - 1;
-while (finalLast >= 0 && Math.abs(finalDecoded.stdout.readInt16LE(finalLast * 2)) < 104) finalLast--;
-const finalTail = (finalDecoded.stdout.length / 2 - finalLast - 1) / 24000;
-if (finalTail > 0.3) throw new Error("Final encoded file has excessive end silence.");
-let blackRun = 0;
-for (let index = 0; index < finalDecoded.stdout.length; index += 2) {
-  blackRun = Math.abs(finalDecoded.stdout.readInt16LE(index)) < 4 ? blackRun + 1 : 0;
-  if (blackRun >= 0.28 * 24000) throw new Error("Final encoded file has a digital black hole.");
+// Match the renderer's 10ms / -65dB RMS endpoint detector, preserving quiet consonants.
+const pcm = finalDecoded.stdout;
+const windowSamples = 240;
+let finalLast = -1;
+for (let start = 0; start < pcm.length / 2; start += windowSamples) {
+  const end = Math.min(start + windowSamples, pcm.length / 2);
+  let energy = 0;
+  for (let index = start; index < end; index++) energy += pcm.readInt16LE(index * 2) ** 2;
+  if (Math.sqrt(energy / (end - start)) >= 32768 * 10 ** (-65 / 20)) finalLast = end;
 }
+if (finalLast < 0) throw new Error("Final audio is silent.");
+const finalTail = (pcm.length / 2 - finalLast) / 24000;
+if (finalTail > 0.3) throw new Error("Final encoded file has excessive end silence; inspect finishing without cutting speech.");
+let blackRun = 0;
+for (let index = 0; index < pcm.length; index += 2) {
+  blackRun = Math.abs(pcm.readInt16LE(index)) < 4 ? blackRun + 1 : 0;
+  if (blackRun >= 1.2 * 24000) throw new Error("Unexpected digital silence of at least 1.2 seconds.");
+}
+const renderMetadata = JSON.parse(await readFile(join(work, "render-metadata.json"), "utf8"));
+if (renderMetadata.transcriptSha256 !== transcriptSha256) throw new Error("Renderer transcript binding mismatch.");
 const manifest = {
   voice: "Arizona v12", model, generatedAt: new Date().toISOString(),
   title: edition.title, file: output.split("/").at(-1), transcript: "content/audio-brief-transcript.txt",
@@ -83,8 +93,22 @@ const manifest = {
   sampleRate: 24000, channels: 1, bitrate: 160000, durationSeconds: Number(finished.format.duration),
   integratedLufs: Number(measured.input_i), truePeakDbtp: Number(measured.input_tp),
   trailingSilenceSeconds: finalTail, silenceScanPassed: true, digitalBlackHoleScanPassed: true,
+  finishing: {
+    renderer: renderMetadata.renderer,
+    rendererSha256: createHash("sha256").update(await readFile(renderer)).digest("hex"),
+    spokenInputSha256: renderMetadata.spokenInputSha256,
+    pronunciationConfigSha256: renderMetadata.pronunciationConfigSha256,
+    maxTokens: renderMetadata.maxTokens,
+    trailingPaddingSeconds: renderMetadata.trailingPaddingSeconds,
+    sentencePauseSeconds: renderMetadata.sentencePauseSeconds,
+    paragraphPauseSeconds: renderMetadata.paragraphPauseSeconds,
+    maximumBoundaryPauseSeconds: Math.max(0, ...renderMetadata.joins.map(value => value.pauseSeconds)),
+    tempoMultiplier: 1, crossfadeSeconds: 0, globalPauseCollapse: false,
+    endpointRmsThresholdDb: -65, endpointWindowMilliseconds: 10,
+    unexpectedSilenceThresholdSeconds: 1.2,
+  },
   listeningConfirmed: false, playerVerified: false,
 };
 await writeFile(`${output}.json`, JSON.stringify(manifest, null, 2) + "\n");
 await copyFile(input, "public/content/audio-brief-transcript.txt");
-console.log(`Rendered ${manifest.file}; SHA-256 ${manifest.audioSha256}. Listening and player checks remain open.`);
+console.log(`Rendered ${manifest.file}; SHA-256 ${manifest.audioSha256}. Private QA artifacts: ${work}. Listening and player checks remain open.`);

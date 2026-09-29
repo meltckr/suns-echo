@@ -38,3 +38,7 @@ The final two-part Editor script is synchronized with the public transcript and 
 Lint, type checking, static export and review validation pass. Desktop 1440px and phone 390px browser checks pass for both parts, all filters, all 25 evidence/source details, source-ledger filtering, reduced-motion video stopping, audio and overflow. `release:check` remains gated by human listening and Mel's production-release approval. No merge is authorized.
 
 Deployment evidence is recorded by the review workflow and PR #1; the one-time morning follow-up remains paused.
+
+## September 29 — corrected audio v3
+
+Mel identified Ighodaro/Maluach pronunciation and clipped endings. The narration was regenerated using official NBA/team pronunciation guidance, conservative endpoint retention, natural non-overlapping sentence/paragraph pauses and original tempo. Public script, title and architecture are unchanged. V3 technical and player checks pass; perceptual pronunciation/listening approval remains open. See AUDIO-V3-QA.md. Draft PR #1 and isolated review update are authorized; production release and merge remain held.
