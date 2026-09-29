@@ -16,7 +16,7 @@ The reusable changes add attributed alignment cards, a qualitative assessment wi
 - Planned preview: <https://meltckr.github.io/suns-echo/review/media-day-2026-09-28/>. This URL is **pending deployment**, not a verified live handoff.
 - Approved production root: <https://meltckr.github.io/suns-echo/>. It returned 404 during September 28 verification; do not treat that as a working preview.
 - PR builds verify and package the preview without deploying. A manual review deployment packages the approved main edition at the root and this draft under its isolated review path.
-- GitHub's `github-pages` environment currently permits only main. Automatic approval review rejected changing that persistent policy; explicit Mel approval is required to allow this exact review branch. Do not bypass the policy.
+- GitHub's `github-pages` environment currently permits only main. Mel explicitly approved adding this exact review branch on September 29. Automatic approval review still rejected the change as a persistent security-policy modification, even with that approval, and prohibited an indirect workaround. The branch allowance now requires a user-controlled change in GitHub settings before a Pages preview can deploy.
 - Do not merge. The Editor script and audio are technically complete. Perceptual listening and Mel's explicit release approval remain separate gates in `npm run release:check`.
 
 ## Media production
