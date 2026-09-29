@@ -1,31 +1,22 @@
 import type { Metadata } from "next";
+import { edition } from "@/data/edition";
 import "./globals.css";
 
-const title = "Aligned & Extended: Dillon Brooks’ Three-Year Suns Commitment | The Echo";
-const description = "A verified ownership-intelligence read on Dillon Brooks’ three-year, $73 million Phoenix Suns extension, the reaction it generated and why the term matters.";
-const siteUrl = "https://suns-echo.netlify.app";
-const shareImage = "/suns-echo/og-image-v2.png";
-
+const title = `${edition.title} | Suns Media Day 2026 | The Echo`;
+const description = "Phoenix Suns Media Day in ownership perspective: where the principals align, how preparation is being described, and how the day's stories reached different audiences.";
+const siteUrl = "https://meltckr.github.io";
+const canonical = `${edition.basePath}/`;
+const shareImage = `${edition.basePath}/og-media-day-2026-09-28-v1.png`;
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title,
-  description,
-  applicationName: "The Echo",
+  metadataBase: new URL(siteUrl), title, description, applicationName: "The Echo",
   authors: [{ name: "Accelerated Velocity Consulting" }],
-  alternates: { canonical: "/" },
-  icons: { icon: "/suns-echo/favicon.svg" },
-  openGraph: {
-    title,
-    description,
-    type: "article",
-    url: "/",
+  robots: { index: false, follow: false },
+  alternates: { canonical }, icons: { icon: `${edition.basePath}/favicon.svg` },
+  openGraph: { title, description, type: "article", url: canonical,
     siteName: "The Echo · Phoenix Suns Ownership Intelligence",
-    publishedTime: "2026-08-06T16:30:00-07:00",
-    images: [{ url: shareImage, width: 1200, height: 630, alt: "Aligned and Extended — Dillon Brooks, three years and $73 million" }],
-  },
-  twitter: { card: "summary_large_image", title, description, images: [shareImage] },
+    images: [{ url: shareImage, width: 1200, height: 630, alt: "In the Same Building: Phoenix Suns Media Day, September 28, 2026. Official Phoenix Suns photographs arranged in Blender." }] },
+  twitter: { card: "summary_large_image", title, description, images: [shareImage] }
 };
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body>{children}</body></html>;
 }

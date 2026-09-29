@@ -1,146 +1,591 @@
 export type Sentiment = "Strongly Positive" | "Positive" | "Mixed" | "Neutral" | "Negative" | "Strongly Negative";
 export type Category = "Official" | "Players & Coaches" | "Local Media" | "National Media" | "Creators" | "Fans";
-
 export type Source = {
-  id: string;
-  source: string;
-  outlet: string;
-  category: Category;
-  date: string;
-  sentiment: Sentiment;
-  themes: string[];
-  confidence: "High" | "Medium";
-  url: string;
-  evidence: string;
-  quote?: string;
-  quoteType?: "Direct quote" | "Paraphrase";
-  speaker?: string;
-  speakerRole?: string;
-  quoteContext?: string;
+ id:string; source:string; outlet:string; category:Category; date:string; sentiment:Sentiment;
+ themes:string[]; confidence:"High"|"Medium"; url:string; evidence:string;
+ phase:"Event"|"Preview"|"Background"; quote?:string; quoteType?:"Direct quote";
+ speaker?:string; speakerRole?:string; quoteContext?:string;
 };
 
-export const edition = {
-  series: "THE ECHO",
-  title: "Aligned and Extended",
-  subtitle: "How Dillon Brooks’ three-year commitment landed—and what it says about the Suns’ operating identity",
-  eventDate: "August 6, 2026",
-  reportingWindow: "April 28–August 6, 2026 · reaction verified through 4:30 PM Arizona",
-  thesis: "The $73 million extension was received less as a reward for 20.2 points per game than as a vote for continuity. The defining number is not the total—it is three years, a term that protects Phoenix from the four-year risk the market had debated while keeping a visible identity carrier beside Devin Booker through 2029–30.",
-  sourceCount: 25,
-  includedCount: 25,
-  reviewedCount: 62,
-  confidence: "Moderate–high",
-  overallDirection: "Strongly positive",
-  editorialIndex: 82,
-  indexNote: "Directional editorial index from the included evidence; not polling, market valuation or a public approval rating.",
-  readout: "The first wave of reaction treated Phoenix’s three-year, $73 million extension with Dillon Brooks as a value agreement. That judgment was shaped by the market people had anticipated: Brooks had been eligible for four years and roughly $125 million, local discussion frequently imagined a number near or above $30 million annually, and the reported agreement instead averages about $24.3 million across the new years. The broader meaning is continuity. Mat had publicly described Brooks as part of the future; Brooks had said he wanted to retire a Sun; and the 2025–26 evidence gave both sides a basketball basis for agreement—20.2 points per game, the team’s hardest perimeter assignments, a 45-win season and a team-high 26.0 points per game in the Oklahoma City series. Local, national, creator and visible fan reaction largely converged on three ideas: the term is disciplined, the player has become a credible identity carrier, and Brian Gregory’s offseason has prioritized retainable contracts around the team’s core. The restraint is equally important. Brooks will be 34 when the extension ends. His offense reached a career high, his technical-foul profile remains part of the package, and Phoenix still lost in the first round. The deal preserves a useful standard; the next test is whether the broader roster can convert that standard into a deeper postseason result.",
-  bottomLine: "This extension matters because it converts a year of cultural language into a durable personnel decision without paying the four-year price that had framed the risk. Phoenix kept the player most publicly associated with its tougher operating identity, Brooks secured long-term commitment in a place he has described as home, and the three-year term keeps the bet aligned with the present competitive window. The reaction is strongly positive because the contract appears to reward verified production while retaining some age protection. What it does not do is prove that continuity alone is enough. The ownership-level value will be measured by whether Brooks’ daily standard continues to elevate younger players, whether his offensive growth holds within a healthier lineup, and whether the Suns’ identity becomes more than a compelling regular-season story. The agreement is a disciplined act of continuity. The performance burden now shifts from defining the culture to scaling it.",
-};
-
-export const audioBrief = {
-  title: "The Echo ownership brief",
-  label: "Two-minute audio",
-  src: "/suns-echo/audio/the-echo-suns-001-aligned-and-extended.mp3",
-  paragraphs: [
-    "Mat, here is the two-minute ownership read from this Suns edition of The Echo.",
-    "The reaction to Dillon Brooks’ three-year, seventy-three-million-dollar extension is strongly positive, but the revealing detail is the term, not the total. The public debate had been framed by a possible four-year deal worth roughly one hundred twenty-five million dollars. Phoenix stopped at three new years and about twenty-four-point-three million annually. That reads as commitment with age protection.",
-    "The agreement also closes a loop the organization had already opened. You said publicly that Dillon was part of the future. Dillon said he wanted to retire a Sun. In between, he averaged a career-high twenty-point-two points, took the hardest perimeter assignments, helped anchor a forty-five-win identity shift and led Phoenix with twenty-six points per game in the Oklahoma City series.",
-    "Local and national coverage, creator reaction and the visible fan sample largely converged on the same interpretation: Phoenix kept an identity carrier at a number below the market many expected. The phrase team-friendly appeared repeatedly. So did praise for Brian Gregory’s broader pattern of retaining useful players on manageable terms.",
-    "The restraint matters. This is a same-day, curated reaction sample, not polling. The club had not yet published a full announcement or fresh player-and-coach reaction by the reporting cutoff. Brooks will be thirty-four when the extension ends. His scoring reached a career high that must now hold within a healthier lineup, and the team still has to move beyond a first-round exit.",
-    "The ownership takeaway is straightforward. This is a disciplined continuity decision. It preserves a daily standard the organization values without taking the full four-year risk. The next signal is whether that standard scales—into younger-player development, cleaner collective execution and a deeper postseason result.",
-    "Dominate.",
-  ],
-};
-
-export const audienceSignals = [
-  { label: "Overall", direction: "Strongly positive", score: 82, note: "Term discipline and continuity aligned" },
-  { label: "Local media", direction: "Positive", score: 80, note: "Value, age and flexibility led the frame" },
-  { label: "National media", direction: "Positive", score: 78, note: "Production and identity supported the deal" },
-  { label: "Players & staff", direction: "Strongly positive", score: 91, note: "Prior intent was unusually explicit" },
-  { label: "Creators", direction: "Strongly positive", score: 86, note: "Value framing led same-day coverage" },
-  { label: "Fans", direction: "Strongly positive / mixed", score: 79, note: "Broad approval with age and ceiling friction" },
+export const sources: Source[] = [
+  {
+    "id": "nba-media-day",
+    "source": "Media Day schedule",
+    "outlet": "NBA.com Staff",
+    "category": "Official",
+    "date": "Sept. 25 · Schedule",
+    "phase": "Background",
+    "sentiment": "Neutral",
+    "themes": [
+      "Event verification"
+    ],
+    "confidence": "High",
+    "url": "https://www.nba.com/news/nba-media-days-schedule-for-all-30-teams",
+    "evidence": "Official schedule lists Phoenix on September 28."
+  },
+  {
+    "id": "suns-continuity",
+    "source": "Team continuity preview",
+    "outlet": "Phoenix Suns / NBA.com",
+    "category": "Official",
+    "date": "Sept. 26 · Preview",
+    "phase": "Preview",
+    "sentiment": "Neutral",
+    "themes": [
+      "Continuity",
+      "Newcomers"
+    ],
+    "confidence": "Medium",
+    "url": "https://www.nba.com/suns/news/how-continuity-will-help-the-phoenix-suns-strengthen-their-identity",
+    "evidence": "Indexed team preview emphasizes continuity and newcomer integration."
+  },
+  {
+    "id": "nba-williams",
+    "source": "Williams injury update",
+    "outlet": "NBA.com News Services",
+    "category": "Official",
+    "date": "Sept. 11 · Background",
+    "phase": "Background",
+    "sentiment": "Neutral",
+    "themes": [
+      "Availability"
+    ],
+    "confidence": "High",
+    "url": "https://www.nba.com/news/phoenix-suns-mark-williams-injury",
+    "evidence": "Official report confirms shoulder surgery; initial return timetable unspecified."
+  },
+  {
+    "id": "si-roundup",
+    "source": "What the Suns' key figures said at Media Day",
+    "outlet": "Donnie Druin / Suns on SI",
+    "category": "Players & Coaches",
+    "date": "Sept. 28 · Media Day",
+    "phase": "Event",
+    "sentiment": "Positive",
+    "themes": [
+      "Daily work",
+      "Preparation",
+      "Leadership"
+    ],
+    "confidence": "High",
+    "url": "https://www.si.com/nba/suns/onsi/biggest-thing-every-key-phoenix-suns-figure-said-media-day-mat-ishbia-devin-booker",
+    "evidence": "On-site roundup attributes daily improvement to Gregory, sustained summer participation to Ott, and personal concentration work to Brooks.",
+    "quote": "One year doesn't make your culture. One year doesn't make your identity.",
+    "quoteType": "Direct quote",
+    "speaker": "Brian Gregory",
+    "speakerRole": "Suns general manager",
+    "quoteContext": "On maintaining identity through repeated work; quoted by Donnie Druin"
+  },
+  {
+    "id": "booker-continuity",
+    "source": "Booker on returning teammates and shared summer work",
+    "outlet": "Kevin Humpherys / Bright Side of the Sun",
+    "category": "Players & Coaches",
+    "date": "Sept. 28 · 1:55 PM Arizona",
+    "phase": "Event",
+    "sentiment": "Positive",
+    "themes": [
+      "Continuity",
+      "Shared preparation"
+    ],
+    "confidence": "High",
+    "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+    "evidence": "Booker described returning to familiar teammates and the same coach, summer gatherings and recurring facility workouts.",
+    "quote": "We're all on the same page.",
+    "quoteType": "Direct quote",
+    "speaker": "Devin Booker",
+    "speakerRole": "Suns guard",
+    "quoteContext": "On the returning group; quoted by Kevin Humpherys"
+  },
+  {
+    "id": "green-nash",
+    "source": "Green sought Nash's feedback on his game",
+    "outlet": "Mark Bowser / Bright Side of the Sun",
+    "category": "Players & Coaches",
+    "date": "Sept. 28 · 4:00 PM Arizona",
+    "phase": "Event",
+    "sentiment": "Positive",
+    "themes": [
+      "Mentorship",
+      "Player initiative"
+    ],
+    "confidence": "High",
+    "url": "https://www.brightsideofthesun.com/suns-analysis/110598/jalen-green-steve-nash-mentorship-playmaking-pace-development",
+    "evidence": "Green said Nash watched and critiqued workouts to help his pace and game reading. Bowser views the intent positively; improvement remains to be demonstrated."
+  },
+  {
+    "id": "maluach-development",
+    "source": "Booker's praise for Maluach finds a wider audience",
+    "outlet": "Holden Sherman / Bright Side of the Sun",
+    "category": "Local Media",
+    "date": "Sept. 28 · 5:00 PM Arizona",
+    "phase": "Event",
+    "sentiment": "Strongly Positive",
+    "themes": [
+      "Development",
+      "Player initiative",
+      "Team contribution"
+    ],
+    "confidence": "High",
+    "url": "https://www.brightsideofthesun.com/suns-news/110583/devin-booker-with-high-praise-for-khaman-maluach",
+    "evidence": "Booker reported working with Maluach after the young center reached out. Gregory described physical progress; Maluach emphasized helping the team regardless of starting status."
+  },
+  {
+    "id": "williams-gregory",
+    "source": "Gregory expects Williams to miss several months",
+    "outlet": "Kellan Olson reporting / HoopsHype via Yahoo",
+    "category": "Local Media",
+    "date": "Sept. 28 · 10:50 AM Arizona",
+    "phase": "Event",
+    "sentiment": "Neutral",
+    "themes": [
+      "Availability",
+      "Young-player opportunity"
+    ],
+    "confidence": "Medium",
+    "url": "https://sports.yahoo.com/articles/suns-gm-brian-gregory-expects-175059788.html",
+    "evidence": "Secondary relay attributes a several-month absence to Gregory. Original Olson post and any updated timetable remain in the morning verification queue."
+  },
+  {
+    "id": "ap-resources",
+    "source": "Mat addresses basketball spending and ownership plans",
+    "outlet": "David Brandt / Associated Press via Arizona's Family",
+    "category": "National Media",
+    "date": "Sept. 28 · 1:42 PM Arizona",
+    "phase": "Event",
+    "sentiment": "Neutral",
+    "themes": [
+      "Resources",
+      "Ownership commitment",
+      "External scrutiny"
+    ],
+    "confidence": "High",
+    "url": "https://www.azfamily.com/2026/09/28/suns-owner-mat-ishbia-says-mortgage-company-woes-will-have-no-effect-basketball/",
+    "evidence": "Mat said mortgage-company performance would have no effect on Suns spending or fan experience. AP also reported his intention to buy an additional 14% of the team; completion is unverified.",
+    "quote": "It affects zero. Absolutely zero.",
+    "quoteType": "Direct quote",
+    "speaker": "Mat Ishbia",
+    "speakerRole": "Suns owner",
+    "quoteContext": "On mortgage-company performance and basketball spending; reported by David Brandt/AP"
+  },
+  {
+    "id": "bridges-clutchpoints",
+    "source": "Mat's Bridges explanation draws scrutiny",
+    "outlet": "Bailey Bassett / ClutchPoints",
+    "category": "National Media",
+    "date": "Sept. 28 · 12:36 PM Arizona",
+    "phase": "Event",
+    "sentiment": "Mixed",
+    "themes": [
+      "Organizational standards",
+      "Public trust"
+    ],
+    "confidence": "Medium",
+    "url": "https://clutchpoints.com/nba/phoenix-suns/mat-ishbia-sounds-off-controversial-suns-miles-bridges-trade-arrest",
+    "evidence": "Coverage relays Mat's condemnation of Bridges' prior conduct and his stated accountability rationale. Its basketball-fit discussion accompanies continued concern about the acquisition. Recording verification remains pending."
+  },
+  {
+    "id": "bridges-roundtable",
+    "source": "A second editorial frame on the Bridges decision",
+    "outlet": "Kevin Hicks / Roundtable Sports via Yahoo",
+    "category": "Creators",
+    "date": "Sept. 28 · 11:51 AM Arizona",
+    "phase": "Event",
+    "sentiment": "Negative",
+    "themes": [
+      "Organizational standards",
+      "Public reception"
+    ],
+    "confidence": "Medium",
+    "url": "https://sports.yahoo.com/articles/suns-owner-defends-phoenixs-decision-185136587.html",
+    "evidence": "Indexed article frames the explanation as a defense of a divisive acquisition. It covers the same exchange as ClutchPoints and supplies another editorial frame."
+  },
+  {
+    "id": "phnx-preview",
+    "source": "PHNX's expectations entering Media Day",
+    "outlet": "PHNX Suns Podcast",
+    "category": "Creators",
+    "date": "Sept. 25 · Preview",
+    "phase": "Preview",
+    "sentiment": "Positive",
+    "themes": [
+      "Incoming expectations",
+      "Offseason review"
+    ],
+    "confidence": "Medium",
+    "url": "https://podcasts.apple.com/us/podcast/what-to-expect-from-phoenix-suns-media-day-as-2026/id1207682052?i=1000791692396",
+    "evidence": "Public episode description previews the day and discusses national rankings. This is incoming context. The completed recap remains in the morning queue."
+  },
+  {
+    "id": "booker-culture",
+    "source": "Booker's Media Day shoe collaboration reaches a specialist audience",
+    "outlet": "Zach Harris / Sole Retriever",
+    "category": "Creators",
+    "date": "Sept. 28 · Media Day",
+    "phase": "Event",
+    "sentiment": "Positive",
+    "themes": [
+      "Player identity",
+      "Cultural reach"
+    ],
+    "confidence": "High",
+    "url": "https://www.soleretriever.com/news/articles/futura-nike-book-2-media-day-preview",
+    "evidence": "Specialist coverage reports Booker's Futura collaboration debut at Media Day. The source gives no confirmed release date."
+  },
+  {
+    "id": "fan-media-day",
+    "source": "One public Suns Media Day discussion",
+    "outlet": "r/suns public megathread",
+    "category": "Fans",
+    "date": "Sept. 28 · Discussion",
+    "phase": "Event",
+    "sentiment": "Mixed",
+    "themes": [
+      "Enthusiasm",
+      "Role questions",
+      "Broadcast access"
+    ],
+    "confidence": "Medium",
+    "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+    "evidence": "Visible discussion mixes anticipation and development interest with role disagreement and broadcast-access difficulties. One thread counts once and supplies no representative fan measure."
+  }
 ];
 
-export const distribution = [
-  { category: "Official", count: 4 },
-  { category: "Players & coaches", count: 4 },
-  { category: "Local media", count: 5 },
-  { category: "National media", count: 5 },
-  { category: "Creators", count: 3 },
-  { category: "Fans", count: 4 },
+export const edition = {
+  "basePath": process.env.NEXT_PUBLIC_ECHO_BASE_PATH ?? "/suns-echo",
+  "editorialFinal": false,
+  "releaseAuthorized": false,
+  "series": "THE ECHO",
+  "number": "002",
+  "title": "In the Same Building",
+  "subtitle": "Phoenix Suns Media Day in perspective: the shared direction, the individual stories and the questions carrying into camp.",
+  "eventDate": "September 28, 2026",
+  "reportingWindow": "September 28 · evening working edition · morning refresh September 29",
+  "generatedLabel": "Working edition · September 28, 2026 · America/Phoenix",
+  "statusLabel": "Review draft · morning reporting update pending",
+  "thesis": "The most useful connection across Media Day is the relationship between a stated standard and specific accounts of preparation. Several Suns described shared work and individual initiative. The public response also brought availability and organizational trust into the picture ownership carries into camp.",
+  "sourceCount": 14,
+  "includedCount": 14,
+  "reviewedCount": 14,
+  "confidence": "Provisional · reporting still developing",
+  "overallDirection": "Constructive basketball signals; mixed wider reception",
+  "editorialIndex": null as number | null,
+  "indexNote": "Qualitative working read. Numeric scoring remains open while reporting develops. Four records supply dated preview or background context; ten concern the event.",
+  "dominantSignalNote": "The clearest overlap is shared preparation. External coverage attaches different expectations to development, resource commitment and organizational standards.",
+  "readoutSourceIds": [
+    "booker-continuity",
+    "si-roundup",
+    "maluach-development",
+    "green-nash",
+    "ap-resources",
+    "bridges-clutchpoints",
+    "williams-gregory",
+    "nba-williams"
+  ],
+  "readoutParagraphs": [
+    "Booker described a young teammate reaching out to arrange a workout. That detail gives the day a useful center. Maluach was seeking access to an established player, and Booker was making room for the work. Read beside Green's account of learning with Nash, it suggests a group beginning to use the experience available inside the organization.",
+    "Leadership's descriptions point toward the same activity. Gregory emphasized that identity requires repetition. Ott described unusually sustained summer participation. Booker spoke about familiar teammates, the returning coach and time together. My read is that continuity is becoming easier to describe through specific examples. That gives ownership a clearer way to recognize progress as camp begins.",
+    "The day also traveled through several distinct public stories. Local development coverage put attention on Maluach and Green. The AP dispatch led with Mat's assurance about spending. Other reports scrutinized the Bridges decision and the standards used to explain it. Williams' reported absence gave the basketball optimism an immediate practical condition. Each audience carried a different piece of the same day.",
+    "That is where a broad ownership view adds value. It connects the internal accounts of preparation with the expectations those accounts create outside the building. Tomorrow's completed reporting will sharpen the reception read, especially the major local recaps and the original interview context."
+  ],
+  "readout": "Several Suns principals described compatible priorities around shared preparation and development. Early outside coverage emphasized different subjects, including resources, availability and organizational standards. The overnight update will complete the reception read.",
+  "bottomLine": "The day made the Suns' direction more specific. Leadership discussed the conditions for progress; players described work they had undertaken. Ownership can carry those examples into camp alongside the questions the public is already asking. Shared preparation is a useful starting point. Its next evidence will come through the team's readiness, development and response to the season's demands."
+};
+
+export const alignment: {id:string;title:string;status:string;reading:string;evidence:{speaker:string;role:string;statement:string;kind:"Reported statement"|"Direct quote";sourceId:string}[];meaning:string;watch:string}[] = [
+  {
+    "id": "shared-work",
+    "title": "Continuity is being expressed through work",
+    "status": "Three named principals",
+    "reading": "Gregory, Ott and Booker approached the subject at different levels and described compatible priorities.",
+    "evidence": [
+      {
+        "speaker": "Brian Gregory",
+        "role": "General manager",
+        "statement": "Maintaining identity requires repeated daily improvement.",
+        "sourceId": "si-roundup",
+        "kind": "Reported statement"
+      },
+      {
+        "speaker": "Jordan Ott",
+        "role": "Head coach",
+        "statement": "Summer gym participation was unusually sustained in his NBA experience.",
+        "sourceId": "si-roundup",
+        "kind": "Reported statement"
+      },
+      {
+        "speaker": "Devin Booker",
+        "role": "Guard",
+        "statement": "Familiar teammates and the returning coach gave the group a shared starting point.",
+        "sourceId": "booker-continuity",
+        "kind": "Reported statement"
+      }
+    ],
+    "meaning": "The accounts make the continuity message easier to evaluate. Ownership has examples of preparation to follow as the group moves into camp.",
+    "watch": "Whether the preparation described becomes visible readiness once team activities begin."
+  },
+  {
+    "id": "development",
+    "title": "Players are taking initiative to learn",
+    "status": "Two distinct player examples",
+    "reading": "Green's work with Nash and Maluach's outreach to Booker describe two separate relationships around improvement.",
+    "evidence": [
+      {
+        "speaker": "Jalen Green",
+        "role": "Guard",
+        "statement": "Nash observed and critiqued workouts to help his pace and reading of the game.",
+        "sourceId": "green-nash",
+        "kind": "Reported statement"
+      },
+      {
+        "speaker": "Devin Booker",
+        "role": "Guard",
+        "statement": "Maluach reached out and the two worked together during the offseason.",
+        "sourceId": "maluach-development",
+        "kind": "Reported statement"
+      },
+      {
+        "speaker": "Khaman Maluach",
+        "role": "Center",
+        "statement": "His stated priority is helping the team regardless of starting status.",
+        "sourceId": "maluach-development",
+        "kind": "Reported statement"
+      }
+    ],
+    "meaning": "There is reported initiative at different career stages. Green sought experienced feedback; Maluach sought a working relationship with the team's established guard.",
+    "watch": "How those relationships develop, with progress assessed through current reporting and demonstrated work."
+  },
+  {
+    "id": "resources",
+    "title": "Ownership support connects with the coach's account",
+    "status": "Two named principals",
+    "reading": "Mat described resource commitment. Ott credited the support available for preparation.",
+    "evidence": [
+      {
+        "speaker": "Mat Ishbia",
+        "role": "Owner",
+        "statement": "Mortgage-company performance would have no effect on basketball spending or fan experience.",
+        "sourceId": "ap-resources",
+        "kind": "Reported statement"
+      },
+      {
+        "speaker": "Jordan Ott",
+        "role": "Head coach",
+        "statement": "Ownership resources and staff time supported the summer's preparation.",
+        "sourceId": "si-roundup",
+        "kind": "Reported statement"
+      }
+    ],
+    "meaning": "The owner and coach described the support relationship consistently. The ownership implication is the connection between resources supplied and opportunities the group uses.",
+    "watch": "Continue separating stated financial commitment from verified transactions and operating results."
+  }
+];
+
+export const sectionCopy = {
+  "voices": {
+    "title": "The language behind the shared direction",
+    "copy": "Selected complete short quotations as reported from Media Day. Each identifies the speaker, context and original reporting page. Recording checks remain in the morning update.",
+    "interpretation": "These statements concern the September 28 event. The alignment section compares the attributed remarks with concrete accounts of activity and keeps the strength of each connection visible."
+  },
+  "local": {
+    "title": "Development makes the day concrete",
+    "copy": "Local coverage gave the preparation story specific people and circumstances. Maluach's progress drew attention; Williams' recovery kept availability in view."
+  },
+  "national": {
+    "title": "The wider audience heard different stories",
+    "copy": "The retrieved AP dispatch emphasized spending commitment. The Bridges coverage focused on organizational judgment and trust. This is a developing selection of coverage."
+  },
+  "creators": {
+    "title": "The specialist conversation is still taking shape",
+    "copy": "The shoe collaboration reached a culture audience. PHNX's dated preview supplies incoming context; its completed recap will be added during the morning update."
+  },
+  "fans": {
+    "title": "Interest, questions and the experience of watching",
+    "copy": "One public thread supplies an indicative view of the discussion. Enthusiasm appeared alongside role questions and difficulties locating or watching the broadcast."
+  }
+};
+
+export const audienceSignals: {label:string;direction:string;score:number|null;note:string}[] = [
+  {
+    "label": "Principals",
+    "direction": "Shared preparation",
+    "score": null,
+    "note": "Named statements support several compatible priorities."
+  },
+  {
+    "label": "Local coverage",
+    "direction": "Development interest",
+    "score": null,
+    "note": "Specific player examples draw constructive attention."
+  },
+  {
+    "label": "National coverage",
+    "direction": "Several separate frames",
+    "score": null,
+    "note": "Resources and standards scrutiny lead different reports."
+  },
+  {
+    "label": "Creators",
+    "direction": "Morning recap pending",
+    "score": null,
+    "note": "Preview context is dated and separated from event response."
+  },
+  {
+    "label": "Public discussion",
+    "direction": "Mixed in one thread",
+    "score": null,
+    "note": "Indicative comments supply no estimate of wider fan opinion."
+  }
+];
+
+export const distribution = (["Official","Players & Coaches","Local Media","National Media","Creators","Fans"] as Category[]).map(category=>({category,count:sources.filter(source=>source.category===category).length}));
+
+export const fanThemes = [
+  {
+    "title": "Basketball returning",
+    "body": "Some visible participants welcomed the return of Suns activity and interviews."
+  },
+  {
+    "title": "Development interest",
+    "body": "The discussion included interest in younger players and Green's work with Nash."
+  },
+  {
+    "title": "Open role questions",
+    "body": "Participants disagreed about how players would fit together. Those views remain fan discussion."
+  },
+  {
+    "title": "Finding the coverage",
+    "body": "Some participants reported trouble locating or watching the stream. Others pointed to available interviews and replays."
+  }
 ];
 
 export const themes = [
-  { name: "Three years changed the risk conversation", momentum: "Rising", strength: "High", groups: "Media · creators · fans", evidence: "The reported $73 million total averages about $24.3 million across the new years and stops before a fourth extension season.", relevance: "Phoenix retained the player without accepting the maximum length that had driven age-based concern." },
-  { name: "Continuity became a transaction", momentum: "Rising", strength: "High", groups: "Ownership · player · local media", evidence: "Mat’s public expectation that Brooks would stay and Brooks’ stated wish to retire in Phoenix now have contractual weight through 2029–30.", relevance: "The organization followed through on a visible commitment, reinforcing credibility around its identity language." },
-  { name: "Production gave the culture case proof", momentum: "Stable", strength: "High", groups: "Official data · national media · teammates", evidence: "Brooks averaged 20.2 points in the regular season and a team-high 26.0 in the first round while retaining primary defensive responsibility.", relevance: "The agreement is supported by behavior and output, not personality alone." },
-  { name: "Brian Gregory’s contract pattern is part of the story", momentum: "Rising", strength: "Medium", groups: "Local media · creators · Suns fans", evidence: "Reaction connected Brooks’ deal to the earlier retention of Collin Gillespie, Jordan Goodwin and Mark Williams on multi-year agreements.", relevance: "Roster continuity is becoming legible as an operating approach rather than a sequence of isolated moves." },
-  { name: "The villain label became an owned asset", momentum: "Stable", strength: "Medium", groups: "National media · fans · Brooks", evidence: "Coverage still used the villain frame, but Phoenix audiences largely translated it into edge, work and competitive personality.", relevance: "A polarizing national identity can create local affinity when the daily standard underneath it is credible." },
-  { name: "The ceiling question did not disappear", momentum: "Stable", strength: "Medium", groups: "Skeptical fans · analysts", evidence: "The strongest counter-frame asked whether Phoenix is preserving a 45-win, first-round core rather than materially raising its postseason ceiling.", relevance: "Continuity is useful only if development, health and roster fit turn it into additional competitive range." },
+  {
+    "name": "Familiarity gains a practical meaning",
+    "momentum": "Recurring",
+    "strength": "Attributed",
+    "groups": "Gregory, Ott, Booker",
+    "evidence": "The principals described preparation as an ongoing obligation, with shared summer activity giving it context.",
+    "relevance": "Specific accounts make the organization's stated direction easier to recognize and revisit."
+  },
+  {
+    "name": "Experience is being used across generations",
+    "momentum": "Emerging",
+    "strength": "Two examples",
+    "groups": "Green, Nash, Booker, Maluach",
+    "evidence": "The reported mentoring relationships connect available experience with player initiative.",
+    "relevance": "The work described gives ownership a view into how development opportunities are being used."
+  },
+  {
+    "name": "Availability shapes the next phase",
+    "momentum": "Current",
+    "strength": "Reported",
+    "groups": "Gregory reporting, local coverage",
+    "evidence": "Williams' absence remains part of the starting conditions for camp.",
+    "relevance": "The preparation story sits alongside an availability question requiring current, attributed updates."
+  },
+  {
+    "name": "Resources became a national story",
+    "momentum": "Circulating",
+    "strength": "Attributed",
+    "groups": "Mat, Associated Press",
+    "evidence": "AP made spending commitment the center of its Media Day dispatch.",
+    "relevance": "The broader audience is evaluating ownership assurances as well as the basketball group."
+  },
+  {
+    "name": "Standards carry public expectations",
+    "momentum": "Contested",
+    "strength": "Two frames",
+    "groups": "ClutchPoints, Roundtable",
+    "evidence": "The Bridges exchange circulated through coverage concerned with organizational judgment.",
+    "relevance": "The standards described inside the organization will also be evaluated through decisions and public explanations."
+  },
+  {
+    "name": "Player identity reaches beyond the game",
+    "momentum": "Specialist",
+    "strength": "One report",
+    "groups": "Booker, sneaker coverage",
+    "evidence": "Booker's collaboration created an additional Media Day story for a specialist audience.",
+    "relevance": "The day carries several audiences, each encountering a different aspect of the franchise."
+  }
 ];
 
 export const watchColumns = {
-  positive: [
-    "The three-year term avoids the fourth season that drove the clearest age concern.",
-    "Brooks’ public desire to stay and the organization’s intent were aligned before negotiation became final.",
-    "Production, defensive responsibility and teammate testimony all support the identity case.",
+  "positive": [
+    "Several principals described shared preparation.",
+    "Distinct player accounts show initiative to learn.",
+    "Maluach's development attracted constructive coverage."
   ],
-  questions: [
-    "The precise year-by-year structure, options and protections were not public at the reporting cutoff.",
-    "Brooks’ 20.2-point season was a career high; sustainability inside a healthier lineup remains untested.",
-    "A strong culture story and a 45-win season still ended in a first-round sweep.",
+  "questions": [
+    "What the completed local recaps add to the reception read.",
+    "Whether original recordings change the context of selected remarks.",
+    "What current official reporting establishes about Williams' recovery."
   ],
-  watch: [
-    "Whether Phoenix confirms the agreement and adds fresh organizational or player language.",
-    "Whether Brooks’ offensive role becomes more efficient as Booker, Green and the full group share the floor.",
-    "Whether his standard transfers into visible growth from the younger core and better postseason execution.",
-  ],
+  "watch": [
+    "How the summer accounts carry into camp readiness.",
+    "Whether newer players describe compatible priorities in full interviews.",
+    "How replays and interview distribution serve interested supporters."
+  ]
 };
 
 export const implications = [
-  { n: "01", title: "The organization followed through", body: "Public intent from ownership and the player was converted into a completed agreement. That consistency carries cultural value beyond the contract itself." },
-  { n: "02", title: "The term is the discipline", body: "Three new years keep Brooks inside the present window while limiting the age exposure that made a four-year extension harder to defend." },
-  { n: "03", title: "The Durant return gained another layer of durability", body: "A player initially discussed as part of the trade return is now secured as a productive, identifiable piece of the Suns’ next phase." },
-  { n: "04", title: "Culture now carries a measurable performance burden", body: "The organization has preserved the standard-setter. The next question is whether that standard produces development, availability and postseason growth." },
-  { n: "05", title: "The agreement leaves room for constructive tension", body: "Strong approval should not erase age, role and ceiling questions. Those are not arguments against the deal; they are the conditions by which its value will be judged." },
-];
-
-export const sources: Source[] = [
-  { id:"espn-charania", source:"Brooks agrees to three-year, $73 million extension", outlet:"ESPN / Shams Charania", category:"Official", date:"Aug. 6", sentiment:"Positive", themes:["Contract terms","Continuity","Identity"], confidence:"High", url:"https://www.espn.com/contributor/shams-charania/db563bf7c10cf", evidence:"Primary announcement reporting: three years, $73 million, through 2029–30; terms attributed to agent Mike George." },
-  { id:"suns-roster", source:"Phoenix Suns roster", outlet:"Phoenix Suns / NBA.com", category:"Official", date:"Aug. 6", sentiment:"Neutral", themes:["Team status","Player identity"], confidence:"High", url:"https://www.nba.com/suns/roster", evidence:"Official team roster confirms Brooks as a Phoenix guard-forward." },
-  { id:"suns-game-notes", source:"2025–26 Phoenix Suns game notes", outlet:"Phoenix Suns / NBA.com", category:"Official", date:"Apr. 2026", sentiment:"Neutral", themes:["Season production","Team record"], confidence:"High", url:"https://www.nba.com/gamenotes/suns.pdf", evidence:"Official season line: 56 games, 20.2 points, 3.6 rebounds and 1.8 assists per game." },
-  { id:"nba-player", source:"Dillon Brooks player profile", outlet:"NBA.com", category:"Official", date:"Aug. 6", sentiment:"Neutral", themes:["Career record","Defensive recognition"], confidence:"High", url:"https://www.nba.com/player/1628415/dillon-brooks/bio", evidence:"Official career profile, including 2023 All-Defensive Second Team recognition." },
-
-  { id:"brooks-players-tribune", source:"No Way in Hell They Wanna See Us", outlet:"The Players’ Tribune", category:"Players & Coaches", date:"Apr. 7", sentiment:"Strongly Positive", themes:["Commitment","Phoenix affinity","Competitive identity"], confidence:"High", url:"https://www.theplayerstribune.com/dillon-brooks-nba-basketball-phoenix-suns", evidence:"Brooks’ first-person statement supplied the clearest public commitment before the extension.", quote:"I want to retire a Sun.", quoteType:"Direct quote", speaker:"Dillon Brooks", speakerRole:"Phoenix Suns forward", quoteContext:"On his desired future in Phoenix" },
-  { id:"brooks-road-trippin", source:"Brooks reflects on his first Suns season", outlet:"Road Trippin’ / Yahoo Sports", category:"Players & Coaches", date:"July 25", sentiment:"Strongly Positive", themes:["Belonging","Coaches","Fans"], confidence:"High", url:"https://sports.yahoo.com/articles/dillon-brooks-sends-strong-message-200556552.html", evidence:"Brooks described Phoenix as a second opportunity and praised his working environment.", quote:"I think it was a dream come true. Love the coaches, love my players, and the fans are exquisite.", quoteType:"Direct quote", speaker:"Dillon Brooks", speakerRole:"Phoenix Suns forward", quoteContext:"On his first season in Phoenix" },
-  { id:"gillespie-espn", source:"How Brooks helped turn around Phoenix", outlet:"ESPN", category:"Players & Coaches", date:"Jan. 15", sentiment:"Strongly Positive", themes:["Work ethic","Peer influence","Daily standard"], confidence:"High", url:"https://www.espn.com/nba/story/_/id/47602565/dillon-brooks-phoenix-suns-dillon-villain-nba", evidence:"Teammate testimony connected Brooks’ influence to observable daily work.", quote:"He’s in the gym more than anybody that I know.", quoteType:"Direct quote", speaker:"Collin Gillespie", speakerRole:"Phoenix Suns guard", quoteContext:"On Brooks’ work habits" },
-  { id:"ishbia-intent", source:"Ownership’s public extension intent", outlet:"Arizona Sports / Suns on SI", category:"Players & Coaches", date:"May 1", sentiment:"Strongly Positive", themes:["Ownership intent","Leadership","Continuity"], confidence:"High", url:"https://www.si.com/nba/suns/onsi/phoenix-suns-exploring-dillon-brooks-decision", evidence:"Mat publicly made retention the expected outcome months before the agreement.", quote:"I expect Dillon Brooks to be here. We want Dillon Brooks to be here.", quoteType:"Direct quote", speaker:"Mat Ishbia", speakerRole:"Phoenix Suns owner", quoteContext:"On Brooks’ future with the organization" },
-
-  { id:"si-extension", source:"Why Brooks’ three-year extension was a win", outlet:"Sports Illustrated", category:"Local Media", date:"Aug. 6", sentiment:"Strongly Positive", themes:["Contract value","Career season","Continuity"], confidence:"Medium", url:"https://www.si.com/nba/suns", evidence:"Same-day story supplied by Mel framed the extension as deserved after Brooks averaged 20.2 points in his first Suns season." },
-  { id:"bright-side-finance", source:"The financial impact of a Brooks extension", outlet:"Bright Side of the Sun", category:"Local Media", date:"Apr. 30", sentiment:"Mixed", themes:["Age curve","Flexibility","Extension range"], confidence:"High", url:"https://www.brightsideofthesun.com/suns-rumors/103693/dillon-brooks-extension-suns-offseason-salary-cap-marc-stein-report/", evidence:"Pre-deal analysis established the core tension: reward the identity shift without limiting future flexibility." },
-  { id:"bright-side-next-move", source:"Suns Reacts: the next big move isn’t a trade", outlet:"Bright Side of the Sun", category:"Local Media", date:"July 21", sentiment:"Mixed", themes:["Age","Maximum extension","Roster planning"], confidence:"High", url:"https://www.brightsideofthesun.com/suns-roster/108033/miles-bridges-dillon-brooks-contract-extension-options-salary-cap-analysis", evidence:"Local coverage highlighted the four-year, roughly $125 million ceiling and concern about the final season of a longer deal." },
-  { id:"arizona-sports-offseason", source:"How Phoenix’s offseason moves were viewed", outlet:"Arizona Sports", category:"Local Media", date:"July 8", sentiment:"Positive", themes:["Team-friendly contracts","Roster continuity","Flexibility"], confidence:"High", url:"https://arizonasports.com/nba/phoenix-suns/2026-phoenix-suns-offseason-how-moves-viewed-so-far", evidence:"Local cap and roster discussion placed Brooks’ expected extension inside a broader pattern of manageable multi-year agreements." },
-  { id:"cronkite-continuity", source:"Suns commit to depth, youth and culture", outlet:"Cronkite News", category:"Local Media", date:"July 13", sentiment:"Positive", themes:["Organizational direction","Continuity","Development"], confidence:"High", url:"https://cronkitenews.azpbs.org/2026/07/13/phoenix-suns-commit-depth-youth-culture/", evidence:"Independent local reporting documented the organization’s continuity and development priorities before the Brooks deal." },
-
-  { id:"si-villain", source:"The NBA’s biggest villain gets a deserved extension", outlet:"Sports Illustrated / Apple News", category:"National Media", date:"Aug. 6", sentiment:"Strongly Positive", themes:["National framing","Villain identity","Reward"], confidence:"Medium", url:"https://www.si.com/nba", evidence:"User-supplied Apple News capture shows national headline framing the extension as deserved and Brooks as the league’s most visible villain." },
-  { id:"espn-turnaround", source:"How the NBA’s biggest villain helped turn around two franchises", outlet:"ESPN", category:"National Media", date:"Jan. 15", sentiment:"Positive", themes:["Culture","Competitive identity","Reputation"], confidence:"High", url:"https://www.espn.com/nba/story/_/id/47602565/dillon-brooks-phoenix-suns-dillon-villain-nba", evidence:"National feature established Brooks’ cross-franchise reputation for setting competitive and work standards." },
-  { id:"espn-best-moves", source:"Phoenix’s Brooks trade ranked among best recent deals", outlet:"ESPN", category:"National Media", date:"Mar. 2026", sentiment:"Positive", themes:["Trade value","Production","Culture"], confidence:"High", url:"https://www.espn.com/nba/story/_/id/48241616/nba-2025-2026-best-worst-moves-finals-trades-extensions", evidence:"ESPN included Phoenix’s acquisition among the league’s better recent moves because of on-court and cultural impact." },
-  { id:"nba-athletic-friendship", source:"Inside the Booker–Brooks friendship", outlet:"The Athletic / NBA.com", category:"National Media", date:"Mar. 2026", sentiment:"Positive", themes:["Core relationship","Team identity","Continuity"], confidence:"High", url:"https://www.nba.com/news/the-athletic-inside-the-booker-brooks-friendship-a-bond-powering-the-surprising-suns", evidence:"National coverage documented a productive Booker–Brooks relationship behind Phoenix’s surprise season." },
-  { id:"cbs-brooks-value", source:"Phoenix’s identity without Brooks", outlet:"CBS Sports", category:"National Media", date:"Feb. 2026", sentiment:"Positive", themes:["Identity","Availability","Offensive burden"], confidence:"High", url:"https://www.cbssports.com/nba/news/jalen-green-dillon-brooks-suns-get-buckets/", evidence:"Coverage described Brooks as central to Phoenix’s season while warning that replacing his production and edge was difficult." },
-
-  { id:"locked-on-suns", source:"Absolute steal: Phoenix extends Brooks", outlet:"Locked On Suns", category:"Creators", date:"Aug. 6", sentiment:"Strongly Positive", themes:["Value","Leadership","Shot selection"], confidence:"Medium", url:"https://www.youtube.com/@LockedOnSuns", evidence:"Same-day 30-minute episode called the contract near-perfect value while preserving questions about shot selection and long-term fit." },
-  { id:"phnx-extension-debate", source:"Should Phoenix extend Brooks?", outlet:"PHNX Suns Podcast", category:"Creators", date:"May 26", sentiment:"Mixed", themes:["Market value","Retirement goal","Roster fit"], confidence:"High", url:"https://podcasts.apple.com/us/podcast/should-phoenix-suns-extend-dillon-brooks-jalen-green/id1207682052?i=1000771392173", evidence:"Specialist local podcast established the extension debate and the stated goal for Brooks to finish his career in Phoenix." },
-  { id:"valley-of-suns", source:"A future Brooks extension should not scare Phoenix", outlet:"Valley of the Suns", category:"Creators", date:"May 2026", sentiment:"Positive", themes:["Age risk","Role value","Continuity"], confidence:"Medium", url:"https://valleyofthesuns.com/future-dillon-brooks-extension-no-reason-scare-suns", evidence:"Creator analysis argued that role, fit and market context could justify an extension despite age concerns." },
-
-  { id:"reddit-suns", source:"Suns community extension thread", outlet:"r/suns", category:"Fans", date:"Aug. 6", sentiment:"Strongly Positive", themes:["Team-friendly value","Leadership","Age"], confidence:"Medium", url:"https://www.reddit.com/r/suns/comments/1vgqbdl/shams_phoenix_suns_forward_dillon_brooks_has/", evidence:"Large same-day home-fan thread was heavily approving, with recurring praise for term and price plus some age and ceiling concern.", quote:"Nice team friendly deal. Got less than 25M. Job well done by Brian Gregory and co.", quoteType:"Direct quote" },
-  { id:"reddit-nba", source:"League-wide extension thread", outlet:"r/nba", category:"Fans", date:"Aug. 6", sentiment:"Positive", themes:["League value","Output","Contract surprise"], confidence:"Medium", url:"https://www.reddit.com/r/nba/comments/1vgqan7/charania_phoenix_suns_forward_dillon_brooks_has/", evidence:"Broad NBA community reaction leaned toward value, with the most visible frame describing the deal as inexpensive relative to output.", quote:"Very cheap for his output.", quoteType:"Direct quote" },
-  { id:"reddit-suns-restraint", source:"Skeptical Suns fan counter-frame", outlet:"r/suns", category:"Fans", date:"Aug. 6", sentiment:"Mixed", themes:["Team ceiling","Continuity risk","Asset path"], confidence:"Medium", url:"https://www.reddit.com/r/suns/comments/1vgqbdl/shams_phoenix_suns_forward_dillon_brooks_has/", evidence:"A minority counter-frame questioned whether Phoenix is locking in a middle-tier core because its draft position limits alternatives.", quote:"Big picture, we have a mid team and we have worked to lock that team in.", quoteType:"Direct quote" },
-  { id:"reddit-nbatalk", source:"General NBA discussion", outlet:"r/NBATalk", category:"Fans", date:"Aug. 6", sentiment:"Positive", themes:["Culture","Defense","Playoff production"], confidence:"Medium", url:"https://www.reddit.com/r/NBATalk/comments/1vgqcwn/breaking_dillon_brooks_stays_with_the_phoenix_suns/", evidence:"Small same-day thread emphasized Brooks’ defensive tone and 26-point playoff average while calling the price reasonable.", quote:"Cheap deal.", quoteType:"Direct quote" },
+  {
+    "n": "01",
+    "title": "Ownership has a more specific preparation story",
+    "body": "Shared work is easier to follow when principals describe what they actually did. Those accounts give camp reporting a useful starting point."
+  },
+  {
+    "n": "02",
+    "title": "Alignment has several levels of support",
+    "body": "The daily-work theme has three named principals. Mentorship and resource support rest on narrower sets of examples. Keep those differences visible."
+  },
+  {
+    "n": "03",
+    "title": "One event produces several public narratives",
+    "body": "Development, resources, organizational standards and player identity reached different audiences. Reading them together gives ownership a fuller picture of the day."
+  },
+  {
+    "n": "04",
+    "title": "Young-player opportunity carries immediate attention",
+    "body": "Maluach's preparation is already drawing coverage as the center situation develops. Continue judging progress through current accounts and demonstrated readiness."
+  },
+  {
+    "n": "05",
+    "title": "The morning reporting cycle can change emphasis",
+    "body": "Completed local recaps and full interview context may strengthen a theme or reveal a gap. The final edition will incorporate that reporting before its narration is produced."
+  }
 ];
 
 export const methodology = {
-  searched: "Official Suns and NBA properties; ESPN reporting and research; player-authored and interview material; Arizona Sports, Cronkite News and Phoenix specialist coverage; Sports Illustrated, CBS Sports, The Athletic and NBA.com; PHNX, Locked On Suns and Valley of the Suns; public Reddit communities; and public search indexes for X, Instagram, TikTok and YouTube.",
-  selection: "Items were included when they added a verified term, statistic, complete direct quotation, distinct framing or audience signal. Announcement-day reaction was separated from earlier statements of intent. Duplicate aggregation, invented article URLs and inaccessible claims without a stable trail were excluded.",
-  sentiment: "Each item was classified by its evaluation of the extension, Brooks’ retained value or the Suns’ direction—not by general approval of the player. Mixed items contain meaningful support and material age, role, cost or ceiling concern.",
-  limitations: "The sample is curated and nonrepresentative. This is a same-day report: the Suns had not published a full official announcement or fresh player-and-coach reaction by the cutoff. Precise annual salary structure, options and protections were not public. Direct access to X, Instagram and TikTok was limited, so engagement totals were not used. The two user-supplied Sports Illustrated captures informed the national-frame read but did not substitute for independent reporting.",
+  "searched": "Fresh Suns/NBA information, original local articles, named-reporter relays, AP wire reporting, national digital coverage, specialist publications, creator episode listings and public Reddit discussion. Discovery and preview items stay in the research record.",
+  "selection": "Fourteen unique reporting pages are included: ten event records and four preview/background records. The same AP story across hosts counts once. Two Bridges articles supply distinct editorial frames of the same exchange. One fan thread counts once. Included records reviewed here are the only counted review total.",
+  "sentiment": "Labels describe each record's framing. Neutral includes descriptive availability or financial reporting; mixed includes support with material concern. Numeric scores remain open while overnight coverage develops. No public approval percentage is estimated.",
+  "limitations": "This review draft awaits completed local recaps, official recording checks and broader national basketball reaction. Indexed-only material and secondary relays are identified. Statements about summer activity are attributed accounts. The fan thread is indicative. Planned ownership acquisition is not confirmed complete. Hero photography is from the Suns' official September 28 Media Day post; the camera motion is a rendered treatment of still photographs."
+};
+
+export const audioBrief = {
+  "ready": false,
+  "title": "In the Same Building",
+  "label": "Two-minute ownership brief",
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v1.mp3`,
+  "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
+  "paragraphs": [
+    "Mat, the most useful connection across Media Day is between the standard people described and the work they said they had done.",
+    "One detail gives that connection a human shape. Booker described Maluach reaching out to arrange a workout. Green described learning with Nash. Those are two different players using experience available around the organization.",
+    "Leadership's accounts point in a compatible direction. Gregory emphasized daily improvement. Ott described unusually sustained summer participation. Booker talked about the value of returning to familiar teammates and the same coach. My read is that continuity is becoming easier to recognize through specific examples.",
+    "The alignment section keeps the evidence visible. Shared preparation has several named principals behind it. Mentorship has distinct player examples. Ownership support connects with the coach's account of the resources available for the work.",
+    "The wider conversation carried other parts of the day. Development coverage put attention on Maluach and Green. AP emphasized your spending assurance. The Bridges reporting kept organizational standards under scrutiny. Williams' availability remains a practical condition for the next phase.",
+    "Those different stories are useful to ownership when they're read together. They show where the group's self-description connects with public expectations, and where further evidence is still needed.",
+    "The morning reporting update will complete that picture. The next watch is how the preparation people described appears in camp readiness and continued development.",
+    "Dominate."
+  ]
+};
+
+export const heroMedia = {
+  ready: true,
+  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-1920x1080-v1.mp4`,
+  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-1080x1920-v1.mp4`,
+  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-poster-v1.webp`,
+  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-portrait-poster-v1.webp`,
+  alt: "Phoenix Suns players at September 28, 2026 Media Day. Official Phoenix Suns photographs, arranged with purple and orange depth and slow camera motion.",
 };

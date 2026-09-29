@@ -1,28 +1,32 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import Script from "next/script";
 import {
+  alignment,
   audioBrief,
+  fanThemes,
+  sectionCopy,
   audienceSignals,
   distribution,
   edition,
   implications,
+  heroMedia,
   methodology,
   sources,
   themes,
   watchColumns,
   type Category,
-  type Sentiment,
   type Source,
 } from "@/data/edition";
 
 const nav = [
-  ["readout", "Readout"], ["signal", "Signal"], ["map", "Map"], ["voices", "Voices"],
+  ["readout", "Readout"], ["alignment", "Alignment"], ["signal", "Signal"], ["map", "Map"], ["voices", "Voices"],
   ["local", "Local"], ["national", "National"], ["creators", "Creators"], ["fans", "Fans"],
   ["narratives", "Narratives"], ["watch", "Watch"], ["ownership", "Ownership"], ["ledger", "Sources"],
 ];
 
-const basePath = "/suns-echo";
+const basePath = edition.basePath;
 
 const toneClass = (value: string) => value.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-");
 
@@ -47,67 +51,89 @@ function sourceLinkLabel(source: Source) {
 }
 
 function AudioBrief() {
-  const audio = useRef<HTMLAudioElement>(null);
+  return <section className="audio-brief" aria-label="Audio brief">
+    {audioBrief.ready ? <>
+      <Script type="module" src={`${basePath}/assets/mel-audio-player/mel-audio-player.js`} strategy="afterInteractive" />
+      <div className="signal-audio">{createElement("mel-audio-player", {
+        src: audioBrief.src,
+        title: audioBrief.title,
+        eyebrow: "Audio",
+        transcript: audioBrief.transcript,
+        download: "",
+      })}</div>
+    </> : <div className="audio-brief-copy">
+      <span>Audio</span><h2>{audioBrief.title}</h2>
+      <p>Audio brief follows the morning reporting update</p>
+    </div>}
+    <details className="audio-transcript"><summary>{audioBrief.ready ? "Read the full transcript" : "Read the working transcript"}</summary><div>{audioBrief.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>
+  </section>;
+}
+
+function HeroMedia() {
+  const video = useRef<HTMLVideoElement>(null);
+  const manuallyPaused = useRef(false);
   const [playing, setPlaying] = useState(false);
-  const [current, setCurrent] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [speed, setSpeed] = useState(1);
-  const progress = duration > 0 ? Math.min(100, Math.max(0, (current / duration) * 100)) : 0;
-  const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+  const [unavailable, setUnavailable] = useState(false);
 
   useEffect(() => {
-    if (!playing) return;
-
-    let frame = 0;
-    const syncProgress = () => {
-      if (audio.current) setCurrent(audio.current.currentTime);
-      frame = window.requestAnimationFrame(syncProgress);
+    const element = video.current;
+    if (!element || !heroMedia.ready) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobile = window.matchMedia("(max-width: 800px)");
+    const syncPoster = () => { element.poster = mobile.matches ? heroMedia.portraitPoster : heroMedia.poster; };
+    const syncMotion = () => {
+      if (preference.matches || manuallyPaused.current) element.pause();
+      else void element.play().catch(() => { /* The poster remains available when autoplay is restricted. */ });
     };
-
-    frame = window.requestAnimationFrame(syncProgress);
-    return () => window.cancelAnimationFrame(frame);
-  }, [playing]);
-
-  useEffect(() => {
-    const element = audio.current;
-    if (!element) return;
-
-    const syncDuration = () => {
-      if (Number.isFinite(element.duration) && element.duration > 0) setDuration(element.duration);
-    };
-
-    syncDuration();
-    element.addEventListener("loadedmetadata", syncDuration);
-    element.addEventListener("durationchange", syncDuration);
-    element.addEventListener("canplay", syncDuration);
+    syncPoster();
+    syncMotion();
+    mobile.addEventListener("change", syncPoster);
+    preference.addEventListener("change", syncMotion);
     return () => {
-      element.removeEventListener("loadedmetadata", syncDuration);
-      element.removeEventListener("durationchange", syncDuration);
-      element.removeEventListener("canplay", syncDuration);
+      preference.removeEventListener("change", syncMotion);
+      mobile.removeEventListener("change", syncPoster);
     };
   }, []);
 
-  const toggle = async () => {
-    if (!audio.current) return;
-    if (audio.current.paused) await audio.current.play();
-    else audio.current.pause();
-  };
-  const seek = (seconds: number) => {
-    if (!audio.current) return;
-    audio.current.currentTime = Math.max(0, Math.min(audio.current.duration || 0, audio.current.currentTime + seconds));
-  };
+  function toggleMotion() {
+    const element = video.current;
+    if (!element) return;
+    if (element.paused) {
+      manuallyPaused.current = false;
+      void element.play().catch(() => setUnavailable(true));
+    } else {
+      manuallyPaused.current = true;
+      element.pause();
+    }
+  }
 
-  return <section className="audio-brief" aria-labelledby="audio-title">
-    <div className="audio-brief-copy"><span>LISTEN FIRST · {audioBrief.label}</span><h2 id="audio-title">{audioBrief.title}</h2><p>The complete signal, restraint and next-watch item in one concise listen.</p></div>
-    <div className="audio-controls">
-      <button type="button" onClick={() => seek(-15)} aria-label="Back 15 seconds">−15</button>
-      <button type="button" className="audio-play" onClick={toggle} aria-label={playing ? "Pause The Echo audio brief" : "Play The Echo audio brief"}>{playing ? "Ⅱ" : "▶"}</button>
-      <div className="audio-timeline"><span>{clock(current)}</span><input type="range" min="0" max={duration || 0} step="0.1" value={current} style={{ "--audio-progress": `${progress}%` } as CSSProperties} onChange={(event) => { const next = Number(event.target.value); setCurrent(next); if (audio.current) audio.current.currentTime = next; }} aria-label="Audio timeline" aria-valuetext={`${clock(current)} of ${duration ? clock(duration) : "approximately 2 minutes"}`} /><span>{duration ? clock(duration) : "~2:00"}</span></div>
-      <button type="button" onClick={() => seek(15)} aria-label="Forward 15 seconds">+15</button>
-      <select value={speed} onChange={(event) => { const next = Number(event.target.value); setSpeed(next); if (audio.current) audio.current.playbackRate = next; }} aria-label="Playback speed"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select>
+  return <>
+    <div className="hero-media" role="img" aria-label={heroMedia.alt}>
+      {heroMedia.ready && !unavailable && <video ref={video} muted loop playsInline preload="none" poster={heroMedia.poster} aria-hidden="true" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setUnavailable(true)}>
+        <source src={heroMedia.portrait} type="video/mp4" media="(max-width: 800px)" />
+        <source src={heroMedia.landscape} type="video/mp4" />
+      </video>}
     </div>
-    <details className="audio-transcript"><summary>Read the full transcript</summary><div>{audioBrief.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>
-    <audio ref={audio} preload="metadata" src={audioBrief.src} onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setCurrent(event.currentTarget.currentTime)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => { setPlaying(false); setCurrent(0); }} />
+    {heroMedia.ready && !unavailable && <button className="hero-motion" type="button" onClick={toggleMotion} aria-label={playing ? "Pause background motion" : "Play background motion"}>{playing ? "Pause motion" : "Play motion"}</button>}
+  </>;
+}
+
+function AlignmentSection() {
+  return <section id="alignment" className="report-section alignment-section">
+    <SectionHead n="02" eyebrow="Shared messages" title="Where the voices align" copy="The ideas appearing across the named voices, with the evidence and the next thing to watch." />
+    <div className="alignment-list">{alignment.map((item) => <article className="alignment-card" key={item.id}>
+      <header><span>{item.status}</span><h3>{item.title}</h3><p>{item.reading}</p></header>
+      <div className="alignment-evidence">{item.evidence.map((evidence, index) => {
+        const source = sources.find((entry) => entry.id === evidence.sourceId);
+        return <div className="alignment-voice" key={`${evidence.speaker}-${index}`}>
+          <h4>{evidence.speaker}</h4><small>{evidence.role}</small>
+          <span className="evidence-kind">{evidence.kind}</span>
+          {evidence.kind === "Direct quote" ? <blockquote>“{evidence.statement}”</blockquote> : <p>{evidence.statement}</p>}
+          {source && <footer><small>{source.date}</small><SourceLink source={source} /></footer>}
+        </div>;
+      })}</div>
+      <dl className="alignment-meaning"><div><dt>Ownership perspective</dt><dd>{item.meaning}</dd></div><div><dt>Watch next</dt><dd>{item.watch}</dd></div></dl>
+    </article>)}</div>
   </section>;
 }
 
@@ -133,7 +159,7 @@ function QuoteCard({ source, quiet = false }: { source: Source; quiet?: boolean 
 function SignalCard({ label, direction, score, note }: (typeof audienceSignals)[number]) {
   return <article className="signal-card">
     <div><span>{label}</span><strong>{direction}</strong></div>
-    <div className="meter" aria-label={`${label}: ${score} on a directional editorial scale`}><i style={{ width: `${score}%` }} /></div>
+    {score === null ? <p className="qualitative-signal">Qualitative evidence</p> : <div className="meter" aria-label={`${label}: ${score} on a directional editorial scale`}><i style={{ width: `${score}%` }} /></div>}
     <small>{note}</small>
   </article>;
 }
@@ -184,16 +210,18 @@ export default function Dashboard() {
 
     <AudioBrief />
 
-    <section className="hero">
+    <section className="hero" style={{ "--hero-poster": `url("${heroMedia.poster}")`, "--hero-portrait-poster": `url("${heroMedia.portraitPoster}")` } as CSSProperties}>
+      <HeroMedia />
       <div className="hero-art" aria-hidden="true"><span>THE</span><strong>ECHO</strong><i /></div>
       <div className="hero-copy">
         <div className="hero-marks"><img src={`${basePath}/assets/teams/suns-logo.svg`} alt="Phoenix Suns" /><span>AVC · OWNERSHIP INTELLIGENCE</span></div>
-        <p className="eyebrow">{edition.series} · EDITION 001</p>
+        <p className="eyebrow">{edition.series} · EDITION {edition.number}</p>
+        <p className="edition-status">{edition.statusLabel}</p>
         <h1>{edition.title}</h1>
         <p className="subtitle">{edition.subtitle}</p>
         <div className="hero-meta"><span>Event<br /><strong>{edition.eventDate}</strong></span><span>Reporting window<br /><strong>{edition.reportingWindow}</strong></span><span>Confidence<br /><strong>{edition.confidence}</strong></span></div>
         <p className="hero-thesis">{edition.thesis}</p>
-        <p className="hero-note">Directional evidence sample · not scientific polling</p>
+        <p className="hero-note">Directional evidence sample · Photography: <a href="https://x.com/Suns/status/2104734231326814483" target="_blank" rel="noreferrer">Phoenix Suns</a></p>
       </div>
     </section>
 
@@ -201,69 +229,71 @@ export default function Dashboard() {
 
     <section id="readout" className="report-section lead-section">
       <SectionHead n="01" eyebrow="Executive interpretation" title="Ownership readout" />
-      <div className="readout"><p>{edition.readout}</p><aside><span>Dominant signal</span><strong>{edition.overallDirection}</strong><p>The three-year term made commitment feel disciplined. Age and team ceiling keep the read grounded.</p></aside></div>
+      <div className="readout"><div className="readout-copy">{(edition.readoutParagraphs ?? [edition.readout]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="readout-sources">{edition.readoutSourceIds.map((id) => { const source = sources.find((entry) => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></div><aside><span>Dominant signal</span><strong>{edition.overallDirection}</strong><p>{edition.dominantSignalNote}</p></aside></div>
     </section>
 
+    <AlignmentSection />
+
     <section id="signal" className="report-section dark-section">
-      <SectionHead n="02" eyebrow="Directional index" title="Signal at a glance" copy="A transparent editorial read of the collected sample—not a claim about the entire public." />
-      <div className="index-row"><div className="index-number"><strong>{edition.editorialIndex}</strong><span>/ 100</span></div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
+      <SectionHead n="03" eyebrow="Directional index" title="Signal at a glance" copy="An editorial reading of the collected evidence." />
+      <div className="index-row"><div className="index-number"><strong>{edition.editorialIndex ?? "OPEN"}</strong>{edition.editorialIndex !== null && <span>/ 100</span>}</div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
       <div className="signal-grid">{audienceSignals.map((signal) => <SignalCard key={signal.label} {...signal} />)}</div>
     </section>
 
     <section id="map" className="report-section">
-      <SectionHead n="03" eyebrow="Evidence mix" title="The conversation map" copy="Relative distribution of the collected evidence, not the internet at large." />
+      <SectionHead n="04" eyebrow="Evidence mix" title="The conversation map" copy="The sources included in this edition, grouped by audience." />
       <div className="conversation-map">{distribution.map((item, index) => <article key={item.category}><div className="map-ring" style={{ "--size": `${76 + item.count * 10}px`, "--delay": `${index * .06}s` } as React.CSSProperties}><strong>{item.count}</strong></div><span>{item.category}</span></article>)}</div>
       <p className="method-note">The sample intentionally weights direct and established sources more heavily than raw volume.</p>
     </section>
 
     <section id="voices" className="report-section dark-section">
-      <SectionHead n="04" eyebrow="Direct evidence" title="What the principals and teammates have said" copy="Fresh post-extension player and coach statements were not public by the cutoff. These complete direct quotes establish the verified intent and daily-work context that preceded the agreement." />
+      <SectionHead n="05" eyebrow="Direct evidence" title={sectionCopy.voices.title} copy={sectionCopy.voices.copy} />
       <div className="quote-grid">{playerSources.filter((source) => source.quote).map((source) => <QuoteCard key={source.id} source={source} />)}</div>
-      <div className="interpretation"><span>Interpretation</span><p>The language before the agreement was unusually aligned: ownership expected Brooks to remain, Brooks wanted Phoenix to be his last stop, and a teammate tied his influence to observable work. The timing matters—these are verified pre-extension statements, not reactions presented after the fact.</p></div>
+      <div className="interpretation"><span>Interpretation</span><p>{sectionCopy.voices.interpretation}</p></div>
     </section>
 
-    <AudienceSection id="local" n="05" title="The Valley read discipline inside continuity" category="Local Media" copy="Local coverage had spent months debating a possible four-year commitment. The reported three-year term answered the clearest age concern without changing the organization’s stated direction." />
-    <AudienceSection id="national" n="06" title="The villain frame turned into earned value" category="National Media" copy="National coverage connected the extension to Brooks’ career season, two-way role and reputation as an identity carrier. The strongest restraint remained age and the team’s postseason ceiling." />
-    <AudienceSection id="creators" n="07" title="Value led the first creator wave" category="Creators" copy="Same-day creator coverage moved quickly toward team-friendly language, while longer-form discussion preserved concerns about shot selection, role and future flexibility." />
+    <AudienceSection id="local" n="06" title={sectionCopy.local.title} category="Local Media" copy={sectionCopy.local.copy} />
+    <AudienceSection id="national" n="07" title={sectionCopy.national.title} category="National Media" copy={sectionCopy.national.copy} />
+    <AudienceSection id="creators" n="08" title={sectionCopy.creators.title} category="Creators" copy={sectionCopy.creators.copy} />
 
     <section id="fans" className="report-section dark-section">
-      <SectionHead n="08" eyebrow="Indicative fan pulse" title="Relief on price, conviction on identity—and some ceiling friction" copy="Visible fan responses are sampled, nonrepresentative and selected to preserve both enthusiasm and skepticism." />
-      <div className="fan-themes"><article><span>01</span><h3>Below the fear line</h3><p>The number landed below the $30-million range many fans expected.</p></article><article><span>02</span><h3>Identity retained</h3><p>Work, defense and competitive edge drove approval beyond scoring.</p></article><article><span>03</span><h3>Gregory credit</h3><p>The extension strengthened approval of the offseason contract pattern.</p></article><article><span>04</span><h3>Ceiling question</h3><p>A minority asked whether continuity can move a first-round team forward.</p></article></div>
+      <SectionHead n="09" eyebrow="Indicative fan pulse" title={sectionCopy.fans.title} copy={sectionCopy.fans.copy} />
+      <div className="fan-themes">{fanThemes.map((theme, index) => <article key={theme.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{theme.title}</h3><p>{theme.body}</p></article>)}</div>
       <div className="quote-grid fan-quotes">{fanQuotes.map((source) => <QuoteCard key={source.id} source={source} quiet />)}</div>
       <p className="method-note">Ordinary fan handles are omitted in the presentation. Original comments remain available at the linked public threads.</p>
     </section>
 
     <section id="narratives" className="report-section">
-      <SectionHead n="09" eyebrow="Narrative leaders" title="Six ideas are organizing the conversation" />
+      <SectionHead n="10" eyebrow="Narrative leaders" title={`${themes.length} ideas organizing the conversation`} />
       <div className="narrative-grid">{themes.map((theme, index) => <article key={theme.name}><header><span>{String(index + 1).padStart(2, "0")}</span><div><b>{theme.momentum}</b><small>{theme.strength} evidence</small></div></header><h3>{theme.name}</h3><p>{theme.evidence}</p><dl><div><dt>Advanced by</dt><dd>{theme.groups}</dd></div><div><dt>Ownership relevance</dt><dd>{theme.relevance}</dd></div></dl></article>)}</div>
     </section>
 
     <section className="report-section quote-board">
-      <SectionHead n="10" eyebrow="Verified language" title="Quote board" />
+      <SectionHead n="11" eyebrow="Verified language" title="Quote board" />
       <div className="quote-board-grid">{quoteSources.slice(0, 8).map((source) => <QuoteCard key={source.id} source={source} />)}</div>
     </section>
 
     <section id="watch" className="report-section dark-section">
-      <SectionHead n="11" eyebrow="Perception monitor" title="Positive signals, open questions and watch items" />
+      <SectionHead n="12" eyebrow="Perception monitor" title="Positive signals, open questions and watch items" />
       <div className="watch-grid"><article className="positive"><span>Positive signals</span>{watchColumns.positive.map((item) => <p key={item}>{item}</p>)}</article><article className="question"><span>Open questions</span>{watchColumns.questions.map((item) => <p key={item}>{item}</p>)}</article><article className="watch"><span>Watch items</span>{watchColumns.watch.map((item) => <p key={item}>{item}</p>)}</article></div>
     </section>
 
     <section id="ownership" className="report-section">
-      <SectionHead n="12" eyebrow="Ownership implications" title="Five observations to keep in view" />
+      <SectionHead n="13" eyebrow="Ownership implications" title={`${implications.length} observations to keep in view`} />
       <div className="implication-list">{implications.map((item) => <article key={item.n}><span>{item.n}</span><div><h3>{item.title}</h3><p>{item.body}</p></div></article>)}</div>
     </section>
 
-    <section className="report-section bottom-line"><SectionHead n="13" eyebrow="Synthesis" title="Bottom line" /><p>{edition.bottomLine}</p></section>
+    <section className="report-section bottom-line"><SectionHead n="14" eyebrow="Synthesis" title="Bottom line" /><p>{edition.bottomLine}</p></section>
 
     <section className="report-section methodology">
-      <details open><summary><span>14 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
+      <details open><summary><span>15 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
     </section>
 
     <section id="ledger" className="report-section ledger-section">
-      <SectionHead n="15" eyebrow="Traceable evidence" title="Source ledger" copy="Filter the included sample by audience category or sentiment classification." />
+      <SectionHead n="16" eyebrow="Traceable evidence" title="Source ledger" copy="Filter the included sample by audience category or sentiment classification." />
       <SourceLedger />
     </section>
 
-    <footer className="site-footer"><div><Brand /><p>Prepared for Mat and Phoenix Suns ownership.<br />Evidence first. Direction without overstatement.</p></div><div><span>THE ECHO · SUNS EDITION 001</span><strong>#DOMINATE</strong><small>Generated August 6, 2026 · America/Phoenix</small></div><i /></footer>
+    <footer className="site-footer"><div><Brand /><p>Prepared for Mat and Phoenix Suns ownership.<br />Evidence first. Direction without overstatement.</p></div><div><span>THE ECHO · SUNS EDITION {edition.number}</span><strong>#DOMINATE</strong><small>{edition.generatedLabel}</small></div><i /></footer>
   </main>;
 }

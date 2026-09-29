@@ -1,0 +1,22 @@
+{
+  "renderer": "Blender 5.2.2 LTS",
+  "cameraLoop": {
+    "seconds": 7,
+    "fps": 24,
+    "frames": 168
+  },
+  "assets": [
+    {
+      "file": "public/assets/media/media-day-2026-09-28-1920x1080-v1.mp4",
+      "sha256": "7f33bafc0160d10a917851ac49cc043b3980d28f921406f56549467aadeefe22"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-1080x1920-v1.mp4",
+      "sha256": "7f60fc0aa6aa3db3ef1d619f6e73d85eda579b9bc45f52252254f823c46884cc"
+    },
+    {
+      "file": "public/og-media-day-2026-09-28-v1.png",
+      "sha256": "ab551c3dd37c2eaa831da575a580b62d0d3025e1a24ec9c83c7cc033bde82dd8"
+    }
+  ]
+}

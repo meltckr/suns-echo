@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/finish-export.mjs",
     "start": "next start",
     "lint": "eslint .",
     "og": "node scripts/generate-og.mjs",
     "audio:generate": "node scripts/generate-echo-audio.mjs",
     "validate": "node scripts/validate.mjs",
-    "release:check": "npm run og && npm run validate && npm run build"
+    "release:check": "npm run lint && node scripts/validate.mjs --release && npm run build",
+    "review:check": "npm run lint && npm run validate && npm run build"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -1,0 +1,31 @@
+{
+  "eventDate": "2026-09-28",
+  "event": "Phoenix Suns Media Day",
+  "sourcePost": "https://x.com/Suns/status/2104734231326814483",
+  "sourcePostCaption": "2026 Phoenix Suns Media Day",
+  "publishedLocal": "2026-09-28T17:45:00-07:00",
+  "verification": "Original image assets observed in official @Suns post viewer. Dimensions independently checked with Sharp after download.",
+  "credit": "Phoenix Suns; individual photographer not listed in the post",
+  "photos": [
+    {
+      "localPath": "public/assets/media/source/suns-media-day-2026-09-28-group.jpg",
+      "sourceUrl": "https://x.com/Suns/status/2104734231326814483",
+      "assetUrl": "https://pbs.twimg.com/media/HTWDHUdXUAAOxEj?format=jpg&name=4096x4096",
+      "width": 3270,
+      "height": 4088,
+      "credit": "Phoenix Suns",
+      "caption": "Four Suns players pose together in the official 2026 Media Day studio photo set.",
+      "use": "Landscape hero and OG photographic plate"
+    },
+    {
+      "localPath": "public/assets/media/source/suns-media-day-2026-09-28-booker.jpg",
+      "sourceUrl": "https://x.com/Suns/status/2104734231326814483",
+      "assetUrl": "https://pbs.twimg.com/media/HTWDIPIWMAAHQMM?format=jpg&name=4096x4096",
+      "width": 3130,
+      "height": 3912,
+      "credit": "Phoenix Suns",
+      "caption": "Devin Booker poses in the official 2026 Media Day studio photo set.",
+      "use": "Portrait hero cut"
+    }
+  ]
+}
