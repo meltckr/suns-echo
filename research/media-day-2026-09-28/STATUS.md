@@ -17,14 +17,24 @@ Latest instructions: use Blender headless, real current Media Day photos, a 6–
 
 ## Current technical state
 
-Blender 5.2.2 LTS is installed and verified on the Studio. Both 7-second silent MP4 cuts, landscape/portrait posters, OG plate and final 1200x630 AVC/title card are rendered. Reproducible Python and both packed .blend files are checked in. Real official-photo provenance is in photo-ledger.json; fingerprints in media-manifest.json. No install.
+Blender 5.2.2 LTS is installed and verified on the Studio. Both eight-second silent EEVEE MP4 cuts, landscape/portrait posters, 2.5-second chapter/title stings and a 1200x630 hero-frame OG are rendered. Reproducible hero.py and four packed .blend files are checked in. Real official-photo provenance is in photo-ledger.json; fingerprints in media-manifest.json. No install.
 
-Review checks, lint, tsc and static build pass. Browser 390px/1440px checks confirm full header/footer AVC marks, no overflow, working source filters, video sources/posters and player playback. Arizona v12 was rendered from the final Editor script. Audio is technically verified, with SHA-bound transcript, complete ending and 0.058-second trailing silence; perceptual listening remains open. The current export excludes stale audio and raw photo originals.
+Review checks, lint, tsc and static build pass. Browser 390px/1440px checks confirm full header/footer AVC marks, no overflow, working source filters, video sources/posters and player playback. Arizona v12 was rendered from the final Editor script. Audio is technically verified, with SHA-bound transcript, complete ending and 0.04783-second trailing silence; perceptual listening remains open. The current export excludes stale audio and raw photo originals.
 
-GitHub Pages deployment is blocked by its environment policy permitting main only. Mel explicitly approved adding exact review branch codex/suns-echo-media-day-2026-09-28 on September 29, but automatic approval review rejected the attempt even with approval: the persistent security-policy change is disallowed through this agent, and an indirect workaround is forbidden. Readback still shows only main. Current main SHA d33c43b9f6cfaa5b9d19d4af3ff1c8daf54d2945. Public root was 404; no merge or new edition at root. PR-only build checks are configured without deployment. Review PR: https://github.com/meltckr/suns-echo/pull/1 (draft, unmerged). Final review CI https://github.com/meltckr/suns-echo/actions/runs/36611683254 passed validation, static build, approved-root packaging and artifact upload; deploy was skipped. Planned preview https://meltckr.github.io/suns-echo/review/media-day-2026-09-28/ returned 404 and remains undeployed.
+GitHub Pages now permits the exact review branch and main. Read-only API verification on September 29 confirmed both policies; this update changed no environment-policy setting. The existing draft PR is #1, open and unmerged. Review deployments package the approved main edition at the root and the review branch under `/suns-echo/review/media-day-2026-09-28/`. Production release remains held.
 
 ## Morning completion
 
 Eight official interviews and four later completed pieces were reviewed. The source ledger, five Alignment cards, ownership readout and Editor script are final for this review package. Full and ending-clip ASR verify the standalone close; human listening remains an explicit release gate. See VERIFICATION.md and both morning research ledgers for exact sourcing and test evidence.
 
-PR #1 remains draft/open/unmerged. The exact Pages branch-policy allowance has Mel’s approval, but the agent cannot change this persistent security setting. The isolated github.io preview remains undeployed until the allowance is added directly in GitHub settings. Preserve the approved main root and keep release held. The one-time follow-up is paused.
+## Two-part cinematic update — September 29
+
+Part 1 preserves all 25 Media Day review records: 21 event, four context and eight official interviews. Part 2 adds the exact saved 25-phrase Word Resonance dataset, six themes, All/Fans/Media/Both filters, verbatim evidence and original source links. The phrase dataset is separate from the review source count. The required methodology caveat is verbatim.
+
+Blender EEVEE v2 delivers two eight-second seamless heroes, landscape/portrait posters, two 2.5-second chapter stings and title-card copies, and a 1200×630 hero-frame OG. All MP4s are under 8 MB. The three photo planes, extruded edition title, DOF, volume lighting and packed scenes are recorded in CINEMATIC-VISUAL-QA.md and media-manifest.json.
+
+The final two-part Editor script is synchronized with the public transcript and Arizona v12/Qwen3-TTS v2 narration. Duration 110.419 seconds; trailing silence 0.04783 seconds. Full-file ASR found no missing sentences, with complete final Dominate recognized. Perceptual listening remains open. Player play/pause, seeking, skips and speed passed on desktop and mobile.
+
+Lint, type checking, static export and review validation pass. Desktop 1440px and phone 390px browser checks pass for both parts, all filters, all 25 evidence/source details, source-ledger filtering, reduced-motion video stopping, audio and overflow. `release:check` remains gated by human listening and Mel's production-release approval. No merge is authorized.
+
+Deployment evidence is recorded by the review workflow and PR #1; the one-time morning follow-up remains paused.

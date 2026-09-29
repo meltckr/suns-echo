@@ -31,3 +31,14 @@ Both silent MP4 loops: 7.000 seconds, 24 fps, 168 frames, H264/yuv420p, faststar
 ## GitHub Pages and release
 
 Approved main remains `d33c43b9f6cfaa5b9d19d4af3ff1c8daf54d2945`. The Pages environment still permits main only. Mel explicitly approved adding `codex/suns-echo-media-day-2026-09-28` on September 29; automatic approval review still rejected that persistent security-policy change and forbade an indirect workaround. Policy readback remained main-only. The planned preview returned 404 and is not claimed live. PR-only CI passed on the completed review edition and skipped deployment. A user-controlled GitHub settings change is needed before this agent can dispatch and verify the isolated preview. Do not merge or replace the approved root. `npm run release:check` remains blocked by human listening and Mel's explicit release approval.
+
+## Two-part cinematic v2 verification — September 29, 2026
+
+- Original review ledger retained: 25 records, 21 event/four context, eight official interview records.
+- Exact 25-phrase resonance snapshot; every evidence string matches its saved source text. Six themes and All/Fans/Media/Both filters. All 25 quote/source detail panels checked on desktop and phone. No full source article text is bundled into public client data.
+- EEVEE heroes: eight seconds, 24 fps/192 frames, 1920×1080 and 1080×1920, H.264/yuv420p, 2.13/1.91 MB. Four 2.5-second sting/title-card exports are each below 1.08 MB. All packed scene, first-frame, loop-endpoint and fingerprint evidence is in CINEMATIC-VISUAL-QA.md and media-manifest.json.
+- Arizona v2 duration 110.419 seconds; trailing silence 0.04783 seconds. Audio SHA-256 `47861e95df80231032079afcbd146f65d718fcd2000f1f585334eace490b940c`. Transcript SHA-256 `67b84e2e8db00c97f7378deabadb2b705ee0e4bc96ab6c3e6dc975ea4e6775cf`. Full-file and ending ASR recorded; human listening unconfirmed.
+- Browser checks at 1440×900 and 390×844 pass: no overflow/script errors, all audience filters, exact quote/source details, source-ledger filters, hero and chapter stopping for reduced motion, player label/title, playback, seek, skip and speed. A byte-range-capable server was used for seeking, matching GitHub Pages delivery.
+- Lint, type checking, static export and review validator pass. Release validator enforces separate listening and production-release approvals; those remain open.
+
+Changed groups: edition/page/metadata/CSS; WordResonance and CinematicDivider components; resonance JSON, source URLs and source-text evidence; final transcript/audio v2 and fingerprint manifest; hero.py, four packed scenes, six MP4s/posters/OG and media manifest; validation and review documentation. Existing quotes, methodology and filterable review ledger remain.

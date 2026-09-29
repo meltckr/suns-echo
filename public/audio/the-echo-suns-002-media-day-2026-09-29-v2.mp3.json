@@ -1,0 +1,48 @@
+{
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-29T23:12:43.574Z",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v2.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "transcriptSha256": "67b84e2e8db00c97f7378deabadb2b705ee0e4bc96ab6c3e6dc975ea4e6775cf",
+  "audioSha256": "47861e95df80231032079afcbd146f65d718fcd2000f1f585334eace490b940c",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 110.419,
+  "integratedLufs": -17.18,
+  "truePeakDbtp": -2.24,
+  "trailingSilenceSeconds": 0.04783333333333333,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "listeningConfirmed": false,
+  "playerVerified": true,
+  "asrVerification": {
+    "engine": "Local cached Whisper large-v3-turbo through mlx-audio",
+    "fullFileChecked": true,
+    "scriptTokenCount": 355,
+    "recognizedTokenCount": 353,
+    "endingCheckedSeconds": 15,
+    "endingRecognized": "These relationships give us concrete examples to recognize and revisit. Dominate.",
+    "completeClosingRecognized": true,
+    "notes": "Full-file ASR found no missing sentences. Differences include names, numeric forms, and short ambiguous substitutions; ASR does not establish pronunciation or human listening approval."
+  },
+  "playerVerification": {
+    "viewports": [
+      1440,
+      390
+    ],
+    "checks": [
+      "play",
+      "pause",
+      "seek",
+      "back 15 seconds",
+      "forward 15 seconds",
+      "speed",
+      "visible Audio label and edition title"
+    ],
+    "transport": "Byte-range-capable exported review build",
+    "humanListeningConfirmed": false
+  }
+}

@@ -2,8 +2,11 @@
 
 import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import Script from "next/script";
+import WordResonance from "./WordResonance";
+import CinematicDivider from "./CinematicDivider";
 import {
   alignment,
+  reportParts,
   audioBrief,
   fanThemes,
   sectionCopy,
@@ -21,7 +24,7 @@ import {
 } from "@/data/edition";
 
 const nav = [
-  ["readout", "Readout"], ["alignment", "Alignment"], ["signal", "Signal"], ["map", "Map"], ["voices", "Voices"],
+  ["readout", "Review"], ["word-resonance", "Word Resonance"], ["alignment", "Alignment"], ["signal", "Signal"], ["map", "Map"], ["voices", "Voices"],
   ["local", "Local"], ["national", "National"], ["creators", "Creators"], ["fans", "Fans"],
   ["narratives", "Narratives"], ["watch", "Watch"], ["ownership", "Ownership"], ["ledger", "Sources"],
 ];
@@ -225,10 +228,14 @@ export default function Dashboard() {
       </div>
     </section>
 
+    <nav className="edition-parts" aria-label="Two parts of this edition">{reportParts.map((part, index) => <a key={part.id} href={`#${part.id}`}><span>Part {String(index + 1).padStart(2, "0")}</span><strong>{part.title}</strong><small>{part.description}</small></a>)}</nav>
+
     <nav className="section-nav" aria-label="Report sections">{nav.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
 
+    <CinematicDivider label="Part 01 · Media Day review" />
+
     <section id="readout" className="report-section lead-section">
-      <SectionHead n="01" eyebrow="Executive interpretation" title="Ownership readout" />
+      <SectionHead n="01" eyebrow="Part 01 · Media Day review" title="Ownership readout" />
       <div className="readout"><div className="readout-copy">{(edition.readoutParagraphs ?? [edition.readout]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="readout-sources">{edition.readoutSourceIds.map((id) => { const source = sources.find((entry) => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></div><aside><span>Dominant signal</span><strong>{edition.overallDirection}</strong><p>{edition.dominantSignalNote}</p></aside></div>
     </section>
 
@@ -285,8 +292,11 @@ export default function Dashboard() {
 
     <section className="report-section bottom-line"><SectionHead n="14" eyebrow="Synthesis" title="Bottom line" /><p>{edition.bottomLine}</p></section>
 
+    <CinematicDivider label="Part 02 · Word Resonance" />
+    <WordResonance />
+
     <section className="report-section methodology">
-      <details open><summary><span>15 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
+      <details open><summary><span>15 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Word Resonance</span><p>{methodology.resonance}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
     </section>
 
     <section id="ledger" className="report-section ledger-section">

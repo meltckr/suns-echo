@@ -1,0 +1,252 @@
+[
+  {
+    "phrase": "newfound camaraderie and culture",
+    "audience": "media",
+    "entity": "Phoenix Suns",
+    "theme": "Culture",
+    "sentiment": 0.75,
+    "volume": "high",
+    "evidence": "What’s different is the newfound continuity and camaraderie in Phoenix, a sense of brotherhood that was central to almost every conversation.",
+    "source": "Arizona Sports"
+  },
+  {
+    "phrase": "shared winning mindset and team identity",
+    "audience": "both",
+    "entity": "Phoenix Suns",
+    "theme": "Team identity",
+    "sentiment": 0.63,
+    "volume": "high",
+    "evidence": "We’re coming in all with the same mindset to win.",
+    "source": "Bright Side of the Sun"
+  },
+  {
+    "phrase": "optimism for the upcoming season",
+    "audience": "both",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": 0.7,
+    "volume": "high",
+    "evidence": "You js made me 10 times more hype for the suns season",
+    "source": "https://www.instagram.com/reel/Dd2lQpOKKww/"
+  },
+  {
+    "phrase": "roster moves and player health",
+    "audience": "both",
+    "entity": "Suns",
+    "theme": "Roster moves",
+    "sentiment": -0.17,
+    "volume": "medium",
+    "evidence": "Ott was noncommittal about who he’ll start at center with Mark Williams expected to miss most of the season following shoulder surgery, Young tweets .",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "player development and potential",
+    "audience": "both",
+    "entity": "Suns",
+    "theme": "Player development",
+    "sentiment": 0.63,
+    "volume": "medium",
+    "evidence": "“ The way that they play, the group of guys that they have, coach Ott is obviously a great coach. He can put you in situations to succeed. And going into year 10 I think I can have one of my best years of my career, for sure .”",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "doesn’t condone Bridges’ past",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Culture",
+    "sentiment": -0.5,
+    "volume": "medium",
+    "evidence": "Ishbia added that he doesn’t condone Bridges’ past — the veteran forward didn’t play in 2022/23 and served a 10-game suspension during the following season due to domestic violence charges.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "bridges he beats women",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": -1.0,
+    "volume": "low",
+    "evidence": "bridges he beats women",
+    "source": "https://www.facebook.com/reel/993539030442283/"
+  },
+  {
+    "phrase": "My day made",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": 0.9,
+    "volume": "high",
+    "evidence": "My day made",
+    "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/"
+  },
+  {
+    "phrase": "None of them wants to be there",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": -0.9,
+    "volume": "medium",
+    "evidence": "None of them wants to be there",
+    "source": "https://www.facebook.com/reel/993539030442283/"
+  },
+  {
+    "phrase": "I hate the paze patch so much",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": -0.8,
+    "volume": "medium",
+    "evidence": "I hate the paze patch so much",
+    "source": "https://www.instagram.com/reel/Dd2lQpOKKww/"
+  },
+  {
+    "phrase": "Another losing season. SAVE D BOOK",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": -0.8,
+    "volume": "medium",
+    "evidence": "Another losing season. SAVE D BOOK",
+    "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/"
+  },
+  {
+    "phrase": "First round exit or missed playoffs",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": -0.7,
+    "volume": "medium",
+    "evidence": "First round exit or missed playoffs. These dudes are bench players",
+    "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl"
+  },
+  {
+    "phrase": "I'm sorry but booker lost aura wearing 15",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": -0.7,
+    "volume": "medium",
+    "evidence": "I'm sorry but booker lost aura wearing 15",
+    "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/"
+  },
+  {
+    "phrase": "These dudes know they ain't makin the playoffs lmao",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": -0.6,
+    "volume": "medium",
+    "evidence": "These dudes know they ain't makin the playoffs lmao",
+    "source": "https://www.facebook.com/reel/993539030442283/"
+  },
+  {
+    "phrase": "zero impact at all to the Phoenix Suns",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Ownership",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "“ But the truth is, (there will be) zero impact at all to the Phoenix Suns.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "still going to pay the luxury tax",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Ownership",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "Am I still going to pay the luxury tax? Yes.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "breakout third season with Phoenix",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Player development",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "The 27-year-old, who had a breakout third season with Phoenix, said he never seriously considered signing elsewhere, as Rankin relays ( Twitter video link ).",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "9th seed",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Season outlook",
+    "sentiment": -0.5,
+    "volume": "medium",
+    "evidence": "9th seed",
+    "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/"
+  },
+  {
+    "phrase": "All at 6.4. All PG stature",
+    "audience": "fans",
+    "entity": "Suns",
+    "theme": "Roster moves",
+    "sentiment": -0.4,
+    "volume": "low",
+    "evidence": "All at 6.4. All PG stature.",
+    "source": "https://www.facebook.com/reel/993539030442283/"
+  },
+  {
+    "phrase": "great on-court fit in Phoenix",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "Team owner Mat Ishbia believes Bridges will be a great on-court fit in Phoenix and he’s not concerned about trading away that future first-rounder, tweets Duane Rankin of The Arizona Republic.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "we’re gonna get that chance",
+    "audience": "media",
+    "entity": "Phoenix Suns",
+    "theme": "Season outlook",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "we’re gonna get that chance to, you know, like I said, start this season off more on the same page than we were last year.",
+    "source": "Bright Side of the Sun"
+  },
+  {
+    "phrase": "big reasons why I wanted to come here",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Culture",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "“ (That’s) one of the big reasons why I wanted to come here ,” Kennard said.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "underrated play-maker from his position",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Team identity",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "“ I think he gives us something we were lacking a bit last year, with his size and versatility on both ends of the court ,” Booker said. “ He’s an underrated play-maker from his position .”",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "acquire Miles Bridges",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Roster moves",
+    "sentiment": 0.5,
+    "volume": "high",
+    "evidence": "The Suns traded Grayson Allen , Royce O’Neale and their unprotected 2033 first-round pick to the Hornets this summer in order to acquire Miles Bridges , a least favorable first-rounder in 2029, and a least favorable 2027 second-round pick.",
+    "source": "Hoops Rumors"
+  },
+  {
+    "phrase": "crazy things for the fans",
+    "audience": "media",
+    "entity": "Suns",
+    "theme": "Culture",
+    "sentiment": 0.5,
+    "volume": "medium",
+    "evidence": "Are we still doing crazy things for the fans? Yes, yes, yes .",
+    "source": "Hoops Rumors"
+  }
+]

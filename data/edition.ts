@@ -1,3 +1,6 @@
+import resonanceData from "./word-resonance.json" with { type: "json" };
+import resonanceLinks from "./word-resonance-links.json" with { type: "json" };
+
 export type Sentiment = "Strongly Positive" | "Positive" | "Mixed" | "Neutral" | "Negative" | "Strongly Negative";
 export type Category = "Official" | "Players & Coaches" | "Local Media" | "National Media" | "Creators" | "Fans";
 export type Source = {
@@ -432,11 +435,11 @@ export const edition = {
   "series": "THE ECHO",
   "number": "002",
   "title": "In the Same Building",
-  "subtitle": "Phoenix Suns Media Day in perspective: the shared direction, the individual stories and the questions carrying into camp.",
+  "subtitle": "A review of Suns Media Day, followed by the words carrying through sampled media coverage and fan reaction.",
   "eventDate": "September 28, 2026",
-  "reportingWindow": "September 28 event · reporting reviewed September 29 morning",
+  "reportingWindow": "September 28 event · review completed September 29 · word sample September 28–29",
   "generatedLabel": "Review edition · September 29, 2026 · America/Phoenix",
-  "statusLabel": "Completed editorial · release held for approval",
+  "statusLabel": "Two-part review edition · release held for approval",
   "thesis": "The Suns described a group making better use of the people around it. Mutual help, newcomer preparation and veteran attention give continuity a practical meaning. The wider coverage asks how that preparation will hold up alongside availability and organizational expectations.",
   "sourceCount": 25,
   "includedCount": 25,
@@ -473,6 +476,28 @@ export const edition = {
   "readout": "The strongest alignment appears in concrete accounts of mutual help and preparation. Newcomers describe how they are joining the work; later coverage keeps development, resources and organizational standards in view.",
   "bottomLine": "Continuity is acquiring a practical meaning: players describe whom they learn from, how they help one another and what the organization makes available. Those relationships give ownership useful evidence to follow. Camp and games will establish how well the preparation travels."
 };
+
+export type ResonanceAudience = "fans" | "media" | "both";
+export type ResonanceTheme = "Roster moves" | "Team identity" | "Player development" | "Ownership" | "Season outlook" | "Culture";
+export type ResonancePhrase = {
+  phrase: string; audience: ResonanceAudience; entity: string; theme: ResonanceTheme;
+  sentiment: number; volume: "high" | "medium" | "low"; evidence: string; source: string;
+};
+
+export const wordResonance = resonanceData as ResonancePhrase[];
+export const resonanceThemes: ResonanceTheme[] = ["Roster moves", "Team identity", "Player development", "Ownership", "Season outlook", "Culture"];
+export const resonanceCopy = {
+  title: "Word Resonance",
+  introduction: "Which words carried through the sampled reporting and fan comments? Explore the phrases, their direction and the source language behind each one.",
+  caveat: "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.",
+  sample: "The phrase dataset draws on five articles and 25 supplied comments across five Instagram, Facebook and Threads posts. Sentiment and volume are directional model judgments. The supplied comments form a fixed sample.",
+  filters: "Fans and Media include shared phrases. Shared scores blend fan and media candidates; they can conceal differences between those audiences.",
+};
+export const resonanceSourceLinks: Record<string, string> = resonanceLinks;
+export const reportParts = [
+  { id: "readout", title: "Media Day review", description: "September 28, 2026 · 25 source records · eight official interviews" },
+  { id: "word-resonance", title: "Word Resonance", description: `${wordResonance.length} phrases · media coverage and supplied fan comments` },
+];
 
 export const alignment: {id:string;title:string;status:string;reading:string;evidence:{speaker:string;role:string;statement:string;kind:"Reported statement"|"Direct quote";sourceId:string}[];meaning:string;watch:string}[] = [
   {
@@ -790,6 +815,7 @@ export const methodology = {
   "searched": "Official Suns interview recordings and caption exports, original local reporting, AP wire coverage, nationally distributed digital reporting, completed specialist commentary, dated preview listings and one public Suns discussion. Morning discovery-only episode leads remain excluded.",
   "selection": "25 source records are included: 21 event records and four preview/background records. Eight are official player or leadership interviews. AP syndications count once; Yahoo-hosted originals retain their author. Separate articles can describe the same exchange and do not become independent confirmations of that event. Duffy’s two pieces remain one commentator’s perspective.",
   "sentiment": "Labels describe the framing of each record. Qualitative audience readings are editorial interpretations. No numeric approval score or representative fan percentage is estimated.",
+  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green means a positive score, red a negative score and gray zero. Bubble sizes show high, medium and low relative volume. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
   "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. One fan thread is indicative. Williams’ return date and completion of the proposed ownership acquisition remain unknown. The hero uses current official Media Day photographs with rendered camera movement."
 };
 
@@ -797,7 +823,7 @@ export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v1.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v2.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
   "Mat, the most revealing detail of Media Day came from two players competing for opportunity.",
@@ -807,6 +833,8 @@ export const audioBrief = {
   "My read is that continuity is gaining a practical meaning. Returning people are helping newer people find a working place in the group. The Alignment section keeps those connections visible, with names and evidence.",
   "The wider coverage carried several expectations. Cilley deepened the Booker and Maluach story. Rankin reported Booker’s basketball rationale for Bridges alongside your explanation of organizational standards. AP emphasized resource commitment. Duffy welcomed the ownership commitment while questioning competitive judgment.",
   "Availability brings an immediate test. Gregory said Williams’ surgery was successful and rehabilitation had begun. He described several months before a reliable return assessment. The return date remains unknown.",
+  "Part two follows the language reaching media and fans. The Word Resonance map draws on five sampled articles and twenty-five supplied social comments, with audience filters and source evidence behind every bubble. Positive and negative reactions appear together. Shared phrases carry a blended score.",
+  "Within that sample, excitement about the coming season appears alongside doubts about the roster and playoffs. Bridges coverage carries basketball explanations, while a supplied fan comment objects to his past conduct. These are directional readings of the collected language. Camp and games will give us a stronger basis for judging how the preparation is received.",
   "For ownership, the value is a clearer picture of how the group uses experience, and how that work meets public expectations. Camp and games will establish how well the preparation travels. These relationships give us concrete examples to recognize and revisit.",
   "Dominate."
 ]
@@ -814,9 +842,16 @@ export const audioBrief = {
 
 export const heroMedia = {
   ready: true,
-  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-1920x1080-v1.mp4`,
-  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-1080x1920-v1.mp4`,
-  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-poster-v1.webp`,
-  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-portrait-poster-v1.webp`,
+  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-1920x1080-v2.mp4`,
+  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-1080x1920-v2.mp4`,
+  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-poster-v2.webp`,
+  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-portrait-poster-v2.webp`,
   alt: "Phoenix Suns players at September 28, 2026 Media Day. Official Phoenix Suns photographs, arranged with purple and orange depth and slow camera motion.",
+};
+
+export const cinematicDivider = {
+  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v2.mp4`,
+  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v2.mp4`,
+  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v2-poster.webp`,
+  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v2-poster.webp`,
 };
