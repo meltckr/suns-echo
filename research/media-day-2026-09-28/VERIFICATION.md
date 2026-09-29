@@ -1,35 +1,33 @@
-# September 28 evening review verification
+# September 29 morning review verification
 
-State: technically verified working draft. Morning editorial finalization, final narration and release approval remain open.
+State: editorial complete; Arizona audio technically verified. Review PR remains draft. Perceptual listening, the isolated Pages preview and release approval remain open.
 
 ## Editorial
 
-- Fourteen unique reporting records; ten concern the event and four provide dated preview/background context. One AP dispatch counts once; two Bridges articles represent two editorial frames of one exchange. One public thread supplies indicative discussion.
-- Three alignment themes with named speakers, reported-statement labels and linked event sources. Speaker counts describe principals, not independent reporting pages. No organization-wide consensus is inferred.
-- An independent read-only source review supported the core narrative. Corrections applied: team-focused Roundtable commentary categorized with creators; both Williams sources added to readout citations.
-- Publication clocks converted to America/Phoenix. Maluach's September 29 UTC article belongs to September 28 locally. Ownership stake acquisition remains unverified complete. Summer activity stays attributed.
-- Selected quotation totals including repeated UI appearances: Gregory 24 words, Booker 12, Mat 10. No further SI quotation added.
-- Later local recaps, official recordings and wider national basketball response remain in the morning queue.
+- 25 included source records: 21 September 28 event records and four dated preview/background records. Eight official Suns interviews add original speaker context. Four completed local reports or commentary pieces were reviewed in the morning pass. PHNX/Bourguet completed reactions and additional national basketball analysis were not retrieved; previews and episode descriptions are excluded from reaction claims.
+- Five Alignment themes show each named speaker, an attributed paraphrase or reported statement, its source and a next-watch item. Reciprocal Ighodaro–Maluach accounts and Kennard–Ighodaro accounts strengthen the group-work reading. Speakers are counted as named people, not independent reporting outlets or universal organizational consensus.
+- Official recording captions were exported with timestamps and used for paraphrases. Exact quotes in the edition come from named published reporting. Gregory's original answer establishes several months until a reliable Williams return-to-play assessment; it supplies no return date. The proposed additional ownership acquisition remains unverified complete.
+- The readout separates reported accounts from Mel's interpretation and open questions. AP syndication counts once. Two Duffy articles remain one commentator's perspective. One public fan thread is indicative, not a poll. Scores remain qualitative.
+- Independent editorial read-through found and corrected one Booker/Maluach pronoun ambiguity before the final Arizona render. Direct quotation exposure remains within the source budgets: Gregory 24 repeated displayed words, Booker 12, Mat 10.
 
-## Media
+## Blender media
 
-Blender 5.2.2 LTS verified on the Studio. Two original photographs from the Suns' official September 28 post; provenance and source dimensions in photo-ledger.json. No installation.
+Blender 5.2.2 LTS verified on the Studio. Two real photographs from the Suns' September 28 official Media Day post, with provenance and source dimensions in `photo-ledger.json`. No installation or illustrative replacement.
 
-Both loops: 7.000 seconds, 24 fps, 168 frames, H264/yuv420p, silent, faststart. Landscape 1920×1080; portrait 1080×1920. Blender .blend files retain packed photo textures. Reopened files confirm frame169 matches frame1 camera position and lens, completing the periodic loop. Exported posters visually reviewed; subjects remain complete. OG photographic plate and final AVC/title card are 1200×630. Hashes in media-manifest.json.
+Both silent MP4 loops: 7.000 seconds, 24 fps, 168 frames, H264/yuv420p, faststart. Landscape 1920×1080; portrait 1080×1920. The packed `.blend` files and headless render script remain checked in. Reopened frame 169 matches frame 1 camera position and lens. Mobile and landscape posters work. Blender's OG plate and final AVC/title card are 1200×630. Source and output hashes are in `media-manifest.json`.
 
-## Page and checks
+## Audio
 
-- `npm run lint`: pass.
-- `npx tsc --noEmit`: pass.
-- `NEXT_PUBLIC_ECHO_BASE_PATH=/suns-echo/review/media-day-2026-09-28 npm run review:check`: pass, including sources, attribution, transcript, approved player hashes, photographs, OG, videos and static build.
-- Browser 390×844 and 1440×1000: no document overflow; full AVC wordmarks loaded in header and footer; alignment cards render at the appropriate breakpoint. Creators filter returns 3 of 14 rows.
-- Browser confirms portrait source 1080×1920 on mobile, landscape 1920×1080 on desktop, respective posters, duration 7 seconds and muted playback. Pause and Play controls successfully stop and resume motion. Reduced-motion handling inspected in code; OS preference was not changed for this check.
-- Canonical and OG URLs resolve to the planned isolated preview path in emitted HTML. Preview is noindex.
-- Existing audio player JS and utilities match both approved SHA-256 hashes. Arizona factory, runtime module, required cached model assets and approved reference pair pass verify-only preflight. No draft audio rendered; audio.ready=false and no audio controls bind stale files.
-- Release check intentionally fails on exactly three open gates: editorial finalization, final Arizona narration and Mel's release authorization.
+- Arizona v12/Qwen3-TTS rendered locally through the approved Studio reference pair. No ElevenLabs or fallback. Final Editor/public transcript SHA-256: `408cb6476e210a781f41c62cb054d644d56fe2ec202302ceff223441953131d5`. Final MP3 SHA-256: `7b307de3543a67238cc5ac5f0de860d3edf4ead035730f952075e78bbc38e5c5`. The exact fingerprints, model and format are in the adjacent MP3 manifest.
+- 78.355 seconds, 24 kHz mono, 160 kb/s MP3; integrated -17.2 LUFS, true peak -2.32 dBTP, trailing silence 0.058 seconds. Full-file silence and digital-black-hole scans pass. Full and separate ending ASR checks include the complete standalone `Dominate.` close. ASR is a technical check; pronunciation and natural delivery still require human listening.
+- The local review page binds the versioned MP3 and exact public transcript. The visible label is `Audio` plus `In the Same Building`. Browser play/pause, back/forward 15 seconds and 1.5× speed worked; the local server returned HTTP 206 for the MP3. The player JS and utility files match approved SHA-256 values. `playerVerified=true`, `listeningConfirmed=false` in the manifest.
 
-## GitHub Pages
+## Page and build
 
-Approved main remains d33c43b9f6cfaa5b9d19d4af3ff1c8daf54d2945. Public root returned 404 during this check. Existing August 6 workflow failures were runner-assignment failures, not current-edition content failures. GitHub Actions and Pages service status were operational.
+- `npm run lint`: pass; `npx tsc --noEmit`: pass; `NEXT_PUBLIC_ECHO_BASE_PATH=/suns-echo/review/media-day-2026-09-28 npm run review:check`: pass, including static export.
+- Browser 390×844 and 1440×1000: no horizontal document overflow; both full AVC wordmarks loaded. Mobile uses 1080×1920 video and portrait poster; desktop uses 1920×1080 video and landscape poster. Both durations are seven seconds. Source filter returns 5 creator records of 25 after the morning update.
+- Canonical and OG URLs target the isolated review path, with `noindex, nofollow`. MP4 hero, posters, portrait cut, 1200×630 OG, checked-in `.blend` and script, transcript and MP3 are present. No screenshots were produced for handoff.
 
-The github-pages environment permits main only. Automatic approval review rejected adding this exact review branch because a persistent deployment security setting requires explicit review. No policy change or workaround performed. The first PR build7612d18 received a runner and passed lint, then found ffprobe unavailable on that Linux runner. Added fingerprint-bound Studio probe metadata as the portable verification path. Studio and minimal-PATH validation both pass. A PR-only build verifies the package without deploying; actual review deployment remains pending explicit approval. No merge or production-edition replacement.
+## GitHub Pages and release
+
+Approved main remains `d33c43b9f6cfaa5b9d19d4af3ff1c8daf54d2945`. The Pages environment still permits main only. Automatic approval review rejected adding this exact review branch because the persistent deployment security setting requires explicit user approval. No policy change or workaround was made. GitHub Pages preview URL remains undeployed; the root returned 404 during September 28 verification and is not claimed live. PR-only CI can build and package the review without deployment. Do not merge or replace the approved root. `npm run release:check` should remain blocked by human listening and Mel's explicit release approval.

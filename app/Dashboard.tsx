@@ -63,9 +63,9 @@ function AudioBrief() {
       })}</div>
     </> : <div className="audio-brief-copy">
       <span>Audio</span><h2>{audioBrief.title}</h2>
-      <p>Audio brief follows the morning reporting update</p>
+      <p>Final narration is being prepared.</p>
     </div>}
-    <details className="audio-transcript"><summary>{audioBrief.ready ? "Read the full transcript" : "Read the working transcript"}</summary><div>{audioBrief.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>
+    <details className="audio-transcript"><summary>Read the full transcript</summary><div>{audioBrief.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>
   </section>;
 }
 
@@ -236,7 +236,7 @@ export default function Dashboard() {
 
     <section id="signal" className="report-section dark-section">
       <SectionHead n="03" eyebrow="Directional index" title="Signal at a glance" copy="An editorial reading of the collected evidence." />
-      <div className="index-row"><div className="index-number"><strong>{edition.editorialIndex ?? "OPEN"}</strong>{edition.editorialIndex !== null && <span>/ 100</span>}</div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
+      <div className="index-row"><div className={`index-number${edition.editorialIndex === null ? " qualitative" : ""}`}><strong>{edition.editorialIndex ?? "Qualitative"}</strong>{edition.editorialIndex !== null && <span>/ 100</span>}</div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
       <div className="signal-grid">{audienceSignals.map((signal) => <SignalCard key={signal.label} {...signal} />)}</div>
     </section>
 

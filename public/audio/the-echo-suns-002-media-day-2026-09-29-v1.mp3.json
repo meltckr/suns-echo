@@ -1,0 +1,21 @@
+{
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-29T12:14:03.556Z",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v1.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "transcriptSha256": "408cb6476e210a781f41c62cb054d644d56fe2ec202302ceff223441953131d5",
+  "audioSha256": "7b307de3543a67238cc5ac5f0de860d3edf4ead035730f952075e78bbc38e5c5",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 78.355167,
+  "integratedLufs": -17.2,
+  "truePeakDbtp": -2.32,
+  "trailingSilenceSeconds": 0.058,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "listeningConfirmed": false,
+  "playerVerified": true
+}

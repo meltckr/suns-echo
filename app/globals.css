@@ -43,3 +43,5 @@
 @media(max-width:500px){.hero:before{background:linear-gradient(180deg,rgba(9,6,24,.76) 0%,rgba(13,7,30,.87) 46%,rgba(9,6,24,.97) 100%)}}
 @media print{.hero-media video,.hero-motion{display:none!important}}
 @media(max-width:800px){.hero-media{background-image:var(--hero-portrait-poster)}}
+
+.index-number.qualitative strong { font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing: -.04em; }

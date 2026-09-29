@@ -1,13 +1,13 @@
 {
   "eventDate": "2026-09-28",
-  "retrievalPhase": "Evening working edition; morning refresh pending",
+  "retrievalPhase": "Completed morning review September 29, 2026",
   "records": [
     {
       "id": "nba-media-day",
       "source": "Media Day schedule",
       "outlet": "NBA.com Staff",
       "category": "Official",
-      "date": "Sept. 25 \u00b7 Schedule",
+      "date": "Sept. 25 · Schedule",
       "phase": "Background",
       "sentiment": "Neutral",
       "themes": [
@@ -22,7 +22,7 @@
       "source": "Team continuity preview",
       "outlet": "Phoenix Suns / NBA.com",
       "category": "Official",
-      "date": "Sept. 26 \u00b7 Preview",
+      "date": "Sept. 26 · Preview",
       "phase": "Preview",
       "sentiment": "Neutral",
       "themes": [
@@ -38,7 +38,7 @@
       "source": "Williams injury update",
       "outlet": "NBA.com News Services",
       "category": "Official",
-      "date": "Sept. 11 \u00b7 Background",
+      "date": "Sept. 11 · Background",
       "phase": "Background",
       "sentiment": "Neutral",
       "themes": [
@@ -53,7 +53,7 @@
       "source": "What the Suns' key figures said at Media Day",
       "outlet": "Donnie Druin / Suns on SI",
       "category": "Players & Coaches",
-      "date": "Sept. 28 \u00b7 Media Day",
+      "date": "Sept. 28 · Media Day",
       "phase": "Event",
       "sentiment": "Positive",
       "themes": [
@@ -75,7 +75,7 @@
       "source": "Booker on returning teammates and shared summer work",
       "outlet": "Kevin Humpherys / Bright Side of the Sun",
       "category": "Players & Coaches",
-      "date": "Sept. 28 \u00b7 1:55 PM Arizona",
+      "date": "Sept. 28 · 1:55 PM Arizona",
       "phase": "Event",
       "sentiment": "Positive",
       "themes": [
@@ -96,7 +96,7 @@
       "source": "Green sought Nash's feedback on his game",
       "outlet": "Mark Bowser / Bright Side of the Sun",
       "category": "Players & Coaches",
-      "date": "Sept. 28 \u00b7 4:00 PM Arizona",
+      "date": "Sept. 28 · 4:00 PM Arizona",
       "phase": "Event",
       "sentiment": "Positive",
       "themes": [
@@ -112,7 +112,7 @@
       "source": "Booker's praise for Maluach finds a wider audience",
       "outlet": "Holden Sherman / Bright Side of the Sun",
       "category": "Local Media",
-      "date": "Sept. 28 \u00b7 5:00 PM Arizona",
+      "date": "Sept. 28 · 5:00 PM Arizona",
       "phase": "Event",
       "sentiment": "Strongly Positive",
       "themes": [
@@ -125,27 +125,11 @@
       "evidence": "Booker reported working with Maluach after the young center reached out. Gregory described physical progress; Maluach emphasized helping the team regardless of starting status."
     },
     {
-      "id": "williams-gregory",
-      "source": "Gregory expects Williams to miss several months",
-      "outlet": "Kellan Olson reporting / HoopsHype via Yahoo",
-      "category": "Local Media",
-      "date": "Sept. 28 \u00b7 10:50 AM Arizona",
-      "phase": "Event",
-      "sentiment": "Neutral",
-      "themes": [
-        "Availability",
-        "Young-player opportunity"
-      ],
-      "confidence": "Medium",
-      "url": "https://sports.yahoo.com/articles/suns-gm-brian-gregory-expects-175059788.html",
-      "evidence": "Secondary relay attributes a several-month absence to Gregory. Original Olson post and any updated timetable remain in the morning verification queue."
-    },
-    {
       "id": "ap-resources",
       "source": "Mat addresses basketball spending and ownership plans",
       "outlet": "David Brandt / Associated Press via Arizona's Family",
       "category": "National Media",
-      "date": "Sept. 28 \u00b7 1:42 PM Arizona",
+      "date": "Sept. 28 · 1:42 PM Arizona",
       "phase": "Event",
       "sentiment": "Neutral",
       "themes": [
@@ -167,7 +151,7 @@
       "source": "Mat's Bridges explanation draws scrutiny",
       "outlet": "Bailey Bassett / ClutchPoints",
       "category": "National Media",
-      "date": "Sept. 28 \u00b7 12:36 PM Arizona",
+      "date": "Sept. 28 · 12:36 PM Arizona",
       "phase": "Event",
       "sentiment": "Mixed",
       "themes": [
@@ -176,14 +160,14 @@
       ],
       "confidence": "Medium",
       "url": "https://clutchpoints.com/nba/phoenix-suns/mat-ishbia-sounds-off-controversial-suns-miles-bridges-trade-arrest",
-      "evidence": "Coverage relays Mat's condemnation of Bridges' prior conduct and his stated accountability rationale. Its basketball-fit discussion accompanies continued concern about the acquisition. Recording verification remains pending."
+      "evidence": "Bassett reports Mat’s condemnation of Bridges’ prior conduct and his stated accountability rationale. The account keeps the acquisition’s public-trust implications in view; no legal conclusion is inferred."
     },
     {
       "id": "bridges-roundtable",
       "source": "A second editorial frame on the Bridges decision",
       "outlet": "Kevin Hicks / Roundtable Sports via Yahoo",
       "category": "Creators",
-      "date": "Sept. 28 \u00b7 11:51 AM Arizona",
+      "date": "Sept. 28 · 11:51 AM Arizona",
       "phase": "Event",
       "sentiment": "Negative",
       "themes": [
@@ -199,7 +183,7 @@
       "source": "PHNX's expectations entering Media Day",
       "outlet": "PHNX Suns Podcast",
       "category": "Creators",
-      "date": "Sept. 25 \u00b7 Preview",
+      "date": "Sept. 25 · Preview",
       "phase": "Preview",
       "sentiment": "Positive",
       "themes": [
@@ -208,14 +192,14 @@
       ],
       "confidence": "Medium",
       "url": "https://podcasts.apple.com/us/podcast/what-to-expect-from-phoenix-suns-media-day-as-2026/id1207682052?i=1000791692396",
-      "evidence": "Public episode description previews the day and discusses national rankings. This is incoming context. The completed recap remains in the morning queue."
+      "evidence": "Dated pre-event episode description discusses incoming expectations. Completed PHNX reaction was not retrieved and is excluded from the reception assessment."
     },
     {
       "id": "booker-culture",
       "source": "Booker's Media Day shoe collaboration reaches a specialist audience",
       "outlet": "Zach Harris / Sole Retriever",
       "category": "Creators",
-      "date": "Sept. 28 \u00b7 Media Day",
+      "date": "Sept. 28 · Media Day",
       "phase": "Event",
       "sentiment": "Positive",
       "themes": [
@@ -231,7 +215,7 @@
       "source": "One public Suns Media Day discussion",
       "outlet": "r/suns public megathread",
       "category": "Fans",
-      "date": "Sept. 28 \u00b7 Discussion",
+      "date": "Sept. 28 · Discussion",
       "phase": "Event",
       "sentiment": "Mixed",
       "themes": [
@@ -242,6 +226,196 @@
       "confidence": "Medium",
       "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
       "evidence": "Visible discussion mixes anticipation and development interest with role disagreement and broadcast-access difficulties. One thread counts once and supplies no representative fan measure."
+    },
+    {
+      "id": "official-gregory-2026",
+      "source": "Returning staff and the Williams assessment",
+      "outlet": "Phoenix Suns · Brian Gregory official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Neutral",
+      "themes": [
+        "Continuity",
+        "Availability"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=RSBrE1yhI8o",
+      "evidence": "Gregory said 12 of the 15 season-ending players and every coach return (2:24–2:44). On Williams, several months are needed before a reliable return-to-play assessment (10:30–11:26); no return date was supplied. Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-kennard-2026",
+      "source": "Kennard describes his first month with Ighodaro",
+      "outlet": "Phoenix Suns · Luke Kennard official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Newcomer integration",
+        "Shared work"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=bobwPedrkAE",
+      "evidence": "Kennard described about a month of work with Ighodaro (6:12–6:48) and early group gatherings that helped him discuss preferred shooting situations (9:33–10:28). Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-ighodaro-2026",
+      "source": "Ighodaro describes competition and mutual help",
+      "outlet": "Phoenix Suns · Oso Ighodaro official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Mutual help",
+        "Shared work"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=K49VkSpNWxs",
+      "evidence": "Ighodaro described an immediate working connection with Kennard (2:37–2:58) and exchanging pointers with Maluach even on opposing pickup teams (3:56–4:27). Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-maluach-2026",
+      "source": "Maluach explains what he sought from Booker",
+      "outlet": "Phoenix Suns · Khaman Maluach official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Player initiative",
+        "Mutual help"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=U5ne7o2_oXY",
+      "evidence": "Maluach described seeking Booker’s guidance on responding to defensive pressure (2:18–3:08) and asking Ighodaro what he sees during plays and practices (4:13–4:48). Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-dunn-2026",
+      "source": "Dunn is both learner and helper",
+      "outlet": "Phoenix Suns · Ryan Dunn official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Player learning",
+        "Development"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=N25bp5CHnNo",
+      "evidence": "Dunn described seeking defensive advice from experienced teammates and helping younger players (2:12–2:46). His development assessments are teammate observations. Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-bridges-2026",
+      "source": "Bridges describes joining and helping the group",
+      "outlet": "Phoenix Suns · Miles Bridges official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Neutral",
+      "themes": [
+        "Newcomer integration",
+        "Veteran guidance"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=gcBL9yhoSzI",
+      "evidence": "Bridges described young teammates as receptive to his corrections in open gym (4:58–5:25). His account of basketball integration leaves broader public-accountability questions open. Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-fleming-2026",
+      "source": "Fleming explains his development experience",
+      "outlet": "Phoenix Suns · Rasheer Fleming official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Development infrastructure",
+        "Valley Suns"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=Y2YeiZj7BVw",
+      "evidence": "Fleming credited film study with earlier recognition and communication (3:16–3:52) and his Valley Suns experience with greater control as the game slowed for him (5:26–5:40). Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "official-peat-2026",
+      "source": "Peat describes the advice he receives",
+      "outlet": "Phoenix Suns · Koa Peat official interview",
+      "category": "Players & Coaches",
+      "date": "Sept. 28 · Official interview",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Veteran guidance",
+        "Newcomer integration"
+      ],
+      "confidence": "High",
+      "url": "https://www.youtube.com/watch?v=BmpZfQPWw_s",
+      "evidence": "Peat described specific driving advice from Bridges and off-court conversations with Brooks (6:06–6:36). He also described younger teammates staying after workouts to talk (4:57–5:12). Attributed paraphrase; automated captions."
+    },
+    {
+      "id": "morning-booker-maluach-cilley",
+      "source": "Suns' Devin Booker recalls conversation that led to ongoing trust with Khaman Maluach",
+      "outlet": "Hayden Cilley / ClutchPoints, syndicated by Yahoo Sports",
+      "category": "Local Media",
+      "date": "Sept. 28 · 7:38 PM Arizona (Yahoo)",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Development"
+      ],
+      "confidence": "High",
+      "url": "https://sports.yahoo.com/articles/suns-devin-booker-recalls-conversation-023803901.html",
+      "evidence": "On-site report repeats Booker's account of Maluach initiating workouts and adds Maluach's explanation that Booker can teach him how to respond to coverages from a player's perspective. Kennard and Spencer are also reported as identifying Maluach as a possible breakout player."
+    },
+    {
+      "id": "morning-rankin-bridges",
+      "source": "What Suns' Mat Ishbia, Devin Booker think about Miles Bridges trade",
+      "outlet": "Duane Rankin / The Arizona Republic, syndicated by Yahoo Sports",
+      "category": "Local Media",
+      "date": "Sept. 28 · 6:50 PM Arizona (Yahoo)",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Ownership",
+        "Public expectations"
+      ],
+      "confidence": "High",
+      "url": "https://sports.yahoo.com/articles/suns-mat-ishbia-devin-booker-015045207.html",
+      "evidence": "Rankin reports Mat's basketball rationale and condemnation of Bridges' prior conduct. Booker separately describes the size, versatility, transition play and passing he expects Bridges to add. The report also includes Mat's explanation of the draft-pick exchange and confidence in developing young players."
+    },
+    {
+      "id": "morning-duffy-maluach",
+      "source": "Khaman Maluach arguably the biggest winner from Suns media day festivities",
+      "outlet": "Luke Duffy / Valley of the Suns",
+      "category": "Creators",
+      "date": "Sept. 28 · 2:48 PM Arizona",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Development"
+      ],
+      "confidence": "High",
+      "url": "https://valleyofthesuns.com/khaman-maluach-arguably-biggest-winner-suns-media-day-festivities",
+      "evidence": "Duffy interprets Gregory's public support and Booker's summer work with Maluach as increased confidence in the young center. His optimism is qualified by concern about readiness and the need for continued development."
+    },
+    {
+      "id": "morning-duffy-ownership",
+      "source": "Mat Ishbia opens media day by confirming he will be staying in Phoenix long-term",
+      "outlet": "Luke Duffy / Valley of the Suns",
+      "category": "Creators",
+      "date": "Sept. 28 · 3:45 PM Arizona",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Ownership",
+        "Public expectations"
+      ],
+      "confidence": "High",
+      "url": "https://valleyofthesuns.com/mat-ishbia-opens-media-day-confirming-will-staying-phoenix-long-term",
+      "evidence": "Duffy welcomes Mat's long-term commitment but argues that spending willingness must be accompanied by better roster-building judgment. This shows that the ownership assurance can be received positively while its implications remain contested."
     }
   ],
   "alignment": [
@@ -254,8 +428,8 @@
         {
           "speaker": "Brian Gregory",
           "role": "General manager",
-          "statement": "Maintaining identity requires repeated daily improvement.",
-          "sourceId": "si-roundup",
+          "statement": "Twelve of the 15 season-ending players and every coach return; summer development included individual and collective work.",
+          "sourceId": "official-gregory-2026",
           "kind": "Reported statement"
         },
         {
@@ -277,9 +451,57 @@
       "watch": "Whether the preparation described becomes visible readiness once team activities begin."
     },
     {
+      "id": "mutual-help",
+      "title": "Competition includes help for the other player",
+      "status": "Two reciprocal player accounts",
+      "reading": "Ighodaro and Maluach each described the exchange from his own side.",
+      "evidence": [
+        {
+          "speaker": "Oso Ighodaro",
+          "role": "Center",
+          "statement": "He and Maluach exchange pointers even when they are on opposing pickup teams.",
+          "kind": "Reported statement",
+          "sourceId": "official-ighodaro-2026"
+        },
+        {
+          "speaker": "Khaman Maluach",
+          "role": "Center",
+          "statement": "He asks Ighodaro what he sees during plays and practices and uses his guidance.",
+          "kind": "Reported statement",
+          "sourceId": "official-maluach-2026"
+        }
+      ],
+      "meaning": "The two accounts support a specific shared practice. Ownership has a concrete example of players helping one another while competing for opportunity.",
+      "watch": "How their communication and preparation develop during camp, especially while Williams is absent."
+    },
+    {
+      "id": "newcomer-work",
+      "title": "Newcomers are joining work already underway",
+      "status": "Two accounts of one relationship",
+      "reading": "Kennard and Ighodaro both described their first month of work together.",
+      "evidence": [
+        {
+          "speaker": "Luke Kennard",
+          "role": "Guard",
+          "statement": "He has spent about a month working with teammates and developing a playing connection with Ighodaro.",
+          "kind": "Reported statement",
+          "sourceId": "official-kennard-2026"
+        },
+        {
+          "speaker": "Oso Ighodaro",
+          "role": "Center",
+          "statement": "Their two-man work felt natural on the first live day and continued during the month.",
+          "kind": "Reported statement",
+          "sourceId": "official-ighodaro-2026"
+        }
+      ],
+      "meaning": "Continuity can help a newcomer enter an existing working environment. The players describe the early connection; its performance effect remains to be established.",
+      "watch": "Whether newcomers continue describing a clear place in the group as preparation becomes formal team work."
+    },
+    {
       "id": "development",
       "title": "Players are taking initiative to learn",
-      "status": "Two distinct player examples",
+      "status": "Three named principals · two relationships",
       "reading": "Green's work with Nash and Maluach's outreach to Booker describe two separate relationships around improvement.",
       "evidence": [
         {
@@ -299,8 +521,8 @@
         {
           "speaker": "Khaman Maluach",
           "role": "Center",
-          "statement": "His stated priority is helping the team regardless of starting status.",
-          "sourceId": "maluach-development",
+          "statement": "He sought Booker’s guidance on responding to defensive pressure and delivering the ball where Booker needs it.",
+          "sourceId": "official-maluach-2026",
           "kind": "Reported statement"
         }
       ],

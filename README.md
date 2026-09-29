@@ -2,13 +2,13 @@
 
 Review edition: **In the Same Building** — Suns Media Day, September 28, 2026.
 
-This edition connects the day's reported preparation, development, resources and public expectations for ownership. The Alignment section compares named principals and links each statement to its reporting source. Overnight reporting and final narration remain open until the September 29 morning update.
+This edition connects the day's reported preparation, development, resources and public expectations for ownership. The Alignment section compares named principals and links each statement to its reporting source. The September 29 morning update adds eight official interviews and four original reports or commentary pieces. The final Editor script is complete; Arizona narration is rendered for review. Listening approval and release remain open.
 
 ## Existing base
 
 Reuse of **Aligned and Extended**, August 6, 2026, main commit `d33c43b9f6cfaa5b9d19d4af3ff1c8daf54d2945`. Echo's audience sections, source filters, quote cards, responsive design, AVC wordmarks and GitHub Pages hosting are preserved. Prior approved content remains on main and in Git history.
 
-The reusable changes add attributed alignment cards, a qualitative state for incomplete scoring, a Blender video hero with poster and reduced-motion support, and the approved AVC audio player. No new dependencies or hosting service.
+The reusable changes add attributed alignment cards, a qualitative assessment without an invented numeric score, a Blender video hero with poster and reduced-motion support, and the approved AVC audio player. No new dependencies or hosting service.
 
 ## Review and release
 
@@ -17,7 +17,7 @@ The reusable changes add attributed alignment cards, a qualitative state for inc
 - Approved production root: <https://meltckr.github.io/suns-echo/>. It returned 404 during September 28 verification; do not treat that as a working preview.
 - PR builds verify and package the preview without deploying. A manual review deployment packages the approved main edition at the root and this draft under its isolated review path.
 - GitHub's `github-pages` environment currently permits only main. Automatic approval review rejected changing that persistent policy; explicit Mel approval is required to allow this exact review branch. Do not bypass the policy.
-- Do not merge. Editorial finalization, verified Arizona audio and Mel's explicit release approval are separate gates in `npm run release:check`.
+- Do not merge. The Editor script and audio are technically complete. Perceptual listening and Mel's explicit release approval remain separate gates in `npm run release:check`.
 
 ## Media production
 
@@ -46,7 +46,7 @@ npx tsc --noEmit
 NEXT_PUBLIC_ECHO_BASE_PATH=/suns-echo/review/media-day-2026-09-28 npm run review:check
 ```
 
-Review checks accept pending final narration while verifying current source counts, alignment attribution, transcript synchronization, canonical player hashes, real-photo provenance, video dimensions/duration and OG output. Where ffprobe is unavailable, CI validates each file SHA against the exact video probed on the Studio and checks its recorded metadata. Release checks fail until editorial, narration, listening and release authorization are closed.
+Review checks verify 25 source records, five alignment themes, transcript and MP3 SHA-256, canonical player hashes, real-photo provenance, video dimensions/duration and OG output. Where ffprobe is unavailable, CI validates each file SHA against the exact video probed on the Studio and checks its recorded metadata. Release checks require listening confirmation and Mel's release authorization.
 
 See `research/media-day-2026-09-28/STATUS.md` for the morning checkpoint and `research/media-day-2026-09-28/VERIFICATION.md` for current evidence.
 
