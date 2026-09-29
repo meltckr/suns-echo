@@ -46,7 +46,7 @@ npx tsc --noEmit
 NEXT_PUBLIC_ECHO_BASE_PATH=/suns-echo/review/media-day-2026-09-28 npm run review:check
 ```
 
-Review checks accept pending final narration while verifying current source counts, alignment attribution, transcript synchronization, canonical player hashes, real-photo provenance, video dimensions/duration and OG output. Release checks fail until editorial, narration, listening and release authorization are closed.
+Review checks accept pending final narration while verifying current source counts, alignment attribution, transcript synchronization, canonical player hashes, real-photo provenance, video dimensions/duration and OG output. Where ffprobe is unavailable, CI validates each file SHA against the exact video probed on the Studio and checks its recorded metadata. Release checks fail until editorial, narration, listening and release authorization are closed.
 
 See `research/media-day-2026-09-28/STATUS.md` for the morning checkpoint and `research/media-day-2026-09-28/VERIFICATION.md` for current evidence.
 

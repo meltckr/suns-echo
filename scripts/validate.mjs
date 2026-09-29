@@ -52,14 +52,27 @@ check(Array.isArray(photos.photos) && photos.photos.length > 0, "Real photo ledg
 for (const photo of photos.photos ?? []) { await access(photo.localPath); check(!!photo.sourceUrl && !!photo.credit, "Photo provenance incomplete"); }
 await access("scripts/render-media-day.py");
 await access("assets/blender/media-day-2026-09-28-landscape-v1.blend");
+const mediaManifest = JSON.parse(await readFile("research/media-day-2026-09-28/media-manifest.json", "utf8"));
 for (const [url, width, height] of [[heroMedia.landscape, 1920, 1080], [heroMedia.portrait, 1080, 1920]]) {
   const probe = spawnSync("ffprobe", ["-v", "error", "-show_streams", "-show_format", "-of", "json", localPath(url)], { encoding: "utf8" });
-  check(probe.status === 0, `Video probe failed: ${url}`);
-  if (probe.status === 0) {
-    const metadata = JSON.parse(probe.stdout), video = metadata.streams.find(stream => stream.codec_type === "video");
+  let metadata;
+  if (probe.error?.code === "ENOENT") {
+    // Minimal CI runners can verify the exact bytes probed on the Studio.
+    const recorded = mediaManifest.assets.find(asset => asset.file === localPath(url));
+    const matching = recorded?.sha256 === sha(await readFile(localPath(url)));
+    check(matching && recorded?.probedOn === "Studio" && !!recorded?.probe, `No matching Studio probe for video: ${url}`);
+    if (matching) metadata = recorded.probe;
+    console.log(`ffprobe unavailable here; checking fingerprint-bound Studio probe: ${url}`);
+  } else {
+    check(probe.status === 0, `Video probe failed: ${url}: ${probe.stderr || probe.error?.message || probe.status}`);
+    if (probe.status === 0) metadata = JSON.parse(probe.stdout);
+  }
+  if (metadata) {
+    const video = metadata.streams.find(stream => stream.codec_type === "video");
     check(video?.width === width && video?.height === height && video?.codec_name === "h264" && video?.pix_fmt === "yuv420p", `Video format mismatch: ${url}`);
     check(Number(metadata.format.duration) >= 6 && Number(metadata.format.duration) <= 8, `Loop must last 6-8 seconds: ${url}`);
     check(metadata.streams.every(stream => stream.codec_type !== "audio"), `Hero loop must be silent: ${url}`);
+    check(video?.r_frame_rate === "24/1" && Number(video?.nb_frames) === 168, `Frame cadence mismatch: ${url}`);
   }
 }
 await access(localPath(heroMedia.poster));
