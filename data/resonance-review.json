@@ -1,0 +1,842 @@
+{
+  "version": 1,
+  "title": "What carried beyond the room",
+  "caveat": "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.",
+  "denominators": {
+    "mediaArticles": 5,
+    "fanPosts": 5,
+    "suppliedFanEntries": 26,
+    "verbatimFanComments": 25,
+    "excludedParaphrases": 1
+  },
+  "methodology": {
+    "unitFans": "Distinct supplied comments within each topic",
+    "unitMedia": "Distinct sampled articles within each topic; article exposure is not independent confirmation",
+    "volume": {
+      "none": 0,
+      "low": 1,
+      "medium": 2,
+      "high": "3 or more"
+    },
+    "sentiment": "Editorial coding: positive +1, neutral 0, negative -1. Average coded excerpts within each unit, then average scored units per audience. No probability or population estimate. A zero average may contain opposing reactions.",
+    "missing": "Null means no coded audience opinion; it does not mean neutral.",
+    "mediaRoles": "Only journalist framing enters media sentiment. Reported facts and attributed player/ownership statements count as coverage exposure and retain null codes.",
+    "deduplication": "Each supplied comment or article counts once per topic. Sources are checked for identical text; repeated reported statements retain an origin label and do not count as journalist opinion or independent corroboration. Articles may appear in multiple topics; do not sum topic counts as unique audience totals.",
+    "selection": "Twelve editorially selected topics from the collected texts. Broad topics combine related phrasing; this is a topic comparison, not an exact-word frequency ranking.",
+    "fanCoding": "Anticipation is positive; playoff-failure and losing-record forecasts are negative; factual injury observations and questions receive zero. Coding describes the supplied comment, not the truth of its claim.",
+    "exclusions": [
+      "The supplied Booker “choker” entry was a paraphrase, so it is excluded from verbatim evidence and scoring.",
+      "Sporting News ends with a reference to the Heat. That passage is excluded as an apparent subject error.",
+      "Post likes and total platform comment counts are not sampling weights.",
+      "No independent public retrieval of the supplied fan comments was performed.",
+      "The saved five-article pull contains no SportsNewsReport text; it is not counted."
+    ]
+  },
+  "sources": [
+    {
+      "id": "arizona_continuity",
+      "kind": "media",
+      "source": "Arizona Sports",
+      "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026"
+    },
+    {
+      "id": "arizona_peat",
+      "kind": "media",
+      "source": "Arizona Sports",
+      "url": "https://arizonasports.com/nba/phoenix-suns/arizona-koa-peat-rookie-suns"
+    },
+    {
+      "id": "brightside",
+      "kind": "media",
+      "source": "Bright Side of the Sun",
+      "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity"
+    },
+    {
+      "id": "hoopsrumors",
+      "kind": "media",
+      "source": "Hoops Rumors",
+      "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html"
+    },
+    {
+      "id": "sportingnews",
+      "kind": "media",
+      "source": "Sporting News",
+      "url": "https://www.sportingnews.com/ca/nba/phoenix-suns/news/devin-booker-feels-home-change-he-made-during-2026-offseason/8f38892ff9742fa912774f3d"
+    },
+    {
+      "id": "fan_seed_001",
+      "kind": "fans",
+      "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+      "url": "https://www.instagram.com/reel/Dd2lQpOKKww/"
+    },
+    {
+      "id": "fan_seed_002",
+      "kind": "fans",
+      "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+      "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/"
+    },
+    {
+      "id": "fan_seed_003",
+      "kind": "fans",
+      "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+      "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl"
+    },
+    {
+      "id": "fan_seed_004",
+      "kind": "fans",
+      "source": "https://www.facebook.com/reel/993539030442283/",
+      "url": "https://www.facebook.com/reel/993539030442283/"
+    },
+    {
+      "id": "fan_seed_005",
+      "kind": "fans",
+      "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+      "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/"
+    }
+  ],
+  "findings": [
+    {
+      "title": "Preparation earns favorable coverage; season reactions split",
+      "text": "Two articles favor the Suns’ preparation. Ten supplied comments on the season divide five positive and five negative. The media and fan counts use different units.",
+      "topicIds": [
+        "continuity",
+        "outlook"
+      ]
+    },
+    {
+      "title": "Development offers a specific point of agreement",
+      "text": "Green’s work with Nash draws one positive supplied comment and favorable columnist framing. Maluach also draws a positive fan forecast, while the two articles carry Booker’s praise.",
+      "topicIds": [
+        "green-nash",
+        "maluach"
+      ]
+    },
+    {
+      "title": "Trade coverage leaves a reception question open",
+      "text": "The sampled Bridges article relays team arguments and the conduct issue. A supplied comment objects to his conduct. The article’s exposure cannot establish journalistic endorsement or the prevalence of fan opposition.",
+      "topicIds": [
+        "bridges"
+      ]
+    }
+  ],
+  "coverageGaps": [
+    "Only 25 verbatim comments are available across five selected posts; they cannot represent the fan base.",
+    "Ownership commitment, continuity and Peat have no directly matching supplied fan responses.",
+    "Bridges appears in one sampled trade article. This pull cannot establish that it was the highest-volume story across all Media Day coverage."
+  ],
+  "topics": [
+    {
+      "id": "bridges",
+      "phrase": "Bridges: trade and standards",
+      "theme": "Roster moves",
+      "entity": "Miles Bridges",
+      "fans": {
+        "count": 2,
+        "score": -0.5,
+        "volume": "medium",
+        "scoredCount": 2,
+        "evidence": [
+          {
+            "id": "fan_seed_004-comment-1",
+            "unit": "fan_seed_004-comment-1",
+            "sourceId": "fan_seed_004",
+            "source": "https://www.facebook.com/reel/993539030442283/",
+            "url": "https://www.facebook.com/reel/993539030442283/",
+            "kind": "fan reaction",
+            "quote": "bridges he beats women",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_005-comment-1",
+            "unit": "fan_seed_005-comment-1",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "Where is Allen",
+            "code": 0
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": null,
+        "volume": "low",
+        "scoredCount": 0,
+        "evidence": [
+          {
+            "id": "hoopsrumors-29c2945c90",
+            "unit": "hoopsrumors",
+            "sourceId": "hoopsrumors",
+            "source": "Hoops Rumors",
+            "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+            "kind": "reported fact",
+            "quote": "The Suns traded Grayson Allen , Royce O’Neale and their unprotected 2033 first-round pick to the Hornets this summer in order to acquire Miles Bridges , a least favorable first-rounder in 2029, and a least favorable 2027 second-round pick.",
+            "code": null,
+            "origin": "hoopsrumors"
+          },
+          {
+            "id": "hoopsrumors-6ad57d9351",
+            "unit": "hoopsrumors",
+            "sourceId": "hoopsrumors",
+            "source": "Hoops Rumors",
+            "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+            "kind": "reported statement",
+            "quote": "Ishbia added that he doesn’t condone Bridges’ past — the veteran forward didn’t play in 2022/23 and served a 10-game suspension during the following season due to domestic violence charges.",
+            "code": null,
+            "origin": "Duane Rankin reporting"
+          },
+          {
+            "id": "hoopsrumors-5041fa5f4f",
+            "unit": "hoopsrumors",
+            "sourceId": "hoopsrumors",
+            "source": "Hoops Rumors",
+            "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+            "kind": "reported statement",
+            "quote": "“ I think he gives us something we were lacking a bit last year, with his size and versatility on both ends of the court ,” Booker said.",
+            "code": null,
+            "origin": "Shane Young interview"
+          }
+        ],
+        "reportedCount": 1,
+        "framingCount": 0
+      },
+      "takeaway": "One supplied comment objects to Bridges’ conduct; another asks about Allen. The sampled trade article relays ownership and player statements. It establishes coverage, with no coded journalist approval."
+    },
+    {
+      "id": "continuity",
+      "phrase": "Continuity and shared work",
+      "theme": "Culture",
+      "entity": "Suns team",
+      "fans": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": []
+      },
+      "media": {
+        "count": 2,
+        "score": 1.0,
+        "volume": "medium",
+        "scoredCount": 2,
+        "evidence": [
+          {
+            "id": "arizona_continuity-7ed15c53fd",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "journalist framing",
+            "quote": "What’s different is the newfound continuity and camaraderie in Phoenix, a sense of brotherhood that was central to almost every conversation. That feels very real and very important.",
+            "code": 1,
+            "origin": "arizona_continuity"
+          },
+          {
+            "id": "brightside-6a9e026261",
+            "unit": "brightside",
+            "sourceId": "brightside",
+            "source": "Bright Side of the Sun",
+            "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+            "kind": "journalist framing",
+            "quote": "That alone, plus bringing back most of the roster, puts the Suns and Booker in a better position to begin the season strong.",
+            "code": 1,
+            "origin": "brightside"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 2
+      },
+      "takeaway": "Two sampled articles endorse the value of continuity. None of the supplied comments specifically discusses the shared summer work."
+    },
+    {
+      "id": "maluach",
+      "phrase": "Maluach development",
+      "theme": "Player development",
+      "entity": "Khaman Maluach",
+      "fans": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "fan_seed_001-comment-4",
+            "unit": "fan_seed_001-comment-4",
+            "sourceId": "fan_seed_001",
+            "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "kind": "fan reaction",
+            "quote": "They aint ready for the maluach dbl dbl breakout season",
+            "code": 1
+          }
+        ]
+      },
+      "media": {
+        "count": 2,
+        "score": null,
+        "volume": "medium",
+        "scoredCount": 0,
+        "evidence": [
+          {
+            "id": "arizona_continuity-5231a51b16",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "reported statement",
+            "quote": "“I’d say he’s taken the biggest leap out of anybody that I’ve seen this summer,” the five-time All-Star said.",
+            "code": null,
+            "origin": "Devin Booker Media Day interview"
+          },
+          {
+            "id": "brightside-b3b064c3d5",
+            "unit": "brightside",
+            "sourceId": "brightside",
+            "source": "Bright Side of the Sun",
+            "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+            "kind": "reported statement",
+            "quote": "“So, you know, I think that guard and big relationship is super important, and you know, he’s way ahead of the curve.”",
+            "code": null,
+            "origin": "Devin Booker Media Day interview"
+          }
+        ],
+        "reportedCount": 2,
+        "framingCount": 0
+      },
+      "takeaway": "One supplied fan comment anticipates a breakout. Two articles carry Booker’s praise; those statements are player assessments and share an interview origin."
+    },
+    {
+      "id": "green-nash",
+      "phrase": "Green working with Nash",
+      "theme": "Player development",
+      "entity": "Jalen Green and Steve Nash",
+      "fans": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "fan_seed_001-comment-5",
+            "unit": "fan_seed_001-comment-5",
+            "sourceId": "fan_seed_001",
+            "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "kind": "fan reaction",
+            "quote": "Green working with Nash made me smile",
+            "code": 1
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "arizona_continuity-5662429e1a",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "journalist framing",
+            "quote": "Green showed off his incredible burst and athleticism near the end of the 2025-26 season, the kind of raw talent you can’t toss away too quickly. Just imagine if the Suns can sharpen up his mental skills.",
+            "code": 1,
+            "origin": "arizona_continuity"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 1
+      },
+      "takeaway": "The supplied fan response and one columnist’s framing are positive about Green’s development. The sample supports a specific point of agreement."
+    },
+    {
+      "id": "booker-tenure",
+      "phrase": "Booker: tenure and leadership",
+      "theme": "Culture",
+      "entity": "Devin Booker",
+      "fans": {
+        "count": 2,
+        "score": 1.0,
+        "volume": "medium",
+        "scoredCount": 2,
+        "evidence": [
+          {
+            "id": "fan_seed_002-comment-2",
+            "unit": "fan_seed_002-comment-2",
+            "sourceId": "fan_seed_002",
+            "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "kind": "fan reaction",
+            "quote": "Book really a vet 12 years crazy",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_002-comment-3",
+            "unit": "fan_seed_002-comment-3",
+            "sourceId": "fan_seed_002",
+            "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "kind": "fan reaction",
+            "quote": "such a respectful guy, saying hi to EVERYONE",
+            "code": 1
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "brightside-e66d04c175",
+            "unit": "brightside",
+            "sourceId": "brightside",
+            "source": "Bright Side of the Sun",
+            "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+            "kind": "journalist framing",
+            "quote": "Devin Booker kicked off his 12th season for the Phoenix Suns with a new number, but just as cool and as confident as ever.",
+            "code": 1,
+            "origin": "brightside"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 1
+      },
+      "takeaway": "Two supplied comments appreciate Booker’s longevity or manner. One article introduces his 12th season in favorable terms."
+    },
+    {
+      "id": "roster",
+      "phrase": "Roster balance and availability",
+      "theme": "Roster moves",
+      "entity": "Suns roster and Mark Williams",
+      "fans": {
+        "count": 3,
+        "score": -0.667,
+        "volume": "high",
+        "scoredCount": 3,
+        "evidence": [
+          {
+            "id": "fan_seed_004-comment-3",
+            "unit": "fan_seed_004-comment-3",
+            "sourceId": "fan_seed_004",
+            "source": "https://www.facebook.com/reel/993539030442283/",
+            "url": "https://www.facebook.com/reel/993539030442283/",
+            "kind": "fan reaction",
+            "quote": "All at 6.4. All PG stature.",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_004-comment-4",
+            "unit": "fan_seed_004-comment-4",
+            "sourceId": "fan_seed_004",
+            "source": "https://www.facebook.com/reel/993539030442283/",
+            "url": "https://www.facebook.com/reel/993539030442283/",
+            "kind": "fan reaction",
+            "quote": "Mark Williams but he injured his shoulder this off-season",
+            "code": 0
+          },
+          {
+            "id": "fan_seed_005-comment-2",
+            "unit": "fan_seed_005-comment-2",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "No PG or Center is wild",
+            "code": -1
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": null,
+        "volume": "low",
+        "scoredCount": 0,
+        "evidence": [
+          {
+            "id": "hoopsrumors-7dc07ba39f",
+            "unit": "hoopsrumors",
+            "sourceId": "hoopsrumors",
+            "source": "Hoops Rumors",
+            "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+            "kind": "reported statement",
+            "quote": "Ott was noncommittal about who he’ll start at center with Mark Williams expected to miss most of the season following shoulder surgery, Young tweets .",
+            "code": null,
+            "origin": "Shane Young reporting"
+          }
+        ],
+        "reportedCount": 1,
+        "framingCount": 0
+      },
+      "takeaway": "Three supplied comments discuss size, positions or Williams’ shoulder. The article reports an availability concern; that factual account receives no journalist-sentiment score."
+    },
+    {
+      "id": "outlook",
+      "phrase": "Season anticipation and playoff doubt",
+      "theme": "Season outlook",
+      "entity": "Phoenix Suns",
+      "fans": {
+        "count": 10,
+        "score": 0.0,
+        "volume": "high",
+        "scoredCount": 10,
+        "evidence": [
+          {
+            "id": "fan_seed_001-comment-2",
+            "unit": "fan_seed_001-comment-2",
+            "sourceId": "fan_seed_001",
+            "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "kind": "fan reaction",
+            "quote": "You js made me 10 times more hype for the suns season",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_002-comment-1",
+            "unit": "fan_seed_002-comment-1",
+            "sourceId": "fan_seed_002",
+            "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "kind": "fan reaction",
+            "quote": "AHHHH ITS HAPPENING!!!",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_002-comment-4",
+            "unit": "fan_seed_002-comment-4",
+            "sourceId": "fan_seed_002",
+            "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+            "kind": "fan reaction",
+            "quote": "My day made",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_003-comment-1",
+            "unit": "fan_seed_003-comment-1",
+            "sourceId": "fan_seed_003",
+            "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "kind": "fan reaction",
+            "quote": "LETS FUCKIN GO!!!!! 602!!!!!",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_003-comment-2",
+            "unit": "fan_seed_003-comment-2",
+            "sourceId": "fan_seed_003",
+            "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "kind": "fan reaction",
+            "quote": "Can't wait for the season to start!!!",
+            "code": 1
+          },
+          {
+            "id": "fan_seed_003-comment-3",
+            "unit": "fan_seed_003-comment-3",
+            "sourceId": "fan_seed_003",
+            "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+            "kind": "fan reaction",
+            "quote": "First round exit or missed playoffs. These dudes are bench players",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_004-comment-2",
+            "unit": "fan_seed_004-comment-2",
+            "sourceId": "fan_seed_004",
+            "source": "https://www.facebook.com/reel/993539030442283/",
+            "url": "https://www.facebook.com/reel/993539030442283/",
+            "kind": "fan reaction",
+            "quote": "These dudes know they ain't makin the playoffs lmao",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_005-comment-4",
+            "unit": "fan_seed_005-comment-4",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "Another losing season. SAVE D BOOK",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_005-comment-6",
+            "unit": "fan_seed_005-comment-6",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "9th seed",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_005-comment-7",
+            "unit": "fan_seed_005-comment-7",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "38 win team",
+            "code": -1
+          }
+        ]
+      },
+      "media": {
+        "count": 2,
+        "score": 1.0,
+        "volume": "medium",
+        "scoredCount": 2,
+        "evidence": [
+          {
+            "id": "arizona_continuity-135b23a39d",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "journalist framing",
+            "quote": "The Suns have clearly put in the work. In terms of physical conditioning, they are well ahead of schedule. And through their actions and their offseason priorities, they are conveying ultimate belief in the direction of the program and the opportunities ahead.",
+            "code": 1,
+            "origin": "arizona_continuity"
+          },
+          {
+            "id": "brightside-05b36066fa",
+            "unit": "brightside",
+            "sourceId": "brightside",
+            "source": "Bright Side of the Sun",
+            "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+            "kind": "journalist framing",
+            "quote": "Booker and the Suns have the chance to hit the ground running this year because of their depth and continuity, and the Suns franchise player has been leading the way all offseason.",
+            "code": 1,
+            "origin": "brightside"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 2
+      },
+      "takeaway": "Ten supplied comments split evenly between anticipation and pessimistic season forecasts. Two articles frame the preparation positively. A zero fan average here means mixed responses."
+    },
+    {
+      "id": "commitment",
+      "phrase": "Ownership commitment",
+      "theme": "Ownership",
+      "entity": "Mat Ishbia",
+      "fans": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": []
+      },
+      "media": {
+        "count": 2,
+        "score": null,
+        "volume": "medium",
+        "scoredCount": 0,
+        "evidence": [
+          {
+            "id": "arizona_continuity-57dfd6ca6e",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "reported statement",
+            "quote": "Mat Ishbia said there was “zero chance” he might be forced to sell the team, insisting that his diminished finances will change nothing with funding of the Suns.",
+            "code": null,
+            "origin": "Mat Ishbia Media Day interview"
+          },
+          {
+            "id": "hoopsrumors-5440258585",
+            "unit": "hoopsrumors",
+            "sourceId": "hoopsrumors",
+            "source": "Hoops Rumors",
+            "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+            "kind": "reported statement",
+            "quote": "Am I still going to pay the luxury tax? Yes.",
+            "code": null,
+            "origin": "Mat Ishbia Media Day interview"
+          }
+        ],
+        "reportedCount": 2,
+        "framingCount": 0
+      },
+      "takeaway": "Two articles relay Mat’s commitment. The supplied comments offer no direct reaction to ownership funding, and neither passage expresses the journalist’s approval."
+    },
+    {
+      "id": "hunger",
+      "phrase": "Hunger and belonging",
+      "theme": "Team identity",
+      "entity": "Phoenix Suns",
+      "fans": {
+        "count": 2,
+        "score": 0.0,
+        "volume": "medium",
+        "scoredCount": 2,
+        "evidence": [
+          {
+            "id": "fan_seed_004-comment-5",
+            "unit": "fan_seed_004-comment-5",
+            "sourceId": "fan_seed_004",
+            "source": "https://www.facebook.com/reel/993539030442283/",
+            "url": "https://www.facebook.com/reel/993539030442283/",
+            "kind": "fan reaction",
+            "quote": "None of them wants to be there",
+            "code": -1
+          },
+          {
+            "id": "fan_seed_005-comment-5",
+            "unit": "fan_seed_005-comment-5",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "This lineup way more hungry",
+            "code": 1
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "arizona_continuity-115f6270a3",
+            "unit": "arizona_continuity",
+            "sourceId": "arizona_continuity",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+            "kind": "journalist framing",
+            "quote": "But the Suns have clearly put in the hours and built a foundation of trust.",
+            "code": 1,
+            "origin": "arizona_continuity"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 1
+      },
+      "takeaway": "Two supplied comments conflict on the group’s hunger and willingness to be there. One column offers a favorable reading of the team’s trust."
+    },
+    {
+      "id": "number",
+      "phrase": "Booker’s No. 15",
+      "theme": "Team identity",
+      "entity": "Devin Booker",
+      "fans": {
+        "count": 1,
+        "score": -1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "fan_seed_005-comment-3",
+            "unit": "fan_seed_005-comment-3",
+            "sourceId": "fan_seed_005",
+            "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+            "kind": "fan reaction",
+            "quote": "I'm sorry but booker lost aura wearing 15",
+            "code": -1
+          }
+        ]
+      },
+      "media": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "sportingnews-adce44fe6e",
+            "unit": "sportingnews",
+            "sourceId": "sportingnews",
+            "source": "Sporting News",
+            "url": "https://www.sportingnews.com/ca/nba/phoenix-suns/news/devin-booker-feels-home-change-he-made-during-2026-offseason/8f38892ff9742fa912774f3d",
+            "kind": "journalist framing",
+            "quote": "He already has two gold medals with Team USA wearing the #15, so this change could be a positive shift for him.",
+            "code": 1,
+            "origin": "sportingnews"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 1
+      },
+      "takeaway": "One supplied comment dislikes the number change. One article gives it a favorable interpretation; these are two individual reactions."
+    },
+    {
+      "id": "patch",
+      "phrase": "Paze jersey patch",
+      "theme": "Team identity",
+      "entity": "Jersey sponsor",
+      "fans": {
+        "count": 1,
+        "score": -1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "fan_seed_001-comment-3",
+            "unit": "fan_seed_001-comment-3",
+            "sourceId": "fan_seed_001",
+            "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "kind": "fan reaction",
+            "quote": "I hate the paze patch so much",
+            "code": -1
+          }
+        ]
+      },
+      "media": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": [],
+        "reportedCount": 0,
+        "framingCount": 0
+      },
+      "takeaway": "One supplied comment dislikes the patch. The five sampled articles contain no coded response to it."
+    },
+    {
+      "id": "peat",
+      "phrase": "Peat’s hometown opportunity",
+      "theme": "Player development",
+      "entity": "Koa Peat",
+      "fans": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": []
+      },
+      "media": {
+        "count": 1,
+        "score": 1.0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "arizona_peat-cb6b727c6c",
+            "unit": "arizona_peat",
+            "sourceId": "arizona_peat",
+            "source": "Arizona Sports",
+            "url": "https://arizonasports.com/nba/phoenix-suns/arizona-koa-peat-rookie-suns",
+            "kind": "journalist framing",
+            "quote": "It was a blessing in disguise for the Suns, who took advantage by moving up in the draft and selecting Peat with the 30th pick in the 2026 NBA draft .",
+            "code": 1,
+            "origin": "arizona_peat"
+          }
+        ],
+        "reportedCount": 0,
+        "framingCount": 1
+      },
+      "takeaway": "One article frames Peat’s arrival positively. There is no Peat-specific response in the supplied fan comments."
+    }
+  ]
+}

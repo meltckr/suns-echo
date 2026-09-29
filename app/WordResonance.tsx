@@ -1,24 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { resonanceCopy, resonanceSourceLinks, resonanceThemes, wordResonance, type ResonanceAudience, type ResonancePhrase } from "@/data/edition";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { resonanceCopy, resonanceReview, resonanceThemes, type ResonanceReading, type ResonanceSide, type ResonanceTopic } from "@/data/edition";
+import { balanceLabel, balanceScore, balanceTone, matchesAudience, unitCounts, volumeForView, type ResonanceView } from "@/data/resonance-model";
 
 const filters = ["all", "fans", "media", "both"] as const;
 const labels = { all: "All", fans: "Fans", media: "Media", both: "Both" };
-const audienceLabel = { fans: "Fans", media: "Media", both: "Fans + media" };
-const volumeWeight = { high: 3, medium: 2, low: 1 };
-const tone = (sentiment: number) => sentiment > 0 ? "positive" : sentiment < 0 ? "negative" : "neutral";
-const score = (sentiment: number) => `${sentiment > 0 ? "+" : ""}${sentiment.toFixed(2)}`;
+const colors = { positive: "#e8f4eb", negative: "#f9e9e7", neutral: "#ececee", unscored: "#f5f2ec" };
+const volumeWeight: Record<string, number> = { high: 3, medium: 2, low: 1, none: 0 };
 
-function matches(entry: ResonancePhrase, audience: ResonanceAudience | "all") {
-  return audience === "all" || entry.audience === audience || (audience !== "both" && entry.audience === "both");
+function AudienceEvidence({ side, reading }: { side: ResonanceSide; reading: ResonanceReading }) {
+  const counts = unitCounts(reading);
+  return <section className="audience-evidence" aria-label={`${labels[side]} evidence`}>
+    <header><h4>{labels[side]}</h4><span className={`balance-label resonance-${balanceTone(reading)}`}>{balanceLabel(reading)} · {balanceScore(reading)}</span></header>
+    <p>{reading.count} {side === "fans" ? "supplied comments" : "sampled articles"} · {reading.volume} volume</p>
+    {reading.scoredCount > 0 && <p className="coded-counts">Coded {side === "fans" ? "comments" : "articles"}: {counts.positive} positive · {counts.negative} negative · {counts.neutral} neutral</p>}
+    {side === "media" && <p className="coded-counts">{reading.scoredCount} articles contain scored journalist framing. Reported facts and player or leadership statements retain an unscored code.</p>}
+    {reading.evidence.length ? <details open><summary>Read {reading.evidence.length} evidence {reading.evidence.length === 1 ? "excerpt" : "excerpts"}</summary>{reading.evidence.map(item => <blockquote className="source-quote resonance-evidence" key={item.id}>
+      <p>{item.quote}</p><footer><strong>{side === "fans" ? `Supplied ${new URL(item.url).hostname.includes("instagram") ? "Instagram" : "Facebook"} comment` : item.source}</strong><small>{item.kind}{"origin" in item && <> · {item.origin}</>}<br />Code: {item.code === null ? "Unscored reported material" : item.code > 0 ? "Positive (+1)" : item.code < 0 ? "Negative (−1)" : "Neutral (0)"}</small><a className="source-link" href={item.url} target="_blank" rel="noreferrer">Open original {side === "fans" ? "post" : "source"} ↗</a></footer>
+    </blockquote>)}</details> : <p>No evidence in this sampled audience.</p>}
+  </section>;
 }
 
 export default function WordResonance() {
-  const [audience, setAudience] = useState<ResonanceAudience | "all">("all");
-  const [selected, setSelected] = useState<ResonancePhrase | null>(null);
+  const [audience, setAudience] = useState<ResonanceView>("all");
+  const [selected, setSelected] = useState<ResonanceTopic | null>(null);
   const detail = useRef<HTMLElement>(null);
-  const visible = wordResonance.filter(entry => matches(entry, audience));
+  const topics = resonanceReview.topics;
+  const visible = topics.filter(entry => matchesAudience(entry, audience));
 
   useEffect(() => {
     if (selected && window.matchMedia("(max-width: 800px)").matches) {
@@ -27,38 +36,49 @@ export default function WordResonance() {
     }
   }, [selected]);
 
-  function filter(next: typeof audience) {
+  function filter(next: ResonanceView) {
     setAudience(next);
-    if (selected && !matches(selected, next)) setSelected(null);
+    if (selected && !matchesAudience(selected, next)) setSelected(null);
+  }
+  function selectFinding(id: string) {
+    setAudience("all");
+    setSelected(topics.find(item => item.id === id) ?? null);
   }
 
   return <section id="word-resonance" className="report-section resonance-section" aria-labelledby="resonance-title">
-    <header className="section-head"><span>Part 02 · Sampled language</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
+    <header className="section-head"><span>Part 02 · Sampled response</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
     <p className="resonance-caveat">{resonanceCopy.caveat}</p>
+    <div className="resonance-findings">{resonanceReview.findings.map(finding => <article key={finding.title}><h3>{finding.title}</h3><p>{finding.text}</p><div>{finding.topicIds.map(id => <button type="button" key={id} onClick={() => selectFinding(id)}>Explore {topics.find(topic => topic.id === id)?.phrase} ↗</button>)}</div></article>)}</div>
     <p className="resonance-sample">{resonanceCopy.sample}</p>
     <div className="resonance-controls" role="group" aria-label="Word Resonance audience filters">
-      {filters.map(value => <button key={value} type="button" aria-pressed={audience === value} onClick={() => filter(value)}>{labels[value]} <span>{wordResonance.filter(entry => matches(entry, value)).length}</span></button>)}
-      <span className="resonance-count" role="status">{visible.length} of {wordResonance.length} phrases</span>
+      {filters.map(value => <button key={value} type="button" aria-pressed={audience === value} onClick={() => filter(value)}>{labels[value]} <span>{topics.filter(entry => matchesAudience(entry, value)).length}</span></button>)}
+      <span className="resonance-count" role="status">{visible.length} of {topics.length} phrase groups</span>
     </div>
     <p className="resonance-filter-note">{resonanceCopy.filters}</p>
-    <div className="resonance-legend" aria-label="How to read the bubbles"><span className="resonance-positive">Positive &gt; 0</span><span className="resonance-negative">Negative &lt; 0</span><span className="resonance-neutral">Neutral = 0</span><span>Size: high &gt; medium &gt; low relative volume</span></div>
+    <div className="resonance-legend" aria-label="How to read the bubbles"><span className="resonance-positive">Positive</span><span className="resonance-negative">Negative</span><span className="resonance-neutral">Neutral or mixed</span><span>Unscored = no coded opinion</span></div>
+    <p className="resonance-size-note">{audience === "all" || audience === "both" ? "Left half: Fans. Right half: Media. Size uses the larger audience tier; the two units differ." : `Color and size show the ${labels[audience].toLowerCase()} reading.`} Volume: 1 unit = low · 2 = medium · 3+ = high. Fans count comments; media counts articles.</p>
     <div className="resonance-layout">
       <div className="resonance-themes">{resonanceThemes.map(theme => {
-        const entries = visible.filter(entry => entry.theme === theme).sort((a, b) => volumeWeight[b.volume] - volumeWeight[a.volume] || a.phrase.localeCompare(b.phrase));
+        const entries = visible.filter(entry => entry.theme === theme).sort((a, b) => volumeWeight[volumeForView(b, audience)] - volumeWeight[volumeForView(a, audience)] || a.phrase.localeCompare(b.phrase));
         return <section className="resonance-theme" key={theme} aria-label={theme}><h3>{theme}<span>{entries.length}</span></h3>
-          {entries.length ? <div className="resonance-bubbles">{entries.map(entry => <button type="button" key={entry.phrase} className={`resonance-bubble resonance-${tone(entry.sentiment)} resonance-volume-${entry.volume}`} aria-label={`${entry.phrase}. ${audienceLabel[entry.audience]}. ${tone(entry.sentiment)} sentiment ${score(entry.sentiment)}. ${entry.volume} relative volume.`} aria-pressed={selected?.phrase === entry.phrase} aria-controls="resonance-detail" onClick={() => setSelected(entry)}><strong>{entry.phrase}</strong><span>{score(entry.sentiment)}</span></button>)}</div> : <p className="resonance-empty">No phrases in this audience view.</p>}
+          {entries.length ? <div className="resonance-bubbles">{entries.map(entry => {
+            const split = audience === "all" || audience === "both";
+            const shown = split ? null : entry[audience];
+            const description = `Fans: ${balanceLabel(entry.fans)}, ${entry.fans.count} comments. Media: ${balanceLabel(entry.media)}, ${entry.media.count} articles.`;
+            return <button type="button" key={entry.id} className={`resonance-bubble resonance-volume-${volumeForView(entry, audience)} ${split ? "resonance-split" : `resonance-${balanceTone(shown!)}`}`} style={split ? { "--fan-color": colors[balanceTone(entry.fans)], "--media-color": colors[balanceTone(entry.media)] } as CSSProperties : undefined} aria-label={`${entry.phrase}. ${description}`} aria-pressed={selected?.id === entry.id} aria-controls="resonance-detail" onClick={() => setSelected(entry)}><strong>{entry.phrase}</strong>{split ? <span className="bubble-readings"><span>Fans<br /><b>{balanceLabel(entry.fans)}</b></span><span>Media<br /><b>{balanceLabel(entry.media)}</b></span></span> : <span>{balanceLabel(shown!)}<br />{balanceScore(shown!)}</span>}<small>{split ? `F ${entry.fans.count} · M ${entry.media.count}` : `${shown!.count} ${audience === "fans" ? "comments" : "articles"}`}</small></button>;
+          })}</div> : <p className="resonance-empty">No phrase groups in this audience view.</p>}
         </section>;
       })}</div>
       <aside ref={detail} tabIndex={-1} id="resonance-detail" className="resonance-detail" aria-label="Selected phrase evidence" aria-live="polite">
         {selected ? <>
           <div className="resonance-detail-heading"><span>Source evidence</span><button type="button" onClick={() => setSelected(null)}>Clear</button></div>
-          <h3>{selected.phrase}</h3>
-          <blockquote className="source-quote resonance-evidence"><p>{selected.evidence}</p><footer><strong>{selected.source}</strong><small>{selected.audience === "fans" ? "Verbatim supplied fan comment" : "Verbatim collected source text"}</small></footer></blockquote>
-          <dl>{[["Entity", selected.entity], ["Theme", selected.theme], ["Audience", audienceLabel[selected.audience]], ["Sentiment", `${tone(selected.sentiment)} (${score(selected.sentiment)})`], ["Volume", `${selected.volume} · relative tier`]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-          <a className="source-link" href={resonanceSourceLinks[selected.phrase]} target="_blank" rel="noreferrer">Open original source <span aria-hidden="true">↗</span></a>
-          <p className="resonance-detail-note">The quote records the language in this sample. Sentiment and volume are model judgments about that language.</p>
-        </> : <><span>Source evidence</span><h3>Choose a phrase</h3><p>Each bubble opens its verbatim evidence, source and scoring details here.</p></>}
+          <h3>{selected.phrase}</h3><p>{selected.takeaway}</p>
+          <dl><div><dt>Entity</dt><dd>{selected.entity}</dd></div><div><dt>Theme</dt><dd>{selected.theme}</dd></div></dl>
+          <AudienceEvidence side="fans" reading={selected.fans} /><AudienceEvidence side="media" reading={selected.media} />
+          <p className="resonance-detail-note">Scores describe selected language. Positive +1, neutral 0, negative −1; average excerpts within each unit, then average scored units per audience. Zero can contain opposing reactions. Article exposure includes reported material; it does not establish independent confirmation.</p>
+        </> : <><span>Source evidence</span><h3>Choose a phrase group</h3><p>Compare each audience’s sampled count and coded language. Open the verbatim evidence and original source.</p></>}
       </aside>
     </div>
+    <details className="resonance-method"><summary>Sampling and coding details</summary><p>{resonanceReview.methodology.selection}</p><p>{resonanceReview.methodology.sentiment}</p><p>{resonanceReview.methodology.deduplication}</p><ul>{resonanceReview.methodology.exclusions.map(item => <li key={item}>{item}</li>)}</ul></details>
   </section>;
 }

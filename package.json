@@ -12,7 +12,8 @@
     "audio:generate": "node scripts/generate-echo-audio.mjs",
     "validate": "node scripts/validate.mjs",
     "release:check": "npm run lint && node scripts/validate.mjs --release && npm run build",
-    "review:check": "npm run lint && npm run validate && npm run build"
+    "review:check": "npm run lint && npm run test && npm run validate && npm run build",
+    "test": "node --test scripts/resonance-model.test.mjs scripts/validate-resonance-review.test.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -2,7 +2,9 @@ import { readFile, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
-import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts } from "../data/edition.ts";
+import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, ownershipBrief, resonanceReview } from "../data/edition.ts";
+
+import { validateResonanceReview } from "./validate-resonance-review.mjs";
 
 const release = process.argv.includes("--release");
 const failures = [];
@@ -33,7 +35,14 @@ for (const item of wordResonance) {
   check(resonanceSourceLinks[item.phrase]?.startsWith("https://"), `Phrase original source missing: ${item.phrase}`);
 }
 check(resonanceCopy.caveat === "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.", "Required resonance caveat changed");
-for (const token of ['id="word-resonance"', 'id="resonance-detail"', "aria-pressed", "resonanceThemes", "selected.evidence", "resonanceSourceLinks", "resonanceCopy.caveat"]) check(resonanceComponent.includes(token), `Missing resonance behavior: ${token}`);
+for (const token of ['id="word-resonance"', 'id="resonance-detail"', "aria-pressed", "resonanceThemes", "selected.fans", "selected.media", "AudienceEvidence", "resonanceReview", "resonanceCopy.caveat"]) check(resonanceComponent.includes(token), `Missing resonance behavior: ${token}`);
+try {
+  validateResonanceReview(resonanceReview, JSON.parse(await readFile("research/media-day-2026-09-28/resonance-review-source-texts.json", "utf8")));
+} catch (error) { check(false, `Audience comparison audit failed: ${error.message}`); }
+check(ownershipBrief.findings.length === 3 && ownershipBrief.next.length === 3, "First-minute ownership structure incomplete");
+for (const item of [...ownershipBrief.findings, ownershipBrief.tension, ...ownershipBrief.next]) {
+  check(item.sourceIds.length > 0 && item.sourceIds.every(id => sources.some(source => source.id === id)), `Ownership brief attribution missing: ${item.title}`);
+}
 check(dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Resonance must be mounted with methodology disclosure");
 for (const source of sources) {
   check(source.url.startsWith("https://"), `Source must use HTTPS: ${source.id}`);
@@ -61,19 +70,19 @@ const playerHashes = {
 for (const [file, expected] of Object.entries(playerHashes)) check(sha(await readFile(`public/assets/mel-audio-player/${file}`)) === expected, `Approved player changed: ${file}`);
 await access("public/assets/brand/AVC-logo-horizontal-dark.svg");
 await access("public/assets/teams/suns-logo.svg");
-const og = await sharp("public/og-media-day-2026-09-28-v2.png").metadata();
+const og = await sharp("public/og-media-day-2026-09-28-v3.png").metadata();
 check(og.width === 1200 && og.height === 630 && og.format === "png", "OG must be a 1200x630 PNG");
-for (const token of ["https://meltckr.github.io", "summary_large_image", "siteName", "1200", "630", "og-media-day-2026-09-28-v2.png"]) check(layout.includes(token), `Social metadata incomplete: ${token}`);
+for (const token of ["https://meltckr.github.io", "summary_large_image", "siteName", "1200", "630", "og-media-day-2026-09-28-v3.png"]) check(layout.includes(token), `Social metadata incomplete: ${token}`);
 const photos = JSON.parse(await readFile("research/media-day-2026-09-28/photo-ledger.json", "utf8"));
 check(photos.eventDate === "2026-09-28", "Photos must be from current Media Day");
 check(Array.isArray(photos.photos) && photos.photos.length > 0, "Real photo ledger missing");
 for (const photo of photos.photos ?? []) { await access(photo.localPath); check(!!photo.sourceUrl && !!photo.credit, "Photo provenance incomplete"); }
 await access("scripts/hero.py");
-await access("assets/blender/media-day-2026-09-28-hero-landscape-v2.blend");
+await access("assets/blender/media-day-2026-09-28-hero-landscape-v3.blend");
 const mediaManifest = JSON.parse(await readFile("research/media-day-2026-09-28/media-manifest.json", "utf8"));
 for (const [url, width, height] of [[cinematicDivider.landscape, 1920, 1080], [cinematicDivider.portrait, 1080, 1920],
-  [`${edition.basePath}/assets/media/media-day-2026-09-28-title-card-1920x1080-v2.mp4`, 1920, 1080],
-  [`${edition.basePath}/assets/media/media-day-2026-09-28-title-card-1080x1920-v2.mp4`, 1080, 1920]]) {
+  [`${edition.basePath}/assets/media/media-day-2026-09-28-title-card-1920x1080-v3.mp4`, 1920, 1080],
+  [`${edition.basePath}/assets/media/media-day-2026-09-28-title-card-1080x1920-v3.mp4`, 1080, 1920]]) {
   const recorded = mediaManifest.assets.find(asset => asset.file === localPath(url));
   const bytes = await readFile(localPath(url));
   check(recorded?.sha256 === sha(bytes) && recorded?.probedOn === "Studio", `Motion sting fingerprint mismatch: ${url}`);
@@ -126,4 +135,4 @@ if (release) {
   check(edition.releaseAuthorized, "Mel's release approval remains open");
 }
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
-console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${wordResonance.length} verbatim-backed phrases, real-photo Blender videos, OG, transcript and approved player. Audio: ${audioBrief.ready ? "rendered" : "pending final Editor script"}.`);
+console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${resonanceReview.topics.length} audited phrase groups (${wordResonance.length} original phrase records preserved), real-photo Blender videos, OG, transcript and approved player. Audio: ${audioBrief.ready ? "rendered" : "pending final Editor script"}.`);

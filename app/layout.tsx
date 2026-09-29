@@ -6,7 +6,7 @@ const title = `${edition.title} | Suns Media Day 2026 | The Echo`;
 const description = "Phoenix Suns Media Day in ownership perspective: where the principals align, how preparation is being described, and the words carrying through sampled media coverage and fan reaction.";
 const siteUrl = "https://meltckr.github.io";
 const canonical = `${edition.basePath}/`;
-const shareImage = `${edition.basePath}/og-media-day-2026-09-28-v2.png`;
+const shareImage = `${edition.basePath}/og-media-day-2026-09-28-v3.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl), title, description, applicationName: "The Echo",
   authors: [{ name: "Accelerated Velocity Consulting" }],

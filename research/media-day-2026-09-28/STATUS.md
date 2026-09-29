@@ -42,3 +42,11 @@ Deployment evidence is recorded by the review workflow and PR #1; the one-time m
 ## September 29 — corrected audio v3
 
 Mel identified Ighodaro/Maluach pronunciation and clipped endings. The narration was regenerated using official NBA/team pronunciation guidance, conservative endpoint retention, natural non-overlapping sentence/paragraph pauses and original tempo. Public script, title and architecture are unchanged. V3 technical and player checks pass; perceptual pronunciation/listening approval remains open. See AUDIO-V3-QA.md. Draft PR #1 and isolated review update are authorized; production release and merge remain held.
+
+## September 29 — premium review upgrade (current)
+
+The first-minute ownership brief leads with three findings, one tension and three follow-up observations. Native disclosures preserve the extended review and deeper evidence. Five Alignment themes, all25 sources and the established Echo system remain.
+
+The new audience comparison presents12 editorial phrase groups from five articles and25 verbatim supplied fan comments; one separate paraphrase is excluded. Fans and media retain separate counts and scores. Reported principal statements remain unscored as media opinion. Every quote and count is reproducible against saved text. The original25-phrase file remains preserved. See PREMIUM-REVIEW-QA.md for methodology and regression evidence.
+
+Blender v3 provides photo-only8-second heroes, title stings/cards, posters and1200×630 OG; Arizona v4 reads the final277-word Editor script with conservative finishing. Current audio tail0.12s, duration119.84s. Technical checks pass; human pronunciation/listening and Mel’s production release approval remain open. The current preview and deployment evidence are recorded in PR#1.

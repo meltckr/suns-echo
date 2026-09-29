@@ -6,6 +6,7 @@ import WordResonance from "./WordResonance";
 import CinematicDivider from "./CinematicDivider";
 import {
   alignment,
+  ownershipBrief,
   reportParts,
   audioBrief,
   fanThemes,
@@ -24,9 +25,8 @@ import {
 } from "@/data/edition";
 
 const nav = [
-  ["readout", "Review"], ["word-resonance", "Word Resonance"], ["alignment", "Alignment"], ["signal", "Signal"], ["map", "Map"], ["voices", "Voices"],
-  ["local", "Local"], ["national", "National"], ["creators", "Creators"], ["fans", "Fans"],
-  ["narratives", "Narratives"], ["watch", "Watch"], ["ownership", "Ownership"], ["ledger", "Sources"],
+  ["readout", "Review"], ["alignment", "Alignment"], ["voices", "Voices"],
+  ["watch", "Watch"], ["word-resonance", "Word Resonance"], ["ledger", "Sources"],
 ];
 
 const basePath = edition.basePath;
@@ -126,6 +126,7 @@ function AlignmentSection() {
     <SectionHead n="02" eyebrow="Shared messages" title="Where the voices align" copy="The ideas appearing across the named voices, with the evidence and the next thing to watch." />
     <div className="alignment-list">{alignment.map((item) => <article className="alignment-card" key={item.id}>
       <header><span>{item.status}</span><h3>{item.title}</h3><p>{item.reading}</p></header>
+      <details className="alignment-detail" open={item.id === "shared-work"}><summary>Named voices and evidence</summary>
       <div className="alignment-evidence">{item.evidence.map((evidence, index) => {
         const source = sources.find((entry) => entry.id === evidence.sourceId);
         return <div className="alignment-voice" key={`${evidence.speaker}-${index}`}>
@@ -136,6 +137,7 @@ function AlignmentSection() {
         </div>;
       })}</div>
       <dl className="alignment-meaning"><div><dt>Ownership perspective</dt><dd>{item.meaning}</dd></div><div><dt>Watch next</dt><dd>{item.watch}</dd></div></dl>
+      </details>
     </article>)}</div>
   </section>;
 }
@@ -170,8 +172,9 @@ function SignalCard({ label, direction, score, note }: (typeof audienceSignals)[
 function AudienceSection({ id, n, title, category, copy }: { id: string; n: string; title: string; category: Category; copy: string }) {
   const selected = sources.filter((source) => source.category === category);
   return <section id={id} className="report-section">
+    <details className="evidence-disclosure"><summary>{title} <small>{selected.length} sources</small></summary>
     <SectionHead n={n} eyebrow={`${category} read`} title={title} copy={copy} />
-    <div className="source-grid">{selected.map((source) => <SourceCard key={source.id} source={source} />)}</div>
+    <div className="source-grid">{selected.map((source) => <SourceCard key={source.id} source={source} />)}</div></details>
   </section>;
 }
 
@@ -202,6 +205,18 @@ export default function Dashboard() {
   const playerSources = sources.filter((source) => source.category === "Players & Coaches");
   const fanQuotes = sources.filter((source) => source.category === "Fans" && source.quote);
 
+  useEffect(() => {
+    const revealAnchor = () => {
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (!target) return;
+      if (target.querySelector(":scope > details")) (target.querySelector(":scope > details") as HTMLDetailsElement).open = true;
+      for (let parent = target.parentElement; parent; parent = parent.parentElement) if (parent instanceof HTMLDetailsElement) parent.open = true;
+    };
+    revealAnchor();
+    window.addEventListener("hashchange", revealAnchor);
+    return () => window.removeEventListener("hashchange", revealAnchor);
+  }, []);
+
   async function share() {
     const payload = { title: `${edition.series}: ${edition.title}`, text: edition.subtitle, url: window.location.href };
     if (navigator.share) await navigator.share(payload);
@@ -222,7 +237,7 @@ export default function Dashboard() {
         <p className="edition-status">{edition.statusLabel}</p>
         <h1>{edition.title}</h1>
         <p className="subtitle">{edition.subtitle}</p>
-        <div className="hero-meta"><span>Event<br /><strong>{edition.eventDate}</strong></span><span>Reporting window<br /><strong>{edition.reportingWindow}</strong></span><span>Confidence<br /><strong>{edition.confidence}</strong></span></div>
+        <div className="hero-meta"><span>Event<br /><strong>{edition.eventDate}</strong></span><span>Coverage<br /><strong>September 28–29, 2026</strong></span><span>Evidence<br /><strong>{edition.sourceCount} source records · eight official interviews</strong></span></div>
         <p className="hero-thesis">{edition.thesis}</p>
         <p className="hero-note">Directional evidence sample · Photography: <a href="https://x.com/Suns/status/2104734231326814483" target="_blank" rel="noreferrer">Phoenix Suns</a></p>
       </div>
@@ -236,21 +251,31 @@ export default function Dashboard() {
 
     <section id="readout" className="report-section lead-section">
       <SectionHead n="01" eyebrow="Part 01 · Media Day review" title="Ownership readout" />
+      <p className="first-minute-label">The first minute · Three findings, one tension, three things to revisit</p>
+      <div className="ownership-findings">{ownershipBrief.findings.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.body}</p><div>{item.sourceIds.map(id => { const source = sources.find(entry => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></article>)}</div>
+      <article className="ownership-tension"><span>The tension</span><h3>{ownershipBrief.tension.title}</h3><p>{ownershipBrief.tension.body}</p><div>{ownershipBrief.tension.sourceIds.map(id => { const source = sources.find(entry => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></article>
+      <div className="ownership-next"><h3>Keep in view next</h3>{ownershipBrief.next.map(item => <article key={item.title}><h4>{item.title}</h4><p>{item.body}</p><div>{item.sourceIds.map(id => { const source = sources.find(entry => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></article>)}</div>
+      <details className="expanded-readout"><summary>Read the Media Day review</summary>
       <div className="readout"><div className="readout-copy">{(edition.readoutParagraphs ?? [edition.readout]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<div className="readout-sources">{edition.readoutSourceIds.map((id) => { const source = sources.find((entry) => entry.id === id); return source ? <SourceLink key={id} source={source} /> : null; })}</div></div><aside><span>Dominant signal</span><strong>{edition.overallDirection}</strong><p>{edition.dominantSignalNote}</p></aside></div>
+      </details>
     </section>
 
     <AlignmentSection />
 
     <section id="signal" className="report-section dark-section">
+      <details className="evidence-disclosure"><summary>Directional evidence by audience</summary>
       <SectionHead n="03" eyebrow="Directional index" title="Signal at a glance" copy="An editorial reading of the collected evidence." />
       <div className="index-row"><div className={`index-number${edition.editorialIndex === null ? " qualitative" : ""}`}><strong>{edition.editorialIndex ?? "Qualitative"}</strong>{edition.editorialIndex !== null && <span>/ 100</span>}</div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
       <div className="signal-grid">{audienceSignals.map((signal) => <SignalCard key={signal.label} {...signal} />)}</div>
+      </details>
     </section>
 
     <section id="map" className="report-section">
+      <details className="evidence-disclosure"><summary>Source mix behind the review</summary>
       <SectionHead n="04" eyebrow="Evidence mix" title="The conversation map" copy="The sources included in this edition, grouped by audience." />
       <div className="conversation-map">{distribution.map((item, index) => <article key={item.category}><div className="map-ring" style={{ "--size": `${76 + item.count * 10}px`, "--delay": `${index * .06}s` } as React.CSSProperties}><strong>{item.count}</strong></div><span>{item.category}</span></article>)}</div>
       <p className="method-note">The sample intentionally weights direct and established sources more heavily than raw volume.</p>
+      </details>
     </section>
 
     <section id="voices" className="report-section dark-section">
@@ -271,13 +296,17 @@ export default function Dashboard() {
     </section>
 
     <section id="narratives" className="report-section">
+      <details className="evidence-disclosure"><summary>Narrative detail and ownership context</summary>
       <SectionHead n="10" eyebrow="Narrative leaders" title={`${themes.length} ideas organizing the conversation`} />
       <div className="narrative-grid">{themes.map((theme, index) => <article key={theme.name}><header><span>{String(index + 1).padStart(2, "0")}</span><div><b>{theme.momentum}</b><small>{theme.strength} evidence</small></div></header><h3>{theme.name}</h3><p>{theme.evidence}</p><dl><div><dt>Advanced by</dt><dd>{theme.groups}</dd></div><div><dt>Ownership relevance</dt><dd>{theme.relevance}</dd></div></dl></article>)}</div>
+      </details>
     </section>
 
     <section className="report-section quote-board">
+      <details className="evidence-disclosure"><summary>Quote board · More verified language</summary>
       <SectionHead n="11" eyebrow="Verified language" title="Quote board" />
       <div className="quote-board-grid">{quoteSources.slice(0, 8).map((source) => <QuoteCard key={source.id} source={source} />)}</div>
+      </details>
     </section>
 
     <section id="watch" className="report-section dark-section">

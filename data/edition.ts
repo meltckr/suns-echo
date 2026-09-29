@@ -1,3 +1,4 @@
+import resonanceReviewData from "./resonance-review.json" with { type: "json" };
 import resonanceData from "./word-resonance.json" with { type: "json" };
 import resonanceLinks from "./word-resonance-links.json" with { type: "json" };
 
@@ -435,12 +436,12 @@ export const edition = {
   "series": "THE ECHO",
   "number": "002",
   "title": "In the Same Building",
-  "subtitle": "A review of Suns Media Day, followed by the words carrying through sampled media coverage and fan reaction.",
+  "subtitle": "Shared preparation, public expectations and the response to Suns Media Day.",
   "eventDate": "September 28, 2026",
   "reportingWindow": "September 28 event · review completed September 29 · word sample September 28–29",
   "generatedLabel": "Review edition · September 29, 2026 · America/Phoenix",
   "statusLabel": "Two-part review edition · release held for approval",
-  "thesis": "The Suns described a group making better use of the people around it. Mutual help, newcomer preparation and veteran attention give continuity a practical meaning. The wider coverage asks how that preparation will hold up alongside availability and organizational expectations.",
+  "thesis": "The clearest sign of continuity was one player helping another compete. Media Day made those relationships visible, while coverage of Bridges and ownership commitments brought a second set of expectations into view.",
   "sourceCount": 25,
   "includedCount": 25,
   "reviewedCount": 25,
@@ -448,7 +449,7 @@ export const edition = {
   "overallDirection": "Constructive basketball signals; mixed wider reception",
   "editorialIndex": null as number | null,
   "indexNote": "Qualitative assessment of 25 source records. Four provide preview or background context. Records describe coverage and attributed statements; they do not measure public approval.",
-  "dominantSignalNote": "The clearest overlap is shared preparation. External coverage attaches different expectations to development, resource commitment and organizational standards.",
+  "dominantSignalNote": "Players named the people helping them improve. Coverage also asked how basketball decisions fit the standards and commitments ownership described.",
   "readoutSourceIds": [
     "si-roundup",
     "morning-booker-maluach-cilley",
@@ -466,15 +467,82 @@ export const edition = {
     "morning-duffy-maluach"
   ],
   "readoutParagraphs": [
-    "Oso Ighodaro described giving Khaman Maluach pointers even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two centers competing for opportunity were also helping one another prepare. For me, that is the most revealing detail of the day: the group’s experience is becoming something players actively use.",
-    "The same pattern appeared elsewhere. Maluach explained that he approached Booker to learn how to help when defenses pressure Booker. Green described Nash’s feedback on his pace and reads. Kennard and Ighodaro each described their early work together. Peat spoke about advice from Bridges and time Brooks makes for him; Fleming credited film study and the Valley Suns. These are different routes through a common learning environment. The newcomer accounts give leadership’s continuity message a more concrete foundation.",
-    "Gregory supplied the scale: 12 of the 15 players who finished last season and every coach return. Booker described the value of that familiarity; Ott discussed sustained summer participation. My read is that returning people are helping new people find a working place in the group. Ownership can recognize that progress through the relationships players describe, then watch how those relationships function as camp becomes more demanding.",
-    "The later coverage also explains why the day carries several expectations. Cilley’s Booker–Maluach reporting deepened the development story. Rankin reported Booker’s basketball rationale for Bridges alongside Mat’s explanation of organizational standards. AP made resource commitment its lead. Duffy welcomed the long-term ownership commitment while questioning competitive judgment, and treated Maluach’s opportunity with conditional optimism. Those are identifiable editorial positions; they show the different questions this day placed in circulation.",
-    "Availability gives the preparation story an immediate test. Gregory said Williams’ surgery was successful and rehabilitation had begun, with several months needed before a reliable return-to-play assessment. A return date remains unknown. The younger centers’ accounts of mutual help matter more in that context. Their readiness will be evaluated through camp and games, while ownership’s commitments and standards remain part of the wider reception.",
-    "Taken together, Media Day supplied evidence of people working with the experience available around them. That is the ownership value in this edition. It gives Mat a set of concrete examples to recognize and revisit, plus a clear view of the public expectations surrounding the same group. The next evidence will come as the work encounters the season’s demands."
+    "Oso Ighodaro described giving Khaman Maluach pointers even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two centers competing for opportunity were also helping one another prepare. For me, that is the most revealing detail of September 28. Experience becomes useful to a group when players are willing to share it and seek it out.",
+    "Gregory said twelve of the fifteen players who finished last season and every coach return. The individual accounts explain what that familiarity can make possible. Maluach approached Booker for help responding to defensive pressure. Kennard and Ighodaro described their early work together. Fleming credited film study and his Valley Suns experience. These are reported examples of players using the people and resources around them. My read is that continuity is giving newcomers a more accessible place to learn.",
+    "The coverage gathered by September 29 also shows why ownership will be evaluated on several fronts. Cilley deepened the Booker–Maluach development story. Rankin reported Booker’s basketball rationale for Bridges alongside Mat’s condemnation of prior conduct and explanation of organizational standards. AP led with spending commitment. Duffy welcomed the ownership commitment while questioning competitive judgment. Those reports put preparation, decisions and public trust in the same conversation; enthusiasm about one leaves the other questions open.",
+    "Williams’ absence gives the basketball story an immediate test. Gregory described several months before a reliable return assessment; the return date remains unknown. Camp reporting can now revisit specific relationships and describe what the younger centers are learning. For Mat, that is a useful starting point: recognize the reciprocal help already described, follow how newcomers experience the organization, and watch whether subsequent actions support the commitments made publicly."
   ],
-  "readout": "The strongest alignment appears in concrete accounts of mutual help and preparation. Newcomers describe how they are joining the work; later coverage keeps development, resources and organizational standards in view.",
-  "bottomLine": "Continuity is acquiring a practical meaning: players describe whom they learn from, how they help one another and what the organization makes available. Those relationships give ownership useful evidence to follow. Camp and games will establish how well the preparation travels."
+  "readout": "Reciprocal help gives continuity a concrete meaning. Availability will test that preparation, while the Bridges decision and ownership assurances carry their own public expectations.",
+  "bottomLine": "Media Day gave ownership specific relationships to follow. The next useful evidence is how those relationships function during camp, and how the organization’s public commitments hold up in subsequent decisions."
+};
+
+export type OwnershipBriefItem = { title: string; body: string; sourceIds: string[] };
+export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: OwnershipBriefItem; next: OwnershipBriefItem[] } = {
+  "findings": [
+    {
+      "title": "Players are sharing the advantage of experience",
+      "body": "Ighodaro described helping Maluach during opposing pickup games. Maluach separately described seeking his observations. Their accounts give the alignment claim a concrete foundation.",
+      "sourceIds": [
+        "official-ighodaro-2026",
+        "official-maluach-2026"
+      ]
+    },
+    {
+      "title": "Newcomers can name how they are learning",
+      "body": "Kennard described work with Ighodaro. Peat identified advice from veterans; Fleming credited film study and the Valley Suns. Those accounts show how organizational resources reach individual players.",
+      "sourceIds": [
+        "official-kennard-2026",
+        "official-peat-2026",
+        "official-fleming-2026"
+      ]
+    },
+    {
+      "title": "Availability makes the preparation consequential",
+      "body": "Gregory described several months before a reliable Williams return assessment. The younger centers enter camp with public attention on their readiness and an unresolved return date.",
+      "sourceIds": [
+        "official-gregory-2026",
+        "morning-duffy-maluach"
+      ]
+    }
+  ],
+  "tension": {
+    "title": "Basketball confidence sits alongside a question of standards",
+    "body": "Rankin reported Booker’s basketball case for Bridges alongside Mat’s condemnation of prior conduct. Coverage of that decision keeps organizational judgment in view, even as the team describes constructive preparation.",
+    "sourceIds": [
+      "morning-rankin-bridges",
+      "bridges-clutchpoints",
+      "bridges-roundtable"
+    ]
+  },
+  "next": [
+    {
+      "title": "Camp accounts of the young centers",
+      "body": "Follow what Ighodaro and Maluach describe learning, and what current reporting establishes about their readiness.",
+      "sourceIds": [
+        "official-ighodaro-2026",
+        "official-maluach-2026",
+        "official-gregory-2026"
+      ]
+    },
+    {
+      "title": "The newcomer experience after formal work begins",
+      "body": "Look for specific follow-up accounts from Kennard, Peat and Fleming about communication, guidance and preparation.",
+      "sourceIds": [
+        "official-kennard-2026",
+        "official-peat-2026",
+        "official-fleming-2026"
+      ]
+    },
+    {
+      "title": "Actions following ownership’s public commitments",
+      "body": "Track attributed developments in the standards discussion and resource commitments. Completion of the proposed ownership acquisition remains unverified.",
+      "sourceIds": [
+        "morning-rankin-bridges",
+        "ap-resources",
+        "morning-duffy-ownership"
+      ]
+    }
+  ]
 };
 
 export type ResonanceAudience = "fans" | "media" | "both";
@@ -484,19 +552,23 @@ export type ResonancePhrase = {
   sentiment: number; volume: "high" | "medium" | "low"; evidence: string; source: string;
 };
 
+export const resonanceReview = resonanceReviewData;
+export type ResonanceTopic = (typeof resonanceReview.topics)[number];
+export type ResonanceSide = "fans" | "media";
+export type ResonanceReading = ResonanceTopic[ResonanceSide];
 export const wordResonance = resonanceData as ResonancePhrase[];
 export const resonanceThemes: ResonanceTheme[] = ["Roster moves", "Team identity", "Player development", "Ownership", "Season outlook", "Culture"];
 export const resonanceCopy = {
   title: "Word Resonance",
-  introduction: "Which words carried through the sampled reporting and fan comments? Explore the phrases, their direction and the source language behind each one.",
-  caveat: "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.",
-  sample: "The phrase dataset draws on five articles and 25 supplied comments across five Instagram, Facebook and Threads posts. Sentiment and volume are directional model judgments. The supplied comments form a fixed sample.",
-  filters: "Fans and Media include shared phrases. Shared scores blend fan and media candidates; they can conceal differences between those audiences.",
+  introduction: "The room described its preparation. The sampled response asks about development, roster balance and public trust. Compare twelve phrase groups and read the language behind each finding.",
+  caveat: resonanceReview.caveat,
+  sample: "Five articles and 25 verbatim supplied comments across five Instagram and Facebook posts. A separate paraphrase is excluded. This fixed sample uses AI-assisted editorial coding; the fan comments were supplied by Mel and have not been independently retrieved.",
+  filters: "Fans shows topics with supplied comments; Media shows topics mentioned in articles; Both requires evidence from each. Fan and media judgments stay separate. Article mentions include reported statements; only journalists’ own framing enters media sentiment.",
 };
 export const resonanceSourceLinks: Record<string, string> = resonanceLinks;
 export const reportParts = [
   { id: "readout", title: "Media Day review", description: "September 28, 2026 · 25 source records · eight official interviews" },
-  { id: "word-resonance", title: "Word Resonance", description: `${wordResonance.length} phrases · media coverage and supplied fan comments` },
+  { id: "word-resonance", title: "Word Resonance", description: `${resonanceReview.topics.length} phrase groups · separate fan and media readings` },
 ];
 
 export const alignment: {id:string;title:string;status:string;reading:string;evidence:{speaker:string;role:string;statement:string;kind:"Reported statement"|"Direct quote";sourceId:string}[];meaning:string;watch:string}[] = [
@@ -786,28 +858,18 @@ export const watchColumns = {
 export const implications = [
   {
     "n": "01",
-    "title": "Ownership has a more specific preparation story",
-    "body": "Shared work is easier to follow when principals describe what they actually did. Those accounts give camp reporting a useful starting point."
+    "title": "Reciprocal accounts make alignment credible",
+    "body": "Two players describing the same working relationship give ownership a stronger basis for judgment. Keep those named connections visible as the season supplies new evidence."
   },
   {
     "n": "02",
-    "title": "Alignment is strongest where accounts meet",
-    "body": "Ighodaro and Maluach describe reciprocal help. Kennard and Ighodaro describe one working relationship from both sides. Those connections support more precise conclusions than repeated vocabulary."
+    "title": "Access to experience is an organizational asset",
+    "body": "Peat’s veteran conversations and Fleming’s development account show how support reaches a player. Their descriptions give ownership a way to follow the experience newcomers actually have."
   },
   {
     "n": "03",
-    "title": "One event produces several public narratives",
-    "body": "Development, resources, organizational standards and player identity reached different audiences. Reading them together gives ownership a fuller picture of the day."
-  },
-  {
-    "n": "04",
-    "title": "Young-player opportunity carries immediate attention",
-    "body": "Maluach's preparation is already drawing coverage as the center situation develops. Continue judging progress through current accounts and demonstrated readiness."
-  },
-  {
-    "n": "05",
-    "title": "Newcomer accounts make the system easier to see",
-    "body": "Peat identifies veteran attention; Fleming identifies film study and the Valley Suns. Their accounts show how development resources reach individual players. Follow that experience as camp begins."
+    "title": "Public confidence has several foundations",
+    "body": "Preparation, spending commitment and organizational standards attract different questions. Track the evidence behind each separately; progress in one area cannot establish the others."
   }
 ];
 
@@ -815,7 +877,7 @@ export const methodology = {
   "searched": "Official Suns interview recordings and caption exports, original local reporting, AP wire coverage, nationally distributed digital reporting, completed specialist commentary, dated preview listings and one public Suns discussion. Morning discovery-only episode leads remain excluded.",
   "selection": "25 source records are included: 21 event records and four preview/background records. Eight are official player or leadership interviews. AP syndications count once; Yahoo-hosted originals retain their author. Separate articles can describe the same exchange and do not become independent confirmations of that event. Duffy’s two pieces remain one commentator’s perspective.",
   "sentiment": "Labels describe the framing of each record. Qualitative audience readings are editorial interpretations. No numeric approval score or representative fan percentage is estimated.",
-  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green means a positive score, red a negative score and gray zero. Bubble sizes show high, medium and low relative volume. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
+  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Volume counts distinct sampled comments for fans and distinct articles for media: one is low, two medium, three or more high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
   "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. One fan thread is indicative. Williams’ return date and completion of the proposed ownership acquisition remain unknown. The hero uses current official Media Day photographs with rendered camera movement."
 };
 
@@ -823,35 +885,32 @@ export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v3.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v4.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
-  "Mat, the most revealing detail of Media Day came from two players competing for opportunity.",
-  "Oso Ighodaro said he and Khaman Maluach give each other pointers, even on opposite pickup teams. Maluach separately described asking Oso what he sees during plays and practices. They are helping one another prepare.",
-  "That gives the day a useful center. The Suns are describing a group making better use of the people around it.",
-  "Maluach approached Booker to learn how to help when defenses pressure Booker. Green described learning from Nash. Kennard and Ighodaro both described their early work together. Peat spoke about veteran attention. Fleming credited film study and his Valley Suns experience.",
-  "My read is that continuity is gaining a practical meaning. Returning people are helping newer people find a working place in the group. The Alignment section keeps those connections visible, with names and evidence.",
-  "The wider coverage carried several expectations. Cilley deepened the Booker and Maluach story. Rankin reported Booker’s basketball rationale for Bridges alongside your explanation of organizational standards. AP emphasized resource commitment. Duffy welcomed the ownership commitment while questioning competitive judgment.",
-  "Availability brings an immediate test. Gregory said Williams’ surgery was successful and rehabilitation had begun. He described several months before a reliable return assessment. The return date remains unknown.",
-  "Part two follows the language reaching media and fans. The Word Resonance map draws on five sampled articles and twenty-five supplied social comments, with audience filters and source evidence behind every bubble. Positive and negative reactions appear together. Shared phrases carry a blended score.",
-  "Within that sample, excitement about the coming season appears alongside doubts about the roster and playoffs. Bridges coverage carries basketball explanations, while a supplied fan comment objects to his past conduct. These are directional readings of the collected language. Camp and games will give us a stronger basis for judging how the preparation is received.",
-  "For ownership, the value is a clearer picture of how the group uses experience, and how that work meets public expectations. Camp and games will establish how well the preparation travels. These relationships give us concrete examples to recognize and revisit.",
+  "Mat, Oso Ighodaro described helping Khaman Maluach even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two players competing for opportunity were helping each other prepare.",
+  "That gives continuity a practical meaning. Gregory said twelve of the fifteen players who finished last season and every coach return. Maluach sought Booker’s guidance. Kennard described his work with Ighodaro. Fleming credited film study and the Valley Suns. My read is that experience is becoming easier for newer players to use.",
+  "The coverage also carries a different expectation. Rankin reported Booker’s basketball rationale for Bridges alongside your condemnation of prior conduct and explanation of organizational standards. AP led with spending commitment. Those stories keep public trust and ownership decisions in view alongside basketball preparation.",
+  "Williams’ absence brings an immediate test. Gregory described several months before a reliable return assessment. The return date remains unknown. Camp will give us better evidence of the younger centers’ readiness.",
+  "The Word Resonance section compares five sampled articles with twenty-five supplied fan comments. Fans and media are coded separately. Reported player and leadership statements are distinguished from journalists’ judgments. Counts refer to the sampled comments and articles.",
+  "In that small fan sample, season excitement sits alongside roster and playoff doubts. Bridges coverage carries a basketball rationale; a supplied fan comment objects to his past conduct. Those responses ask different questions of the same team.",
+  "For ownership, I would follow the young centers’ progress, the experience newcomers describe, and the actions following public commitments. Media Day gave us named relationships and specific expectations to revisit. The next evidence comes as the work gets harder.",
   "Dominate."
 ]
 };
 
 export const heroMedia = {
   ready: true,
-  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-1920x1080-v2.mp4`,
-  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-1080x1920-v2.mp4`,
-  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-poster-v2.webp`,
-  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-portrait-poster-v2.webp`,
+  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-1920x1080-v3.mp4`,
+  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-1080x1920-v3.mp4`,
+  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-poster-v3.webp`,
+  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-portrait-poster-v3.webp`,
   alt: "Phoenix Suns players at September 28, 2026 Media Day. Official Phoenix Suns photographs, arranged with purple and orange depth and slow camera motion.",
 };
 
 export const cinematicDivider = {
-  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v2.mp4`,
-  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v2.mp4`,
-  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v2-poster.webp`,
-  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v2-poster.webp`,
+  landscape: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v3.mp4`,
+  portrait: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v3.mp4`,
+  poster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1920x1080-v3-poster.webp`,
+  portraitPoster: `${edition.basePath}/assets/media/media-day-2026-09-28-sting-1080x1920-v3-poster.webp`,
 };
