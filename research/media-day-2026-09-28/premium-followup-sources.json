@@ -1,0 +1,75 @@
+{
+  "retrievedLocalDate": "2026-09-30",
+  "scope": "Editorial follow-up only; not a resonance recode or change to original review counts",
+  "records": [
+    {
+      "id": "followup-olson-centers",
+      "source": "Khaman Maluach made \u2018big leap\u2019 in offseason Suns will need",
+      "outlet": "Kellan Olson / Arizona Sports",
+      "category": "Local Media",
+      "date": "Sept. 28 \u00b7 5:01 PM Arizona",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Role competition",
+        "Development"
+      ],
+      "confidence": "High",
+      "url": "https://arizonasports.com/nba/phoenix-suns/khaman-maluach-made-big-leap-in-offseason-suns-will-need",
+      "evidence": "Olson reports that Ighodaro did not feel entitled to start after 24 regular-season starts and four playoff starts. Maluach initiated workouts with Booker, learning ball placement, screens and responses to situations. Ott had not named a starter. These are Media Day accounts, not proof of readiness. The direct open failed on this finishing pass; the complete indexed article text was retrieved through exact-URL search.",
+      "samplePurpose": "September 30 editorial follow-up on September 28 Media Day; outside the original review and Word Resonance samples."
+    },
+    {
+      "id": "followup-voita-development",
+      "source": "Khaman Maluach was the name everyone kept mentioning at Media Day",
+      "outlet": "John Voita / Bright Side of the Sun",
+      "category": "Local Media",
+      "date": "Sept. 29 \u00b7 2:00 PM Arizona",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Peer help",
+        "Development staff"
+      ],
+      "confidence": "High",
+      "url": "https://www.brightsideofthesun.com/suns-news/110673/khaman-maluach-media-day-offseason-development-mark-williams-injury-leadership",
+      "evidence": "Voita attended September 28 Media Day. His September 29 article attributes praise for Maluach to Gregory, Kennard and Dunn, reports Ighodaro describing mutual pointers on opposing pickup teams, and attributes Maluach\u2019s physical progress to the strength/conditioning and development staff. These reports describe participants\u2019 assessments.",
+      "samplePurpose": "September 30 editorial follow-up; the same official interviews are shared evidence, not independent confirmations or new resonance units."
+    },
+    {
+      "id": "followup-bickley-staff",
+      "source": "Hungry, tight Phoenix Suns squad exert a newfound continuity and camaraderie in 2026",
+      "outlet": "Dan Bickley / Arizona Sports",
+      "category": "Local Media",
+      "date": "Sept. 28 \u00b7 updated 4:23 PM Arizona",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Returning staff",
+        "Summer preparation"
+      ],
+      "confidence": "High",
+      "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+      "evidence": "Bickley reports that Ott\u2019s assistants, seven video staff members and the entire G League staff return. The report also describes shared summer gatherings and gym work. His broader judgments about trust and future success are commentary, not established outcomes.",
+      "samplePurpose": "September 30 editorial follow-up to an article already used in Word Resonance as arizona_continuity. This ledger row adds staff detail, not a new scoring unit; the five-article denominator is unchanged."
+    },
+    {
+      "id": "followup-zimmerman-identity",
+      "source": "Suns media day takeaways: New identity questions arise entering 2026-27",
+      "outlet": "Kevin Zimmerman / Arizona Sports",
+      "category": "Local Media",
+      "date": "Sept. 29 \u00b7 7:36 AM Arizona",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Readiness",
+        "Shooting",
+        "Continuity"
+      ],
+      "confidence": "High",
+      "url": "https://arizonasports.com/nba/phoenix-suns/identity-questions-entering-2026-27",
+      "evidence": "Zimmerman\u2019s Media Day review quotes Ott cautioning that continuity is fragile. It raises unresolved shooting and offensive-fit questions and describes Kennard being encouraged to attempt more difficult shots. This is original reporting and analysis of September 28, published September 29; the questions are not findings from live camp play.",
+      "samplePurpose": "September 30 editorial follow-up; outside original review and Word Resonance article denominators."
+    }
+  ]
+}

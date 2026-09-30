@@ -1,0 +1,93 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "audioSha256": "75fd71418ffdd7d2f347d25332f284726910e7dce04eee2ac91bbb644417b7fa",
+  "text": " Matt Oso-Iguodaro described helping Kaman Malouak during pickup games, even when they were on opposite teams. Malouak said he'd ask Oso what he saw after plays. Oso also said the starting job still had to be earned. That combination stood out to me. They were competing for a role in helping each other get better. Twelve of the 15 players from the end of last season are back, and so is every coach. The value is in what those people pass along. Malouak reached out to Booker to learn where Booker wanted the ball and how to help when defenses crowded him. Fleming said film study in his time with the Valley Suns helped him recognize plays earlier. That matters now because Williams is out. The team needs these young players while they're still learning. Gregory said it'll take months before there's a reliable read on his return. Camp will show us more. What can the young players do in live play? Does the help continue as roles are decided? People will also keep judging the Bridges' decision against the standards you described. Dominate.",
+  "segments": [
+    {
+      "text": " Matt Oso-Iguodaro described helping Kaman Malouak during pickup games, even when they were on opposite teams.",
+      "start": 0.0,
+      "end": 7.1000000000000005
+    },
+    {
+      "text": " Malouak said he'd ask Oso what he saw after plays.",
+      "start": 7.46,
+      "end": 10.28
+    },
+    {
+      "text": " Oso also said the starting job still had to be earned.",
+      "start": 10.6,
+      "end": 13.22
+    },
+    {
+      "text": " That combination stood out to me.",
+      "start": 13.56,
+      "end": 14.88
+    },
+    {
+      "text": " They were competing for a role in helping each other get better.",
+      "start": 15.120000000000001,
+      "end": 17.12
+    },
+    {
+      "text": " Twelve of the 15 players from the end of last season are back, and so is every coach.",
+      "start": 17.72,
+      "end": 21.82
+    },
+    {
+      "text": " The value is in what those people pass along.",
+      "start": 22.26,
+      "end": 24.34
+    },
+    {
+      "text": " Malouak reached out to Booker to learn where Booker wanted the ball and how to help when defenses crowded him.",
+      "start": 24.8,
+      "end": 29.740000000000002
+    },
+    {
+      "text": " Fleming said film study in his time with the Valley Suns helped him recognize plays earlier.",
+      "start": 29.74,
+      "end": 33.98
+    },
+    {
+      "text": " That matters now because Williams is out.",
+      "start": 34.42,
+      "end": 36.3
+    },
+    {
+      "text": " The team needs these young players while they're still learning.",
+      "start": 36.6,
+      "end": 38.98
+    },
+    {
+      "text": " Gregory said it'll take months before there's a reliable read on his return.",
+      "start": 39.26,
+      "end": 42.76
+    },
+    {
+      "text": " Camp will show us more.",
+      "start": 43.32,
+      "end": 44.239999999999995
+    },
+    {
+      "text": " What can the young players do in live play?",
+      "start": 44.54,
+      "end": 46.18
+    },
+    {
+      "text": " Does the help continue as roles are decided?",
+      "start": 46.480000000000004,
+      "end": 48.36
+    },
+    {
+      "text": " People will also keep judging the Bridges' decision against the standards you described.",
+      "start": 48.879999999999995,
+      "end": 52.480000000000004
+    },
+    {
+      "text": " Dominate.",
+      "start": 53.04,
+      "end": 53.5
+    }
+  ]
+}

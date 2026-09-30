@@ -12,7 +12,7 @@ import re
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v10.mp3'
+AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v11.mp3'
 NAMES = ['Mat', 'Oso', 'Ighodaro', 'Khaman', 'Maluach', 'Booker', 'Kennard',
          'Fleming', 'Valley Suns', 'Peat', 'Williams', 'Gregory', 'Bridges']
 
@@ -33,7 +33,7 @@ def main():
     args = parser.parse_args()
     transcript = ROOT / 'content/audio-brief-transcript.txt'
     text = transcript.read_text()
-    if sha(transcript) != '4c3d2deee9ff25caef7aa2b7c5e0c26c80a19f14baf6add2433d46866e9a08eb':
+    if sha(transcript) != '0959d7cc184f5a146c21be67f3ffb66a1cb4338b85d5c6771c380f743188116e':
         raise SystemExit('Locked transcript changed')
     metadata_path = AUDIO.with_suffix('.metadata.json')
     metadata = json.loads(metadata_path.read_text())
@@ -64,8 +64,8 @@ def main():
            for item in rerenders):
         raise SystemExit('Sentence retry cap failed')
     proofdir = ROOT / 'research/media-day-2026-09-28'
-    whisper_target = proofdir / 'take10-arizona-whisper.json'
-    comparison_target = proofdir / 'TAKE10-ARIZONA-WHISPER-DIFF.json'
+    whisper_target = proofdir / 'take11-arizona-whisper.json'
+    comparison_target = proofdir / 'TAKE11-ARIZONA-WHISPER-DIFF.json'
     shutil.copyfile(args.whisper, whisper_target)
     shutil.copyfile(args.comparison, comparison_target)
     shutil.copyfile(args.comparison.with_suffix('.md'), comparison_target.with_suffix('.md'))

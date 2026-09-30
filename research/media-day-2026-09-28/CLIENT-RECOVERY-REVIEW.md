@@ -54,3 +54,15 @@ Fresh `review:check` passed: lint, all 18 tests, source/population/date/word-cou
 The stream/access recommendation is removed from the opening, audio and ownership section. The opening now connects the young players' accounts of help, with Peat's veteran advice replacing the access paragraph. One small qualified fan detail and all source data remain. Take 10 is the sole wired review take, ending in `Dominate!` with a brief beat; Take 9 and its exact text are preserved. See TAKE10-REVIEW.md for hashes, technical proof, the raw Whisper flags and the open human-listening gate.
 
 The house player moves directly after the compact hero identity/purpose, before the complete written opening. Duration is 1:00. The versioned v4 share card adds AVC to the approved photographic/title composition; review metadata describes player support and the dated first-practice update. Header/footer AVC remains intact. Review tests/build pass; release remains held. No new perceptual browser or iMessage rendering claim is made.
+
+## September 30 — researched plain-language revision
+
+Four original local follow-up articles add the starting-role context, Maluach’s initiative with Booker, returning staff and Ott’s caution about continuity. Their ledger rows remain separate from the original review and Word Resonance sample. The visible Sources header identifies 25 original records + four follow-up articles + six resonance supplements + one first-practice record, 36 total. No resonance inputs or scores changed.
+
+The opening now explains why shared experience matters while the young centers still have roles to earn. Maluach sought to help when Booker faces defensive pressure. Fleming’s experience is correctly described as his second season. Williams’ return timing remains unknown. The report is approximately 26% shorter across its main body, excluding headings and expanded source evidence. Each section has a distinct job, with methodology retained on Sources. The seven-section system, AVC branding, house player, real-photo hero and v4 share card remain.
+
+Take 11 replaces Take 10 only in the review wiring. Its 185-word public script matches the page opening. Duration is 0:54. Technical finishing passes; eight unprompted Whisper difference spans remain disclosed. A complete human listen is required for this new take. Production approval remains closed.
+
+Bickley’s continuity article was already one of the five resonance article units. Its follow-up ledger row exposes newly used staff details and adds no scoring unit; the other three articles are outside resonance scoring.
+
+Fresh `review:check` passes lint, all 18 tests, source/transcript/audio/media validation, TypeScript and static export. The standalone resonance validator confirms 15 topics, five article units and 118 verbatim fan comments. Review-path export also passes. `release:check` correctly stops at the new take’s human-listening/player evidence and Mel’s release approval; it does not authorize production.

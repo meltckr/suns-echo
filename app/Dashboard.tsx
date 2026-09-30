@@ -3,7 +3,7 @@
 import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import Script from "next/script";
 import WordResonance from "./WordResonance";
-import { alignment, audioBrief, campUpdate, campUpdateSources, edition, heroMedia, methodology, ownershipBrief, recoveryReport, resonanceFanLedger, resonanceReview, sources, ledgerSources, type Source } from "@/data/edition";
+import { alignment, audioBrief, campUpdate, campUpdateSources, researchFollowupSources, edition, heroMedia, methodology, ownershipBrief, recoveryReport, resonanceFanLedger, resonanceReview, sources, ledgerSources, type Source } from "@/data/edition";
 
 const basePath = edition.basePath;
 const toneClass = (value: string) => value.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-");
@@ -44,7 +44,6 @@ function AudioBrief() {
   return <section className="audio-brief" aria-label="Audio brief">
     {audioBrief.ready ? <>
       <Script type="module" src={`${basePath}/assets/mel-audio-player/mel-audio-player.js`} strategy="afterInteractive" />
-      <p className="audio-length">{audioBrief.durationLabel} audio</p>
       <div className="signal-audio">{createElement("mel-audio-player", {
         src: audioBrief.src,
         title: audioBrief.title,
@@ -160,7 +159,7 @@ function AlignmentEvidence() {
     <p className="alignment-reading">{item.meaning}</p>
     <details className="alignment-detail"><summary>Read what each person described</summary>
       <div className="alignment-evidence">{item.evidence.map(voice => {
-        const source = sources.find(record => record.id === voice.sourceId)!;
+        const source = ledgerSources.find(record => record.id === voice.sourceId)!;
         const time = source.evidence.match(/\([^)]*\d:\d[^)]*\)/)?.[0];
         return <article className="alignment-voice" key={voice.speaker}>
           <strong>{voice.speaker}</strong><small>{voice.role}</small>
@@ -240,21 +239,20 @@ export default function Dashboard() {
           <EvidenceTags sourceIds={paragraph.sourceIds} />
         </section>)}
       </article>
-      <CollapsibleSection id="readout" n="01" title="The quick read" copy="Players described useful help. Williams’ absence and the Bridges decision give ownership different questions to follow." defaultOpen>
+      <CollapsibleSection id="readout" n="01" title="The quick read" copy="Players described how they help each other. Williams’ absence gives the young centers work to do now. The Bridges decision raises questions about Mat’s public standards." defaultOpen>
         <div className="ownership-findings">{ownershipBrief.findings.map((finding, index) => <article key={finding.title}>
           <span>{String(index + 1).padStart(2, "0")}</span><h3>{finding.title}</h3><p>{finding.body}</p><EvidenceTags sourceIds={finding.sourceIds} />
         </article>)}</div>
         <article className="ownership-tension"><span>The tension</span><h3>{ownershipBrief.tension.title}</h3><p>{ownershipBrief.tension.body}</p><EvidenceTags sourceIds={ownershipBrief.tension.sourceIds} /></article>
       </CollapsibleSection>
-      <CollapsibleSection id="alignment" n="02" title="Where they agreed" copy="Players and leaders described the value of returning together and asking experienced teammates for help.">
+      <CollapsibleSection id="alignment" n="02" title="Where they agreed" copy="Named accounts of shared preparation, early connections and players seeking advice.">
         <AlignmentEvidence />
         <AttributedQuote source={sources.find(source => source.id === "booker-continuity")!} />
       </CollapsibleSection>
-      <CollapsibleSection id="development" n="03" title="How the help reached players" copy="Players could explain who helped them and what they learned.">
+      <CollapsibleSection id="development" n="03" title="How the help reached players" copy="Veteran conversations, quicker recognition and younger players passing help along.">
         <ReadingCards items={recoveryReport.development} />
-        <p className="recovery-note">The official interview passages are summaries, with timestamps in the source ledger.</p>
       </CollapsibleSection>
-      <CollapsibleSection id="coverage" n="04" title="What reporters focused on" copy="Player development, the Bridges decision and Mat’s promise to keep spending led different stories.">
+      <CollapsibleSection id="coverage" n="04" title="What reporters focused on" copy="Praise for development, questions about readiness, accountability and spending.">
         <ReadingCards items={recoveryReport.coverage} />
         <AttributedQuote source={sources.find(source => source.id === "ap-resources")!} />
         <AttributedQuote source={sources.find(source => source.id === "si-roundup")!} />
@@ -262,10 +260,10 @@ export default function Dashboard() {
       <CollapsibleSection id="fan-response" n="05" title="What fans responded to" copy="Maluach drew enthusiasm. Fans disagreed about the roster and the season ahead.">
         <FanReading />
       </CollapsibleSection>
-      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Players could name the help they received. Reporters kept asking about the Bridges decision.">
+      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="The practical value of a returning group is what people pass along.">
         <ReadingCards items={recoveryReport.ownership} />
       </CollapsibleSection>
-      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Watch for news on Williams, how the younger players are learning and what follows Mat’s Media Day promises.">
+      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Live play and decisions about roles will give the summer accounts their next test.">
         <article className="camp-update" aria-label="September 29 first-practice update">
           <span>{campUpdate.date}</span><p>{campUpdate.body}</p><EvidenceTags sourceIds={campUpdate.sourceIds} />
         </article>
@@ -274,7 +272,7 @@ export default function Dashboard() {
     </div>
     <div hidden={view !== "sources"}>
       <section id="ledger" className="report-section ledger-section">
-        <SectionHead eyebrow="Sources" title="Source ledger" copy={`${edition.sourceCount} Media Day review records + ${resonanceFanLedger.length} Word Resonance records + ${campUpdateSources.length} first-practice record · eight official interviews.`} />
+        <SectionHead eyebrow="Sources" title="Source ledger" copy={`${edition.sourceCount} original review records + ${researchFollowupSources.length} follow-up articles + ${resonanceFanLedger.length} Word Resonance records + ${campUpdateSources.length} first-practice record · eight official interviews.`} />
         <SourceLedger />
         <details className="methodology"><summary>How to read this report</summary><div className="method-grid">
           <article><span>Window</span><p>{edition.reportingWindow}</p></article>
@@ -282,6 +280,7 @@ export default function Dashboard() {
           <article><span>Search</span><p>{methodology.searched}</p></article>
           <article><span>Classification</span><p>{methodology.sentiment}</p></article>
           <article><span>Word Resonance</span><p>{methodology.resonance}</p></article>
+          <article><span>September 30 research</span><p>{methodology.researchFollowup}</p></article>
           <article><span>September 29 update</span><p>{methodology.campUpdate}</p></article>
           <article><span>Access limitations</span><p>{methodology.limitations}</p></article>
         </div></details>
