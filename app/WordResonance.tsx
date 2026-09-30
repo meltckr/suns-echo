@@ -56,7 +56,7 @@ export default function WordResonance() {
   }
 
   return <section id="word-resonance" className="report-section resonance-section" aria-labelledby="resonance-title">
-    <header className="section-head"><span>09 · Part 02 · Sampled response</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
+    <header className="section-head"><span>Sources · Fan and media language</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
     <p className="resonance-caveat">{resonanceCopy.caveat}</p>
     <div className="resonance-findings">{resonanceReview.findings.map(finding => <article key={finding.title}><h3>{finding.title}</h3><p>{finding.text}</p><div>{finding.topicIds.map(id => <button type="button" key={id} onClick={() => selectFinding(id)}>Explore {topics.find(topic => topic.id === id)?.phrase} ↗</button>)}</div></article>)}</div>
     <p className="resonance-sample">{resonanceCopy.sample}</p>

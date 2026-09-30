@@ -1,0 +1,36 @@
+# Echo 002 recovery review
+
+Base: approved Suns Echo main at `7ab0cb0`. The previous PR #1 is merged. This revision requires a new draft PR and fresh approval before production release.
+
+## What changed
+
+The exact locked note remains the opening. Seven expandable sections restore the full Media Day report: quick read, named Alignment, player development, coverage, fan response, ownership meaning and camp questions. Closed sections show their takeaway. The extra section menu and repeated “Media Day review” labels are removed. Optional audio follows the complete opening note. Source tags use shorter labels; the full outlet attribution remains in Sources. Only the active Edition/Sources tab is highlighted.
+
+The prose uses concrete names, actions and plain explanations. The opposing pickup anecdote appears only in the locked opening and its matching audio. The restored report uses Peat’s basketball advice, Fleming’s film and Valley Suns experience, Dunn’s learning and help, Booker–Maluach preparation and Ott’s account of summer participation. Coverage does not rank development against all other stories. Future ownership decisions are left open for evaluation.
+
+Fan examples are explicit saved evidence IDs. The roster example includes one positive and one negative comment. The full Word Resonance map, counts, coding and access limitations remain in Sources. Each ledger row now exposes its original evidence; official interview summaries include the saved timestamps. Original source records and resonance datasets are unchanged.
+
+## Preserved audio and script
+
+Approved Take 9 is unchanged. No new generation, provider, model, reference, pronunciation rules or mastering.
+
+- MP3: `public/audio/the-echo-suns-002-media-day-2026-09-29-v9.mp3`
+- Duration: 56.859458 seconds
+- MP3 SHA-256: `29767837e4bcf5f244c69d7a4b847c53257e09b7e881ff49ed3953d667dfa3d2`
+- Transcript SHA-256: `9928d7cea83e41626a15337f57db6497a44def4f7cf2a05d20bd196d8deaa6e7`
+- Existing Whisper spelling flags remain in the validation output. Mel’s prior listening approval applies to this unchanged file; this recovery does not claim new transcription or perfect pronunciation.
+
+## Verification
+
+- `npm run review:check`: lint, 18 resonance tests, source/transcript/audio/media/OG validation, TypeScript and static build pass.
+- Review-path build: `/suns-echo/review/media-day-2026-09-28`.
+- `git diff --check`: pass.
+- Browser: 390×844 and 1440×1000; no horizontal page overflow. Main reading text is 17px mobile and 18px desktop; a desktop report paragraph measures about 694px wide. Closed section summaries remain visible. Full AVC wordmarks are present in header/footer.
+- Browser: native section expand/collapse, Alignment named evidence, interview timestamps, Sources navigation and active-tab styling pass. Fans ledger filter shows all seven fan source rows within the 31-row ledger. Both resonance filter shows 11 of 15 groups; a selected Maluach group exposes separate fan and media evidence.
+- Browser: audio plays and time advances, pauses, and seeks to 56.8 seconds near the 56.859458-second ending. Only Take 9 is wired. Browser console has no error messages during the check.
+- Existing real-photo Blender hero, portrait cut, poster, OG and reduced-motion code are preserved and pass the repository media checks. This pass did not render new visuals or re-listen to approved audio.
+- `npm run release:check`: held solely at `edition.releaseAuthorized = false`, as intended for the revised edition. The review build passes separately.
+
+## Release boundary
+
+Draft PR and isolated review preview only. No merge or replacement of the approved production edition. Use the existing permitted review branch; do not broaden the GitHub Pages branch policy. Untracked duplicate files present at the start are untouched.

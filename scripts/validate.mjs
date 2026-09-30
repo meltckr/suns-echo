@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
-import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, resonanceReview, ledgerSources } from "../data/edition.ts";
+import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, resonanceReview, ledgerSources, recoveryReport, ownershipBrief } from "../data/edition.ts";
 
 import { validateResonanceReview } from "./validate-resonance-review.mjs";
 
@@ -49,7 +49,19 @@ check(audioBrief.paragraphs.join("\n\n") === transcript.trim() && publicTranscri
 check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominate."), "Locked paragraph structure/close changed");
 for (const item of edition.lockedCopy) check(item.sourceIds.every(id => sources.some(source => source.id === id)), "Locked paragraph source tag missing");
 check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Sources tab must retain resonance and methodology");
-check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)') && !dashboard.includes('ownershipBrief.findings'), "Main page must use only locked copy");
+check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)'), "Recovery must preserve Mel's locked opening");
+check(dashboard.includes('ownershipBrief.findings') && dashboard.includes('<AlignmentEvidence />') && dashboard.includes('<FanReading />'), "Full ownership report missing");
+for (const id of ["readout", "alignment", "development", "coverage", "fan-response", "ownership", "camp"]) check(dashboard.includes(`id="${id}"`), `Report section missing: ${id}`);
+for (const item of [...ownershipBrief.findings, ownershipBrief.tension, ...ownershipBrief.next, ...recoveryReport.development, ...recoveryReport.coverage, ...recoveryReport.ownership, ...recoveryReport.camp]) {
+  check(item.sourceIds.length > 0 && item.sourceIds.every(id => sources.some(source => source.id === id)), `Recovery claim has missing sources: ${item.title}`);
+  check(!/oppos(?:ite|ing) (?:pickup )?teams|pickup games/.test(item.body), `Pickup anecdote repeated outside the opening: ${item.title}`);
+  check(!/keep in view|worth revisiting|directional evidence sample|reciprocal accounts|separate frames/i.test(item.body), `Opaque or rejected language: ${item.title}`);
+}
+for (const item of recoveryReport.fans) {
+  const topic = resonanceReview.topics.find(topic => topic.id === item.topicId);
+  check(topic && item.evidenceIds.length > 0 && item.evidenceIds.every(id => topic.fans.evidence.some(evidence => evidence.id === id)), `Fan finding has missing captured evidence: ${item.title}`);
+}
+check(dashboard.includes("source.evidence") && dashboard.includes("ledger-evidence"), "Source ledger must expose the original evidence and interview timestamps");
 check(!/v[1-8](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v9.mp3"), "Retired take or wrong Arizona audio wired into page");
 check(audioBrief.title === edition.title && dashboard.includes('eyebrow: "Audio"'), "Audio title/label differs from locked title");
 for (const source of sources) {

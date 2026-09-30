@@ -363,7 +363,7 @@ export const sources: Source[] = [
     ],
     "confidence": "High",
     "url": "https://www.youtube.com/watch?v=BmpZfQPWw_s",
-    "evidence": "Peat described specific driving advice from Bridges and off-court conversations with Brooks (6:06–6:36). He also described younger teammates staying after workouts to talk (4:57–5:12). Attributed paraphrase; automated captions."
+    "evidence": "Peat described specific advice from Bridges on driving to the basket and handling contact and off-court conversations with Brooks (6:06–6:36). He also described younger teammates staying after workouts to talk (4:57–5:12). Attributed paraphrase; automated captions."
   },
   {
     "id": "morning-booker-maluach-cilley",
@@ -432,11 +432,11 @@ export const sources: Source[] = [
 export const edition = {
   "basePath": process.env.NEXT_PUBLIC_ECHO_BASE_PATH ?? "/suns-echo",
   "editorialFinal": true,
-  "releaseAuthorized": true,
+  "releaseAuthorized": false,
   "series": "THE ECHO",
   "number": "002",
   "title": "In the Same Building",
-  "subtitle": "Shared preparation, public expectations and the response to Suns Media Day.",
+  "subtitle": "What the Suns said, what people heard and what camp needs to answer.",
   "eventDate": "September 28, 2026",
   "reportingWindow": "September 28 event · review completed September 29 · word sample September 28–29",
   "generatedLabel": "Review edition · September 29, 2026 · America/Phoenix",
@@ -508,38 +508,31 @@ export const edition = {
     "morning-duffy-maluach"
   ],
   "readoutParagraphs": [
-    "Oso Ighodaro described giving Khaman Maluach pointers even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two centers competing for opportunity were also helping one another prepare. For me, that is the most revealing detail of September 28. Experience becomes useful to a group when players are willing to share it and seek it out.",
-    "Gregory said twelve of the fifteen players who finished last season and every coach return. The individual accounts explain what that familiarity can make possible. Maluach approached Booker for help responding to defensive pressure. Kennard and Ighodaro described their early work together. Fleming credited film study and his Valley Suns experience. These are reported examples of players using the people and resources around them. My read is that continuity is giving newcomers a more accessible place to learn.",
-    "The coverage gathered by September 29 also shows why ownership will be evaluated on several fronts. Cilley deepened the Booker–Maluach development story. Rankin reported Booker’s basketball rationale for Bridges alongside Mat’s condemnation of prior conduct and explanation of organizational standards. AP led with spending commitment. Duffy welcomed the ownership commitment while questioning competitive judgment. Those reports put preparation, decisions and public trust in the same conversation; enthusiasm about one leaves the other questions open.",
-    "Williams’ absence gives the basketball story an immediate test. Gregory described several months before a reliable return assessment; the return date remains unknown. Camp reporting can now revisit specific relationships and describe what the younger centers are learning. For Mat, that is a useful starting point: recognize the reciprocal help already described, follow how newcomers experience the organization, and watch whether subsequent actions support the commitments made publicly."
+    "Peat described Bridges’ advice on driving to the basket and handling contact. He also described conversations with Brooks. Fleming credited film study and the Valley Suns with helping him recognize the game earlier. These players could name the help they received. That makes the development story more useful than a general promise that everyone is improving.",
+    "Maluach gave another example. He went to Booker for help handling defensive pressure. Ott’s account of summer gym participation adds the coach’s view. Together, these accounts describe players using the summer to prepare, with experienced teammates available to help.",
+    "The wider coverage asked different questions. Hayden Cilley reported on Booker’s work with Maluach. Duane Rankin examined the Bridges decision and the standards Mat described. David Brandt’s AP report emphasized spending commitment. Luke Duffy welcomed that commitment while questioning basketball judgment. Each tells ownership something different about how the day was heard."
   ],
-  "readout": "Reciprocal help gives continuity a concrete meaning. Availability will test that preparation, while the Bridges decision and ownership assurances carry their own public expectations.",
-  "bottomLine": "Media Day gave ownership specific relationships to follow. The next useful evidence is how those relationships function during camp, and how the organization’s public commitments hold up in subsequent decisions."
+  "readout": "The players described how they are helping each other. Camp will show how that preparation holds up. Fans also gave ownership a clear access problem to fix.",
+  "bottomLine": "The strongest story was the help players could name. Camp now gives those accounts a test. The clearest ownership action is simpler: make the next Media Day easy for fans to watch."
+
 };
 
 export type OwnershipBriefItem = { title: string; body: string; sourceIds: string[] };
 export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: OwnershipBriefItem; next: OwnershipBriefItem[] } = {
   "findings": [
     {
-      "title": "Players are sharing the advantage of experience",
-      "body": "Ighodaro described helping Maluach during opposing pickup games. Maluach separately described seeking his observations. Their accounts give the alignment claim a concrete foundation.",
-      "sourceIds": [
-        "official-ighodaro-2026",
-        "official-maluach-2026"
-      ]
+      "title": "Players can name who helps them",
+      "body": "Peat described Bridges’ advice on driving to the basket and handling contact. He also described conversations with Brooks. Fleming credited film study and the Valley Suns. The help is specific enough to follow as the season begins.",
+      "sourceIds": ["official-peat-2026", "official-fleming-2026"]
     },
     {
-      "title": "Newcomers can name how they are learning",
-      "body": "Kennard described work with Ighodaro. Peat identified advice from veterans; Fleming credited film study and the Valley Suns. Those accounts show how organizational resources reach individual players.",
-      "sourceIds": [
-        "official-kennard-2026",
-        "official-peat-2026",
-        "official-fleming-2026"
-      ]
+      "title": "The summer work had a purpose",
+      "body": "Maluach sought Booker’s help handling defensive pressure. Ott described sustained summer gym participation. Players and coach gave examples of how the group used its time together.",
+      "sourceIds": ["official-maluach-2026", "si-roundup"]
     },
     {
-      "title": "Availability makes the preparation consequential",
-      "body": "Gregory described several months before a reliable Williams return assessment. The younger centers enter camp with public attention on their readiness and an unresolved return date.",
+      "title": "Williams’ absence puts the young centers in focus",
+      "body": "Gregory said it will take several months to assess when Williams can return. The younger centers enter camp with more attention on their readiness. Williams’ return date is still unknown.",
       "sourceIds": [
         "official-gregory-2026",
         "morning-duffy-maluach"
@@ -547,8 +540,8 @@ export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: Ownershi
     }
   ],
   "tension": {
-    "title": "Basketball confidence sits alongside a question of standards",
-    "body": "Rankin reported Booker’s basketball case for Bridges alongside Mat’s condemnation of prior conduct. Coverage of that decision keeps organizational judgment in view, even as the team describes constructive preparation.",
+    "title": "The Bridges decision still carries questions",
+    "body": "Rankin reported Booker’s basketball case for Bridges alongside Mat’s condemnation of prior conduct. The decision will continue to draw questions about how the organization applies its standards.",
     "sourceIds": [
       "morning-rankin-bridges",
       "bridges-clutchpoints",
@@ -557,7 +550,7 @@ export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: Ownershi
   },
   "next": [
     {
-      "title": "Camp accounts of the young centers",
+      "title": "How the young centers respond",
       "body": "Follow what Ighodaro and Maluach describe learning, and what current reporting establishes about their readiness.",
       "sourceIds": [
         "official-ighodaro-2026",
@@ -566,7 +559,7 @@ export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: Ownershi
       ]
     },
     {
-      "title": "The newcomer experience after formal work begins",
+      "title": "How newcomers settle into camp",
       "body": "Look for specific follow-up accounts from Kennard, Peat and Fleming about communication, guidance and preparation.",
       "sourceIds": [
         "official-kennard-2026",
@@ -575,8 +568,8 @@ export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: Ownershi
       ]
     },
     {
-      "title": "Actions following ownership’s public commitments",
-      "body": "Track attributed developments in the standards discussion and resource commitments.",
+      "title": "What follows the public commitments",
+      "body": "Follow what happens after Mat’s statements about standards and spending.",
       "sourceIds": [
         "morning-rankin-bridges",
         "ap-resources",
@@ -601,7 +594,7 @@ export const wordResonance = resonanceData as ResonancePhrase[];
 export const resonanceThemes: ResonanceTheme[] = ["Roster moves", "Team identity", "Player development", "Ownership", "Season outlook", "Culture"];
 export const resonanceCopy = {
   title: "Word Resonance",
-  introduction: "The room described its preparation. The sampled response asks about development, roster balance and public trust. Compare the phrase groups and read the language behind each finding.",
+  introduction: "Compare what fans said with what the articles emphasized. Select a phrase to read the exact language and its source.",
   caveat: resonanceReview.caveat,
   sample: `${resonanceReview.denominators.mediaArticles} articles and ${resonanceReview.denominators.verbatimFanComments} captured comment texts from five supplied social posts and two indexed r/suns threads. ${resonanceReview.denominators.codedFanComments} comments enter topic scores; ${resonanceReview.denominators.uncodedFanComments} have explicit exclusions. AI-assisted editorial coding. Indexed text lacks platform comment IDs, authors and exact timestamps; a captured comment does not establish a unique respondent.`,
   filters: "Fans shows topics with captured comments; Media shows topics mentioned in articles; Both requires evidence from each. Fan and media judgments stay separate. Article mentions include reported statements; only journalists’ own framing enters media sentiment.",
@@ -630,140 +623,77 @@ export const reportParts = [
 
 export const alignment: {id:string;title:string;status:string;reading:string;evidence:{speaker:string;role:string;statement:string;kind:"Reported statement"|"Direct quote";sourceId:string}[];meaning:string;watch:string}[] = [
   {
-    "id": "shared-work",
-    "title": "Continuity is being expressed through work",
-    "status": "Three named principals",
-    "reading": "Gregory, Ott and Booker approached the subject at different levels and described compatible priorities.",
-    "evidence": [
-      {
-        "speaker": "Brian Gregory",
-        "role": "General manager",
-        "statement": "Twelve of the 15 season-ending players and every coach return; summer development included individual and collective work.",
-        "sourceId": "official-gregory-2026",
-        "kind": "Reported statement"
-      },
-      {
-        "speaker": "Jordan Ott",
-        "role": "Head coach",
-        "statement": "Summer gym participation was unusually sustained in his NBA experience.",
-        "sourceId": "si-roundup",
-        "kind": "Reported statement"
-      },
-      {
-        "speaker": "Devin Booker",
-        "role": "Guard",
-        "statement": "Familiar teammates and the returning coach gave the group a shared starting point.",
-        "sourceId": "booker-continuity",
-        "kind": "Reported statement"
-      }
+    id: "shared-work", title: "Familiarity gave the group a head start", status: "Gregory · Ott · Booker",
+    reading: "The general manager, coach and established guard described a group returning to work it already knew.",
+    evidence: [
+      {speaker:"Brian Gregory",role:"General manager",statement:"Twelve of the 15 players who finished last season and every coach return.",kind:"Reported statement",sourceId:"official-gregory-2026"},
+      {speaker:"Jordan Ott",role:"Head coach",statement:"Summer gym participation was unusually sustained in his NBA experience.",kind:"Reported statement",sourceId:"si-roundup"},
+      {speaker:"Devin Booker",role:"Guard",statement:"Familiar teammates and the returning coach gave the group a shared starting point.",kind:"Reported statement",sourceId:"booker-continuity"}
     ],
-    "meaning": "The accounts make the continuity message easier to evaluate. Ownership has examples of preparation to follow as the group moves into camp.",
-    "watch": "Whether the preparation described becomes visible readiness once team activities begin."
+    meaning: "They agreed about the advantage of returning together. The coach also described players making use of that time.",
+    watch: "Camp will show how quickly the group can build on the work it describes."
   },
   {
-    "id": "mutual-help",
-    "title": "Competition includes help for the other player",
-    "status": "Two reciprocal player accounts",
-    "reading": "Ighodaro and Maluach each described the exchange from his own side.",
-    "evidence": [
-      {
-        "speaker": "Oso Ighodaro",
-        "role": "Center",
-        "statement": "He and Maluach exchange pointers even when they are on opposing pickup teams.",
-        "kind": "Reported statement",
-        "sourceId": "official-ighodaro-2026"
-      },
-      {
-        "speaker": "Khaman Maluach",
-        "role": "Center",
-        "statement": "He asks Ighodaro what he sees during plays and practices and uses his guidance.",
-        "kind": "Reported statement",
-        "sourceId": "official-maluach-2026"
-      }
+    id:"newcomer-work", title:"Kennard and Ighodaro described the same connection", status:"Kennard · Ighodaro",
+    reading:"Both players described early work together. Each could explain how the relationship began.",
+    evidence:[
+      {speaker:"Luke Kennard",role:"Guard",statement:"He spent about a month working with teammates and developing a playing connection with Ighodaro.",kind:"Reported statement",sourceId:"official-kennard-2026"},
+      {speaker:"Oso Ighodaro",role:"Center",statement:"Their two-man work felt natural on the first live day and continued during the month.",kind:"Reported statement",sourceId:"official-ighodaro-2026"}
     ],
-    "meaning": "The two accounts support a specific shared practice. Ownership has a concrete example of players helping one another while competing for opportunity.",
-    "watch": "How their communication and preparation develop during camp, especially while Williams is absent."
+    meaning:"A returning player and a newcomer gave matching accounts of their preparation. That gives the continuity story another concrete example.",
+    watch:"Follow what Kennard says about communication and preparation once formal team work begins."
   },
   {
-    "id": "newcomer-work",
-    "title": "Newcomers are joining work already underway",
-    "status": "Two accounts of one relationship",
-    "reading": "Kennard and Ighodaro both described their first month of work together.",
-    "evidence": [
-      {
-        "speaker": "Luke Kennard",
-        "role": "Guard",
-        "statement": "He has spent about a month working with teammates and developing a playing connection with Ighodaro.",
-        "kind": "Reported statement",
-        "sourceId": "official-kennard-2026"
-      },
-      {
-        "speaker": "Oso Ighodaro",
-        "role": "Center",
-        "statement": "Their two-man work felt natural on the first live day and continued during the month.",
-        "kind": "Reported statement",
-        "sourceId": "official-ighodaro-2026"
-      }
+    id:"development",title:"Players went looking for experienced help",status:"Green · Booker · Maluach",
+    reading:"Green sought Nash’s feedback. Maluach approached Booker. These are separate examples of players asking for help.",
+    evidence:[
+      {speaker:"Jalen Green",role:"Guard",statement:"Nash watched and critiqued workouts to help his pace and reading of the game.",kind:"Reported statement",sourceId:"green-nash"},
+      {speaker:"Devin Booker",role:"Guard",statement:"Maluach reached out and the two worked together during the offseason.",kind:"Reported statement",sourceId:"maluach-development"},
+      {speaker:"Khaman Maluach",role:"Center",statement:"He sought Booker’s guidance on responding to defensive pressure.",kind:"Reported statement",sourceId:"official-maluach-2026"}
     ],
-    "meaning": "Continuity can help a newcomer enter an existing working environment. The players describe the early connection; its performance effect remains to be established.",
-    "watch": "Whether newcomers continue describing a clear place in the group as preparation becomes formal team work."
+    meaning:"The shared idea is initiative. The players described seeking feedback they could use in their own games.",
+    watch:"Look for follow-up accounts of what they learned and where it appears during camp."
   },
   {
-    "id": "development",
-    "title": "Players are taking initiative to learn",
-    "status": "Three named principals · two relationships",
-    "reading": "Green's work with Nash and Maluach's outreach to Booker describe two separate relationships around improvement.",
-    "evidence": [
-      {
-        "speaker": "Jalen Green",
-        "role": "Guard",
-        "statement": "Nash observed and critiqued workouts to help his pace and reading of the game.",
-        "sourceId": "green-nash",
-        "kind": "Reported statement"
-      },
-      {
-        "speaker": "Devin Booker",
-        "role": "Guard",
-        "statement": "Maluach reached out and the two worked together during the offseason.",
-        "sourceId": "maluach-development",
-        "kind": "Reported statement"
-      },
-      {
-        "speaker": "Khaman Maluach",
-        "role": "Center",
-        "statement": "He sought Booker’s guidance on responding to defensive pressure and delivering the ball where Booker needs it.",
-        "sourceId": "official-maluach-2026",
-        "kind": "Reported statement"
-      }
+    id:"resources",title:"Mat and Ott connected support with preparation",status:"Mat · Ott",
+    reading:"Mat described his commitment to spending. Ott described the resources available for the summer’s work.",
+    evidence:[
+      {speaker:"Mat Ishbia",role:"Owner",statement:"Mortgage-company performance would have no effect on basketball spending or fan experience.",kind:"Reported statement",sourceId:"ap-resources"},
+      {speaker:"Jordan Ott",role:"Head coach",statement:"Ownership resources and staff time supported the summer’s preparation.",kind:"Reported statement",sourceId:"si-roundup"}
     ],
-    "meaning": "There is reported initiative at different career stages. Green sought experienced feedback; Maluach sought a working relationship with the team's established guard.",
-    "watch": "How those relationships develop, with progress assessed through current reporting and demonstrated work."
-  },
-  {
-    "id": "resources",
-    "title": "Ownership support connects with the coach's account",
-    "status": "Two named principals",
-    "reading": "Mat described resource commitment. Ott credited the support available for preparation.",
-    "evidence": [
-      {
-        "speaker": "Mat Ishbia",
-        "role": "Owner",
-        "statement": "Mortgage-company performance would have no effect on basketball spending or fan experience.",
-        "sourceId": "ap-resources",
-        "kind": "Reported statement"
-      },
-      {
-        "speaker": "Jordan Ott",
-        "role": "Head coach",
-        "statement": "Ownership resources and staff time supported the summer's preparation.",
-        "sourceId": "si-roundup",
-        "kind": "Reported statement"
-      }
-    ],
-    "meaning": "The owner and coach described the support relationship consistently. The ownership implication is the connection between resources supplied and opportunities the group uses.",
-    "watch": "Continue separating stated financial commitment from verified transactions and operating results."
+    meaning:"The coach gave an account of how support reached the team. That connects ownership’s commitment to something players and staff could use.",
+    watch:"Future reporting can show how those resources continue to support preparation."
   }
 ];
+
+export const recoveryReport = {
+  development: [
+    {title:"Peat could explain the advice",body:"Peat described Bridges’ advice on driving to the basket and handling contact. He also described conversations with Brooks. He also described younger teammates staying after workouts to talk. His account shows where a newcomer finds help, including time outside the formal workout.",sourceIds:["official-peat-2026"]},
+    {title:"Fleming could explain the progress",body:"Fleming credited film study with recognizing plays earlier and communicating sooner. He said his time with the Valley Suns helped the game slow down for him. That gives ownership a player’s account of how its development resources are being used.",sourceIds:["official-fleming-2026"]},
+    {title:"Dunn described both sides of learning",body:"Dunn sought defensive advice from experienced teammates and helped younger players himself. The same player can receive guidance and pass it along. Camp offers a chance to follow how that exchange continues.",sourceIds:["official-dunn-2026"]}
+  ],
+  coverage: [
+    {title:"Maluach’s development drew attention",body:"Hayden Cilley’s on-site report added detail to Booker’s work with Maluach. Luke Duffy treated the young center as a Media Day winner while questioning his readiness. The attention is encouraging; the question for camp is what Maluach can do with that preparation.",sourceIds:["morning-booker-maluach-cilley","morning-duffy-maluach"]},
+    {title:"The Bridges decision brought the standards question",body:"Duane Rankin reported Booker’s basketball rationale alongside Mat’s condemnation of Bridges’ prior conduct. Bailey Bassett and Kevin Hicks covered the same exchange with different emphasis. Those accounts show how the explanation was received; they describe one exchange.",sourceIds:["morning-rankin-bridges","bridges-clutchpoints","bridges-roundtable"]},
+    {title:"Spending commitment reached a wider audience",body:"David Brandt’s AP dispatch centered on Mat’s assurance about basketball spending and fan experience. Duffy welcomed the commitment while questioning roster-building judgment. Ownership’s willingness to invest and confidence in the decisions drew different responses.",sourceIds:["ap-resources","morning-duffy-ownership"]},
+    {title:"Booker reached a different audience through his shoes",body:"Zach Harris reported the Futura collaboration Booker wore at Media Day. It is a reminder that people encounter the Suns through player identity as well as basketball coverage. That report supplied no confirmed release date.",sourceIds:["booker-culture"]}
+  ],
+  fans: [
+    {title:"Maluach drew enthusiasm",body:"The captured comments about Maluach leaned positive. Fans responded to the development story and asked for an opportunity to see it on the court. The articles carried player praise; that praise is attributed to the players who said it.",topicId:"maluach",evidenceIds:["indexed-1wsm1rd-0fc5fff30f0bb79d"]},
+    {title:"Finding the coverage drew frustration",body:"People asked where to watch, complained about the missing YouTube stream and helped each other find interviews. Some appreciated the recaps. The practical problem is clear: fans who wanted to follow the day had trouble finding the coverage.",topicId:"broadcast",evidenceIds:["indexed-1wsj8c9-9adb80b2fcdcd359"]},
+    {title:"Roster questions remained mixed",body:"Some comments welcomed the additions. Others questioned size, health and the season ahead. The captured language shows interest alongside doubt, which explains why excitement about an individual player can coexist with concern about the team.",topicId:"roster",evidenceIds:["indexed-1wsj8c9-bd60a35ee8c8316a","fan_seed_005-comment-2"]}
+  ],
+  ownership: [
+    {title:"Give fans a clear way in",body:"My one call remains the same: next Media Day, one official stream, pinned everywhere. The organization already has stories people want to hear. Access determines whether those people can hear them.",sourceIds:["fan-media-day"]},
+    {title:"Keep the learning stories specific",body:"Peat’s advice, Fleming’s film work and Kennard’s first month with Ighodaro make the support around players visible. Follow those stories through camp. Specific accounts help ownership see whether the environment is serving the players.",sourceIds:["official-peat-2026","official-fleming-2026","official-kennard-2026"]},
+    {title:"Expect the standards discussion to continue",body:"The Bridges coverage connects a personnel decision to Mat’s public explanation of accountability. How the organization handles future decisions will determine whether that explanation holds up. Basketball optimism and questions about judgment can both be part of the response.",sourceIds:["morning-rankin-bridges","bridges-clutchpoints"]}
+  ],
+  camp: [
+    {title:"When can Williams be assessed?",body:"Gregory said several months are needed before a reliable return assessment. The return date remains unknown. An attributed update would change the starting conditions described at Media Day.",sourceIds:["official-gregory-2026","nba-williams"]},
+    {title:"What are the young centers learning?",body:"Follow specific camp accounts of Maluach and Ighodaro’s preparation, communication and readiness. Their interviews gave us a starting point; formal team work will add the next evidence.",sourceIds:["official-maluach-2026","official-ighodaro-2026"]},
+    {title:"Does the newcomer experience hold up?",body:"Revisit Kennard, Peat and Fleming after formal practices begin. What help are they getting? What can they explain more clearly now? Their answers will make the continuity story easier to judge.",sourceIds:["official-kennard-2026","official-peat-2026","official-fleming-2026"]}
+  ]
+};
 
 export const sectionCopy = {
   "voices": {
