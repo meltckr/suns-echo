@@ -8,7 +8,7 @@ export type Source = {
  id:string; source:string; outlet:string; category:Category; date:string; sentiment:Sentiment;
  themes:string[]; confidence:"High"|"Medium"; url:string; evidence:string;
  phase:"Event"|"Preview"|"Background"; quote?:string; quoteType?:"Direct quote";
- speaker?:string; speakerRole?:string; quoteContext?:string;
+ speaker?:string; speakerRole?:string; quoteContext?:string; samplePurpose?:string;
 };
 
 export const sources: Source[] = [
@@ -560,12 +560,28 @@ export const wordResonance = resonanceData as ResonancePhrase[];
 export const resonanceThemes: ResonanceTheme[] = ["Roster moves", "Team identity", "Player development", "Ownership", "Season outlook", "Culture"];
 export const resonanceCopy = {
   title: "Word Resonance",
-  introduction: "The room described its preparation. The sampled response asks about development, roster balance and public trust. Compare twelve phrase groups and read the language behind each finding.",
+  introduction: "The room described its preparation. The sampled response asks about development, roster balance and public trust. Compare the phrase groups and read the language behind each finding.",
   caveat: resonanceReview.caveat,
-  sample: "Five articles and 25 verbatim supplied comments across five Instagram and Facebook posts. A separate paraphrase is excluded. This fixed sample uses AI-assisted editorial coding; the fan comments were supplied by Mel and have not been independently retrieved.",
-  filters: "Fans shows topics with supplied comments; Media shows topics mentioned in articles; Both requires evidence from each. Fan and media judgments stay separate. Article mentions include reported statements; only journalists’ own framing enters media sentiment.",
+  sample: `${resonanceReview.denominators.mediaArticles} articles and ${resonanceReview.denominators.verbatimFanComments} captured comment texts from five supplied social posts and two indexed r/suns threads. ${resonanceReview.denominators.codedFanComments} comments enter topic scores; ${resonanceReview.denominators.uncodedFanComments} have explicit exclusions. AI-assisted editorial coding. Indexed text lacks platform comment IDs, authors and exact timestamps; a captured comment does not establish a unique respondent.`,
+  filters: "Fans shows topics with captured comments; Media shows topics mentioned in articles; Both requires evidence from each. Fan and media judgments stay separate. Article mentions include reported statements; only journalists’ own framing enters media sentiment.",
 };
 export const resonanceSourceLinks: Record<string, string> = resonanceLinks;
+export const resonanceFanLedger: Source[] = resonanceReview.sources.filter(source => source.kind === "fans" && !sources.some(record => record.url === source.url)).map(source => ({
+  id: `resonance-${source.id}`, source: source.title,
+  outlet: source.collection === "supplied" ? "Supplied Instagram/Facebook comments" : "r/suns · indexed public comments",
+  category: "Fans", date: `${source.published} · Word Resonance`, phase: "Event",
+  sentiment: (() => {
+    const evidence = resonanceReview.topics.flatMap(topic => topic.fans.evidence).filter(item => item.sourceId === source.id);
+    const positive = evidence.some(item => item.code > 0), negative = evidence.some(item => item.code < 0);
+    return positive && negative ? "Mixed" : positive ? "Positive" : negative ? "Negative" : "Neutral";
+  })(), themes: ["Word Resonance", "Fan sample"], confidence: "Medium", url: source.url,
+  evidence: `${source.commentCount} distinct comment texts; ${source.collection === "supplied" ? "supplied sample" : "public indexed capture"}.`,
+  samplePurpose: `Word Resonance input · ${source.commentCount} comments · ${source.collection === "supplied" ? "supplied; not independently retrieved" : "indexed text; no platform comment IDs"}. The row classifies the captured source language; per-topic scores appear in the map.`,
+}));
+export const ledgerSources: Source[] = [...sources.map(source => {
+  const fanSource = resonanceReview.sources.find(record => record.kind === "fans" && record.url === source.url);
+  return fanSource ? { ...source, samplePurpose: `Also feeds Word Resonance · ${fanSource.commentCount} indexed comments; no platform comment IDs.` } : source;
+}), ...resonanceFanLedger];
 export const reportParts = [
   { id: "readout", title: "Media Day review", description: "September 28, 2026 · 25 source records · eight official interviews" },
   { id: "word-resonance", title: "Word Resonance", description: `${resonanceReview.topics.length} phrase groups · separate fan and media readings` },
@@ -728,7 +744,7 @@ export const sectionCopy = {
   },
   "fans": {
     "title": "Interest, questions and the experience of watching",
-    "copy": "One public thread supplies an indicative view of the discussion. Enthusiasm appeared alongside role questions and difficulties locating or watching the broadcast."
+    "copy": "The review’s original megathread brought together enthusiasm, role questions and broadcast difficulties. Word Resonance below expands the captured fan pool with a second thread and the supplied social comments."
   }
 };
 
@@ -877,23 +893,23 @@ export const methodology = {
   "searched": "Official Suns interview recordings and caption exports, original local reporting, AP wire coverage, nationally distributed digital reporting, completed specialist commentary, dated preview listings and one public Suns discussion. Morning discovery-only episode leads remain excluded.",
   "selection": "25 source records are included: 21 event records and four preview/background records. Eight are official player or leadership interviews. AP syndications count once; Yahoo-hosted originals retain their author. Separate articles can describe the same exchange and do not become independent confirmations of that event. Duffy’s two pieces remain one commentator’s perspective.",
   "sentiment": "Labels describe the framing of each record. Qualitative audience readings are editorial interpretations. No numeric approval score or representative fan percentage is estimated.",
-  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Volume counts distinct sampled comments for fans and distinct articles for media: one is low, two medium, three or more high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
-  "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. One fan thread is indicative. Williams’ return date and completion of the proposed ownership acquisition remain unknown. The hero uses current official Media Day photographs with rendered camera movement."
+  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Fan volume counts distinct captured comments: 1–4 low, 5–14 medium, 15+ high. Media volume counts articles: 1 low, 2 medium, 3+ high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
+  "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. The review’s original fan thread is indicative; Word Resonance adds partial indexed captures from two threads and supplied posts, with access limits disclosed. Williams’ return date and completion of the proposed ownership acquisition remain unknown. The hero uses current official Media Day photographs with rendered camera movement."
 };
 
 export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v4.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v5.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
   "Mat, Oso Ighodaro described helping Khaman Maluach even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two players competing for opportunity were helping each other prepare.",
   "That gives continuity a practical meaning. Gregory said twelve of the fifteen players who finished last season and every coach return. Maluach sought Booker’s guidance. Kennard described his work with Ighodaro. Fleming credited film study and the Valley Suns. My read is that experience is becoming easier for newer players to use.",
   "The coverage also carries a different expectation. Rankin reported Booker’s basketball rationale for Bridges alongside your condemnation of prior conduct and explanation of organizational standards. AP led with spending commitment. Those stories keep public trust and ownership decisions in view alongside basketball preparation.",
   "Williams’ absence brings an immediate test. Gregory described several months before a reliable return assessment. The return date remains unknown. Camp will give us better evidence of the younger centers’ readiness.",
-  "The Word Resonance section compares five sampled articles with twenty-five supplied fan comments. Fans and media are coded separately. Reported player and leadership statements are distinguished from journalists’ judgments. Counts refer to the sampled comments and articles.",
-  "In that small fan sample, season excitement sits alongside roster and playoff doubts. Bridges coverage carries a basketball rationale; a supplied fan comment objects to his past conduct. Those responses ask different questions of the same team.",
+  "The Word Resonance section now compares five articles with one hundred eighteen captured fan comment texts. Ninety-three came through indexed Reddit pages; twenty-five were supplied social comments. One hundred three are coded to topics. The sample remains partial, and comment authors are unverified. Fans and journalists are scored separately.",
+  "Development drew positive fan reaction, especially around Maluach. Viewing access drew criticism. Season anticipation coexists with roster doubts. The trade comments include support for the new combination, a conduct objection and missing Allen. Those are different reactions to different parts of the same day.",
   "For ownership, I would follow the young centers’ progress, the experience newcomers describe, and the actions following public commitments. Media Day gave us named relationships and specific expectations to revisit. The next evidence comes as the work gets harder.",
   "Dominate."
 ]

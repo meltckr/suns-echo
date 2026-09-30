@@ -18,6 +18,7 @@ import {
   heroMedia,
   methodology,
   sources,
+  ledgerSources,
   themes,
   watchColumns,
   type Category,
@@ -37,8 +38,8 @@ function Brand({ compact = false }: { compact?: boolean }) {
   return <img className={compact ? "brand compact" : "brand"} src={`${basePath}/assets/brand/AVC-logo-horizontal-dark.svg`} alt="Accelerated Velocity Consulting" />;
 }
 
-function SectionHead({ n, eyebrow, title, copy }: { n: string; eyebrow: string; title: string; copy?: string }) {
-  return <header className="section-head"><span>{n} · {eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</header>;
+function SectionHead({ n, eyebrow, title, copy }: { n?: string; eyebrow: string; title: string; copy?: string }) {
+  return <header className="section-head"><span>{n ? `${n} · ` : ""}{eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</header>;
 }
 
 function SourceLink({ source, children }: { source: Source; children?: React.ReactNode }) {
@@ -48,6 +49,7 @@ function SourceLink({ source, children }: { source: Source; children?: React.Rea
 function sourceLinkLabel(source: Source) {
   if (source.url.includes("youtube.com")) return "Watch full interview";
   if (source.url.includes("reddit.com")) return "View full discussion";
+  if (/instagram\.com|facebook\.com|threads\.(?:net|com)/.test(source.url)) return "View source post";
   if (source.url.endsWith(".pdf") || source.category === "Official") return "Open source";
   if (source.url.includes("podcasts.apple.com")) return "Open podcast";
   return "Read full article";
@@ -139,6 +141,12 @@ function AlignmentSection() {
       <dl className="alignment-meaning"><div><dt>Ownership perspective</dt><dd>{item.meaning}</dd></div><div><dt>Watch next</dt><dd>{item.watch}</dd></div></dl>
       </details>
     </article>)}</div>
+    <div id="narratives" className="section-extension">
+      <details className="evidence-disclosure"><summary>Other ideas shaping the conversation</summary>
+        <p className="method-note">Availability, public standards and player identity add context to the shared preparation accounts above.</p>
+        <div className="narrative-grid">{themes.filter(theme => ["Availability shapes the next phase", "Standards carry public expectations", "Player identity reaches beyond the game"].includes(theme.name)).map((theme) => <article key={theme.name}><header><div><b>{theme.momentum}</b><small>{theme.strength} evidence</small></div></header><h3>{theme.name}</h3><p>{theme.evidence}</p><dl><div><dt>Advanced by</dt><dd>{theme.groups}</dd></div><div><dt>Ownership relevance</dt><dd>{theme.relevance}</dd></div></dl></article>)}</div>
+      </details>
+    </div>
   </section>;
 }
 
@@ -147,7 +155,6 @@ function SourceCard({ source }: { source: Source }) {
     <div className="source-card-top"><span>{source.category}</span><b className={toneClass(source.sentiment)}>{source.sentiment}</b></div>
     <h3>{source.source}</h3>
     <p className="source-evidence">{source.evidence}</p>
-    {source.quote && <blockquote className="source-quote"><p>“{source.quote}”</p><footer><strong>{source.speaker}</strong><small>{source.speakerRole}<br />{source.quoteContext}</small></footer></blockquote>}
     <div className="tags">{source.themes.slice(0, 3).map((theme) => <span key={theme}>{theme}</span>)}</div>
     <footer><small>{source.outlet} · {source.date} · {source.confidence} confidence</small><SourceLink source={source}>{sourceLinkLabel(source)}</SourceLink></footer>
   </article>;
@@ -169,21 +176,21 @@ function SignalCard({ label, direction, score, note }: (typeof audienceSignals)[
   </article>;
 }
 
-function AudienceSection({ id, n, title, category, copy }: { id: string; n: string; title: string; category: Category; copy: string }) {
+function AudienceSection({ id, title, category, copy }: { id: string; title: string; category: Category; copy: string }) {
   const selected = sources.filter((source) => source.category === category);
-  return <section id={id} className="report-section">
+  return <div id={id} className="coverage-group">
     <details className="evidence-disclosure"><summary>{title} <small>{selected.length} sources</small></summary>
-    <SectionHead n={n} eyebrow={`${category} read`} title={title} copy={copy} />
+    <p className="method-note">{copy}</p>
     <div className="source-grid">{selected.map((source) => <SourceCard key={source.id} source={source} />)}</div></details>
-  </section>;
+  </div>;
 }
 
 function SourceLedger() {
   const [category, setCategory] = useState("All");
   const [sentiment, setSentiment] = useState("All");
-  const categories = ["All", ...new Set(sources.map((source) => source.category))];
-  const sentiments = ["All", ...new Set(sources.map((source) => source.sentiment))];
-  const visible = useMemo(() => sources.filter((source) =>
+  const categories = ["All", ...new Set(ledgerSources.map((source) => source.category))];
+  const sentiments = ["All", ...new Set(ledgerSources.map((source) => source.sentiment))];
+  const visible = useMemo(() => ledgerSources.filter((source) =>
     (category === "All" || source.category === category) && (sentiment === "All" || source.sentiment === sentiment)
   ), [category, sentiment]);
 
@@ -191,18 +198,17 @@ function SourceLedger() {
     <div className="ledger-controls">
       <label>Category<select value={category} onChange={(event) => setCategory(event.target.value)}>{categories.map((value) => <option key={value}>{value}</option>)}</select></label>
       <label>Sentiment<select value={sentiment} onChange={(event) => setSentiment(event.target.value)}>{sentiments.map((value) => <option key={value}>{value}</option>)}</select></label>
-      <span>{visible.length} of {sources.length} records</span>
+      <span>{visible.length} of {ledgerSources.length} records</span>
     </div>
     <div className="ledger-wrap"><table>
       <thead><tr><th>Source</th><th>Category</th><th>Date</th><th>Sentiment</th><th>Confidence</th><th>Link</th></tr></thead>
-      <tbody>{visible.map((source) => <tr key={source.id}><td><strong>{source.source}</strong><small>{source.outlet}<br />{source.themes.join(" · ")}</small></td><td>{source.category}</td><td>{source.date}</td><td><span className={`ledger-tone ${toneClass(source.sentiment)}`}>{source.sentiment}</span></td><td>{source.confidence}</td><td><SourceLink source={source}>{sourceLinkLabel(source)}</SourceLink></td></tr>)}</tbody>
+      <tbody>{visible.map((source) => <tr key={source.id}><td><strong>{source.source}</strong><small>{source.outlet}<br />{source.themes.join(" · ")}{source.samplePurpose && <><br />{source.samplePurpose}</>}</small></td><td>{source.category}</td><td>{source.date}</td><td><span className={`ledger-tone ${toneClass(source.sentiment)}`}>{source.sentiment}</span></td><td>{source.confidence}</td><td><SourceLink source={source}>{sourceLinkLabel(source)}</SourceLink></td></tr>)}</tbody>
     </table></div>
   </>;
 }
 
 export default function Dashboard() {
-  const quoteSources = sources.filter((source) => source.quote);
-  const playerSources = sources.filter((source) => source.category === "Players & Coaches");
+  const quoteSources = sources.filter((source, index, records) => source.quote && source.category !== "Fans" && records.findIndex((entry) => entry.quote === source.quote) === index);
   const fanQuotes = sources.filter((source) => source.category === "Fans" && source.quote);
 
   useEffect(() => {
@@ -268,68 +274,55 @@ export default function Dashboard() {
       <div className="index-row"><div className={`index-number${edition.editorialIndex === null ? " qualitative" : ""}`}><strong>{edition.editorialIndex ?? "Qualitative"}</strong>{edition.editorialIndex !== null && <span>/ 100</span>}</div><div><h3>{edition.overallDirection}</h3><p>{edition.indexNote}</p></div><div className="index-facts"><span>{edition.includedCount}<small>items included</small></span><span>{edition.reviewedCount}<small>items reviewed</small></span><span>{edition.confidence}<small>confidence</small></span></div></div>
       <div className="signal-grid">{audienceSignals.map((signal) => <SignalCard key={signal.label} {...signal} />)}</div>
       </details>
-    </section>
-
-    <section id="map" className="report-section">
-      <details className="evidence-disclosure"><summary>Source mix behind the review</summary>
-      <SectionHead n="04" eyebrow="Evidence mix" title="The conversation map" copy="The sources included in this edition, grouped by audience." />
-      <div className="conversation-map">{distribution.map((item, index) => <article key={item.category}><div className="map-ring" style={{ "--size": `${76 + item.count * 10}px`, "--delay": `${index * .06}s` } as React.CSSProperties}><strong>{item.count}</strong></div><span>{item.category}</span></article>)}</div>
-      <p className="method-note">The sample intentionally weights direct and established sources more heavily than raw volume.</p>
-      </details>
+      <div id="map" className="section-extension">
+        <details className="evidence-disclosure"><summary>Source mix behind the review</summary>
+          <div className="conversation-map">{distribution.map((item, index) => <article key={item.category}><div className="map-ring" style={{ "--size": `${76 + item.count * 10}px`, "--delay": `${index * .06}s` } as React.CSSProperties}><strong>{item.count}</strong></div><span>{item.category}</span></article>)}</div>
+          <p className="method-note">The sample intentionally weights direct and established sources more heavily than raw volume.</p>
+        </details>
+      </div>
     </section>
 
     <section id="voices" className="report-section dark-section">
-      <SectionHead n="05" eyebrow="Direct evidence" title={sectionCopy.voices.title} copy={sectionCopy.voices.copy} />
-      <div className="quote-grid">{playerSources.filter((source) => source.quote).map((source) => <QuoteCard key={source.id} source={source} />)}</div>
+      <SectionHead n="04" eyebrow="Direct evidence" title={sectionCopy.voices.title} copy={sectionCopy.voices.copy} />
+      <div className="quote-grid">{quoteSources.map((source) => <QuoteCard key={source.id} source={source} />)}</div>
       <div className="interpretation"><span>Interpretation</span><p>{sectionCopy.voices.interpretation}</p></div>
     </section>
 
-    <AudienceSection id="local" n="06" title={sectionCopy.local.title} category="Local Media" copy={sectionCopy.local.copy} />
-    <AudienceSection id="national" n="07" title={sectionCopy.national.title} category="National Media" copy={sectionCopy.national.copy} />
-    <AudienceSection id="creators" n="08" title={sectionCopy.creators.title} category="Creators" copy={sectionCopy.creators.copy} />
+    <section id="coverage" className="report-section">
+      <SectionHead n="05" eyebrow="Coverage" title="How the day reached different audiences" />
+      <AudienceSection id="local" title={sectionCopy.local.title} category="Local Media" copy={sectionCopy.local.copy} />
+      <AudienceSection id="national" title={sectionCopy.national.title} category="National Media" copy={sectionCopy.national.copy} />
+      <AudienceSection id="creators" title={sectionCopy.creators.title} category="Creators" copy={sectionCopy.creators.copy} />
+    </section>
 
     <section id="fans" className="report-section dark-section">
-      <SectionHead n="09" eyebrow="Indicative fan pulse" title={sectionCopy.fans.title} copy={sectionCopy.fans.copy} />
+      <SectionHead n="06" eyebrow="Indicative fan pulse" title={sectionCopy.fans.title} copy={sectionCopy.fans.copy} />
       <div className="fan-themes">{fanThemes.map((theme, index) => <article key={theme.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{theme.title}</h3><p>{theme.body}</p></article>)}</div>
       <div className="quote-grid fan-quotes">{fanQuotes.map((source) => <QuoteCard key={source.id} source={source} quiet />)}</div>
       <p className="method-note">Ordinary fan handles are omitted in the presentation. Original comments remain available at the linked public threads.</p>
     </section>
 
-    <section id="narratives" className="report-section">
-      <details className="evidence-disclosure"><summary>Narrative detail and ownership context</summary>
-      <SectionHead n="10" eyebrow="Narrative leaders" title={`${themes.length} ideas organizing the conversation`} />
-      <div className="narrative-grid">{themes.map((theme, index) => <article key={theme.name}><header><span>{String(index + 1).padStart(2, "0")}</span><div><b>{theme.momentum}</b><small>{theme.strength} evidence</small></div></header><h3>{theme.name}</h3><p>{theme.evidence}</p><dl><div><dt>Advanced by</dt><dd>{theme.groups}</dd></div><div><dt>Ownership relevance</dt><dd>{theme.relevance}</dd></div></dl></article>)}</div>
-      </details>
-    </section>
-
-    <section className="report-section quote-board">
-      <details className="evidence-disclosure"><summary>Quote board · More verified language</summary>
-      <SectionHead n="11" eyebrow="Verified language" title="Quote board" />
-      <div className="quote-board-grid">{quoteSources.slice(0, 8).map((source) => <QuoteCard key={source.id} source={source} />)}</div>
-      </details>
-    </section>
-
-    <section id="watch" className="report-section dark-section">
-      <SectionHead n="12" eyebrow="Perception monitor" title="Positive signals, open questions and watch items" />
-      <div className="watch-grid"><article className="positive"><span>Positive signals</span>{watchColumns.positive.map((item) => <p key={item}>{item}</p>)}</article><article className="question"><span>Open questions</span>{watchColumns.questions.map((item) => <p key={item}>{item}</p>)}</article><article className="watch"><span>Watch items</span>{watchColumns.watch.map((item) => <p key={item}>{item}</p>)}</article></div>
-    </section>
-
     <section id="ownership" className="report-section">
-      <SectionHead n="13" eyebrow="Ownership implications" title={`${implications.length} observations to keep in view`} />
+      <SectionHead n="07" eyebrow="Ownership implications" title={`${implications.length} observations to keep in view`} />
       <div className="implication-list">{implications.map((item) => <article key={item.n}><span>{item.n}</span><div><h3>{item.title}</h3><p>{item.body}</p></div></article>)}</div>
+      <div id="watch" className="section-extension">
+        <details className="evidence-disclosure"><summary>Positive signals, open questions and watch items</summary>
+          <div className="watch-grid"><article className="positive"><span>Positive signals</span>{watchColumns.positive.map((item) => <p key={item}>{item}</p>)}</article><article className="question"><span>Open questions</span>{watchColumns.questions.map((item) => <p key={item}>{item}</p>)}</article><article className="watch"><span>Watch items</span>{watchColumns.watch.map((item) => <p key={item}>{item}</p>)}</article></div>
+        </details>
+      </div>
     </section>
 
-    <section className="report-section bottom-line"><SectionHead n="14" eyebrow="Synthesis" title="Bottom line" /><p>{edition.bottomLine}</p></section>
+    <section className="report-section bottom-line"><SectionHead n="08" eyebrow="Synthesis" title="Bottom line" /><p>{edition.bottomLine}</p></section>
 
     <CinematicDivider label="Part 02 · Word Resonance" />
     <WordResonance />
 
     <section className="report-section methodology">
-      <details open><summary><span>15 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Word Resonance</span><p>{methodology.resonance}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
+      <details open><summary><span>10 · Methodology</span><strong>How to read this report</strong><i>+</i></summary><div className="method-grid"><article><span>Window</span><p>{edition.reportingWindow}</p></article><article><span>Search</span><p>{methodology.searched}</p></article><article><span>Selection</span><p>{methodology.selection}</p></article><article><span>Classification</span><p>{methodology.sentiment}</p></article><article><span>Word Resonance</span><p>{methodology.resonance}</p></article><article><span>Access limitations</span><p>{methodology.limitations}</p></article></div></details>
     </section>
 
     <section id="ledger" className="report-section ledger-section">
-      <SectionHead n="16" eyebrow="Traceable evidence" title="Source ledger" copy="Filter the included sample by audience category or sentiment classification." />
+      <SectionHead eyebrow="Traceable evidence" title="Source ledger" copy="The 25 Media Day review records appear alongside supplementary Word Resonance source records. Filter by audience category or sentiment classification; each supplementary row identifies its purpose." />
       <SourceLedger />
     </section>
 

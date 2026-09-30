@@ -11,14 +11,24 @@ const volumeWeight: Record<string, number> = { high: 3, medium: 2, low: 1, none:
 
 function AudienceEvidence({ side, reading }: { side: ResonanceSide; reading: ResonanceReading }) {
   const counts = unitCounts(reading);
+  const examples = side === "fans" ? [1, -1, 0].flatMap(code => {
+    const example = reading.evidence.find(item => item.code === code);
+    return example ? [example] : [];
+  }) : reading.evidence;
+  const extra = reading.evidence.filter(item => !examples.some(example => example.id === item.id));
+  const quote = (item: ResonanceReading["evidence"][number]) => <blockquote className="source-quote resonance-evidence" key={item.id}>
+    <p>{item.quote}</p><footer><strong>{side === "fans" ? new URL(item.url).hostname.includes("reddit") ? "Indexed Reddit comment" : `Supplied ${new URL(item.url).hostname.includes("instagram") ? "Instagram" : "Facebook"} comment` : item.source}</strong><small>{item.kind}{"origin" in item && <> · {item.origin}</>}<br />Code: {item.code === null ? "Unscored reported material" : item.code > 0 ? "Positive (+1)" : item.code < 0 ? "Negative (−1)" : "Neutral (0)"}</small><a className="source-link" href={item.url} target="_blank" rel="noreferrer">Open original {side === "fans" ? "post" : "source"} ↗</a></footer>
+  </blockquote>;
   return <section className="audience-evidence" aria-label={`${labels[side]} evidence`}>
     <header><h4>{labels[side]}</h4><span className={`balance-label resonance-${balanceTone(reading)}`}>{balanceLabel(reading)} · {balanceScore(reading)}</span></header>
-    <p>{reading.count} {side === "fans" ? "supplied comments" : "sampled articles"} · {reading.volume} volume</p>
+    <p>{reading.count} {side === "fans" ? "captured comments" : "sampled articles"} · {reading.volume} volume</p>
     {reading.scoredCount > 0 && <p className="coded-counts">Coded {side === "fans" ? "comments" : "articles"}: {counts.positive} positive · {counts.negative} negative · {counts.neutral} neutral</p>}
     {side === "media" && <p className="coded-counts">{reading.scoredCount} articles contain scored journalist framing. Reported facts and player or leadership statements retain an unscored code.</p>}
-    {reading.evidence.length ? <details open><summary>Read {reading.evidence.length} evidence {reading.evidence.length === 1 ? "excerpt" : "excerpts"}</summary>{reading.evidence.map(item => <blockquote className="source-quote resonance-evidence" key={item.id}>
-      <p>{item.quote}</p><footer><strong>{side === "fans" ? `Supplied ${new URL(item.url).hostname.includes("instagram") ? "Instagram" : "Facebook"} comment` : item.source}</strong><small>{item.kind}{"origin" in item && <> · {item.origin}</>}<br />Code: {item.code === null ? "Unscored reported material" : item.code > 0 ? "Positive (+1)" : item.code < 0 ? "Negative (−1)" : "Neutral (0)"}</small><a className="source-link" href={item.url} target="_blank" rel="noreferrer">Open original {side === "fans" ? "post" : "source"} ↗</a></footer>
-    </blockquote>)}</details> : <p>No evidence in this sampled audience.</p>}
+    {reading.evidence.length ? <details open><summary>Read {reading.evidence.length} evidence {reading.evidence.length === 1 ? "excerpt" : "excerpts"}</summary>
+      {examples.map(quote)}
+      {extra.length > 0 && <details className="additional-evidence"><summary>Read {extra.length} more captured excerpts</summary>{extra.map(quote)}</details>}
+    </details> : <p>No evidence in this sampled audience.</p>}
+
   </section>;
 }
 
@@ -46,7 +56,7 @@ export default function WordResonance() {
   }
 
   return <section id="word-resonance" className="report-section resonance-section" aria-labelledby="resonance-title">
-    <header className="section-head"><span>Part 02 · Sampled response</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
+    <header className="section-head"><span>09 · Part 02 · Sampled response</span><h2 id="resonance-title">{resonanceCopy.title}</h2><p>{resonanceCopy.introduction}</p></header>
     <p className="resonance-caveat">{resonanceCopy.caveat}</p>
     <div className="resonance-findings">{resonanceReview.findings.map(finding => <article key={finding.title}><h3>{finding.title}</h3><p>{finding.text}</p><div>{finding.topicIds.map(id => <button type="button" key={id} onClick={() => selectFinding(id)}>Explore {topics.find(topic => topic.id === id)?.phrase} ↗</button>)}</div></article>)}</div>
     <p className="resonance-sample">{resonanceCopy.sample}</p>
@@ -56,7 +66,7 @@ export default function WordResonance() {
     </div>
     <p className="resonance-filter-note">{resonanceCopy.filters}</p>
     <div className="resonance-legend" aria-label="How to read the bubbles"><span className="resonance-positive">Positive</span><span className="resonance-negative">Negative</span><span className="resonance-neutral">Neutral or mixed</span><span>Unscored = no coded opinion</span></div>
-    <p className="resonance-size-note">{audience === "all" || audience === "both" ? "Left half: Fans. Right half: Media. Size uses the larger audience tier; the two units differ." : `Color and size show the ${labels[audience].toLowerCase()} reading.`} Volume: 1 unit = low · 2 = medium · 3+ = high. Fans count comments; media counts articles.</p>
+    <p className="resonance-size-note">{audience === "all" || audience === "both" ? "Left half: Fans. Right half: Media. Size uses the larger audience tier; the two units differ." : `Color and size show the ${labels[audience].toLowerCase()} reading.`} Fan volume: 1–4 low · 5–14 medium · 15+ high. Media volume: 1 low · 2 medium · 3+ high. Fans count comment texts; media counts articles.</p>
     <div className="resonance-layout">
       <div className="resonance-themes">{resonanceThemes.map(theme => {
         const entries = visible.filter(entry => entry.theme === theme).sort((a, b) => volumeWeight[volumeForView(b, audience)] - volumeWeight[volumeForView(a, audience)] || a.phrase.localeCompare(b.phrase));
@@ -79,6 +89,6 @@ export default function WordResonance() {
         </> : <><span>Source evidence</span><h3>Choose a phrase group</h3><p>Compare each audience’s sampled count and coded language. Open the verbatim evidence and original source.</p></>}
       </aside>
     </div>
-    <details className="resonance-method"><summary>Sampling and coding details</summary><p>{resonanceReview.methodology.selection}</p><p>{resonanceReview.methodology.sentiment}</p><p>{resonanceReview.methodology.deduplication}</p><ul>{resonanceReview.methodology.exclusions.map(item => <li key={item}>{item}</li>)}</ul></details>
+    <details className="resonance-method"><summary>Sampling, coding and skipped sources</summary><p>{resonanceReview.methodology.retrieval}</p><p>{resonanceReview.methodology.selection}</p><p>{resonanceReview.methodology.sentiment}</p><p>{resonanceReview.methodology.deduplication}</p><ul>{resonanceReview.methodology.exclusions.map(item => <li key={item}>{item}</li>)}</ul><ul>{resonanceReview.retrievalAudit.attempts.map(attempt => <li key={attempt.url}><a href={attempt.url} target="_blank" rel="noreferrer">{new URL(attempt.url).hostname} · {new URL(attempt.url).pathname}</a> — skipped: HTTP {attempt.status}{attempt.finalUrl.includes("/login/") ? " after login redirect" : ""}</li>)}</ul></details>
   </section>;
 }

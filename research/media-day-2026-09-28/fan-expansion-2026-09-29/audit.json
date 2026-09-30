@@ -1,0 +1,632 @@
+{
+  "retrievedAt": "2026-09-30T00:07:14.722187+00:00",
+  "scope": "September 28–29, 2026 r/suns Media Day comments plus original supplied comments",
+  "directAttempts": [
+    {
+      "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+      "retrievedAt": "2026-09-30T00:06:10.831839+00:00",
+      "method": "public GET browser User-Agent",
+      "status": 403,
+      "responseFile": "direct-01.response",
+      "contentType": "text/html",
+      "finalUrl": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1"
+    },
+    {
+      "url": "https://old.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+      "retrievedAt": "2026-09-30T00:06:11.012404+00:00",
+      "method": "public GET browser User-Agent",
+      "status": 404,
+      "responseFile": "direct-02.response",
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fcomments%2F1wsj8c9%2F.json%3Flimit%3D500%26sort%3Dtop%26raw_json%3D1"
+    },
+    {
+      "url": "https://old.reddit.com/r/suns/search.json?q=media%20day&restrict_sr=on&sort=new&limit=100",
+      "retrievedAt": "2026-09-30T00:06:11.304298+00:00",
+      "method": "public GET browser User-Agent",
+      "status": 404,
+      "responseFile": "direct-03.response",
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fsearch.json%3Fq%3Dmedia%2520day%26restrict_sr%3Don%26sort%3Dnew%26limit%3D100"
+    },
+    {
+      "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1",
+      "retrievedAt": "2026-09-30T00:06:11.656914+00:00",
+      "method": "public GET browser User-Agent",
+      "status": 403,
+      "responseFile": "direct-04.response",
+      "contentType": "text/html",
+      "finalUrl": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1"
+    }
+  ],
+  "environmentAttempts": [
+    {
+      "result": "Initial python requests unavailable; used urllib stdlib"
+    },
+    {
+      "result": "Sandbox network DNS restricted; retried authorized public requests with network permission"
+    },
+    {
+      "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+      "result": "Sandbox DNS failure before authorized network retry",
+      "error": "nodename nor servname provided, or not known"
+    },
+    {
+      "url": "https://old.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+      "result": "Sandbox DNS failure before authorized network retry",
+      "error": "nodename nor servname provided, or not known"
+    },
+    {
+      "url": "https://old.reddit.com/r/suns/search.json?q=media%20day&restrict_sr=on&sort=new&limit=100",
+      "result": "Sandbox DNS failure before authorized network retry",
+      "error": "nodename nor servname provided, or not known"
+    },
+    {
+      "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1",
+      "result": "Sandbox DNS failure before authorized network retry",
+      "error": "nodename nor servname provided, or not known"
+    }
+  ],
+  "indexAttempts": [
+    {
+      "file": "discovery-initial.json",
+      "queries": [
+        "site:reddit.com/r/suns \"media day\" \"2026\" \"September 28\"",
+        "site:reddit.com/r/suns/comments/1wsj8c9"
+      ]
+    },
+    {
+      "file": "discovery-additional.json",
+      "queries": [
+        "site:reddit.com/r/suns \"September 28 2026\" \"Bridges\"",
+        "site:reddit.com/r/suns \"September 29 2026\" \"media\"",
+        "site:reddit.com/r/suns \"September 28 2026\" \"Nash\""
+      ]
+    },
+    {
+      "file": "discovery-final.json",
+      "queries": [
+        "https://www.reddit.com/r/suns/comments/1wsm1rd/",
+        "site:reddit.com/r/suns \"September 28 2026\" \"Ishbia\" \"Bridges\" -megathread",
+        "site:reddit.com/r/suns \"September 29 2026\" \"Maluach\" -megathread"
+      ],
+      "use": "Discovery only; no new reliable eligible thread"
+    },
+    {
+      "file": "open-results.json",
+      "results": [
+        "Maluach thread cache miss",
+        "Media Day megathread accessible through web tool; original comment permalinks not recovered in this bounded pass"
+      ]
+    }
+  ],
+  "counts": {
+    "newIndexedComments": 93,
+    "existingSuppliedComments": 25,
+    "combinedUniqueComments": 118,
+    "directApiComments": 0,
+    "platformCommentIdsRecovered": 0,
+    "threads": 2
+  },
+  "skips": [
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Thread post, not comment",
+      "text": "Sup you sunny mofos??\n\nThe first official day of the 2026-27 season is here.  It's the Phoenix Suns Media day!  Things get underway at 10am."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Emoji-only response, no analyzable wording",
+      "text": "😬"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "URL\nthis + vpn to phoenix will let you guys watch if you're not local"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "URL\nBook like with Wolf and Luke rn"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: img"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsud7k/new_phoenix_suns_upload_koby_brea_media_day_2026/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsuesf/new_phoenix_suns_upload_koa_peat_media_day_2026/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wstv57/new_phoenix_suns_upload_khaman_maluach_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsu51c/new_phoenix_suns_upload_pat_spencer_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wstocr/new_phoenix_suns_upload_head_coach_jordan_ott/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wst9m8/new_phoenix_suns_upload_oso_ighodaro_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsnwfs/new_phoenix_suns_upload_devin_booker_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsthsw/new_phoenix_suns_upload_dillon_brooks_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsumw5/new_phoenix_suns_upload_kennedy_chandler_media/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Thread post, not comment",
+      "text": "SHARED URL"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Emoji-only response, no analyzable wording",
+      "text": "👏👏👏🤣🤣🤣🤣"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1umgqce/weekly_megathread_offseason_discussion_trades/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Thread post, not comment",
+      "text": "Sup you sunny mofos??\n\nThe first official day of the 2026-27 season is here.  It's the Phoenix Suns Media day!  Things get underway at 10am."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Still trying to find a live stream.  It looks like the whole thing is live on Channel 44 on antenna."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Will the signal reach Kansas City? 😭"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Emoji-only response, no analyzable wording",
+      "text": "😬"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Yeah it’s not on YouTube like usual."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "i'm so mad it's not on youtube , i can't find it"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "I went to 44 on my tv and it came up static. What’s the network it’s on?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "That would be arizona family sports"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "https://www.azfamilysports.com/game/928-at-1000-am-mst--suns-media-day-1790279542833"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Empty indexed comment",
+      "text": ""
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Ishbia plans to own the team for 40-50 years."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "God I’m so ready for the suns, fuckin Dbacks and cards just piss me off."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "JG4 said he’s been working with Steve after practices this off season."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Did he say what they worked on specifically? Hope he can pass now"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Not really, just saying how he would spend time with Steve after practices to go over stuff."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "If he can even develop a tiny bit if Nashs craftiness when driving towards the rim then that wpuld be a big win.\n    No playmaker in NBA history was as crafty as Nash getting inside but maintaining the dribble to find other scoring options to pass to"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "What was JG saying about Koa getting banged up? Kid got hurt?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "URL\nthis + vpn to phoenix will let you guys watch if you're not local"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Ofcourse they start having technical difficulties immediately lol, but this was working pretty well"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Whoa. Will they do this for games this season?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "My antenna feed is trash on channel 44."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "the stream is fucked right now."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "And books talking lmao"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "every year, man.  they can never have a smooth broadcast."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "A little rain & Phoenix losses all signal. Hahaha!"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Can't believe we have kennard. A player I've always wanted to be a Sun"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "URL\nBook like with Wolf and Luke rn"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "BG & Josh both saying ManMan has been very impressive this offseason!\nYear of the ManMan!"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: img"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Team 6’5 and under doing well"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "That's a lot dawgs and a 7 footer lurking in the back."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Book in #15 looks so weird"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Also Paze is the new sponsor"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "“Miles Bridges solves our size and defensive rebounding problems”"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "I used to hold the ball like that against my leg too to pretend I could palm the ball lol"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "It’s Suns Media Day. Why tf are these guys talking about football and baseball 🙄 can we not talk about the cardinals or dbacks for one damn day? Stg we could win it all and Doug and Wolf would devote an hour to talk cardinals smh."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "There was a break, relax."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Just seeing the Kennedy Chandler signing. This has to be for G league/training camp, right?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "So are we just SOL if we cant catch this live this year?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Anyone know if Man Man or Sheer did interviews?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "I watched on YouTube, almost all of the players, even including Chandler and Reath."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Whose chandler?"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Kennedy Chandler. He played with Utah last year. Guard, 5’11”, signed for training camp like Reath."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Most of the team, including ManMan and Rasheer, have interviews that are up on the Suns YouTube page"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-28",
+      "reason": "Duplicate text already captured",
+      "text": "Why is the idea of moving green to 6th man. And having book and brooks (not gillepsie) be the backcourt never disscused.\nIsnt the main idea when u guys defend book being point is for us to gain size and be positionless/better on defense? Just saw new york with Brunson run 2-3 3nD wings 2-4 next to him but this is never brought up. Jalen is an obviously bad fit next to him even if this sub afraid to admit it"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Green is a $8M a year player in a $36M a year body"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "It’s brought up a lot. I just don’t think it will happen. There wasn’t enough games to make any judgements on a healthy Book and Green backcourt."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "No it isn't. The other alternative is always gillepsie\n    And yes there is. A simple look at their archetypes tells you the shit won't work. Just stop .\n    Tell me what good team have 2 volume scoring 2 guards running shit ...what successful team I. Hsitory had thst comp....? None\n    The team went to shit precisely when jalen started playing. This aint rocket science\n    Why are yall so against actually copying what works with other teams/what has worked in the past? Instead you'd rather fuck with fuckity team comps that anyone with an ounce of bb knowledge knows is clunky af and won't fit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Lots of opinions here, most of them salty. I’m not sure its even worth discussing with you. Bledsoe and Goran worked well together. Both more scoring guards than distributors. In 91-92, KJ and Hornacek worked great, at the time, both more scoring guards even though KJ averaged 10 assists per game, Jeff did a lot of the assisting. There are two duos that played for the Suns. Now a days, there are very few floor generals. Most guards now a days are scorers/shooters  first, distributors second."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Bro brought up Kevin Johnson as an example and added a qualifier cause he already knew it was a stretch\n        Um those are just invalid examples. Those are nothing alike to this here. I'm not gunna over explain they are jsut flat out awful very unsimilar combos\n        Most teams have a scorer/passer hub (book) and 3nD around them plus an anchor(center)\n        This isnt rocket science\n        And jalen green doesn't qualify as 3nD. He is an empty stat player that will do nothing but take away from book, shoot inefficiently. Not pass and not defend\n        Fucking stop\n        These aren't opinions. Well I guess they are. Just its the majority opinion anywhere outside suns Fandom."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Are you ok? My point with KJ and Jeff was that they ran the floor together. Same with Bledsoe and Goran. Basketball can be successful with a more position less group that hustle and put pressure on the rim and/or deep shooters. Green and Bridges will put pressure on the rim. Brooks was a more 3 and D wing his last season in Houston. No reason he can’t return to that.\n          We have the team we have. Book is our starting point guard and Colin is his back up. Green is our starting sg and Kennard looks to be his back up. These are the facts we have. Green was clearly never fully healthy last year. He is an explosive guard. These are all facts, so stop bitching about things that won’t change no matter how many times it is brought up.\n          Knicks just won a ring and Brunson only averaged 0.8 assists more than Book, and they played two small forwards next to him and no SG."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "That means green and Gillespie play less and rasheer and Dunn play more\n  Suns will max talent on court instead."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Jalen got plenty of non-Booker minutes last year and will continue to this year."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Plenty of step on bookers toes mins also. Yhats kinds the problem. Yes we all know they try to stagger. Doesnt change the fact its an awful fit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "I watched all of the press interviews and every player hyped me up for this season. The defensive players we have will be amazing to watch. I’m looking forward to this season. Stay healthy boys!"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Anyone else miss Grayson"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Kennard + Bridges >>> Grayson + ONeale\n  Kennard has been better than Grayson since their Duke days. Just needs to let em fly! Also very underrated athlete defensively. Matches up well with many guys in the league and works very hard"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "date": "2026-09-29",
+      "reason": "Duplicate text already captured",
+      "text": "Looking forward to SUNS basketball...\nLosing Mark sucks though (I guess inevitably, huh). We really lack size."
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wqxibj/cp3_on_instagram_always_good_to_be_back_in_the/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wtmmsb/new_phoenix_suns_upload_head_coach_jordan_ott/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wtmdmy/new_phoenix_suns_upload_dillon_brooks_training/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wntei2/where_does_this_win_rank_in_regular_season_wins/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: gif"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: gif"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: gif"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "date": "2026-09-28",
+      "reason": "Index substitutes image or URL; incomplete text",
+      "text": "Image: gif"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wsvp6d/new_phoenix_suns_upload_duop_reath_media_day_2026/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wtmbu3/new_phoenix_suns_upload_phoenix_suns_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wtlct6/new_phoenix_suns_upload_jalen_green_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/AllDayArizona/comments/1wtlb18/new_phoenix_suns_upload_phoenix_suns_media_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/NBAVibes/comments/1wspn3f/suns_full_starting_lineup_picture_day/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    },
+    {
+      "source": "https://www.reddit.com/r/suns/comments/1wo6q3c/newish_fan/",
+      "reason": "Outside selected r/suns Media Day threads; bot mirror, older event or other subreddit"
+    }
+  ],
+  "limitations": [
+    "Indexed snapshots are partial and may be stale. No complete-thread capture or ranking claim.",
+    "Comment authors and exact timestamps are unavailable in search text; local IDs are content-derived. Obvious bot text excluded; undisclosed automation cannot be ruled out.",
+    "No authenticated access, proxy evasion or block bypass used.",
+    "Replies remain replies, not independent people; unique text does not equal unique respondent.",
+    "No sample coding or production dataset modification performed."
+  ],
+  "snapshotFiles": [
+    {
+      "file": "discovery-final.json",
+      "savedAt": "2026-09-30T00:06:39.661452+00:00"
+    },
+    {
+      "file": "discovery-initial.json",
+      "savedAt": "2026-09-30T00:05:55.517362+00:00"
+    },
+    {
+      "file": "discovery-additional.json",
+      "savedAt": "2026-09-30T00:06:21.484241+00:00"
+    },
+    {
+      "file": "open-results.json",
+      "savedAt": "2026-09-30T00:06:39.431411+00:00"
+    }
+  ]
+}

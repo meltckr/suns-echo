@@ -553,5 +553,139 @@
       "meaning": "The owner and coach described the support relationship consistently. The ownership implication is the connection between resources supplied and opportunities the group uses.",
       "watch": "Continue separating stated financial commitment from verified transactions and operating results."
     }
-  ]
+  ],
+  "supplementaryResonanceRecords": [
+    {
+      "id": "resonance-fan_seed_001",
+      "source": "@sunsworldwide_ Media Day recap reel",
+      "outlet": "Supplied Instagram/Facebook comments",
+      "category": "Fans",
+      "date": "2026-09-29 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+      "evidence": "5 distinct comment texts; supplied sample.",
+      "samplePurpose": "Word Resonance input · 5 comments · supplied; not independently retrieved. The row classifies the captured source language; per-topic scores appear in the map."
+    },
+    {
+      "id": "resonance-fan_seed_002",
+      "source": "@suns, Booker arrives for 12th Media Day",
+      "outlet": "Supplied Instagram/Facebook comments",
+      "category": "Fans",
+      "date": "2026-09-28 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Positive",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+      "evidence": "4 distinct comment texts; supplied sample.",
+      "samplePurpose": "Word Resonance input · 4 comments · supplied; not independently retrieved. The row classifies the captured source language; per-topic scores appear in the map."
+    },
+    {
+      "id": "resonance-fan_seed_003",
+      "source": "@suns Media Day photo carousel",
+      "outlet": "Supplied Instagram/Facebook comments",
+      "category": "Fans",
+      "date": "2026-09-29 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+      "evidence": "4 distinct comment texts; supplied sample.",
+      "samplePurpose": "Word Resonance input · 4 comments · supplied; not independently retrieved. The row classifies the captured source language; per-topic scores appear in the map."
+    },
+    {
+      "id": "resonance-fan_seed_004",
+      "source": "NBA, first look at Miles Bridges with Suns teammates",
+      "outlet": "Supplied Instagram/Facebook comments",
+      "category": "Fans",
+      "date": "2026-09-28 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Negative",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.facebook.com/reel/993539030442283/",
+      "evidence": "5 distinct comment texts; supplied sample.",
+      "samplePurpose": "Word Resonance input · 5 comments · supplied; not independently retrieved. The row classifies the captured source language; per-topic scores appear in the map."
+    },
+    {
+      "id": "resonance-fan_seed_005",
+      "source": "@suns SUNS UP group photo",
+      "outlet": "Supplied Instagram/Facebook comments",
+      "category": "Fans",
+      "date": "2026-09-28 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+      "evidence": "7 distinct comment texts; supplied sample.",
+      "samplePurpose": "Word Resonance input · 7 comments · supplied; not independently retrieved. The row classifies the captured source language; per-topic scores appear in the map."
+    },
+    {
+      "id": "resonance-reddit_1wsm1rd",
+      "source": "Maluach Media Day reaction thread",
+      "outlet": "r/suns · indexed public comments",
+      "category": "Fans",
+      "date": "2026-09-28–29 · Word Resonance",
+      "phase": "Event",
+      "sentiment": "Mixed",
+      "themes": [
+        "Word Resonance",
+        "Fan sample"
+      ],
+      "confidence": "Medium",
+      "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "evidence": "34 distinct comment texts; public indexed capture.",
+      "samplePurpose": "Word Resonance input · 34 comments · indexed text; no platform comment IDs. The row classifies the captured source language; per-topic scores appear in the map."
+    }
+  ],
+  "sharedFanRecordUsage": [
+    {
+      "id": "fan-media-day",
+      "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "samplePurpose": "Also feeds Word Resonance · 59 indexed comments; no platform comment IDs."
+    }
+  ],
+  "fanSample": {
+    "mediaArticles": 5,
+    "fanPosts": 7,
+    "suppliedFanEntries": 26,
+    "verbatimFanComments": 118,
+    "excludedParaphrases": 1,
+    "fanThreads": 2,
+    "suppliedVerbatimComments": 25,
+    "indexedFanComments": 93,
+    "directApiFanComments": 0,
+    "codedFanComments": 103,
+    "uncodedFanComments": 15,
+    "sourceUrls": [
+      "https://www.instagram.com/reel/Dd2lQpOKKww/",
+      "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+      "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+      "https://www.facebook.com/reel/993539030442283/",
+      "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+      "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "https://www.reddit.com/r/suns/comments/1wsm1rd/_/"
+    ],
+    "visibleLedgerRecords": 31
+  }
 }

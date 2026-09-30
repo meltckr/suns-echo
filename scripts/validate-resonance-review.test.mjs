@@ -8,7 +8,7 @@ const sources = read('../research/media-day-2026-09-28/resonance-review-source-t
 const topic = (data, id) => data.topics.find((item) => item.id === id);
 
 test('the collected review has reproducible counts and evidence', () => {
-  assert.deepEqual(validateResonanceReview(original, sources), { topics: 12, articles: 5, verbatimComments: 25 });
+  assert.deepEqual(validateResonanceReview(original, sources), { topics: 15, articles: 5, verbatimComments: 118 });
 });
 test('rejects an invented quote', () => {
   const data = structuredClone(original);
@@ -22,7 +22,7 @@ test('ownership statement cannot masquerade as journalist sentiment', () => {
 });
 test('missing reception cannot be presented as neutral', () => {
   const data = structuredClone(original);
-  topic(data, 'commitment').fans.score = 0;
+  topic(data, 'broadcast').media.score = 0;
   assert.throws(() => validateResonanceReview(data, sources), /score must match/);
 });
 test('repeated excerpts cannot inflate article volume', () => {
@@ -32,6 +32,23 @@ test('repeated excerpts cannot inflate article volume', () => {
 });
 test('a paraphrased or truncated fan comment cannot enter the sample', () => {
   const data = structuredClone(original);
-  topic(data, 'green-nash').fans.evidence[0].quote = 'made me smile';
-  assert.throws(() => validateResonanceReview(data, sources), /entire supplied comment/);
+  const evidence = topic(data, 'green-nash').fans.evidence[0];
+  evidence.quote = evidence.quote.slice(1);
+  assert.throws(() => validateResonanceReview(data, sources), /entire captured comment/);
+});
+
+test('indexed text is verified against raw offsets, not just a derived snapshot', () => {
+  const raw = structuredClone(sources);
+  raw.find(source => source.collection === 'indexed').comments[0].rawStartOffset++;
+  assert.throws(() => validateResonanceReview(original, raw), /raw capture and offset/);
+});
+test('a blocked API capture cannot be claimed as retrieved', () => {
+  const data = structuredClone(original);
+  data.denominators.directApiFanComments = 1;
+  assert.throws(() => validateResonanceReview(data, sources));
+});
+test('captured counts cannot conceal coded exclusions', () => {
+  const data = structuredClone(original);
+  data.denominators.codedFanComments = data.denominators.verbatimFanComments;
+  assert.throws(() => validateResonanceReview(data, sources));
 });

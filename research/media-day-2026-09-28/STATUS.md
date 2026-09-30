@@ -43,10 +43,18 @@ Deployment evidence is recorded by the review workflow and PR #1; the one-time m
 
 Mel identified Ighodaro/Maluach pronunciation and clipped endings. The narration was regenerated using official NBA/team pronunciation guidance, conservative endpoint retention, natural non-overlapping sentence/paragraph pauses and original tempo. Public script, title and architecture are unchanged. V3 technical and player checks pass; perceptual pronunciation/listening approval remains open. See AUDIO-V3-QA.md. Draft PR #1 and isolated review update are authorized; production release and merge remain held.
 
-## September 29 — premium review upgrade (current)
+## September 29 — premium review upgrade (previous hosted review)
 
 The first-minute ownership brief leads with three findings, one tension and three follow-up observations. Native disclosures preserve the extended review and deeper evidence. Five Alignment themes, all25 sources and the established Echo system remain.
 
 The new audience comparison presents12 editorial phrase groups from five articles and25 verbatim supplied fan comments; one separate paraphrase is excluded. Fans and media retain separate counts and scores. Reported principal statements remain unscored as media opinion. Every quote and count is reproducible against saved text. The original25-phrase file remains preserved. See PREMIUM-REVIEW-QA.md for methodology and regression evidence.
 
 Blender v3 provides photo-only8-second heroes, title stings/cards, posters and1200×630 OG; Arizona v4 reads the final277-word Editor script with conservative finishing. Current audio tail0.12s, duration119.84s. Technical checks pass; human pronunciation/listening and Mel’s production release approval remain open. The current preview and deployment evidence are recorded in PR#1.
+
+## September 29 — expanded fan sample and density update (current local review)
+
+118 distinct captured fan texts now include 93 partial indexed Reddit comments and the original 25 supplied social comments. Direct Reddit JSON remained blocked (403; old Reddit login redirect/404); these skips and the indexed limitations are visible. 103 comments contribute to fifteen phrase groups, and fifteen contextual comments have explicit exclusions. All seven fan source URLs appear in the 31-row source ledger, alongside the original 25 review records. Media coding remains separate and unchanged.
+
+The edition now has ten numbered sections. The first-minute three findings, tension and three follow-ups remain byte-for-byte unchanged. Quotes, perception watch and overlapping narrative material are consolidated. Arizona v5 reads the revised 296-word script, with 0.10-second trailing silence and technical/player verification. Human listening remains open.
+
+Review build, 18 resonance regressions, eight finishing regressions, source/score validation and desktop/phone browser checks pass. Release check stops on human listening and Mel’s release approval. See EXPANDED-FAN-DENSITY-QA.md and AUDIO-V5-QA.md. Mel subsequently authorized pushing the review branch, updating PR #1 and publishing the isolated preview. Merge and production release remain held. Deployment and public-origin verification will be recorded in PR #1.

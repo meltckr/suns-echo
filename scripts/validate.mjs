@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
-import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, ownershipBrief, resonanceReview } from "../data/edition.ts";
+import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, ownershipBrief, resonanceReview, ledgerSources } from "../data/edition.ts";
 
 import { validateResonanceReview } from "./validate-resonance-review.mjs";
 
@@ -34,11 +34,19 @@ for (const item of wordResonance) {
   check(resonanceSources.some(source => source.source === item.source && source.text.includes(item.evidence)), `Phrase evidence differs from saved source text: ${item.phrase}`);
   check(resonanceSourceLinks[item.phrase]?.startsWith("https://"), `Phrase original source missing: ${item.phrase}`);
 }
-check(resonanceCopy.caveat === "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.", "Required resonance caveat changed");
+check(resonanceCopy.caveat === resonanceReview.caveat && resonanceCopy.caveat.includes(`${resonanceReview.denominators.verbatimFanComments} fan comment texts`), "Resonance caveat must disclose the current sample count");
+check(new Set(ledgerSources.map(source => source.id)).size === ledgerSources.length, "Duplicate ledger ID");
+for (const source of resonanceReview.sources.filter(source => source.kind === "fans")) check(ledgerSources.some(record => record.category === "Fans" && record.url === source.url), `Fan input missing from visible ledger: ${source.url}`);
 for (const token of ['id="word-resonance"', 'id="resonance-detail"', "aria-pressed", "resonanceThemes", "selected.fans", "selected.media", "AudienceEvidence", "resonanceReview", "resonanceCopy.caveat"]) check(resonanceComponent.includes(token), `Missing resonance behavior: ${token}`);
 try {
   validateResonanceReview(resonanceReview, JSON.parse(await readFile("research/media-day-2026-09-28/resonance-review-source-texts.json", "utf8")));
 } catch (error) { check(false, `Audience comparison audit failed: ${error.message}`); }
+const firstMinuteMarkup = dashboard.slice(dashboard.indexOf('    <section id="readout"'), dashboard.indexOf('\n    </section>', dashboard.indexOf('    <section id="readout"')) + '\n    </section>'.length);
+check(sha(Buffer.from(firstMinuteMarkup)) === "4966264f05d5526a90a165cf7e1f71ed255e1f1de61d6e5902d37a18370524ab", "First-minute markup changed");
+const firstMinuteData = data.slice(data.indexOf("export const ownershipBrief:"), data.indexOf("\nexport type ResonanceAudience"));
+check(sha(Buffer.from(firstMinuteData + "\nexport type ResonanceAudience")) === "8461acc0fcbd3733d6eceaa88a0beee5c2f08e19df98ff9ca244f78018fc7d2a", "First-minute editorial data changed");
+check(dashboard.includes('n="08"') && dashboard.includes("10 · Methodology") && resonanceComponent.includes("09 · Part 02"), "Ten-section numbering incomplete");
+check(!dashboard.includes('n="11"') && !dashboard.includes('n="16"'), "Old section numbering remains");
 check(ownershipBrief.findings.length === 3 && ownershipBrief.next.length === 3, "First-minute ownership structure incomplete");
 for (const item of [...ownershipBrief.findings, ownershipBrief.tension, ...ownershipBrief.next]) {
   check(item.sourceIds.length > 0 && item.sourceIds.every(id => sources.some(source => source.id === id)), `Ownership brief attribution missing: ${item.title}`);

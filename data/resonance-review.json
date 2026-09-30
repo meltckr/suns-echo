@@ -1,17 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "title": "What carried beyond the room",
-  "caveat": "Sampled Sep 28–29, 2026 coverage — news articles + social posts. Volumes are relative tiers from the sampled pull, not exhaustive measurement.",
+  "caveat": "Sampled Sep 28–29, 2026 coverage — five news articles + 118 fan comment texts (93 indexed Reddit comments and 25 supplied social comments). Volumes are relative tiers from the sampled pull, not exhaustive measurement. 103 comments are coded to the displayed topics; 15 contextual comments are excluded from topic scores.",
   "denominators": {
     "mediaArticles": 5,
-    "fanPosts": 5,
+    "fanPosts": 7,
     "suppliedFanEntries": 26,
-    "verbatimFanComments": 25,
-    "excludedParaphrases": 1
+    "verbatimFanComments": 118,
+    "excludedParaphrases": 1,
+    "fanThreads": 2,
+    "suppliedVerbatimComments": 25,
+    "indexedFanComments": 93,
+    "directApiFanComments": 0,
+    "codedFanComments": 103,
+    "uncodedFanComments": 15
   },
   "methodology": {
-    "unitFans": "Distinct supplied comments within each topic",
-    "unitMedia": "Distinct sampled articles within each topic; article exposure is not independent confirmation",
+    "unitFans": "Distinct captured comment texts within each topic; fan tiers count 1–4 low, 5–14 medium, 15+ high. Replies and repeated authors do not become independent respondents.",
+    "unitMedia": "Distinct sampled articles within each topic; media tiers count 1 low, 2 medium, 3+ high. Article exposure is not independent confirmation.",
     "volume": {
       "none": 0,
       "low": 1,
@@ -21,108 +27,182 @@
     "sentiment": "Editorial coding: positive +1, neutral 0, negative -1. Average coded excerpts within each unit, then average scored units per audience. No probability or population estimate. A zero average may contain opposing reactions.",
     "missing": "Null means no coded audience opinion; it does not mean neutral.",
     "mediaRoles": "Only journalist framing enters media sentiment. Reported facts and attributed player/ownership statements count as coverage exposure and retain null codes.",
-    "deduplication": "Each supplied comment or article counts once per topic. Sources are checked for identical text; repeated reported statements retain an origin label and do not count as journalist opinion or independent corroboration. Articles may appear in multiple topics; do not sum topic counts as unique audience totals.",
-    "selection": "Twelve editorially selected topics from the collected texts. Broad topics combine related phrasing; this is a topic comparison, not an exact-word frequency ranking.",
-    "fanCoding": "Anticipation is positive; playoff-failure and losing-record forecasts are negative; factual injury observations and questions receive zero. Coding describes the supplied comment, not the truth of its claim.",
+    "deduplication": "Whitespace-normalized comment text is deduplicated across the two indexed threads and supplied posts. Each captured comment or article counts once per topic. Reported statements retain an origin label; article exposure is not independent corroboration. Topics overlap, so topic counts cannot be summed as unique audiences.",
+    "selection": "Fifteen editorial phrase groups from the collected texts, including viewing access and separate Dunn/Fleming development readings. Non-topic chatter, incomplete index placeholders and fictional quotations are excluded from topic scores.",
+    "fanCoding": "Anticipation is positive; playoff-failure and losing-record forecasts are negative; factual injury observations and questions receive zero. Coding describes the captured comment, not the truth of its claim.",
     "exclusions": [
       "The supplied Booker “choker” entry was a paraphrase, so it is excluded from verbatim evidence and scoring.",
       "Sporting News ends with a reference to the Heat. That passage is excluded as an apparent subject error.",
       "Post likes and total platform comment counts are not sampling weights.",
-      "No independent public retrieval of the supplied fan comments was performed.",
-      "The saved five-article pull contains no SportsNewsReport text; it is not counted."
-    ]
+      "The saved five-article pull contains no SportsNewsReport text; it is not counted.",
+      "The original 25 social comments remain user-supplied; their post contents were not independently retrieved.",
+      "Indexed text may omit context; no complete-thread, unique-person, ranking or representative-fan claim is made.",
+      "Direct Reddit API attempts were blocked and are excluded as sources of comment data."
+    ],
+    "retrieval": "Direct Reddit JSON returned 403; old.reddit.com redirected to login and returned 404. Those endpoints were skipped. Public web-index snapshots yielded 93 dated comment texts from two r/suns threads. No platform comment IDs, author identity or exact timestamps were recovered. Local capture IDs are derived hashes; comment boundaries follow the index. This is a partial indexed sample.",
+    "codingRun": "Recomputed from research/media-day-2026-09-28/resonance-expanded-coding.json; AI-assisted editorial coding, with a second pass over the indexed comments. Exact code reasons are retained; no new paid API call.",
+    "fanVolume": {
+      "none": 0,
+      "low": "1–4",
+      "medium": "5–14",
+      "high": "15 or more"
+    }
   },
   "sources": [
     {
       "id": "arizona_continuity",
       "kind": "media",
       "source": "Arizona Sports",
-      "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026"
+      "url": "https://arizonasports.com/nba/phoenix-suns/hungry-suns-exert-newfound-continuity-camaraderie-2026",
+      "title": "Bickley: Hungry Suns exert newfound continuity, camaraderie in 2026 - Arizona Sports",
+      "published": "2026-09-28T15:47:23-07:00",
+      "collection": "article",
+      "commentCount": 0
     },
     {
       "id": "arizona_peat",
       "kind": "media",
       "source": "Arizona Sports",
-      "url": "https://arizonasports.com/nba/phoenix-suns/arizona-koa-peat-rookie-suns"
+      "url": "https://arizonasports.com/nba/phoenix-suns/arizona-koa-peat-rookie-suns",
+      "title": "Koa Peat prepared for rookie season with Phoenix Suns - Arizona Sports",
+      "published": "2026-09-28T16:00:58-07:00",
+      "collection": "article",
+      "commentCount": 0
     },
     {
       "id": "brightside",
       "kind": "media",
       "source": "Bright Side of the Sun",
-      "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity"
+      "url": "https://www.brightsideofthesun.com/general/110581/devin-booker-is-excited-for-year-12-and-the-phoenix-suns-continuity",
+      "title": "Devin Booker is excited for year 12 and the Phoenix Suns’ continuity",
+      "published": "2026-09-28T20:55:40+00:00",
+      "collection": "article",
+      "commentCount": 0
     },
     {
       "id": "hoopsrumors",
       "kind": "media",
       "source": "Hoops Rumors",
-      "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html"
+      "url": "https://www.hoopsrumors.com/2026/09/suns-notes-bridges-kennard-gillespie-center-ishbia.html",
+      "title": "Suns Notes: Bridges, Kennard, Gillespie, Center, Ishbia",
+      "published": "",
+      "collection": "article",
+      "commentCount": 0
     },
     {
       "id": "sportingnews",
       "kind": "media",
       "source": "Sporting News",
-      "url": "https://www.sportingnews.com/ca/nba/phoenix-suns/news/devin-booker-feels-home-change-he-made-during-2026-offseason/8f38892ff9742fa912774f3d"
+      "url": "https://www.sportingnews.com/ca/nba/phoenix-suns/news/devin-booker-feels-home-change-he-made-during-2026-offseason/8f38892ff9742fa912774f3d",
+      "title": "Devin Booker feels at home with the big change he made during the 2026 offseason | Sporting News",
+      "published": "2026-09-29T17:52:48+00:00",
+      "collection": "article",
+      "commentCount": 0
     },
     {
       "id": "fan_seed_001",
       "kind": "fans",
       "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
-      "url": "https://www.instagram.com/reel/Dd2lQpOKKww/"
+      "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+      "title": "@sunsworldwide_ Media Day recap reel",
+      "published": "2026-09-29",
+      "collection": "supplied",
+      "commentCount": 5
     },
     {
       "id": "fan_seed_002",
       "kind": "fans",
       "source": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
-      "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/"
+      "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
+      "title": "@suns, Booker arrives for 12th Media Day",
+      "published": "2026-09-28",
+      "collection": "supplied",
+      "commentCount": 4
     },
     {
       "id": "fan_seed_003",
       "kind": "fans",
       "source": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
-      "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl"
+      "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
+      "title": "@suns Media Day photo carousel",
+      "published": "2026-09-29",
+      "collection": "supplied",
+      "commentCount": 4
     },
     {
       "id": "fan_seed_004",
       "kind": "fans",
       "source": "https://www.facebook.com/reel/993539030442283/",
-      "url": "https://www.facebook.com/reel/993539030442283/"
+      "url": "https://www.facebook.com/reel/993539030442283/",
+      "title": "NBA, first look at Miles Bridges with Suns teammates",
+      "published": "2026-09-28",
+      "collection": "supplied",
+      "commentCount": 5
     },
     {
       "id": "fan_seed_005",
       "kind": "fans",
       "source": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
-      "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/"
+      "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
+      "title": "@suns SUNS UP group photo",
+      "published": "2026-09-28",
+      "collection": "supplied",
+      "commentCount": 7
+    },
+    {
+      "id": "reddit_1wsj8c9",
+      "kind": "fans",
+      "source": "r/suns · Media Day megathread",
+      "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+      "title": "Suns Media Day megathread",
+      "published": "2026-09-28–29",
+      "collection": "indexed",
+      "commentCount": 59
+    },
+    {
+      "id": "reddit_1wsm1rd",
+      "kind": "fans",
+      "source": "r/suns · Maluach Media Day reaction",
+      "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+      "title": "Maluach Media Day reaction thread",
+      "published": "2026-09-28–29",
+      "collection": "indexed",
+      "commentCount": 34
     }
   ],
   "findings": [
     {
-      "title": "Preparation earns favorable coverage; season reactions split",
-      "text": "Two articles favor the Suns’ preparation. Ten supplied comments on the season divide five positive and five negative. The media and fan counts use different units.",
+      "title": "Development drew positive reactions",
+      "text": "Maluach appears in 16 captured comments: 12 positive and 4 neutral. Green’s work with Nash appears in five, including two positive reactions. Articles carry player praise for Maluach; only the journalist’s own Green/Nash assessment enters media sentiment.",
       "topicIds": [
-        "continuity",
-        "outlook"
-      ]
-    },
-    {
-      "title": "Development offers a specific point of agreement",
-      "text": "Green’s work with Nash draws one positive supplied comment and favorable columnist framing. Maluach also draws a positive fan forecast, while the two articles carry Booker’s praise.",
-      "topicIds": [
+        "maluach",
         "green-nash",
-        "maluach"
+        "dunn",
+        "fleming"
       ]
     },
     {
-      "title": "Trade coverage leaves a reception question open",
-      "text": "The sampled Bridges article relays team arguments and the conduct issue. A supplied comment objects to his conduct. The article’s exposure cannot establish journalistic endorsement or the prevalence of fan opposition.",
+      "title": "Watching Media Day produced its own friction",
+      "text": "Of 23 comments about viewing or coverage, 11 are negative, 11 neutral and one positive. Stream access, signal and presentation drew criticism. These are captured reactions to the fan experience; none of the five sampled articles supplies a matching media judgment.",
       "topicIds": [
+        "broadcast"
+      ]
+    },
+    {
+      "title": "Season anticipation sits alongside roster doubts",
+      "text": "Season-outlook comments lean positive: ten of 15, with five negative. Roster discussion includes eight negative reactions among 27 comments, alongside four positive and 15 neutral. The five trade comments carry support, a conduct objection, missing Allen and neutral observations.",
+      "topicIds": [
+        "outlook",
+        "roster",
         "bridges"
       ]
     }
   ],
   "coverageGaps": [
-    "Only 25 verbatim comments are available across five selected posts; they cannot represent the fan base.",
-    "Ownership commitment, continuity and Peat have no directly matching supplied fan responses.",
-    "Bridges appears in one sampled trade article. This pull cannot establish that it was the highest-volume story across all Media Day coverage."
+    "The pool contains 118 distinct captured text records, not 118 verified individuals.93 are partial indexed Reddit captures and 25 remain supplied social comments.",
+    "103 comments map to the displayed topics; 15 contextual comments remain in the captured pool with explicit exclusions from scores.",
+    "The shared-work fan response rests on one comment about Booker and Maluach. Articles and comments may discuss different aspects of a player.",
+    "Bridges appears in one of the five sampled articles. This pull does not establish the highest-volume story across all Media Day coverage."
   ],
   "topics": [
     {
@@ -131,11 +211,47 @@
       "theme": "Roster moves",
       "entity": "Miles Bridges",
       "fans": {
-        "count": 2,
-        "score": -0.5,
+        "count": 5,
+        "score": -0.2,
         "volume": "medium",
-        "scoredCount": 2,
+        "scoredCount": 5,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-01ba6a6ef4ea6b3c",
+            "unit": "indexed-1wsj8c9-01ba6a6ef4ea6b3c",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "“Miles Bridges solves our size and defensive rebounding problems”",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Names Bridges in an ambiguous quoted basketball rationale."
+          },
+          {
+            "id": "indexed-1wsj8c9-3152e3f115095c8e",
+            "unit": "indexed-1wsj8c9-3152e3f115095c8e",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Anyone else miss Grayson",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses missing Allen after the roster change; the negative code concerns the trade departure, not a stated view of Bridges’ conduct."
+          },
+          {
+            "id": "indexed-1wsj8c9-9225332fa80b7754",
+            "unit": "indexed-1wsj8c9-9225332fa80b7754",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Kennard + Bridges >>> Grayson + ONeale\n  Kennard has been better than Grayson since their Duke days. Just needs to let em fly! Also very underrated athlete defensively. Matches up well with many guys in the league and works very hard",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly favors the Bridges/Kennard combination over Allen/ONeale."
+          },
           {
             "id": "fan_seed_004-comment-1",
             "unit": "fan_seed_004-comment-1",
@@ -144,7 +260,9 @@
             "url": "https://www.facebook.com/reel/993539030442283/",
             "kind": "fan reaction",
             "quote": "bridges he beats women",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-1",
@@ -154,7 +272,9 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "Where is Allen",
-            "code": 0
+            "code": 0,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
@@ -201,7 +321,7 @@
         "reportedCount": 1,
         "framingCount": 0
       },
-      "takeaway": "One supplied comment objects to Bridges’ conduct; another asks about Allen. The sampled trade article relays ownership and player statements. It establishes coverage, with no coded journalist approval."
+      "takeaway": "Five captured comments concern the trade: one favors the new combination, one objects to conduct, one misses Allen and two are neutral. The article relays team arguments; journalist opinion remains unscored."
     },
     {
       "id": "continuity",
@@ -209,15 +329,28 @@
       "theme": "Culture",
       "entity": "Suns team",
       "fans": {
-        "count": 0,
-        "score": null,
-        "volume": "none",
-        "scoredCount": 0,
-        "evidence": []
+        "count": 1,
+        "score": 1,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "indexed-1wsm1rd-00dc8b31ac34f09a",
+            "unit": "indexed-1wsm1rd-00dc8b31ac34f09a",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "From the interview lhaman and book have been putting in worl together all summer maybe this'll be the year booker gets an all-star big. Love mark but t gotta stay on the court.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Describes Booker and Maluach working together all summer and expresses enthusiasm for the relationship’s potential."
+          }
+        ]
       },
       "media": {
         "count": 2,
-        "score": 1.0,
+        "score": 1,
         "volume": "medium",
         "scoredCount": 2,
         "evidence": [
@@ -247,7 +380,7 @@
         "reportedCount": 0,
         "framingCount": 2
       },
-      "takeaway": "Two sampled articles endorse the value of continuity. None of the supplied comments specifically discusses the shared summer work."
+      "takeaway": "Two articles frame continuity positively. One captured fan comment praises Booker and Maluach’s summer work together; it speaks to that relationship rather than the entire returning roster."
     },
     {
       "id": "maluach",
@@ -255,11 +388,191 @@
       "theme": "Player development",
       "entity": "Khaman Maluach",
       "fans": {
-        "count": 1,
-        "score": 1.0,
-        "volume": "low",
-        "scoredCount": 1,
+        "count": 16,
+        "score": 0.75,
+        "volume": "high",
+        "scoredCount": 16,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-1588e3b00751dfd2",
+            "unit": "indexed-1wsj8c9-1588e3b00751dfd2",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "BG & Josh both saying ManMan has been very impressive this offseason!\nYear of the ManMan!",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Pairs relayed staff praise with the fan’s own enthusiastic Year of the ManMan declaration."
+          },
+          {
+            "id": "indexed-1wsm1rd-189e7b5c0686f6fe",
+            "unit": "indexed-1wsm1rd-189e7b5c0686f6fe",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Manman. The Anti-Ayton.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-588deb28421d2462",
+            "unit": "indexed-1wsm1rd-588deb28421d2462",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "He really is. The night we drafted him I had the exact opposite feeling I did when we drafted Ayton, thus, ove always called him the Anti-Ayton, because he is the complete opposite of him.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-9bb4ec7140abdd64",
+            "unit": "indexed-1wsm1rd-9bb4ec7140abdd64",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Now please give him some minutes",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Welcomes or advocates meaningful playing opportunity for Maluach; this codes the fan’s support, not a staff recommendation."
+          },
+          {
+            "id": "indexed-1wsm1rd-d185cf2df214c502",
+            "unit": "indexed-1wsm1rd-d185cf2df214c502",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "He will be starting very soon. Lots of minutes coming his way with Mark out.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Forecasts minutes with Williams absent; no explicit approval is stated."
+          },
+          {
+            "id": "indexed-1wsm1rd-b771d3a10224861d",
+            "unit": "indexed-1wsm1rd-b771d3a10224861d",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Subscribe. He may struggle but give him all the minutes",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Welcomes or advocates meaningful playing opportunity for Maluach; this codes the fan’s support, not a staff recommendation."
+          },
+          {
+            "id": "indexed-1wsm1rd-9e44c5c39350ccae",
+            "unit": "indexed-1wsm1rd-9e44c5c39350ccae",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "lets see it on the court",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+          },
+          {
+            "id": "indexed-1wsm1rd-0fc5fff30f0bb79d",
+            "unit": "indexed-1wsm1rd-0fc5fff30f0bb79d",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Star potential was always so clear. Can't wait to see him",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-5351e57a4b2f1c7d",
+            "unit": "indexed-1wsm1rd-5351e57a4b2f1c7d",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "ManMan breaking out would feed families for generations",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-425a24962ca03b9a",
+            "unit": "indexed-1wsm1rd-425a24962ca03b9a",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "easily the player im most excited for next year",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-00ed62dd755d8d91",
+            "unit": "indexed-1wsm1rd-00ed62dd755d8d91",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "He’s taller too.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+          },
+          {
+            "id": "indexed-1wsm1rd-3e312a3dd45e2f36",
+            "unit": "indexed-1wsm1rd-3e312a3dd45e2f36",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Believe it when I see it",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+          },
+          {
+            "id": "indexed-1wsm1rd-00dc8b31ac34f09a",
+            "unit": "indexed-1wsm1rd-00dc8b31ac34f09a",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "From the interview lhaman and book have been putting in worl together all summer maybe this'll be the year booker gets an all-star big. Love mark but t gotta stay on the court.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-8504be03e2fd7c8b",
+            "unit": "indexed-1wsm1rd-8504be03e2fd7c8b",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Whenever he blocks an opponents shot, i shout “not on maluach!!!!” for him in my head",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
+          {
+            "id": "indexed-1wsm1rd-a5f1381d226511df",
+            "unit": "indexed-1wsm1rd-a5f1381d226511df",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Give the man man minutes man",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+          },
           {
             "id": "fan_seed_001-comment-4",
             "unit": "fan_seed_001-comment-4",
@@ -268,7 +581,9 @@
             "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
             "kind": "fan reaction",
             "quote": "They aint ready for the maluach dbl dbl breakout season",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
@@ -304,7 +619,7 @@
         "reportedCount": 2,
         "framingCount": 0
       },
-      "takeaway": "One supplied fan comment anticipates a breakout. Two articles carry Booker’s praise; those statements are player assessments and share an interview origin."
+      "takeaway": "Sixteen captured comments discuss Maluach: twelve positive and four neutral. Two articles carry player praise from a shared interview origin; those reported statements stay unscored as media opinion."
     },
     {
       "id": "green-nash",
@@ -312,11 +627,59 @@
       "theme": "Player development",
       "entity": "Jalen Green and Steve Nash",
       "fans": {
-        "count": 1,
-        "score": 1.0,
-        "volume": "low",
-        "scoredCount": 1,
+        "count": 5,
+        "score": 0.4,
+        "volume": "medium",
+        "scoredCount": 5,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-b72a6fc2835280ce",
+            "unit": "indexed-1wsj8c9-b72a6fc2835280ce",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "JG4 said he’s been working with Steve after practices this off season.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+          },
+          {
+            "id": "indexed-1wsj8c9-dad284097c1ca328",
+            "unit": "indexed-1wsj8c9-dad284097c1ca328",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Did he say what they worked on specifically? Hope he can pass now",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+          },
+          {
+            "id": "indexed-1wsj8c9-014274c8054ad752",
+            "unit": "indexed-1wsj8c9-014274c8054ad752",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Not really, just saying how he would spend time with Steve after practices to go over stuff.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+          },
+          {
+            "id": "indexed-1wsj8c9-d469bc51d666a663",
+            "unit": "indexed-1wsj8c9-d469bc51d666a663",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "If he can even develop a tiny bit if Nashs craftiness when driving towards the rim then that wpuld be a big win.\n    No playmaker in NBA history was as crafty as Nash getting inside but maintaining the dribble to find other scoring options to pass to",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses hope that Nash’s instruction improves Green’s craft and playmaking."
+          },
           {
             "id": "fan_seed_001-comment-5",
             "unit": "fan_seed_001-comment-5",
@@ -325,13 +688,15 @@
             "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
             "kind": "fan reaction",
             "quote": "Green working with Nash made me smile",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
       "media": {
         "count": 1,
-        "score": 1.0,
+        "score": 1,
         "volume": "low",
         "scoredCount": 1,
         "evidence": [
@@ -350,7 +715,7 @@
         "reportedCount": 0,
         "framingCount": 1
       },
-      "takeaway": "The supplied fan response and one columnist’s framing are positive about Green’s development. The sample supports a specific point of agreement."
+      "takeaway": "Five fan comments reference Green’s work with Nash: two positive and three neutral. One article supplies positive journalist framing."
     },
     {
       "id": "booker-tenure",
@@ -359,8 +724,8 @@
       "entity": "Devin Booker",
       "fans": {
         "count": 2,
-        "score": 1.0,
-        "volume": "medium",
+        "score": 1,
+        "volume": "low",
         "scoredCount": 2,
         "evidence": [
           {
@@ -371,7 +736,9 @@
             "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
             "kind": "fan reaction",
             "quote": "Book really a vet 12 years crazy",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_002-comment-3",
@@ -381,13 +748,15 @@
             "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
             "kind": "fan reaction",
             "quote": "such a respectful guy, saying hi to EVERYONE",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
       "media": {
         "count": 1,
-        "score": 1.0,
+        "score": 1,
         "volume": "low",
         "scoredCount": 1,
         "evidence": [
@@ -406,7 +775,7 @@
         "reportedCount": 0,
         "framingCount": 1
       },
-      "takeaway": "Two supplied comments appreciate Booker’s longevity or manner. One article introduces his 12th season in favorable terms."
+      "takeaway": "Two supplied comments recognize Booker’s tenure and respectful arrival. One article frames his leadership positively."
     },
     {
       "id": "roster",
@@ -414,11 +783,299 @@
       "theme": "Roster moves",
       "entity": "Suns roster and Mark Williams",
       "fans": {
-        "count": 3,
-        "score": -0.667,
+        "count": 27,
+        "score": -0.148,
         "volume": "high",
-        "scoredCount": 3,
+        "scoredCount": 27,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-bd60a35ee8c8316a",
+            "unit": "indexed-1wsj8c9-bd60a35ee8c8316a",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Can't believe we have kennard. A player I've always wanted to be a Sun",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly welcomes Kennard joining the roster."
+          },
+          {
+            "id": "indexed-1wsj8c9-f01fbfe17f2ab49f",
+            "unit": "indexed-1wsj8c9-f01fbfe17f2ab49f",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Team 6’5 and under doing well",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Height observation; intended sarcasm or endorsement is ambiguous in the captured text."
+          },
+          {
+            "id": "indexed-1wsj8c9-c313e977372d9cd9",
+            "unit": "indexed-1wsj8c9-c313e977372d9cd9",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "That's a lot dawgs and a 7 footer lurking in the back.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Praises the players’ competitive character while noting the seven-footer behind them."
+          },
+          {
+            "id": "indexed-1wsj8c9-01ba6a6ef4ea6b3c",
+            "unit": "indexed-1wsj8c9-01ba6a6ef4ea6b3c",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "“Miles Bridges solves our size and defensive rebounding problems”",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Quoted size claim has ambiguous endorsement."
+          },
+          {
+            "id": "indexed-1wsj8c9-7ce2989ca5f612a5",
+            "unit": "indexed-1wsj8c9-7ce2989ca5f612a5",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Just seeing the Kennedy Chandler signing. This has to be for G league/training camp, right?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks whether Chandler is a training-camp/G League signing."
+          },
+          {
+            "id": "indexed-1wsj8c9-eb540c424ad5140d",
+            "unit": "indexed-1wsj8c9-eb540c424ad5140d",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Whose chandler?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks who Chandler is."
+          },
+          {
+            "id": "indexed-1wsj8c9-c454104c468a3509",
+            "unit": "indexed-1wsj8c9-c454104c468a3509",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Kennedy Chandler. He played with Utah last year. Guard, 5’11”, signed for training camp like Reath.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Shares information about a camp signing."
+          },
+          {
+            "id": "indexed-1wsj8c9-5593da6085f63f01",
+            "unit": "indexed-1wsj8c9-5593da6085f63f01",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Why is the idea of moving green to 6th man. And having book and brooks (not gillepsie) be the backcourt never disscused.\nIsnt the main idea when u guys defend book being point is for us to gain size and be positionless/better on defense? Just saw new york with Brunson run 2-3 3nD wings 2-4 next to him but this is never brought up. Jalen is an obviously bad fit next to him even if this sub afraid to admit it",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+          },
+          {
+            "id": "indexed-1wsj8c9-ab5df5fc8df919a5",
+            "unit": "indexed-1wsj8c9-ab5df5fc8df919a5",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Green is a $8M a year player in a $36M a year body",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+          },
+          {
+            "id": "indexed-1wsj8c9-badd5bd7672f7178",
+            "unit": "indexed-1wsj8c9-badd5bd7672f7178",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "It’s brought up a lot. I just don’t think it will happen. There wasn’t enough games to make any judgements on a healthy Book and Green backcourt.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsj8c9-c5f64f82bbd39a16",
+            "unit": "indexed-1wsj8c9-c5f64f82bbd39a16",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "No it isn't. The other alternative is always gillepsie\n    And yes there is. A simple look at their archetypes tells you the shit won't work. Just stop .\n    Tell me what good team have 2 volume scoring 2 guards running shit ...what successful team I. Hsitory had thst comp....? None\n    The team went to shit precisely when jalen started playing. This aint rocket science\n    Why are yall so against actually copying what works with other teams/what has worked in the past? Instead you'd rather fuck with fuckity team comps that anyone with an ounce of bb knowledge knows is clunky af and won't fit",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+          },
+          {
+            "id": "indexed-1wsj8c9-8352151b4ccddee0",
+            "unit": "indexed-1wsj8c9-8352151b4ccddee0",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Lots of opinions here, most of them salty. I’m not sure its even worth discussing with you. Bledsoe and Goran worked well together. Both more scoring guards than distributors. In 91-92, KJ and Hornacek worked great, at the time, both more scoring guards even though KJ averaged 10 assists per game, Jeff did a lot of the assisting. There are two duos that played for the Suns. Now a days, there are very few floor generals. Most guards now a days are scorers/shooters  first, distributors second.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsj8c9-be50b39e045e312d",
+            "unit": "indexed-1wsj8c9-be50b39e045e312d",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Bro brought up Kevin Johnson as an example and added a qualifier cause he already knew it was a stretch\n        Um those are just invalid examples. Those are nothing alike to this here. I'm not gunna over explain they are jsut flat out awful very unsimilar combos\n        Most teams have a scorer/passer hub (book) and 3nD around them plus an anchor(center)\n        This isnt rocket science\n        And jalen green doesn't qualify as 3nD. He is an empty stat player that will do nothing but take away from book, shoot inefficiently. Not pass and not defend\n        Fucking stop\n        These aren't opinions. Well I guess they are. Just its the majority opinion anywhere outside suns Fandom.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+          },
+          {
+            "id": "indexed-1wsj8c9-90b29c51a40e0210",
+            "unit": "indexed-1wsj8c9-90b29c51a40e0210",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Are you ok? My point with KJ and Jeff was that they ran the floor together. Same with Bledsoe and Goran. Basketball can be successful with a more position less group that hustle and put pressure on the rim and/or deep shooters. Green and Bridges will put pressure on the rim. Brooks was a more 3 and D wing his last season in Houston. No reason he can’t return to that.\n          We have the team we have. Book is our starting point guard and Colin is his back up. Green is our starting sg and Kennard looks to be his back up. These are the facts we have. Green was clearly never fully healthy last year. He is an explosive guard. These are all facts, so stop bitching about things that won’t change no matter how many times it is brought up.\n          Knicks just won a ring and Brunson only averaged 0.8 assists more than Book, and they played two small forwards next to him and no SG.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Defends the current personnel or explicitly favors the new player combination."
+          },
+          {
+            "id": "indexed-1wsj8c9-6867937d68a4dd10",
+            "unit": "indexed-1wsj8c9-6867937d68a4dd10",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "That means green and Gillespie play less and rasheer and Dunn play more\n  Suns will max talent on court instead.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsj8c9-5548943b236c3d07",
+            "unit": "indexed-1wsj8c9-5548943b236c3d07",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Jalen got plenty of non-Booker minutes last year and will continue to this year.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsj8c9-b655e5f7c8c4f0e8",
+            "unit": "indexed-1wsj8c9-b655e5f7c8c4f0e8",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Plenty of step on bookers toes mins also. Yhats kinds the problem. Yes we all know they try to stagger. Doesnt change the fact its an awful fit",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+          },
+          {
+            "id": "indexed-1wsj8c9-9225332fa80b7754",
+            "unit": "indexed-1wsj8c9-9225332fa80b7754",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Kennard + Bridges >>> Grayson + ONeale\n  Kennard has been better than Grayson since their Duke days. Just needs to let em fly! Also very underrated athlete defensively. Matches up well with many guys in the league and works very hard",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly favors the new player combination."
+          },
+          {
+            "id": "indexed-1wsj8c9-49764c8883f2dda0",
+            "unit": "indexed-1wsj8c9-49764c8883f2dda0",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Looking forward to SUNS basketball...\nLosing Mark sucks though (I guess inevitably, huh). We really lack size.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly regrets losing Williams and criticizes the lack of size."
+          },
+          {
+            "id": "indexed-1wsm1rd-cd7bce303392e9c9",
+            "unit": "indexed-1wsm1rd-cd7bce303392e9c9",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Hell yea time to sign 5 more centers",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsm1rd-ff8b396ac0e26f3a",
+            "unit": "indexed-1wsm1rd-ff8b396ac0e26f3a",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Oso will be in the same lineup as Collin.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsm1rd-f5040b2bb0cc58e2",
+            "unit": "indexed-1wsm1rd-f5040b2bb0cc58e2",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Man man starting???",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsm1rd-6c0979256696b30a",
+            "unit": "indexed-1wsm1rd-6c0979256696b30a",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "If Williams is missing time I could see it with Collin and Oso getting early run.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
+          {
+            "id": "indexed-1wsm1rd-f11758019fa3e9eb",
+            "unit": "indexed-1wsm1rd-f11758019fa3e9eb",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Are we expecting 25 mins per??",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+          },
           {
             "id": "fan_seed_004-comment-3",
             "unit": "fan_seed_004-comment-3",
@@ -427,7 +1084,9 @@
             "url": "https://www.facebook.com/reel/993539030442283/",
             "kind": "fan reaction",
             "quote": "All at 6.4. All PG stature.",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_004-comment-4",
@@ -437,7 +1096,9 @@
             "url": "https://www.facebook.com/reel/993539030442283/",
             "kind": "fan reaction",
             "quote": "Mark Williams but he injured his shoulder this off-season",
-            "code": 0
+            "code": 0,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-2",
@@ -447,7 +1108,9 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "No PG or Center is wild",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
@@ -472,7 +1135,7 @@
         "reportedCount": 1,
         "framingCount": 0
       },
-      "takeaway": "Three supplied comments discuss size, positions or Williams’ shoulder. The article reports an availability concern; that factual account receives no journalist-sentiment score."
+      "takeaway": "Twenty-seven comments address roster fit or availability: four positive, eight negative and fifteen neutral. Questions and informational replies remain neutral; fan proposals are recorded as reactions."
     },
     {
       "id": "outlook",
@@ -480,11 +1143,71 @@
       "theme": "Season outlook",
       "entity": "Phoenix Suns",
       "fans": {
-        "count": 10,
-        "score": 0.0,
+        "count": 15,
+        "score": 0.333,
         "volume": "high",
-        "scoredCount": 10,
+        "scoredCount": 15,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-e209db137710bad2",
+            "unit": "indexed-1wsj8c9-e209db137710bad2",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "God I’m so ready for the suns, fuckin Dbacks and cards just piss me off.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses anticipation or excitement for Suns basketball."
+          },
+          {
+            "id": "indexed-1wsj8c9-6f11920851295c39",
+            "unit": "indexed-1wsj8c9-6f11920851295c39",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "I watched all of the press interviews and every player hyped me up for this season. The defensive players we have will be amazing to watch. I’m looking forward to this season. Stay healthy boys!",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses anticipation or excitement for Suns basketball."
+          },
+          {
+            "id": "indexed-1wsj8c9-49764c8883f2dda0",
+            "unit": "indexed-1wsj8c9-49764c8883f2dda0",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Looking forward to SUNS basketball...\nLosing Mark sucks though (I guess inevitably, huh). We really lack size.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly looks forward to Suns basketball."
+          },
+          {
+            "id": "indexed-1wsm1rd-23e0bbce8002f904",
+            "unit": "indexed-1wsm1rd-23e0bbce8002f904",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "WE ARE SO READY",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses anticipation or excitement for Suns basketball."
+          },
+          {
+            "id": "indexed-1wsm1rd-6b91fe5a6fdda21f",
+            "unit": "indexed-1wsm1rd-6b91fe5a6fdda21f",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Bring it!!",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses anticipation or excitement for Suns basketball."
+          },
           {
             "id": "fan_seed_001-comment-2",
             "unit": "fan_seed_001-comment-2",
@@ -493,7 +1216,9 @@
             "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
             "kind": "fan reaction",
             "quote": "You js made me 10 times more hype for the suns season",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_002-comment-1",
@@ -503,7 +1228,9 @@
             "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
             "kind": "fan reaction",
             "quote": "AHHHH ITS HAPPENING!!!",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_002-comment-4",
@@ -513,7 +1240,9 @@
             "url": "https://www.instagram.com/reel/Dd1rMjKz_gE/",
             "kind": "fan reaction",
             "quote": "My day made",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_003-comment-1",
@@ -523,7 +1252,9 @@
             "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
             "kind": "fan reaction",
             "quote": "LETS FUCKIN GO!!!!! 602!!!!!",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_003-comment-2",
@@ -533,7 +1264,9 @@
             "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
             "kind": "fan reaction",
             "quote": "Can't wait for the season to start!!!",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_003-comment-3",
@@ -543,7 +1276,9 @@
             "url": "https://www.facebook.com/suns/posts/pfbid0FuhLkVbReXcVtwYkir1Tknbgy3bX52UvRctwUtqKCTDTJdWPmgj55snaFDrc2aeSl",
             "kind": "fan reaction",
             "quote": "First round exit or missed playoffs. These dudes are bench players",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_004-comment-2",
@@ -553,7 +1288,9 @@
             "url": "https://www.facebook.com/reel/993539030442283/",
             "kind": "fan reaction",
             "quote": "These dudes know they ain't makin the playoffs lmao",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-4",
@@ -563,7 +1300,9 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "Another losing season. SAVE D BOOK",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-6",
@@ -573,7 +1312,9 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "9th seed",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-7",
@@ -583,13 +1324,15 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "38 win team",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
       "media": {
         "count": 2,
-        "score": 1.0,
+        "score": 1,
         "volume": "medium",
         "scoredCount": 2,
         "evidence": [
@@ -619,7 +1362,7 @@
         "reportedCount": 0,
         "framingCount": 2
       },
-      "takeaway": "Ten supplied comments split evenly between anticipation and pessimistic season forecasts. Two articles frame the preparation positively. A zero fan average here means mixed responses."
+      "takeaway": "Fifteen captured season-outlook comments divide ten positive and five negative. Two sampled articles frame preparation favorably. The selected fan comments lean positive while retaining explicit doubts."
     },
     {
       "id": "commitment",
@@ -627,11 +1370,48 @@
       "theme": "Ownership",
       "entity": "Mat Ishbia",
       "fans": {
-        "count": 0,
-        "score": null,
-        "volume": "none",
-        "scoredCount": 0,
-        "evidence": []
+        "count": 3,
+        "score": 0.333,
+        "volume": "low",
+        "scoredCount": 3,
+        "evidence": [
+          {
+            "id": "indexed-1wsj8c9-85f6f64f83f71d28",
+            "unit": "indexed-1wsj8c9-85f6f64f83f71d28",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Ishbia talking directly to the \"no picks\" crowd... LOL!\nHe said we have picks the next 4 years.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Relays an ownership claim about draft picks or tenure; relaying it does not establish endorsement of funding."
+          },
+          {
+            "id": "indexed-1wsj8c9-2ae810419f13215b",
+            "unit": "indexed-1wsj8c9-2ae810419f13215b",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Now he's addressing the negative coverage of his bad mortgage quarter. LOL! I love this guy, he doesn't mince his words.\nHe said he feels bad that the media has to ask this question during media day for the team.",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicitly praises Ishbia while discussing his response to financial questions."
+          },
+          {
+            "id": "indexed-1wsj8c9-d6e31e5fff665ce2",
+            "unit": "indexed-1wsj8c9-d6e31e5fff665ce2",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Ishbia plans to own the team for 40-50 years.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Relays an ownership claim about draft picks or tenure; relaying it does not establish endorsement of funding."
+          }
+        ]
       },
       "media": {
         "count": 2,
@@ -665,7 +1445,7 @@
         "reportedCount": 2,
         "framingCount": 0
       },
-      "takeaway": "Two articles relay Mat’s commitment. The supplied comments offer no direct reaction to ownership funding, and neither passage expresses the journalist’s approval."
+      "takeaway": "Three indexed comments address ownership claims: one explicitly praises Ishbia and two relay statements. The two articles’ reported commitments stay unscored as journalist opinion."
     },
     {
       "id": "hunger",
@@ -674,8 +1454,8 @@
       "entity": "Phoenix Suns",
       "fans": {
         "count": 2,
-        "score": 0.0,
-        "volume": "medium",
+        "score": 0,
+        "volume": "low",
         "scoredCount": 2,
         "evidence": [
           {
@@ -686,7 +1466,9 @@
             "url": "https://www.facebook.com/reel/993539030442283/",
             "kind": "fan reaction",
             "quote": "None of them wants to be there",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           },
           {
             "id": "fan_seed_005-comment-5",
@@ -696,13 +1478,15 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "This lineup way more hungry",
-            "code": 1
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
       "media": {
         "count": 1,
-        "score": 1.0,
+        "score": 1,
         "volume": "low",
         "scoredCount": 1,
         "evidence": [
@@ -721,7 +1505,7 @@
         "reportedCount": 0,
         "framingCount": 1
       },
-      "takeaway": "Two supplied comments conflict on the group’s hunger and willingness to be there. One column offers a favorable reading of the team’s trust."
+      "takeaway": "Two supplied comments express opposing reactions about hunger or belonging. Their zero average is mixed; one article frames preparation favorably."
     },
     {
       "id": "number",
@@ -729,11 +1513,23 @@
       "theme": "Team identity",
       "entity": "Devin Booker",
       "fans": {
-        "count": 1,
-        "score": -1.0,
+        "count": 2,
+        "score": -1,
         "volume": "low",
-        "scoredCount": 1,
+        "scoredCount": 2,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-ff23807b6898e94e",
+            "unit": "indexed-1wsj8c9-ff23807b6898e94e",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Book in #15 looks so weird",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses discomfort with Booker’s changed jersey number."
+          },
           {
             "id": "fan_seed_005-comment-3",
             "unit": "fan_seed_005-comment-3",
@@ -742,13 +1538,15 @@
             "url": "https://www.instagram.com/reel/Dd0yLUBN0DU/",
             "kind": "fan reaction",
             "quote": "I'm sorry but booker lost aura wearing 15",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
       "media": {
         "count": 1,
-        "score": 1.0,
+        "score": 1,
         "volume": "low",
         "scoredCount": 1,
         "evidence": [
@@ -767,7 +1565,7 @@
         "reportedCount": 0,
         "framingCount": 1
       },
-      "takeaway": "One supplied comment dislikes the number change. One article gives it a favorable interpretation; these are two individual reactions."
+      "takeaway": "Two captured comments react negatively to Booker’s No. 15. One article describes the change positively."
     },
     {
       "id": "patch",
@@ -775,11 +1573,23 @@
       "theme": "Team identity",
       "entity": "Jersey sponsor",
       "fans": {
-        "count": 1,
-        "score": -1.0,
+        "count": 2,
+        "score": -0.5,
         "volume": "low",
-        "scoredCount": 1,
+        "scoredCount": 2,
         "evidence": [
+          {
+            "id": "indexed-1wsj8c9-82aadb39ab3646f0",
+            "unit": "indexed-1wsj8c9-82aadb39ab3646f0",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Also Paze is the new sponsor",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Identifies Paze as the sponsor without expressing approval or criticism."
+          },
           {
             "id": "fan_seed_001-comment-3",
             "unit": "fan_seed_001-comment-3",
@@ -788,7 +1598,9 @@
             "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
             "kind": "fan reaction",
             "quote": "I hate the paze patch so much",
-            "code": -1
+            "code": -1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Original AI-assisted editorial code retained on the unchanged supplied comment."
           }
         ]
       },
@@ -801,7 +1613,7 @@
         "reportedCount": 0,
         "framingCount": 0
       },
-      "takeaway": "One supplied comment dislikes the patch. The five sampled articles contain no coded response to it."
+      "takeaway": "One supplied comment dislikes the Paze patch; one indexed comment identifies the sponsor without judgment. None of the five sampled articles covers this selected topic."
     },
     {
       "id": "peat",
@@ -809,15 +1621,28 @@
       "theme": "Player development",
       "entity": "Koa Peat",
       "fans": {
-        "count": 0,
-        "score": null,
-        "volume": "none",
-        "scoredCount": 0,
-        "evidence": []
+        "count": 1,
+        "score": 0,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "indexed-1wsj8c9-8f1aede42c940ff8",
+            "unit": "indexed-1wsj8c9-8f1aede42c940ff8",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "What was JG saying about Koa getting banged up? Kid got hurt?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks whether Peat was injured; no positive or negative performance judgment."
+          }
+        ]
       },
       "media": {
         "count": 1,
-        "score": 1.0,
+        "score": 1,
         "volume": "low",
         "scoredCount": 1,
         "evidence": [
@@ -836,7 +1661,430 @@
         "reportedCount": 0,
         "framingCount": 1
       },
-      "takeaway": "One article frames Peat’s arrival positively. There is no Peat-specific response in the supplied fan comments."
+      "takeaway": "One indexed comment asks about Peat’s availability and is coded neutral. One article frames his hometown opportunity positively; those comments address different aspects of the same player."
+    },
+    {
+      "id": "broadcast",
+      "phrase": "Media Day viewing and coverage",
+      "entity": "Media Day broadcast and recap access",
+      "theme": "Culture",
+      "fans": {
+        "count": 23,
+        "score": -0.435,
+        "volume": "high",
+        "scoredCount": 23,
+        "evidence": [
+          {
+            "id": "indexed-1wsj8c9-9fa3532d4eec77a9",
+            "unit": "indexed-1wsj8c9-9fa3532d4eec77a9",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Still trying to find a live stream.  It looks like the whole thing is live on Channel 44 on antenna.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-3731aaadcf51c56d",
+            "unit": "indexed-1wsj8c9-3731aaadcf51c56d",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Will the signal reach Kansas City? 😭",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-f5460151a8557844",
+            "unit": "indexed-1wsj8c9-f5460151a8557844",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Yeah it’s not on YouTube like usual.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "States the platform differs from usual; no explicit evaluation."
+          },
+          {
+            "id": "indexed-1wsj8c9-9adb80b2fcdcd359",
+            "unit": "indexed-1wsj8c9-9adb80b2fcdcd359",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "i'm so mad it's not on youtube , i can't find it",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-e233f0e5302c74e0",
+            "unit": "indexed-1wsj8c9-e233f0e5302c74e0",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "I went to 44 on my tv and it came up static. What’s the network it’s on?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-7bc44ee1f70933e9",
+            "unit": "indexed-1wsj8c9-7bc44ee1f70933e9",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "That would be arizona family sports",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-2a0f09d6ed1569a1",
+            "unit": "indexed-1wsj8c9-2a0f09d6ed1569a1",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "2nd year in a row with no live stream from the Suns, no phnx to hold us over until they post there's either. Not the end of the world, but still hilarious that we're seemingly the only franchise that can't manage to provide this for the fans.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-14327908dfb8c2e5",
+            "unit": "indexed-1wsj8c9-14327908dfb8c2e5",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "I found a working live stream at https://www.azfamilysports.com/game/928-at-1000-am-mst--suns-media-day-1790279542833",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Shares a working stream link; the statement is informational."
+          },
+          {
+            "id": "indexed-1wsj8c9-d0c3a0e5a1b49558",
+            "unit": "indexed-1wsj8c9-d0c3a0e5a1b49558",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Ofcourse they start having technical difficulties immediately lol, but this was working pretty well",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Criticizes stream technical difficulties, despite saying it previously worked."
+          },
+          {
+            "id": "indexed-1wsj8c9-6ce79153dec7e7c4",
+            "unit": "indexed-1wsj8c9-6ce79153dec7e7c4",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Whoa. Will they do this for games this season?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-61e2f63e8dc56e0b",
+            "unit": "indexed-1wsj8c9-61e2f63e8dc56e0b",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "My antenna feed is trash on channel 44.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-02e74705fed2053e",
+            "unit": "indexed-1wsj8c9-02e74705fed2053e",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "the stream is fucked right now.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-90e00b0183033121",
+            "unit": "indexed-1wsj8c9-90e00b0183033121",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "And books talking lmao",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "The reply objects to the feed failing while Booker is speaking; read with the immediately preceding stream complaint."
+          },
+          {
+            "id": "indexed-1wsj8c9-5de41d3df1d88e81",
+            "unit": "indexed-1wsj8c9-5de41d3df1d88e81",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "every year, man.  they can never have a smooth broadcast.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-aed24cab97b99b1e",
+            "unit": "indexed-1wsj8c9-aed24cab97b99b1e",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "A little rain & Phoenix losses all signal. Hahaha!",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-8027f0cd2c44ac69",
+            "unit": "indexed-1wsj8c9-8027f0cd2c44ac69",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "It’s Suns Media Day. Why tf are these guys talking about football and baseball 🙄 can we not talk about the cardinals or dbacks for one damn day? Stg we could win it all and Doug and Wolf would devote an hour to talk cardinals smh.",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-b9d32777bbe342d9",
+            "unit": "indexed-1wsj8c9-b9d32777bbe342d9",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "There was a break, relax.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-fabda013202c8a23",
+            "unit": "indexed-1wsj8c9-fabda013202c8a23",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "So are we just SOL if we cant catch this live this year?",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "indexed-1wsj8c9-2699e6488316b285",
+            "unit": "indexed-1wsj8c9-2699e6488316b285",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Anyone know if Man Man or Sheer did interviews?",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about a signing or player interviews during Media Day; treated as an information request."
+          },
+          {
+            "id": "indexed-1wsj8c9-ac20f60732a5b7ec",
+            "unit": "indexed-1wsj8c9-ac20f60732a5b7ec",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "I watched on YouTube, almost all of the players, even including Chandler and Reath.",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsj8c9-9b0d1b66176a1280",
+            "unit": "indexed-1wsj8c9-9b0d1b66176a1280",
+            "sourceId": "reddit_1wsj8c9",
+            "source": "r/suns · Media Day megathread",
+            "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/megathread_phoenix_suns_media_day_2026_10am_start/",
+            "kind": "fan reaction",
+            "quote": "Most of the team, including ManMan and Rasheer, have interviews that are up on the Suns YouTube page",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+          },
+          {
+            "id": "indexed-1wsm1rd-df5400ffa1b27a99",
+            "unit": "indexed-1wsm1rd-df5400ffa1b27a99",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Very disappointed in Suns NOT live streaming media day like last year.  Very Sarver like move. Let us ask our in house Tucson honk Kellan. Kellan?",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+          },
+          {
+            "id": "fan_seed_001-comment-1",
+            "unit": "fan_seed_001-comment-1",
+            "sourceId": "fan_seed_001",
+            "source": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "url": "https://www.instagram.com/reel/Dd2lQpOKKww/",
+            "kind": "fan reaction",
+            "quote": "Appreciate the videos and all the stories you posted about media day",
+            "code": 1,
+            "origin": "Supplied Instagram/Facebook comment",
+            "codingReason": "Explicitly appreciates the recap videos and Media Day stories."
+          }
+        ]
+      },
+      "media": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": [],
+        "reportedCount": 0,
+        "framingCount": 0
+      },
+      "takeaway": "Twenty-three comments concern viewing or coverage: one positive, eleven negative and eleven neutral. Frustration concerns streams, signal and presentation. No matching media opinion appears in the five-article sample."
+    },
+    {
+      "id": "dunn",
+      "phrase": "Dunn: patience and doubt",
+      "entity": "Ryan Dunn",
+      "theme": "Player development",
+      "fans": {
+        "count": 3,
+        "score": -0.667,
+        "volume": "low",
+        "scoredCount": 3,
+        "evidence": [
+          {
+            "id": "indexed-1wsm1rd-4e293559ea09e17e",
+            "unit": "indexed-1wsm1rd-4e293559ea09e17e",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "He’s still young though. Give him time especially in the second unit",
+            "code": 0,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Requests patience for Dunn; no performance conclusion."
+          },
+          {
+            "id": "indexed-1wsm1rd-b876ed17a590e277",
+            "unit": "indexed-1wsm1rd-b876ed17a590e277",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "I want to believe but he has been a hell of a project",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses doubt about Dunn as a development project."
+          },
+          {
+            "id": "indexed-1wsm1rd-ab0c13e2bb9ca3b2",
+            "unit": "indexed-1wsm1rd-ab0c13e2bb9ca3b2",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Dunn is the only that has me skeptical\n  Hopefully Rasheer breaks out with consistent time",
+            "code": -1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Explicit skepticism concerns Dunn."
+          }
+        ]
+      },
+      "media": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": [],
+        "reportedCount": 0,
+        "framingCount": 0
+      },
+      "takeaway": "Three indexed comments ask for patience or express doubt about Dunn: two negative and one neutral. This keeps those judgments separate from Maluach’s reception."
+    },
+    {
+      "id": "fleming",
+      "phrase": "Fleming breakout hopes",
+      "entity": "Rasheer Fleming",
+      "theme": "Player development",
+      "fans": {
+        "count": 1,
+        "score": 1,
+        "volume": "low",
+        "scoredCount": 1,
+        "evidence": [
+          {
+            "id": "indexed-1wsm1rd-ab0c13e2bb9ca3b2",
+            "unit": "indexed-1wsm1rd-ab0c13e2bb9ca3b2",
+            "sourceId": "reddit_1wsm1rd",
+            "source": "r/suns · Maluach Media Day reaction",
+            "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/_/",
+            "kind": "fan reaction",
+            "quote": "Dunn is the only that has me skeptical\n  Hopefully Rasheer breaks out with consistent time",
+            "code": 1,
+            "origin": "Indexed Reddit comment; no platform comment ID",
+            "codingReason": "Expresses hope for a Fleming breakout."
+          }
+        ]
+      },
+      "media": {
+        "count": 0,
+        "score": null,
+        "volume": "none",
+        "scoredCount": 0,
+        "evidence": [],
+        "reportedCount": 0,
+        "framingCount": 0
+      },
+      "takeaway": "One indexed comment hopes for a Fleming breakout. This small positive signal concerns Fleming specifically; no matching article framing is scored."
     }
-  ]
+  ],
+  "retrievalAudit": {
+    "attempts": [
+      {
+        "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+        "status": 403,
+        "finalUrl": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1"
+      },
+      {
+        "url": "https://old.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+        "status": 404,
+        "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fcomments%2F1wsj8c9%2F.json%3Flimit%3D500%26sort%3Dtop%26raw_json%3D1"
+      },
+      {
+        "url": "https://old.reddit.com/r/suns/search.json?q=media%20day&restrict_sr=on&sort=new&limit=100",
+        "status": 404,
+        "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fsearch.json%3Fq%3Dmedia%2520day%26restrict_sr%3Don%26sort%3Dnew%26limit%3D100"
+      },
+      {
+        "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1",
+        "status": 403,
+        "finalUrl": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1"
+      }
+    ],
+    "indexedComments": 93,
+    "directApiComments": 0,
+    "threads": 2
+  }
 }
