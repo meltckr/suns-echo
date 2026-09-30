@@ -1,0 +1,73 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "comparison": "Case and punctuation ignored; apostrophes standardized. Words and contractions remain distinct.",
+  "audioSha256": "ecdde0f329e0dd9917018df0cd8f40d7dfdc028d05b6bbabb6c13753e7dd1c87",
+  "scriptSha256": "8b999dcb022ae1840163dd3d04789cff2cbc19e9b1897f99121493f4f8487055",
+  "whisperSha256": "32b2cb3ac5d18258b58b63e7affdd0c673c36c2f103de38dc1693f54d857cc99",
+  "scriptWords": 291,
+  "recognizedWords": 296,
+  "mismatches": [
+    {
+      "operation": "replace",
+      "scriptWord": 1,
+      "expected": "mat",
+      "recognized": "matt"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 11,
+      "expected": "ighodaro",
+      "recognized": "iga daro"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 13,
+      "expected": "khaman maluach",
+      "recognized": "kamam malu watch"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 28,
+      "expected": "maluach",
+      "recognized": "malu watch"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 55,
+      "expected": "maluach",
+      "recognized": "malu watch"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 59,
+      "expected": "kennard",
+      "recognized": "kinnar"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 69,
+      "expected": "and",
+      "recognized": "in"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 107,
+      "expected": "maluach's",
+      "recognized": "model watch's"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 240,
+      "expected": "williams",
+      "recognized": "william's"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 247,
+      "expected": "said",
+      "recognized": "says"
+    }
+  ],
+  "limitation": "Whisper differences may be recognition errors or delivery errors; they do not establish perceptual listening approval."
+}

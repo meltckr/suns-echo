@@ -1,0 +1,27 @@
+{
+  "title": "Take 5 then Take 6: paragraph 1",
+  "audioSha256": "c76c0a88b15db3ad23cd8441461f6f641c32ddc4bd69669193eb86cc9a255f10",
+  "durationSeconds": 20.0,
+  "segments": [
+    {
+      "take": 5,
+      "comparisonStartSeconds": 0,
+      "sourceRangeSeconds": [
+        0,
+        10
+      ],
+      "sourceSha256": "a3b48247b6f6c2e5123edd092ff025581280ed3ee1e712506a2b1df7067a9c9b"
+    },
+    {
+      "take": 6,
+      "comparisonStartSeconds": 10,
+      "sourceRangeSeconds": [
+        0,
+        10
+      ],
+      "sourceSha256": "5843d91d72c6f7cbedcce8086cb83199ea48c0a50d125cfd4a5f3aa25f467e92"
+    }
+  ],
+  "finishing": "First 10 seconds of each finished narration; 30ms excerpt fades, one MP3 encode; no speed change. The two takes use different scripts.",
+  "notProductionAudio": true
+}

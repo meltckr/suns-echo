@@ -4,3 +4,6 @@ node_modules/
 .netlify/
 mobile-verification.png
 desktop-verification.png
+*.tsbuildinfo
+__pycache__/
+*.blend1

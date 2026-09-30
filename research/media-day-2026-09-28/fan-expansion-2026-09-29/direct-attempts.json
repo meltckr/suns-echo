@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+    "retrievedAt": "2026-09-30T00:06:10.831839+00:00",
+    "method": "public GET browser User-Agent",
+    "status": 403,
+    "responseFile": "direct-01.response",
+    "contentType": "text/html",
+    "finalUrl": "https://www.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1"
+  },
+  {
+    "url": "https://old.reddit.com/r/suns/comments/1wsj8c9/.json?limit=500&sort=top&raw_json=1",
+    "retrievedAt": "2026-09-30T00:06:11.012404+00:00",
+    "method": "public GET browser User-Agent",
+    "status": 404,
+    "responseFile": "direct-02.response",
+    "contentType": "text/plain; charset=utf-8",
+    "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fcomments%2F1wsj8c9%2F.json%3Flimit%3D500%26sort%3Dtop%26raw_json%3D1"
+  },
+  {
+    "url": "https://old.reddit.com/r/suns/search.json?q=media%20day&restrict_sr=on&sort=new&limit=100",
+    "retrievedAt": "2026-09-30T00:06:11.304298+00:00",
+    "method": "public GET browser User-Agent",
+    "status": 404,
+    "responseFile": "direct-03.response",
+    "contentType": "text/plain; charset=utf-8",
+    "finalUrl": "https://old.reddit.com/login/?reason=lor2&dest=https%3A%2F%2Fold.reddit.com%2Fr%2Fsuns%2Fsearch.json%3Fq%3Dmedia%2520day%26restrict_sr%3Don%26sort%3Dnew%26limit%3D100"
+  },
+  {
+    "url": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1",
+    "retrievedAt": "2026-09-30T00:06:11.656914+00:00",
+    "method": "public GET browser User-Agent",
+    "status": 403,
+    "responseFile": "direct-04.response",
+    "contentType": "text/html",
+    "finalUrl": "https://www.reddit.com/r/suns/comments/1wsm1rd/.json?limit=500&sort=top&raw_json=1"
+  }
+]

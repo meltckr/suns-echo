@@ -1,0 +1,302 @@
+{
+  "eventDate": "2026-09-28",
+  "retrievedLocalDate": "2026-09-29",
+  "timezone": "America/Phoenix",
+  "scope": "Morning official-source follow-up; evidence only. No edition copy, UI, or audio changed.",
+  "method": "Official verified Phoenix Suns YouTube channel discovery, visible interview title/date verification, browser content.exportYouTubeTranscript exports, then complete transcript reads. Captions are auto-generated and contain name errors; use attributed paraphrases. Exact quotations require listening verification.",
+  "sources": [
+    {
+      "id": "official-gregory-2026",
+      "speaker": "Brian Gregory",
+      "title": "GM Brian Gregory Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=RSBrE1yhI8o",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "precisePublicationTime": null,
+      "evidence": [
+        {
+          "time": "1:29-2:20",
+          "paraphrase": "Gregory described internal development as individual and collective work, crediting players and coaches for summer effort."
+        },
+        {
+          "time": "2:24-2:44",
+          "paraphrase": "He said 12 of the 15 players who ended the previous season would begin training camp, with every coaching-staff member returning. Preserve his season-ending denominator; do not substitute last training camp."
+        },
+        {
+          "time": "10:30-11:26",
+          "paraphrase": "Gregory described Williams' surgery as successful and rehab as underway. He said it would be several months before they could get a good read on return to play. This does not supply a return date."
+        },
+        {
+          "time": "11:29-12:37",
+          "paraphrase": "He described increased opportunity for Ighodaro and Maluach, praising their work ethic and coachability."
+        },
+        {
+          "time": "13:18-14:51",
+          "paraphrase": "He said improvement applies to staff too; visits to other sports operations help with evaluation, analytics and coaching relationships."
+        }
+      ],
+      "editorialPriority": "Replace the secondary Williams forecast with this precise original answer. Attribute all recovery claims to Gregory; do not make a medical prediction.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-kennard-2026",
+      "speaker": "Luke Kennard",
+      "title": "Luke Kennard Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=bobwPedrkAE",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "precisePublicationTime": null,
+      "dateBasis": "Channel and watch page showed approximately 12 hours old on Sept29 morning; event/title verified as 2026 Media Day.",
+      "evidence": [
+        {
+          "time": "6:12-6:48",
+          "paraphrase": "Kennard said he had been in Phoenix about a month, working with teammates and developing a playing connection with Ighodaro."
+        },
+        {
+          "time": "7:16-7:56",
+          "paraphrase": "He described consistent encouragement from teammates and coaches to shoot more, including harder attempts; he said Ott's message increased his confidence."
+        },
+        {
+          "time": "8:12-8:58",
+          "paraphrase": "He praised Maluach's work habits based on their short time together and described seeing work on his shot."
+        },
+        {
+          "time": "9:33-10:28",
+          "paraphrase": "He said early group workouts and gatherings helped build chemistry and enabled conversations about his preferred shooting situations."
+        },
+        {
+          "time": "10:48-11:29",
+          "paraphrase": "Asked whether other players' strong seasons under Ott attracted him, Kennard agreed and cited the coach, style of play, teammates and competitiveness."
+        }
+      ],
+      "editorialPriority": "Adds a newcomer's account of what continuity looks like upon arrival and why the environment attracted him.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-ighodaro-2026",
+      "speaker": "Oso Ighodaro",
+      "title": "Oso Ighodaro Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=K49VkSpNWxs",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "0:27-0:55",
+          "paraphrase": "He said his preparation preceded Williams' injury and that a starting role still has to be earned."
+        },
+        {
+          "time": "1:58-2:16",
+          "paraphrase": "He described familiar faces and system knowledge as a better starting point for camp, while explicitly leaving results unproven."
+        },
+        {
+          "time": "2:37-2:58",
+          "paraphrase": "He said two-man work with Kennard felt natural on their first live day together and had continued for roughly a month."
+        },
+        {
+          "time": "3:56-4:27",
+          "paraphrase": "He said he and Maluach push each other in workouts and give one another pointers even when playing on opposite pickup teams."
+        },
+        {
+          "time": "4:49-5:06",
+          "paraphrase": "He identified defensive rebounding as a personal area requiring improvement."
+        },
+        {
+          "time": "5:23-5:46",
+          "paraphrase": "He said he advised fellow local player Peat about setting boundaries around hometown requests and distractions."
+        }
+      ],
+      "editorialPriority": "Strongest new concrete example of competition coexisting with mutual help; reciprocal account available from Maluach.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-maluach-2026",
+      "speaker": "Khaman Maluach",
+      "title": "Khaman Maluach Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=U5ne7o2_oXY",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "1:14-1:50",
+          "paraphrase": "Maluach defined success through team wins, the playoffs and improvement on the previous record, placing individual goals behind team needs."
+        },
+        {
+          "time": "2:18-3:08",
+          "paraphrase": "He explained reaching out to Booker to learn how to help when Booker faces defensive pressure, including where to deliver the ball and how to respond to situations."
+        },
+        {
+          "time": "4:13-4:48",
+          "paraphrase": "He described asking Ighodaro what he sees during plays and after practices and relying on his guidance."
+        },
+        {
+          "time": "5:05-5:34",
+          "paraphrase": "He credited strength and conditioning and development staff for physical progress. His health expectations are his own; do not infer medical outcomes."
+        },
+        {
+          "time": "7:59-8:46",
+          "paraphrase": "He framed the center role around what he and Ighodaro can provide together for the team while Williams is absent, accepting the coach's matchup decisions."
+        }
+      ],
+      "editorialPriority": "Closes the other side of Booker's workout story and supplies reciprocal evidence for Oso's description.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-dunn-2026",
+      "speaker": "Ryan Dunn",
+      "title": "Ryan Dunn Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=N25bp5CHnNo",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "0:29-1:04",
+          "paraphrase": "Dunn emphasized controlling his effort and helping the team through whatever role he receives."
+        },
+        {
+          "time": "2:12-2:46",
+          "paraphrase": "He described seeking defensive advice from more experienced teammates while also helping younger players."
+        },
+        {
+          "time": "3:12-3:49",
+          "paraphrase": "He described seeing Maluach and Fleming improve during pickup and the group's Flagstaff trip."
+        },
+        {
+          "time": "5:04-5:16",
+          "paraphrase": "He singled out Maluach's audible communication and presence during pickup."
+        }
+      ],
+      "editorialPriority": "Extends the learning story to a third-year player occupying both learner and helper roles; development assessments remain teammate observations.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-bridges-2026",
+      "speaker": "Miles Bridges",
+      "title": "Miles Bridges Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=gcBL9yhoSzI",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "0:24-0:39",
+          "paraphrase": "Bridges said he had watched Suns film and viewed his physicality as a fit with their existing style."
+        },
+        {
+          "time": "1:14-1:46",
+          "paraphrase": "He described practicing inverted screens in open gyms and identified Mateen Cleaves as someone who has known him since childhood and can hold him accountable."
+        },
+        {
+          "time": "4:58-5:25",
+          "paraphrase": "He described Maluach, Fleming and Peat as receptive to his corrections during open gym."
+        },
+        {
+          "time": "5:43-6:06",
+          "paraphrase": "He expressed an interest in learning from the group's experience, noting that he has yet to play in the playoffs."
+        }
+      ],
+      "editorialPriority": "Peat separately describes specific advice from Bridges. These basketball accounts do not resolve broader public accountability questions around the acquisition.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-fleming-2026",
+      "speaker": "Rasheer Fleming",
+      "title": "Rasheer Fleming Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=Y2YeiZj7BVw",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "0:25-0:38",
+          "paraphrase": "Fleming credited summer repetitions with teammates for greater confidence."
+        },
+        {
+          "time": "3:16-3:52",
+          "paraphrase": "He described film study helping him anticipate actions and communicate sooner. The auto-captioned assistant coach name is unclear; omit that name until listening verification."
+        },
+        {
+          "time": "5:26-5:40",
+          "paraphrase": "He credited his Valley Suns experience with helping him play with more control as the game slowed down for him."
+        }
+      ],
+      "editorialPriority": "Provides a specific player account of development infrastructure, distinct from general leadership praise.",
+      "transcriptExportedForVerification": true
+    },
+    {
+      "id": "official-peat-2026",
+      "speaker": "Koa Peat",
+      "title": "Koa Peat Media Day 2026 Press Availability",
+      "url": "https://www.youtube.com/watch?v=BmpZfQPWw_s",
+      "publisher": "Phoenix Suns, verified official YouTube channel",
+      "publishedDateDisplayed": "2026-09-28",
+      "evidence": [
+        {
+          "time": "4:57-5:12",
+          "paraphrase": "Peat described younger teammates lingering about half an hour after workouts to talk, plus a shared group chat."
+        },
+        {
+          "time": "6:06-6:36",
+          "paraphrase": "He said Bridges gives him small technical tips about driving and contact, while Brooks makes time for off-court conversations that matter to him as a rookie."
+        }
+      ],
+      "editorialPriority": "Specific receiving-side account of veteran attention; reinforces Bridges' description of helping young players.",
+      "transcriptExportedForVerification": true
+    }
+  ],
+  "alignmentChanges": [
+    {
+      "theme": "Shared work includes mutual help during competition",
+      "speakers": [
+        "Ighodaro",
+        "Maluach",
+        "Dunn"
+      ],
+      "basis": "Oso and Maluach give reciprocal accounts of exchanging advice; Dunn describes both asking veterans and helping younger teammates.",
+      "strength": "Strong attributable examples; actual season performance remains untested."
+    },
+    {
+      "theme": "Continuity gives newcomers a working start",
+      "speakers": [
+        "Gregory",
+        "Kennard",
+        "Ighodaro"
+      ],
+      "basis": "Gregory describes returning staff and collective work; Kennard and Ighodaro independently describe their early workouts together.",
+      "strength": "Stronger than shared vocabulary because the two players describe the same working relationship."
+    },
+    {
+      "theme": "Development has several routes",
+      "speakers": [
+        "Maluach",
+        "Fleming",
+        "Peat",
+        "Bridges"
+      ],
+      "basis": "Booker outreach, Valley Suns and film study, veteran tips and conversations offer distinct reported examples.",
+      "strength": "Supports a broader learning environment; do not claim a measured effect or universal internal agreement."
+    }
+  ],
+  "reporterFollowUp": {
+    "newRankinStory": {
+      "title": "What Suns' Mat Ishbia, Devin Booker think about Miles Bridges trade",
+      "author": "Duane Rankin, Arizona Republic",
+      "url": "https://sports.yahoo.com/articles/suns-mat-ishbia-devin-booker-015045207.html",
+      "publishedUTC": "2026-09-29T01:50:00Z",
+      "publishedLocal": "2026-09-28T18:50:00-07:00",
+      "access": "Search-index excerpt; Yahoo-hosted original reporting, AZcentral canonical URL not recovered.",
+      "usableParaphrase": "Rankin reports Mat's support for the Bridges acquisition and his argument that the team retains young players and future draft resources.",
+      "limit": "Search excerpt did not expose Booker's full section. Do not infer it from the title. Count syndication as one source."
+    },
+    "arizonaSports": {
+      "url": "https://arizonasports.com/nba/phoenix-suns/media-day-devin-booker-exclusive-guests",
+      "publishedLocal": "2026-09-28T08:56:00-07:00",
+      "status": "Verified program schedule, not a completed recap. No new completed Olson/Dana Scott original recap located in the bounded search."
+    },
+    "williamsOriginal": "Official Gregory recording now supersedes the HoopsHype relay for wording precision; the original Olson post was not recovered."
+  },
+  "limits": [
+    "All official interview findings are attributed paraphrases of auto-generated captions, not independently observed workouts.",
+    "The publication date is visible on each expanded official watch page except Kennard, whose local date is supported by the relative upload display; exact upload times were not exposed.",
+    "The strongest new material deepens the existing alignment thesis. It does not establish shared private beliefs or predict camp and season results.",
+    "No exact newcomer quotation has been promoted into publishable copy. Listen to the relevant passage before quoting verbatim.",
+    "No edits to the edition data, UI, or audio were made."
+  ]
+}

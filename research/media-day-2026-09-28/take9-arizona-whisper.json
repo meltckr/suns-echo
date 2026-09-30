@@ -1,0 +1,73 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "audioSha256": "29767837e4bcf5f244c69d7a4b847c53257e09b7e881ff49ed3953d667dfa3d2",
+  "text": " Matt, the best moment for media day wasn't at a podium. It was Oso Iguodaro talking about pickup games with Kamal Malouak. They were on opposite teams fighting for the same minutes and Oso kept giving him pointers anyway. Malouak said he'd go to Oso after plays and ask what he saw. That's what continuity actually looks like. 12 of the 15 players from the end of last season are back, and so is every coach. The young guys know who to ask. Malouak goes to Booker. Kennard works with also. Fleming credits film study and his time with the Valley Suns. Fans noticed they loved what they heard about Malueck. What they didn't love was trying to watch. People went looking for a stream and couldn't find one. Three things to watch in camp. First, Williams Gregory says it'll be months before there's a real read on his return. Second, how fast the young sinners grow into that gap. Third, the Bridges decision because people will keep measuring it against the standards you laid out. My one call next media day, one official stream pinned everywhere. The fans showed up, Make it easy for them to get in. Dominate.",
+  "segments": [
+    {
+      "text": " Matt, the best moment for media day wasn't at a podium. It was Oso Iguodaro talking about pickup",
+      "start": 0.0,
+      "end": 4.86
+    },
+    {
+      "text": " games with Kamal Malouak. They were on opposite teams fighting for the same minutes and Oso kept",
+      "start": 4.86,
+      "end": 9.38
+    },
+    {
+      "text": " giving him pointers anyway. Malouak said he'd go to Oso after plays and ask what he saw. That's",
+      "start": 9.38,
+      "end": 15.4
+    },
+    {
+      "text": " what continuity actually looks like. 12 of the 15 players from the end of last season are back,",
+      "start": 15.4,
+      "end": 19.92
+    },
+    {
+      "text": " and so is every coach. The young guys know who to ask. Malouak goes to Booker. Kennard works with",
+      "start": 20.26,
+      "end": 25.04
+    },
+    {
+      "text": " also. Fleming credits film study and his time with the Valley Suns. Fans noticed they loved",
+      "start": 25.04,
+      "end": 30.74
+    },
+    {
+      "text": " what they heard about Malueck. What they didn't love was trying to watch. People went looking for",
+      "start": 30.74,
+      "end": 34.84
+    },
+    {
+      "text": " a stream and couldn't find one. Three things to watch in camp. First, Williams Gregory says it'll",
+      "start": 34.84,
+      "end": 39.5
+    },
+    {
+      "text": " be months before there's a real read on his return. Second, how fast the young sinners grow into that",
+      "start": 39.5,
+      "end": 44.22
+    },
+    {
+      "text": " gap. Third, the Bridges decision because people will keep measuring it against the standards you",
+      "start": 44.22,
+      "end": 49.32
+    },
+    {
+      "text": " laid out. My one call next media day, one official stream pinned everywhere. The fans showed up,",
+      "start": 49.32,
+      "end": 54.519999999999996
+    },
+    {
+      "text": " Make it easy for them to get in.",
+      "start": 54.52,
+      "end": 55.84
+    },
+    {
+      "text": " Dominate.",
+      "start": 56.2,
+      "end": 56.6
+    }
+  ]
+}

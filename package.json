@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/finish-export.mjs",
     "start": "next start",
     "lint": "eslint .",
     "og": "node scripts/generate-og.mjs",
-    "audio:generate": "node scripts/generate-echo-audio.mjs",
+    "audio:generate": "node scripts/generate_arizona_v12.mjs --brief content/audio-brief.json --generate",
     "validate": "node scripts/validate.mjs",
-    "release:check": "npm run og && npm run validate && npm run build"
+    "release:check": "npm run lint && node scripts/validate.mjs --release && npm run build",
+    "review:check": "npm run lint && npm run test && npm run validate && npm run build",
+    "test": "node --test scripts/resonance-model.test.mjs scripts/validate-resonance-review.test.mjs scripts/recode-resonance-review.test.mjs",
+    "resonance:recode": "node scripts/recode-resonance-review.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

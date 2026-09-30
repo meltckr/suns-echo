@@ -1,0 +1,949 @@
+{
+  "method": "AI-assisted editorial coding; each supplied indexed comment is coded independently against the available wording and immediate thread context. Codes are -1 criticism, 0 neutral or ambiguous, +1 praise. These are directional judgments, not probabilities. No platform popularity weighting.",
+  "newTopic": {
+    "id": "broadcast",
+    "phrase": "Media Day viewing access",
+    "theme": "Culture",
+    "entity": "Suns Media Day broadcast"
+  },
+  "flaggedThemes": [
+    {
+      "suggestedId": "young-wings",
+      "description": "Ryan Dunn and Rasheer Fleming development",
+      "commentIds": [
+        "indexed-1wsm1rd-4e293559ea09e17e",
+        "indexed-1wsm1rd-b876ed17a590e277",
+        "indexed-1wsm1rd-ab0c13e2bb9ca3b2"
+      ],
+      "reason": "Existing Maluach/Peat topics would misattribute these responses."
+    }
+  ],
+  "comments": [
+    {
+      "id": "indexed-1wsj8c9-9fa3532d4eec77a9",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-3731aaadcf51c56d",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-f5460151a8557844",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-9adb80b2fcdcd359",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-e233f0e5302c74e0",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-7bc44ee1f70933e9",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-9d03de2f779dfbc5",
+      "topics": [],
+      "exclusionReason": "Link-only comment; no reaction to code."
+    },
+    {
+      "id": "indexed-1wsj8c9-43d0ae9a325e5be9",
+      "topics": [],
+      "exclusionReason": "Acknowledgment only."
+    },
+    {
+      "id": "indexed-1wsj8c9-8607d4d39c7dcbce",
+      "topics": [],
+      "exclusionReason": "Weather joke outside the basketball and coverage topics."
+    },
+    {
+      "id": "indexed-1wsj8c9-85f6f64f83f71d28",
+      "topics": [
+        {
+          "topicId": "commitment",
+          "code": 0,
+          "reason": "Relays an ownership claim about draft picks or tenure; relaying it does not establish endorsement of funding."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-2a0f09d6ed1569a1",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-14327908dfb8c2e5",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 1,
+          "reason": "Welcomes finding a working live stream."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-176bc6d181fcf9ca",
+      "topics": [],
+      "exclusionReason": "Posting chronology only."
+    },
+    {
+      "id": "indexed-1wsj8c9-2ae810419f13215b",
+      "topics": [
+        {
+          "topicId": "commitment",
+          "code": 1,
+          "reason": "Explicitly praises Ishbia while discussing his response to financial questions."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-d6e31e5fff665ce2",
+      "topics": [
+        {
+          "topicId": "commitment",
+          "code": 0,
+          "reason": "Relays an ownership claim about draft picks or tenure; relaying it does not establish endorsement of funding."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-e209db137710bad2",
+      "topics": [
+        {
+          "topicId": "outlook",
+          "code": 1,
+          "reason": "Expresses anticipation or excitement for Suns basketball."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-b72a6fc2835280ce",
+      "topics": [
+        {
+          "topicId": "green-nash",
+          "code": 0,
+          "reason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-dad284097c1ca328",
+      "topics": [
+        {
+          "topicId": "green-nash",
+          "code": 0,
+          "reason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-014274c8054ad752",
+      "topics": [
+        {
+          "topicId": "green-nash",
+          "code": 0,
+          "reason": "Reports the Green/Nash work or asks what it involved; no clear appraisal of its outcome."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-d469bc51d666a663",
+      "topics": [
+        {
+          "topicId": "green-nash",
+          "code": 1,
+          "reason": "Expresses hope that Nash’s instruction improves Green’s craft and playmaking."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-8f1aede42c940ff8",
+      "topics": [
+        {
+          "topicId": "peat",
+          "code": 0,
+          "reason": "Asks whether Peat was injured; no positive or negative performance judgment."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-d0c3a0e5a1b49558",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Criticizes stream technical difficulties, despite saying it previously worked."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-6ce79153dec7e7c4",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-61e2f63e8dc56e0b",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-02e74705fed2053e",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-90e00b0183033121",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "The reply objects to the feed failing while Booker is speaking; read with the immediately preceding stream complaint."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-5de41d3df1d88e81",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-aed24cab97b99b1e",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-bd60a35ee8c8316a",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 1,
+          "reason": "Explicitly welcomes Kennard joining the roster."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-1588e3b00751dfd2",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Pairs relayed staff praise with the fan’s own enthusiastic Year of the ManMan declaration."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-f01fbfe17f2ab49f",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Uses the team photo to criticize the lineup’s lack of size through sarcasm."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-c313e977372d9cd9",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 1,
+          "reason": "Praises the players’ competitive character while noting the seven-footer behind them."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-ff23807b6898e94e",
+      "topics": [
+        {
+          "topicId": "number",
+          "code": -1,
+          "reason": "Expresses discomfort with Booker’s changed jersey number."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-82aadb39ab3646f0",
+      "topics": [
+        {
+          "topicId": "patch",
+          "code": 0,
+          "reason": "Identifies Paze as the sponsor without expressing approval or criticism."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-01ba6a6ef4ea6b3c",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Repeats a quoted claim about Bridges solving size and rebounding; the fan’s intended endorsement or irony is ambiguous."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-d0e02a650bc8dded",
+      "topics": [],
+      "exclusionReason": "Ball-palming anecdote; no clear topic assessment."
+    },
+    {
+      "id": "indexed-1wsj8c9-8027f0cd2c44ac69",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-b9d32777bbe342d9",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-7ce2989ca5f612a5",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Asks whether Chandler is a training-camp/G League signing."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-fabda013202c8a23",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-2699e6488316b285",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about a signing or player interviews during Media Day; treated as an information request."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-ac20f60732a5b7ec",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-eb540c424ad5140d",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-c454104c468a3509",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-9b0d1b66176a1280",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": 0,
+          "reason": "Asks about or relays viewing, interview or broadcast information; no explicit evaluative reaction."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-5593da6085f63f01",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-ab5df5fc8df919a5",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-badd5bd7672f7178",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-c5f64f82bbd39a16",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-8352151b4ccddee0",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-be50b39e045e312d",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-90b29c51a40e0210",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 1,
+          "reason": "Defends the current personnel or explicitly favors the new player combination."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-6867937d68a4dd10",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-5548943b236c3d07",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-b655e5f7c8c4f0e8",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Criticizes the Green/Booker fit, Green’s role or the current roster composition."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-6f11920851295c39",
+      "topics": [
+        {
+          "topicId": "outlook",
+          "code": 1,
+          "reason": "Expresses anticipation or excitement for Suns basketball."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-3152e3f115095c8e",
+      "topics": [
+        {
+          "topicId": "bridges",
+          "code": -1,
+          "reason": "Expresses missing Allen after the roster change; the negative code concerns the trade departure, not a stated view of Bridges’ conduct."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-9225332fa80b7754",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 1,
+          "reason": "Defends the current personnel or explicitly favors the new player combination."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsj8c9-49764c8883f2dda0",
+      "topics": [
+        {
+          "topicId": "outlook",
+          "code": 1,
+          "reason": "Explicitly looks forward to Suns basketball."
+        },
+        {
+          "topicId": "roster",
+          "code": -1,
+          "reason": "Explicitly regrets losing Williams and criticizes the lack of size."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-189e7b5c0686f6fe",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-5240ef30effe97f9",
+      "topics": [],
+      "exclusionReason": "Nickname wordplay; directional judgment too ambiguous."
+    },
+    {
+      "id": "indexed-1wsm1rd-3395f9907288cf71",
+      "topics": [],
+      "exclusionReason": "Nickname wordplay; directional judgment too ambiguous."
+    },
+    {
+      "id": "indexed-1wsm1rd-5f4e363fb8e353ab",
+      "topics": [],
+      "exclusionReason": "Nickname wordplay; directional judgment too ambiguous."
+    },
+    {
+      "id": "indexed-1wsm1rd-588deb28421d2462",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-afb308694adea2ac",
+      "topics": [],
+      "exclusionReason": "Ambiguous excitement idiom; no clear substantive referent in the excerpt."
+    },
+    {
+      "id": "indexed-1wsm1rd-cd7bce303392e9c9",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-9bb4ec7140abdd64",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Welcomes or advocates meaningful playing opportunity for Maluach; this codes the fan’s support, not a staff recommendation."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-d185cf2df214c502",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Welcomes or advocates meaningful playing opportunity for Maluach; this codes the fan’s support, not a staff recommendation."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-b771d3a10224861d",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Welcomes or advocates meaningful playing opportunity for Maluach; this codes the fan’s support, not a staff recommendation."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-4e293559ea09e17e",
+      "topics": [],
+      "exclusionReason": "Meaningful discussion of Ryan Dunn development, outside the current topic set; flagged for optional new young-wings topic."
+    },
+    {
+      "id": "indexed-1wsm1rd-b876ed17a590e277",
+      "topics": [],
+      "exclusionReason": "Meaningful discussion of Ryan Dunn development, outside the current topic set; flagged for optional new young-wings topic."
+    },
+    {
+      "id": "indexed-1wsm1rd-ff8b396ac0e26f3a",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-f5040b2bb0cc58e2",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-6c0979256696b30a",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-ab0c13e2bb9ca3b2",
+      "topics": [],
+      "exclusionReason": "Meaningful Ryan Dunn/Rasheer Fleming development discussion, outside the current topic set; flagged for optional new young-wings topic."
+    },
+    {
+      "id": "indexed-1wsm1rd-df5400ffa1b27a99",
+      "topics": [
+        {
+          "topicId": "broadcast",
+          "code": -1,
+          "reason": "Expresses dissatisfaction with access to Media Day coverage or the broadcast experience."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-9e44c5c39350ccae",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 0,
+          "reason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-265b6176de215880",
+      "topics": [],
+      "exclusionReason": "Body-change joke; no substantive judgment."
+    },
+    {
+      "id": "indexed-1wsm1rd-23e0bbce8002f904",
+      "topics": [
+        {
+          "topicId": "outlook",
+          "code": 1,
+          "reason": "Expresses anticipation or excitement for Suns basketball."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-09295a1cbdd28952",
+      "topics": [],
+      "exclusionReason": "Nickname wordplay; direction too ambiguous."
+    },
+    {
+      "id": "indexed-1wsm1rd-c21db44ea9f79b6d",
+      "topics": [],
+      "exclusionReason": "GIF reference; visual context unavailable."
+    },
+    {
+      "id": "indexed-1wsm1rd-6b91fe5a6fdda21f",
+      "topics": [
+        {
+          "topicId": "outlook",
+          "code": 1,
+          "reason": "Expresses anticipation or excitement for Suns basketball."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-0fc5fff30f0bb79d",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-f11758019fa3e9eb",
+      "topics": [
+        {
+          "topicId": "roster",
+          "code": 0,
+          "reason": "Discusses roles, minutes or lineup options without an unambiguous overall roster endorsement; questions and conditional proposals remain neutral."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-5351e57a4b2f1c7d",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-425a24962ca03b9a",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-3dbb8bed94194ef2",
+      "topics": [],
+      "exclusionReason": "Comic fictional Suns Front Office quote; no actual reported statement or clear topic judgment."
+    },
+    {
+      "id": "indexed-1wsm1rd-00ed62dd755d8d91",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 0,
+          "reason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-3e312a3dd45e2f36",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 0,
+          "reason": "Calls for evidence or notes a physical change without an established positive or negative performance conclusion."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-00dc8b31ac34f09a",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-8504be03e2fd7c8b",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    },
+    {
+      "id": "indexed-1wsm1rd-8b8a9f5d3068a07e",
+      "topics": [],
+      "exclusionReason": "Puberty joke; no substantive judgment."
+    },
+    {
+      "id": "indexed-1wsm1rd-a5f1381d226511df",
+      "topics": [
+        {
+          "topicId": "maluach",
+          "code": 1,
+          "reason": "Expresses enthusiasm for Maluach’s potential, progress or opportunity."
+        }
+      ],
+      "exclusionReason": null
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "comparison": "Case and punctuation ignored; apostrophes standardized. Words and contractions remain distinct.",
+  "audioSha256": "76affad0317d92feadc36b725caeb1a321a83c40ba68cff646c38187c77e23ec",
+  "scriptSha256": "9928d7cea83e41626a15337f57db6497a44def4f7cf2a05d20bd196d8deaa6e7",
+  "whisperSha256": "76e263eea27032e721e57d3088f5b5792742da648a1d6935ce18ce23715cb394",
+  "scriptWords": 200,
+  "recognizedWords": 203,
+  "mismatches": [
+    {
+      "operation": "replace",
+      "scriptWord": 1,
+      "expected": "mat",
+      "recognized": "matt"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 5,
+      "expected": "from",
+      "recognized": "for"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 15,
+      "expected": "ighodaro",
+      "recognized": "iyigodaro"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 21,
+      "expected": "khaman maluach",
+      "recognized": "kahaman luach"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 40,
+      "expected": "maluach",
+      "recognized": "mahal luach"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 59,
+      "expected": "twelve",
+      "recognized": "12"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 62,
+      "expected": "fifteen",
+      "recognized": "15"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 84,
+      "expected": "maluach",
+      "recognized": "mahal luach"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 88,
+      "expected": "kennard",
+      "recognized": "canard"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 111,
+      "expected": "maluach",
+      "recognized": "ma luech"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 156,
+      "expected": "centers",
+      "recognized": "sinners"
+    }
+  ],
+  "limitation": "Whisper differences may be recognition errors or delivery errors; they do not establish perceptual listening approval."
+}

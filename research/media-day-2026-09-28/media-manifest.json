@@ -1,0 +1,628 @@
+{
+  "renderer": "Blender 5.2.2 LTS / EEVEE",
+  "editionTitle": "In the Same Building",
+  "cameraLoop": {
+    "seconds": 8,
+    "fps": 24,
+    "frames": 192,
+    "endpoint": "Camera and sweep transforms identical at frames 1 and 193 within 1e-6"
+  },
+  "photography": "Packed official Media Day group photograph; see photo-ledger.json",
+  "heroTreatment": "Photo-only hero; extruded typography enabled for the same frame-1 OG title pass and divider/title-card clips",
+  "scene": {
+    "photoPlaneDepths": [
+      -0.04,
+      0,
+      0.04
+    ],
+    "depthOfFieldFstop": 3.2,
+    "volumetricDensity": 0.012,
+    "titleExtrusion": 0.032,
+    "samples": 16
+  },
+  "titleCard": "The 2.5-second title card is also the section divider sting; same edition title and light sweep.",
+  "savedScenes": [
+    {
+      "file": "assets/blender/media-day-2026-09-28-hero-landscape-v3.blend",
+      "sha256": "a099327487c7c66b19aa510a1e959a3fbcda8da6ddf5783b9cb7034a98afc4e2"
+    },
+    {
+      "file": "assets/blender/media-day-2026-09-28-hero-portrait-v3.blend",
+      "sha256": "1ed222eecc52cb3384a22cc6ccff349963a2cef6a1e76fad3a325f3a0f19a48a"
+    },
+    {
+      "file": "assets/blender/media-day-2026-09-28-sting-landscape-v3.blend",
+      "sha256": "022ef3662212f6bc72be7a033c90b95213401433647cc9541e104a3efcef78d1"
+    },
+    {
+      "file": "assets/blender/media-day-2026-09-28-sting-portrait-v3.blend",
+      "sha256": "afaa52a2cdadc3aad5c91081e5d637559273c4ad6669ef46c993a0a6a7f7d73b"
+    }
+  ],
+  "assets": [
+    {
+      "file": "public/assets/media/media-day-2026-09-28-1080x1920-v3.mp4",
+      "sha256": "1465c40a73c1eb4192fa05a084aa90f789b51f1c2eaa389dd14e4196148a8e84",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1080,
+            "coded_height": 1920,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 98304,
+            "duration": "8.000000",
+            "bit_rate": "1660493",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "192",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-1080x1920-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "8.000000",
+          "size": "1663684",
+          "bit_rate": "1663684",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.519171+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-1920x1080-v3.mp4",
+      "sha256": "ff41db1258003e3cc10b977c79824bb82073ff84cbf8b93fe30d2e190c5ea1f9",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 98304,
+            "duration": "8.000000",
+            "bit_rate": "2262282",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "192",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-1920x1080-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "8.000000",
+          "size": "2265489",
+          "bit_rate": "2265489",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.570888+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-sting-1080x1920-v3.mp4",
+      "sha256": "e9cd01182ea05475fe316fbc113cc10c0f177eca0b7d52ff37263cd15f81b575",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1080,
+            "coded_height": 1920,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 30720,
+            "duration": "2.500000",
+            "bit_rate": "2952534",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "60",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-sting-1080x1920-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "2.500000",
+          "size": "924258",
+          "bit_rate": "2957625",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.608099+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-sting-1920x1080-v3.mp4",
+      "sha256": "4f5da5f55f6f924046d99d8b57d82cea7ceba19b725f4d80ca9b5ba58509f635",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 30720,
+            "duration": "2.500000",
+            "bit_rate": "3705433",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "60",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-sting-1920x1080-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "2.500000",
+          "size": "1159555",
+          "bit_rate": "3710576",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.648030+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-title-card-1080x1920-v3.mp4",
+      "sha256": "e9cd01182ea05475fe316fbc113cc10c0f177eca0b7d52ff37263cd15f81b575",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1080,
+            "height": 1920,
+            "coded_width": 1080,
+            "coded_height": 1920,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "9:16",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 30720,
+            "duration": "2.500000",
+            "bit_rate": "2952534",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "60",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-title-card-1080x1920-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "2.500000",
+          "size": "924258",
+          "bit_rate": "2957625",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.686881+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-title-card-1920x1080-v3.mp4",
+      "sha256": "4f5da5f55f6f924046d99d8b57d82cea7ceba19b725f4d80ca9b5ba58509f635",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_transfer": "iec61966-2-1",
+            "color_primaries": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "refs": 1,
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "24/1",
+            "avg_frame_rate": "24/1",
+            "time_base": "1/12288",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 30720,
+            "duration": "2.500000",
+            "bit_rate": "3705433",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "60",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "vendor_id": "[0][0][0][0]",
+              "encoder": "Lavc62.11.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/meltucker/Documents/Phoenix Suns 2/suns-echo/public/assets/media/media-day-2026-09-28-title-card-1920x1080-v3.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "2.500000",
+          "size": "1159555",
+          "bit_rate": "3710576",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.3.100"
+          }
+        }
+      },
+      "probedAt": "2026-09-29T23:52:17.728011+00:00",
+      "probedOn": "Studio"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-portrait-poster-v3.webp",
+      "sha256": "d7ee894befc564b0b0c86c54eb0076a848b5eb19b614bea28adffa8dd9e57def"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-poster-v3.webp",
+      "sha256": "6aaca0fe9e66eaaf663309547f52425e03ecf90d24fff1665556d1bf5dfa574d"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-sting-1080x1920-v3-poster.webp",
+      "sha256": "3740786d0014d1affea2bb2a975b31a8ffa75076b57587cc574fcbf5f36d4b1d"
+    },
+    {
+      "file": "public/assets/media/media-day-2026-09-28-sting-1920x1080-v3-poster.webp",
+      "sha256": "55a3debaed8b6d7ae13393a2bd96b37a4c20e1521a230a148c523b7d771652df"
+    },
+    {
+      "file": "public/og-media-day-2026-09-28-v3.png",
+      "sha256": "f83eaa8135a8ef2649c60dead56741cbc52923917544ad4d3a960985cfd6bdc6"
+    }
+  ]
+}
