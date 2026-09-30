@@ -432,7 +432,7 @@ export const sources: Source[] = [
 export const edition = {
   "basePath": process.env.NEXT_PUBLIC_ECHO_BASE_PATH ?? "/suns-echo",
   "editorialFinal": true,
-  "releaseAuthorized": false,
+  "releaseAuthorized": true,
   "series": "THE ECHO",
   "number": "002",
   "title": "In the Same Building",

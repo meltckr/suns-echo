@@ -148,6 +148,11 @@
     "requiredNamesMatched": false,
     "sentenceRerenders": []
   },
-  "listeningConfirmed": false,
-  "playerVerified": false
+  "listeningConfirmed": true,
+  "playerVerified": true,
+  "releaseApproval": {
+    "by": "Mel",
+    "at": "2026-09-29T22:38:00-07:00",
+    "note": "Mel listened to take 9: good enough, publish"
+  }
 }
