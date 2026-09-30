@@ -155,7 +155,7 @@
     "requiredNamesMatched": false,
     "sentenceRerenders": []
   },
-  "listeningConfirmed": false,
+  "listeningConfirmed": true,
   "playerVerified": true,
   "playerVerification": {
     "preview": "https://meltckr.github.io/suns-echo/review/media-day-2026-09-28/",
@@ -171,5 +171,12 @@
       "hosted bytes match"
     ],
     "perceptualListening": false
+  },
+  "listeningApproval": {
+    "by": "Mel Tucker",
+    "date": "2026-09-30",
+    "scope": "Take 11 names and Dominate! ending",
+    "statement": "yes\ni listened\ni\u2019m happy with it",
+    "method": "Explicit user confirmation after audio-signoff question"
   }
 }
