@@ -1,0 +1,160 @@
+{
+  "provider": "arizona-v12",
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-30T18:45:53.839772+00:00",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v10.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "transcriptSha256": "4c3d2deee9ff25caef7aa2b7c5e0c26c80a19f14baf6add2433d46866e9a08eb",
+  "audioSha256": "7e0e2a255aa2559a571f51e1675f00e6b412f7c98e44c8847fbc7bfb8beb1a18",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 60.046042,
+  "integratedLufs": -16.72,
+  "loudnessMeasurement": "dual_mono=true",
+  "truePeakDbtp": -1.92,
+  "trailingSilenceSeconds": 0.244625,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "recipe": {
+    "reference_profile": "approved-declarative-18s",
+    "sentence_level": true,
+    "seed": 42,
+    "temperature": 0.9,
+    "top_k": 50,
+    "repetition_penalty": 1.5,
+    "max_tokens_per_sentence": 384,
+    "mlx_join_audio": false,
+    "atempo": 1.15,
+    "join_guard_version": "guarded-v1",
+    "crossfade_ms": 0,
+    "leading_guard_ms": 90,
+    "trailing_guard_ms": 180,
+    "sentence_gap_ms": 70,
+    "paragraph_gap_ms": 220,
+    "file_lead_ms": 160,
+    "file_tail_ms": 180,
+    "loudnorm_passes": 2,
+    "target_integrated_lufs_dual_mono": -16,
+    "target_true_peak_dbtp": -1.5,
+    "delivery_bitrate_kbps": 160,
+    "sample_rate_hz": 24000,
+    "channels": 1
+  },
+  "reference": {
+    "audioSha256": "7f76d4482fd5ee9668d8e3ccee829adc69ec5d41043509ace95af69c38e07d99",
+    "textSha256": "c68c23ec4fa89e0b86a3b2a638be38e7d4a3b05b164ffab99611923feac4e5e6"
+  },
+  "finishing": {
+    "renderer": "avc_arizona_v12_factory.sh",
+    "rendererSha256": "5f903d2c5ad6833afa1fff4948cf4f9fb99ef0ee96a110f7cc59061dfc074651",
+    "generationMode": "sentence",
+    "generationPasses": 21,
+    "joinGuardVersion": "guarded-v1",
+    "crossfadeSeconds": 0,
+    "tempoMultiplier": 1.15,
+    "sampling": {
+      "repetitionPenalty": 1.5,
+      "temperature": 0.9,
+      "topK": 50,
+      "seed": 42
+    },
+    "maxTokens": 384,
+    "globalPauseCollapse": false,
+    "signoffGapMs": 400
+  },
+  "proof": {
+    "prompted": false,
+    "whisperFile": "research/media-day-2026-09-28/take10-arizona-whisper.json",
+    "whisperSha256": "35b76e6896ed6d5966852dc17d7254b2b01ba3268a0475b2167aa2d064abc4b2",
+    "comparisonFile": "research/media-day-2026-09-28/TAKE10-ARIZONA-WHISPER-DIFF.json",
+    "comparisonSha256": "16de7f420245d7d00913fa475695b032f620cb5842a18e4677726fb2892c4c2a",
+    "mismatchSpans": 11,
+    "nameChecks": [
+      {
+        "name": "Mat",
+        "expectedCount": 1,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Oso",
+        "expectedCount": 4,
+        "actualCount": 3,
+        "matched": false
+      },
+      {
+        "name": "Ighodaro",
+        "expectedCount": 1,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Khaman",
+        "expectedCount": 1,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Maluach",
+        "expectedCount": 3,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Booker",
+        "expectedCount": 1,
+        "actualCount": 1,
+        "matched": true
+      },
+      {
+        "name": "Kennard",
+        "expectedCount": 1,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Fleming",
+        "expectedCount": 1,
+        "actualCount": 1,
+        "matched": true
+      },
+      {
+        "name": "Valley Suns",
+        "expectedCount": 1,
+        "actualCount": 1,
+        "matched": true
+      },
+      {
+        "name": "Peat",
+        "expectedCount": 1,
+        "actualCount": 0,
+        "matched": false
+      },
+      {
+        "name": "Williams",
+        "expectedCount": 1,
+        "actualCount": 1,
+        "matched": true
+      },
+      {
+        "name": "Gregory",
+        "expectedCount": 1,
+        "actualCount": 1,
+        "matched": true
+      },
+      {
+        "name": "Bridges",
+        "expectedCount": 2,
+        "actualCount": 2,
+        "matched": true
+      }
+    ],
+    "requiredNamesMatched": false,
+    "sentenceRerenders": []
+  },
+  "listeningConfirmed": false,
+  "playerVerified": false
+}

@@ -1,0 +1,179 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-09-30T18:45:53.839772+00:00",
+  "edition": "2026-09-29-media-day",
+  "title": "In the Same Building",
+  "provider": "arizona-v12",
+  "voice_name": "AVC Arizona v12",
+  "model_id": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "runtime": {
+    "mlx_audio": "0.5.1",
+    "mlx": "0.32.1"
+  },
+  "factory_sha256": "5f903d2c5ad6833afa1fff4948cf4f9fb99ef0ee96a110f7cc59061dfc074651",
+  "recipe": {
+    "reference_profile": "approved-declarative-18s",
+    "sentence_level": true,
+    "seed": 42,
+    "temperature": 0.9,
+    "top_k": 50,
+    "repetition_penalty": 1.5,
+    "max_tokens_per_sentence": 384,
+    "mlx_join_audio": false,
+    "atempo": 1.15,
+    "join_guard_version": "guarded-v1",
+    "crossfade_ms": 0,
+    "leading_guard_ms": 90,
+    "trailing_guard_ms": 180,
+    "sentence_gap_ms": 70,
+    "paragraph_gap_ms": 220,
+    "file_lead_ms": 160,
+    "file_tail_ms": 180,
+    "loudnorm_passes": 2,
+    "target_integrated_lufs_dual_mono": -16,
+    "target_true_peak_dbtp": -1.5,
+    "delivery_bitrate_kbps": 160,
+    "sample_rate_hz": 24000,
+    "channels": 1
+  },
+  "delivery_bitrate_kbps": 160,
+  "sample_rate_hz": 24000,
+  "channels": 1,
+  "duration_seconds": 60.046042,
+  "duration_label": "1:00",
+  "byte_count": 1202444,
+  "word_count": 207,
+  "transcript_sha256": "9a9fb01a458bcd7e91f8a34e5205f859eec836fb3620aab07fccf8612033f979",
+  "audio_sha256": "7e0e2a255aa2559a571f51e1675f00e6b412f7c98e44c8847fbc7bfb8beb1a18",
+  "required_sign_off": "Dominate!",
+  "measured_audio": {
+    "integrated_lufs_dual_mono": -16.72,
+    "true_peak_dbtp": -1.92,
+    "loudness_range_lu": 4.3,
+    "sample_peak_dbfs": -1.934688761882449,
+    "clipped_samples": 0,
+    "longest_digital_black_seconds": 0.33529166666666665,
+    "longest_zero_run_seconds": 0.327125,
+    "longest_interior_zero_run_seconds": 0.327125,
+    "leading_silence_seconds": 0.189125,
+    "trailing_silence_seconds": 0.244625
+  },
+  "review": {
+    "mode": "bounded-technical",
+    "technical_pass": true,
+    "checks": {
+      "nonempty_mp3": true,
+      "mono": true,
+      "sample_rate_24000": true,
+      "delivery_bitrate_160k": true,
+      "xing_or_cbr_info_header": true,
+      "duration_in_range": true,
+      "no_clipped_samples": true,
+      "opening_guard_120ms": true,
+      "closing_guard_120ms": true,
+      "no_unexpected_silence_holes_900ms": true,
+      "no_digital_black_900ms": true,
+      "no_interior_zero_runs_900ms": true,
+      "integrated_loudness_near_target": true,
+      "true_peak_at_or_below_target": true,
+      "transcript_starts_with_mat": true,
+      "transcript_exact_signoff": true,
+      "no_visible_matt": true
+    },
+    "perceptual_listening_completed": false,
+    "full_listen_status": "pending",
+    "spoken_word_alignment_verified": false,
+    "hosted_audio_verified": false,
+    "publication_authorized": false,
+    "note": "Technical file checks only. A complete human listen remains required before approval or publication.",
+    "automated_word_check": {
+      "provider": "local-mlx-whisper",
+      "model": "mlx-community/whisper-large-v3-turbo",
+      "audio_sha256": "7e0e2a255aa2559a571f51e1675f00e6b412f7c98e44c8847fbc7bfb8beb1a18",
+      "exact_signoff_recognized": true,
+      "perceptual_listening": false,
+      "raw_name_checks": [
+        {
+          "name": "Mat",
+          "expectedCount": 1,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Oso",
+          "expectedCount": 4,
+          "actualCount": 3,
+          "matched": false
+        },
+        {
+          "name": "Ighodaro",
+          "expectedCount": 1,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Khaman",
+          "expectedCount": 1,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Maluach",
+          "expectedCount": 3,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Booker",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "matched": true
+        },
+        {
+          "name": "Kennard",
+          "expectedCount": 1,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Fleming",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "matched": true
+        },
+        {
+          "name": "Valley Suns",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "matched": true
+        },
+        {
+          "name": "Peat",
+          "expectedCount": 1,
+          "actualCount": 0,
+          "matched": false
+        },
+        {
+          "name": "Williams",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "matched": true
+        },
+        {
+          "name": "Gregory",
+          "expectedCount": 1,
+          "actualCount": 1,
+          "matched": true
+        },
+        {
+          "name": "Bridges",
+          "expectedCount": 2,
+          "actualCount": 2,
+          "matched": true
+        }
+      ],
+      "full_diff": "research/media-day-2026-09-28/TAKE10-ARIZONA-WHISPER-DIFF.json"
+    }
+  },
+  "public_transcript_sha256": "4c3d2deee9ff25caef7aa2b7c5e0c26c80a19f14baf6add2433d46866e9a08eb"
+}

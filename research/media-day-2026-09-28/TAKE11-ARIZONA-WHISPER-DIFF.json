@@ -1,0 +1,61 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "comparison": "Case and punctuation ignored; apostrophes standardized. Words and contractions remain distinct.",
+  "audioSha256": "75fd71418ffdd7d2f347d25332f284726910e7dce04eee2ac91bbb644417b7fa",
+  "scriptSha256": "0959d7cc184f5a146c21be67f3ffb66a1cb4338b85d5c6771c380f743188116e",
+  "whisperSha256": "a90fb75f11a4dd6d4ac845caf2eb38d28e8a4ef7d60eaf894a3cdebcf4dc5fc3",
+  "scriptWords": 185,
+  "recognizedWords": 185,
+  "mismatches": [
+    {
+      "operation": "replace",
+      "scriptWord": 1,
+      "expected": "mat",
+      "recognized": "matt"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 3,
+      "expected": "ighodaro",
+      "recognized": "iguodaro"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 6,
+      "expected": "khaman maluach",
+      "recognized": "kaman malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 18,
+      "expected": "maluach",
+      "recognized": "malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 51,
+      "expected": "and",
+      "recognized": "in"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 60,
+      "expected": "fifteen",
+      "recognized": "15"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 84,
+      "expected": "maluach",
+      "recognized": "malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 108,
+      "expected": "and",
+      "recognized": "in"
+    }
+  ],
+  "limitation": "Whisper differences may be recognition errors or delivery errors; they do not establish perceptual listening approval."
+}

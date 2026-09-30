@@ -12,9 +12,9 @@ import re
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v9.mp3'
+AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v11.mp3'
 NAMES = ['Mat', 'Oso', 'Ighodaro', 'Khaman', 'Maluach', 'Booker', 'Kennard',
-         'Fleming', 'Valley Suns', 'Williams', 'Gregory', 'Bridges']
+         'Fleming', 'Valley Suns', 'Peat', 'Williams', 'Gregory', 'Bridges']
 
 
 def sha(path):
@@ -33,7 +33,7 @@ def main():
     args = parser.parse_args()
     transcript = ROOT / 'content/audio-brief-transcript.txt'
     text = transcript.read_text()
-    if sha(transcript) != '9928d7cea83e41626a15337f57db6497a44def4f7cf2a05d20bd196d8deaa6e7':
+    if sha(transcript) != '0959d7cc184f5a146c21be67f3ffb66a1cb4338b85d5c6771c380f743188116e':
         raise SystemExit('Locked transcript changed')
     metadata_path = AUDIO.with_suffix('.metadata.json')
     metadata = json.loads(metadata_path.read_text())
@@ -64,8 +64,8 @@ def main():
            for item in rerenders):
         raise SystemExit('Sentence retry cap failed')
     proofdir = ROOT / 'research/media-day-2026-09-28'
-    whisper_target = proofdir / 'take9-arizona-whisper.json'
-    comparison_target = proofdir / 'TAKE9-ARIZONA-WHISPER-DIFF.json'
+    whisper_target = proofdir / 'take11-arizona-whisper.json'
+    comparison_target = proofdir / 'TAKE11-ARIZONA-WHISPER-DIFF.json'
     shutil.copyfile(args.whisper, whisper_target)
     shutil.copyfile(args.comparison, comparison_target)
     shutil.copyfile(args.comparison.with_suffix('.md'), comparison_target.with_suffix('.md'))
@@ -86,7 +86,7 @@ def main():
                        generationMode='sentence', generationPasses=len(sentences),
                        joinGuardVersion='guarded-v1', crossfadeSeconds=0, tempoMultiplier=1.15,
                        sampling=dict(repetitionPenalty=1.5, temperature=.9, topK=50, seed=42),
-                       maxTokens=384, globalPauseCollapse=False),
+                       maxTokens=384, globalPauseCollapse=False, signoffGapMs=400),
         proof=dict(prompted=False, whisperFile=str(whisper_target.relative_to(ROOT)),
                    whisperSha256=sha(whisper_target), comparisonFile=str(comparison_target.relative_to(ROOT)),
                    comparisonSha256=sha(comparison_target), mismatchSpans=len(comparison['mismatches']),
