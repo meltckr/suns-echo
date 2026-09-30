@@ -172,7 +172,7 @@ function AlignmentEvidence() {
 
 function FanReading() {
   return <>
-    <p className="recovery-note">These are reactions in the captured comments. The sample comes from partial Reddit captures and supplied social posts. The full evidence and collection limits are on Sources.</p>
+    <p className="recovery-note">These comments give us a look at how some fans reacted. The quotes and how we collected them are on Sources.</p>
     <div className="recovery-reading">{recoveryReport.fans.map(item => {
       const topic = resonanceReview.topics.find(record => record.id === item.topicId)!;
       const examples = item.evidenceIds.map(id => topic.fans.evidence.find(record => record.id === id)!);
@@ -240,7 +240,7 @@ export default function Dashboard() {
         </article>)}</div>
         <article className="ownership-tension"><span>The tension</span><h3>{ownershipBrief.tension.title}</h3><p>{ownershipBrief.tension.body}</p><EvidenceTags sourceIds={ownershipBrief.tension.sourceIds} /></article>
       </CollapsibleSection>
-      <CollapsibleSection id="alignment" n="02" title="Where they agreed" copy="Familiar teammates, shared work and experienced help appeared in separate accounts.">
+      <CollapsibleSection id="alignment" n="02" title="Where they agreed" copy="Players and leaders described the value of returning together and asking experienced teammates for help.">
         <AlignmentEvidence />
         <AttributedQuote source={sources.find(source => source.id === "booker-continuity")!} />
       </CollapsibleSection>
@@ -248,7 +248,7 @@ export default function Dashboard() {
         <ReadingCards items={recoveryReport.development} />
         <p className="recovery-note">The official interview passages are summaries, with timestamps in the source ledger.</p>
       </CollapsibleSection>
-      <CollapsibleSection id="coverage" n="04" title="What the coverage emphasized" copy="Development drew praise. Bridges brought scrutiny. Spending commitment reached the wider news audience.">
+      <CollapsibleSection id="coverage" n="04" title="What reporters focused on" copy="Player development, the Bridges decision and Mat’s promise to keep spending led different stories.">
         <ReadingCards items={recoveryReport.coverage} />
         <AttributedQuote source={sources.find(source => source.id === "ap-resources")!} />
         <AttributedQuote source={sources.find(source => source.id === "si-roundup")!} />
@@ -256,10 +256,10 @@ export default function Dashboard() {
       <CollapsibleSection id="fan-response" n="05" title="What fans responded to" copy="Maluach drew enthusiasm. Finding the coverage drew frustration. Roster questions stayed mixed.">
         <FanReading />
       </CollapsibleSection>
-      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Fans wanted easier access. Specific learning stories show how support reaches players. The standards discussion remains part of the public response.">
+      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Fans wanted to watch. Players could name the help they received. Reporters kept asking about the Bridges decision.">
         <ReadingCards items={recoveryReport.ownership} />
       </CollapsibleSection>
-      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Williams’ status, player learning and actions following the public commitments are the next things to follow.">
+      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Watch for news on Williams, how the younger players are learning and what follows Mat’s Media Day promises.">
         <ReadingCards items={recoveryReport.camp} />
       </CollapsibleSection>
     </div>
