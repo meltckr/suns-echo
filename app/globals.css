@@ -87,3 +87,5 @@
 .accordion-section:not([open])>.accordion-summary .section-head p{display:block}.accordion-summary .section-head p{font-size:16px;line-height:1.6;color:#55515b;max-width:75ch}.accordion-section .section-head>span{font-size:10px;letter-spacing:1px}.accordion-summary .section-head h2{font-size:clamp(26px,3vw,40px);line-height:1.15;letter-spacing:-1px}.accordion-summary{min-height:120px}.accordion-panel .recovery-reading{max-width:78ch}@media(max-width:500px){.accordion-summary .section-head p{font-size:15px;line-height:1.6;margin-top:10px}.accordion-summary .section-head h2{font-size:24px;letter-spacing:-.6px}.accordion-summary{gap:14px;padding-block:24px}.accordion-section .section-head>span{font-size:9px}}
 
 .section-nav a{min-height:44px;font-size:11px}.section-nav a[aria-current="page"]{color:#1d1160;background:var(--gold);border:1px solid transparent}
+
+.locked-source-tags .source-link{color:#813814}
