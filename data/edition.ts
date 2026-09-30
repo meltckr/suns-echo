@@ -901,16 +901,15 @@ export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v5.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v6.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
-  "Mat, Oso Ighodaro described helping Khaman Maluach even when they were on opposite pickup teams. Maluach separately described asking Oso what he saw during plays and practices. Two players competing for opportunity were helping each other prepare.",
-  "That gives continuity a practical meaning. Gregory said twelve of the fifteen players who finished last season and every coach return. Maluach sought Booker’s guidance. Kennard described his work with Ighodaro. Fleming credited film study and the Valley Suns. My read is that experience is becoming easier for newer players to use.",
-  "The coverage also carries a different expectation. Rankin reported Booker’s basketball rationale for Bridges alongside your condemnation of prior conduct and explanation of organizational standards. AP led with spending commitment. Those stories keep public trust and ownership decisions in view alongside basketball preparation.",
-  "Williams’ absence brings an immediate test. Gregory described several months before a reliable return assessment. The return date remains unknown. Camp will give us better evidence of the younger centers’ readiness.",
-  "The Word Resonance section now compares five articles with one hundred eighteen captured fan comment texts. Ninety-three came through indexed Reddit pages; twenty-five were supplied social comments. One hundred three are coded to topics. The sample remains partial, and comment authors are unverified. Fans and journalists are scored separately.",
-  "Development drew positive fan reaction, especially around Maluach. Viewing access drew criticism. Season anticipation coexists with roster doubts. The trade comments include support for the new combination, a conduct objection and missing Allen. Those are different reactions to different parts of the same day.",
-  "For ownership, I would follow the young centers’ progress, the experience newcomers describe, and the actions following public commitments. Media Day gave us named relationships and specific expectations to revisit. The next evidence comes as the work gets harder.",
+  "Mat, the most useful detail from Media Day was Oso Ighodaro helping Khaman Maluach during pickup games. They were on opposite teams. Oso still gave him pointers. Maluach described asking Oso what he saw. That gives you a concrete example of how experience is being shared.",
+  "Other players described the same kind of help. Maluach sought Booker's guidance. Kennard described his work with Oso. Fleming credited film study and his time with the Valley Suns. Those relationships give newcomers people they can turn to. Camp will show how that preparation carries into their work.",
+  "The fan comments were direct. Some fans loved what they heard about Maluach's development. Others hated how hard it was to watch Media Day. People were looking for a stream and dealing with signal problems. The interest was there. Getting to the coverage was the frustration.",
+  "That matters to you because access shapes how people experience the team. The players gave fans plenty to be interested in. Fans wanted to see and hear them. Some of that attention went into finding the broadcast instead. It is a practical part of the day worth keeping in view.",
+  "The coverage also brought your public commitments back into focus. Booker explained the basketball case for Bridges. You addressed his prior conduct and the organization's standards. Spending commitments received national attention. Those stories carry their own expectations. People will keep evaluating the decisions alongside what happens on the court.",
+  "Williams' absence adds an immediate question. Gregory said several months are needed before a reliable return assessment. The return date remains unknown. As camp begins, I'd follow what the younger centers are learning and what newcomers say about the help they receive. Those accounts will give you something specific to revisit.",
   "Dominate."
 ]
 };

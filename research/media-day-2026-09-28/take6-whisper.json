@@ -1,0 +1,168 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "audioSha256": "ecdde0f329e0dd9917018df0cd8f40d7dfdc028d05b6bbabb6c13753e7dd1c87",
+  "text": " Matt, the most useful detail from Media Day was Oso Iga Daro helping Kamam Malu watch during pickup games. They were on opposite teams. Oso still gave him pointers. Malu Watch described asking Oso what he saw. That gives you a concrete example of how experience is being shared. Other players described the same kind of help. Malu Watch sought Booker's guidance. Kinnar described his work with Oso Fleming-credited film study in his time with the Valley Suns. Those relationships give newcomers people they can turn to. Camp will show how that preparation carries into their work. The fan comments were direct. Some fans loved what they heard about Model Watch's development. Others hated how hard it was to watch Media Day. People were looking for a stream and dealing with signal problems. The interest was there. Getting to the coverage was the frustration. That matters to you because access shapes how people experience the team. The players gave fans plenty to be interested in. Fans wanted to see and hear them. Some of that attention went into finding the broadcast. Instead, it is a practical part of the day worth keeping in view. The coverage also brought your public commitments back into focus. Booker explained the basketball case for Bridges. You addressed his prior conduct and the organization's standards. Spending commitments received national attention. Those stories carry their own expectations. People will keep evaluating the decisions alongside what happens on the court. William's absence adds an immediate question. Gregory says several months are needed before a reliable return assessment. The return date remains unknown. As camp begins, I'd follow what the younger centers are learning and what newcomers say about the help they receive. Those accounts will give you something specific to revisit. Dominate.",
+  "segments": [
+    {
+      "text": " Matt, the most useful detail from Media Day was Oso Iga Daro helping Kamam Malu watch during pickup games.",
+      "start": 0.0,
+      "end": 7.2
+    },
+    {
+      "text": " They were on opposite teams. Oso still gave him pointers.",
+      "start": 7.640000000000001,
+      "end": 10.34
+    },
+    {
+      "text": " Malu Watch described asking Oso what he saw.",
+      "start": 10.9,
+      "end": 13.52
+    },
+    {
+      "text": " That gives you a concrete example of how experience is being shared.",
+      "start": 14.0,
+      "end": 16.88
+    },
+    {
+      "text": " Other players described the same kind of help.",
+      "start": 17.16,
+      "end": 19.44
+    },
+    {
+      "text": " Malu Watch sought Booker's guidance.",
+      "start": 20.06,
+      "end": 22.44
+    },
+    {
+      "text": " Kinnar described his work with Oso Fleming-credited film study in his time with the Valley Suns.",
+      "start": 22.44,
+      "end": 29.12
+    },
+    {
+      "text": " Those relationships give newcomers people they can turn to.",
+      "start": 29.12,
+      "end": 32.800000000000004
+    },
+    {
+      "text": " Camp will show how that preparation carries into their work.",
+      "start": 32.800000000000004,
+      "end": 36.8
+    },
+    {
+      "text": " The fan comments were direct.",
+      "start": 36.8,
+      "end": 39.0
+    },
+    {
+      "text": " Some fans loved what they heard about Model Watch's development.",
+      "start": 39.0,
+      "end": 42.24
+    },
+    {
+      "text": " Others hated how hard it was to watch Media Day.",
+      "start": 42.24,
+      "end": 45.36
+    },
+    {
+      "text": " People were looking for a stream and dealing with signal problems.",
+      "start": 45.36,
+      "end": 48.480000000000004
+    },
+    {
+      "text": " The interest was there.",
+      "start": 48.480000000000004,
+      "end": 49.6
+    },
+    {
+      "text": " Getting to the coverage was the frustration.",
+      "start": 49.6,
+      "end": 51.8
+    },
+    {
+      "text": " That matters to you because access shapes how people experience the team.",
+      "start": 51.8,
+      "end": 55.52
+    },
+    {
+      "text": " The players gave fans plenty to be interested in.",
+      "start": 55.52,
+      "end": 58.24
+    },
+    {
+      "text": " Fans wanted to see and hear them.",
+      "start": 58.24,
+      "end": 60.400000000000006
+    },
+    {
+      "text": " Some of that attention went into finding the broadcast.",
+      "start": 60.96,
+      "end": 63.08
+    },
+    {
+      "text": " Instead, it is a practical part of the day worth keeping in view.",
+      "start": 63.34,
+      "end": 66.18
+    },
+    {
+      "text": " The coverage also brought your public commitments back into focus.",
+      "start": 66.76,
+      "end": 69.74000000000001
+    },
+    {
+      "text": " Booker explained the basketball case for Bridges.",
+      "start": 70.3,
+      "end": 72.4
+    },
+    {
+      "text": " You addressed his prior conduct and the organization's standards.",
+      "start": 72.78,
+      "end": 75.72
+    },
+    {
+      "text": " Spending commitments received national attention.",
+      "start": 76.32000000000001,
+      "end": 78.3
+    },
+    {
+      "text": " Those stories carry their own expectations.",
+      "start": 78.48,
+      "end": 80.34
+    },
+    {
+      "text": " People will keep evaluating the decisions alongside what happens on the court.",
+      "start": 80.94,
+      "end": 84.62
+    },
+    {
+      "text": " William's absence adds an immediate question.",
+      "start": 85.1,
+      "end": 87.34
+    },
+    {
+      "text": " Gregory says several months are needed before a reliable return assessment.",
+      "start": 87.34,
+      "end": 91.78
+    },
+    {
+      "text": " The return date remains unknown.",
+      "start": 92.36,
+      "end": 94.0
+    },
+    {
+      "text": " As camp begins, I'd follow what the younger centers are learning and what newcomers say about the help they receive.",
+      "start": 94.5,
+      "end": 99.64
+    },
+    {
+      "text": " Those accounts will give you something specific to revisit.",
+      "start": 100.12,
+      "end": 102.82000000000001
+    },
+    {
+      "text": " Dominate.",
+      "start": 103.46000000000001,
+      "end": 103.94
+    }
+  ]
+}

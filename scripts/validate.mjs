@@ -132,6 +132,19 @@ if (audioBrief.ready) {
   check(manifest.audioSha256 === sha(audio) && manifest.transcriptSha256 === sha(Buffer.from(transcript)), "Audio/transcript fingerprint mismatch");
   check(manifest.model === "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit" && manifest.voice === "Arizona v12", "Wrong audio engine");
   check(manifest.sampleRate === 24000 && manifest.channels === 1 && manifest.bitrate === 160000 && manifest.trailingSilenceSeconds <= 0.3, "Audio format/silence gate failed");
+  if (manifest.finishing?.generationMode === "paragraph") {
+    check(manifest.finishing.generationPasses === audioBrief.paragraphs.length && manifest.finishing.paragraphPauseSeconds === 0.5, "Paragraph rendering/pause contract failed");
+    check(Math.abs(manifest.integratedLufs + 16) <= 0.3 && manifest.truePeakDbtp <= -1.5, "Paragraph audio loudness/peak contract failed");
+    check(manifest.proof?.prompted === false, "Unprompted Whisper proof is required for paragraph audio");
+    if (manifest.proof) {
+      const whisperBytes = await readFile(manifest.proof.whisperFile);
+      const whisper = JSON.parse(whisperBytes);
+      const comparison = JSON.parse(await readFile(manifest.proof.comparisonFile, "utf8"));
+      check(manifest.proof.whisperSha256 === sha(whisperBytes) && comparison.whisperSha256 === sha(whisperBytes), "Whisper proof fingerprint mismatch");
+      check(whisper.audioSha256 === manifest.audioSha256 && comparison.audioSha256 === manifest.audioSha256 && comparison.scriptSha256 === manifest.transcriptSha256, "Whisper comparison is bound to different audio or script");
+      check(comparison.mismatches.length === manifest.proof.mismatchSpans, "Whisper mismatch disclosure count differs");
+    }
+  }
   if (release) {
     check(manifest.listeningConfirmed === true, "Audio listening approval remains open");
     check(manifest.playerVerified === true, "Audio player verification remains open");

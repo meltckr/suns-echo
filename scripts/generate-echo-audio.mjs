@@ -22,7 +22,10 @@ const output = resolve(`public${audioBrief.src.slice(edition.basePath.length)}`)
 const transcript = await readFile(input, "utf8");
 if (transcript.trim() !== audioBrief.paragraphs.join("\n\n")) throw new Error("Finalize and synchronize the Editor script first.");
 if (!transcript.trim().endsWith("\n\nDominate.")) throw new Error("Required standalone closing missing.");
-const work = await mkdtemp(join(tmpdir(), "echo-arizona-private-"));
+const resumeIndex = process.argv.indexOf("--resume-workdir");
+if (resumeIndex >= 0 && !process.argv[resumeIndex + 1]) throw new Error("Resume workdir required.");
+const resumeWorkdir = resumeIndex < 0 ? null : resolve(process.argv[resumeIndex + 1]);
+const work = resumeWorkdir ?? await mkdtemp(join(tmpdir(), "echo-arizona-private-"));
 const run = (program, args, options = {}) => {
   const result = spawnSync(program, args, { encoding: "utf8", maxBuffer: 32 * 1024 * 1024, ...options });
   if (result.error || result.status !== 0) throw new Error(`Audio command failed; inspect private diagnostic ${work}.`);
@@ -33,7 +36,7 @@ await access(environment.AVC_REF_TXT);
 await access(`${environment.AVC_VENV}/bin/python`);
 run(`${environment.AVC_VENV}/bin/python`, ["-c", "import mlx_audio; from huggingface_hub import snapshot_download; snapshot_download(repo_id=\"mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit\",local_files_only=True,allow_patterns=[\"*.json\",\"*.safetensors\",\"*.model\",\"*.txt\"])"], { env: environment });
 const preflight = run(factory, [], { env: environment });
-await writeFile(join(work, "preflight.log"), preflight.stdout + preflight.stderr, { mode: 0o600 });
+await writeFile(join(work, resumeWorkdir ? "preflight-resume.log" : "preflight.log"), preflight.stdout + preflight.stderr, { mode: 0o600 });
 if (process.argv.includes("--verify-only")) {
   console.log("Arizona v12 factory and explicit approved reference pair verified. No narration rendered.");
   process.exit(0);
@@ -45,12 +48,16 @@ await mkdir(dirname(output), { recursive: true });
 const configIndex = process.argv.indexOf("--pronunciation-config");
 if (configIndex >= 0 && !process.argv[configIndex + 1]) throw new Error("Pronunciation configuration path required.");
 const pronunciationConfig = configIndex >= 0 ? resolve(process.argv[configIndex + 1]) : null;
+const modeIndex = process.argv.indexOf("--generation-mode");
+const generationMode = modeIndex < 0 ? "sentence" : process.argv[modeIndex + 1];
+if (!["sentence", "paragraph"].includes(generationMode)) throw new Error("Generation mode must be sentence or paragraph.");
 const raw = join(work, "finished.mp3");
 const renderer = resolve("scripts/echo-audio-render.py");
-const rendered = spawnSync(`${environment.AVC_VENV}/bin/python`, [renderer, input, raw, "--workdir", work,
+const rendered = spawnSync(`${environment.AVC_VENV}/bin/python`, [renderer, input, raw, "--workdir", work, "--generation-mode", generationMode,
+  ...(resumeWorkdir ? ["--resume"] : []),
   ...(pronunciationConfig ? ["--pronunciation-config", pronunciationConfig] : [])],
   { env: environment, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
-await writeFile(join(work, "render.log"), (rendered.stdout ?? "") + (rendered.stderr ?? ""), { mode: 0o600 });
+await writeFile(join(work, resumeWorkdir ? "render-resume.log" : "render.log"), (rendered.stdout ?? "") + (rendered.stderr ?? ""), { mode: 0o600 });
 if (rendered.error || rendered.status !== 0) throw new Error(`Arizona render failed; private diagnostic ${work}. No provider fallback.`);
 const probe = JSON.parse(run("ffprobe", ["-v", "error", "-show_streams", "-show_format", "-of", "json", raw]).stdout);
 const stream = probe.streams.find(value => value.codec_type === "audio");
@@ -60,9 +67,9 @@ const transcriptSha256 = createHash("sha256").update(transcript).digest("hex");
 run("ffmpeg", ["-v", "error", "-y", "-i", raw, "-c:a", "copy", "-write_xing", "1", "-metadata", `title=${edition.title}`, "-metadata", "artist=Accelerated Velocity Consulting", "-metadata", `comment=transcript-sha256:${transcriptSha256}`, output]);
 const silence = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "silencedetect=noise=-65dB:d=1.2", "-f", "null", "-"]);
 if (silence.stderr.includes("silence_start")) throw new Error("Unexpected silence interval of at least 1.2 seconds. Inspect private sentence renders; never collapse speech pauses to pass QA.");
-const loudness = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11:dual_mono=true:print_format=json", "-f", "null", "-"]);
+const loudness = run("ffmpeg", ["-hide_banner", "-i", output, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11:dual_mono=false:print_format=json", "-f", "null", "-"]);
 const measured = JSON.parse(loudness.stderr.slice(loudness.stderr.lastIndexOf("{"), loudness.stderr.lastIndexOf("}") + 1));
-if (Math.abs(Number(measured.input_i) + 16) > 1.5 || Number(measured.input_tp) > -1.5) throw new Error("Final loudness/true-peak gate failed.");
+if (Math.abs(Number(measured.input_i) + 16) > 0.3 || Number(measured.input_tp) > -1.5) throw new Error("Final loudness/true-peak gate failed.");
 const finished = JSON.parse(run("ffprobe", ["-v", "error", "-show_streams", "-show_format", "-of", "json", output]).stdout);
 const finalDecoded = spawnSync("ffmpeg", ["-v", "error", "-i", output, "-f", "s16le", "-ac", "1", "-ar", "24000", "pipe:1"], { maxBuffer: 64 * 1024 * 1024 });
 if (finalDecoded.status !== 0) throw new Error("Final audio decoding failed.");
@@ -95,6 +102,10 @@ const manifest = {
   trailingSilenceSeconds: finalTail, silenceScanPassed: true, digitalBlackHoleScanPassed: true,
   finishing: {
     renderer: renderMetadata.renderer,
+    generationMode: renderMetadata.generationMode,
+    resumedRawGeneration: renderMetadata.resumedRawGeneration,
+    generationPasses: renderMetadata.generationPasses,
+    normalization: renderMetadata.normalization,
     rendererSha256: createHash("sha256").update(await readFile(renderer)).digest("hex"),
     spokenInputSha256: renderMetadata.spokenInputSha256,
     pronunciationConfigSha256: renderMetadata.pronunciationConfigSha256,

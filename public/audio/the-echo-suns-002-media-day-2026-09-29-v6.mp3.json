@@ -1,0 +1,82 @@
+{
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-30T03:23:43.384Z",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v6.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "transcriptSha256": "8b999dcb022ae1840163dd3d04789cff2cbc19e9b1897f99121493f4f8487055",
+  "audioSha256": "ecdde0f329e0dd9917018df0cd8f40d7dfdc028d05b6bbabb6c13753e7dd1c87",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 104.11,
+  "integratedLufs": -16.23,
+  "truePeakDbtp": -1.74,
+  "trailingSilenceSeconds": 0,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "finishing": {
+    "renderer": "echo-audio-render.py",
+    "generationMode": "paragraph",
+    "resumedRawGeneration": true,
+    "generationPasses": 7,
+    "normalization": {
+      "targetIntegratedLufs": -16,
+      "truePeakCeilingDbtp": -1.5,
+      "dualMono": false,
+      "toleranceLu": 0.3,
+      "attempts": [
+        {
+          "targetLufs": -16,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -17.15,
+          "truePeakDbtp": -1.72
+        },
+        {
+          "targetLufs": -14.850000000000001,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.54,
+          "truePeakDbtp": -1.69
+        },
+        {
+          "targetLufs": -14.310000000000002,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.32,
+          "truePeakDbtp": -1.7
+        },
+        {
+          "targetLufs": -13.990000000000002,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.23,
+          "truePeakDbtp": -1.74
+        }
+      ]
+    },
+    "rendererSha256": "999b18f6079cdf48d618e81d6584af78b617aa0a5b18b9518f52777150b5dbbe",
+    "spokenInputSha256": "907b57f9d0db6c050d6992ac80c36ca7ddf3a30301fab94cb5b233946a0441aa",
+    "pronunciationConfigSha256": "5e1993ee07807ff868755b731205aef3eee45c1bf14de02c1c97facbd047e2d3",
+    "maxTokens": 1536,
+    "trailingPaddingSeconds": 0.2,
+    "sentencePauseSeconds": null,
+    "paragraphPauseSeconds": 0.5,
+    "maximumBoundaryPauseSeconds": 0.5,
+    "tempoMultiplier": 1,
+    "crossfadeSeconds": 0,
+    "globalPauseCollapse": false,
+    "endpointRmsThresholdDb": -65,
+    "endpointWindowMilliseconds": 10,
+    "unexpectedSilenceThresholdSeconds": 1.2
+  },
+  "listeningConfirmed": false,
+  "playerVerified": true,
+  "proof": {
+    "model": "mlx-community/whisper-large-v3-turbo",
+    "prompted": false,
+    "whisperFile": "research/media-day-2026-09-28/take6-whisper.json",
+    "comparisonFile": "research/media-day-2026-09-28/TAKE6-WHISPER-DIFF.json",
+    "whisperSha256": "32b2cb3ac5d18258b58b63e7affdd0c673c36c2f103de38dc1693f54d857cc99",
+    "mismatchSpans": 10,
+    "normalizedMatch": false
+  }
+}

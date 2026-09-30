@@ -58,3 +58,9 @@ Blender v3 provides photo-only8-second heroes, title stings/cards, posters and12
 The edition now has ten numbered sections. The first-minute three findings, tension and three follow-ups remain byte-for-byte unchanged. Quotes, perception watch and overlapping narrative material are consolidated. Arizona v5 reads the revised 296-word script, with 0.10-second trailing silence and technical/player verification. Human listening remains open.
 
 Review build, 18 resonance regressions, eight finishing regressions, source/score validation and desktop/phone browser checks pass. Release check stops on human listening and Mel’s release approval. See EXPANDED-FAN-DENSITY-QA.md and AUDIO-V5-QA.md. Mel subsequently authorized pushing the review branch, updating PR #1 and publishing the isolated preview. Merge and production release remain held. Deployment and public-origin verification will be recorded in PR #1.
+
+## September 29 — take 6 after rejected audio
+
+Take 5 is rejected. Take 6 is the current review narration: a 291-word spoken brief addressed to Mat, rendered in seven paragraph passes with 0.5-second gaps using the same approved Arizona v12/Qwen3-TTS model on the Studio. Duration 104.11 seconds; −16.23 LUFS integrated and −1.74 dBTP. Methodology language is removed from the narration; “the Valley Suns” and the final “Dominate.” are preserved.
+
+Full-file unprompted Whisper proof and a SHA-bound word comparison disclose ten difference spans. All are listed in TAKE6-WHISPER-DIFF.md; names and two ordinary-word differences remain listening-review flags. Human listening remains open. Local desktop/phone player checks and twelve finishing regressions pass. See AUDIO-V6-QA.md. Only the draft PR and isolated review preview are authorized to update; merge and production release remain held.
