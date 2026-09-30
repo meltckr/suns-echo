@@ -239,7 +239,6 @@ export default function Dashboard() {
           <span>{String(index + 1).padStart(2, "0")}</span><h3>{finding.title}</h3><p>{finding.body}</p><EvidenceTags sourceIds={finding.sourceIds} />
         </article>)}</div>
         <article className="ownership-tension"><span>The tension</span><h3>{ownershipBrief.tension.title}</h3><p>{ownershipBrief.tension.body}</p><EvidenceTags sourceIds={ownershipBrief.tension.sourceIds} /></article>
-        <div className="ownership-next"><h3>Three to revisit</h3>{ownershipBrief.next.map(item => <article key={item.title}><h4>{item.title}</h4><p>{item.body}</p><EvidenceTags sourceIds={item.sourceIds} /></article>)}</div>
       </CollapsibleSection>
       <CollapsibleSection id="alignment" n="02" title="Where they agreed" copy="Familiar teammates, shared work and experienced help appeared in separate accounts.">
         <AlignmentEvidence />
@@ -257,10 +256,10 @@ export default function Dashboard() {
       <CollapsibleSection id="fan-response" n="05" title="What fans responded to" copy="Maluach drew enthusiasm. Finding the coverage drew frustration. Roster questions stayed mixed.">
         <FanReading />
       </CollapsibleSection>
-      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Make access easy, follow the specific learning stories and expect the standards discussion to continue.">
+      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Fans wanted easier access. Specific learning stories show how support reaches players. The standards discussion remains part of the public response.">
         <ReadingCards items={recoveryReport.ownership} />
       </CollapsibleSection>
-      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Williams’ status, the young centers’ progress and the newcomer experience remain the next questions.">
+      <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Williams’ status, player learning and actions following the public commitments are the next things to follow.">
         <ReadingCards items={recoveryReport.camp} />
       </CollapsibleSection>
     </div>

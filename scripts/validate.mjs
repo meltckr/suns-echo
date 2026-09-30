@@ -52,6 +52,8 @@ check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<
 check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)'), "Recovery must preserve Mel's locked opening");
 check(dashboard.includes('ownershipBrief.findings') && dashboard.includes('<AlignmentEvidence />') && dashboard.includes('<FanReading />'), "Full ownership report missing");
 for (const id of ["readout", "alignment", "development", "coverage", "fan-response", "ownership", "camp"]) check(dashboard.includes(`id="${id}"`), `Report section missing: ${id}`);
+const campSourceIds = new Set(recoveryReport.camp.flatMap(item => item.sourceIds));
+for (const item of ownershipBrief.next) check(item.sourceIds.every(id => campSourceIds.has(id)), `Consolidated camp watchpoint lost sources: ${item.title}`);
 for (const item of [...ownershipBrief.findings, ownershipBrief.tension, ...ownershipBrief.next, ...recoveryReport.development, ...recoveryReport.coverage, ...recoveryReport.ownership, ...recoveryReport.camp]) {
   check(item.sourceIds.length > 0 && item.sourceIds.every(id => sources.some(source => source.id === id)), `Recovery claim has missing sources: ${item.title}`);
   check(!/oppos(?:ite|ing) (?:pickup )?teams|pickup games/.test(item.body), `Pickup anecdote repeated outside the opening: ${item.title}`);

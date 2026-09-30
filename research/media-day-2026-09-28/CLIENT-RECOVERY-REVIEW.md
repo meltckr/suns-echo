@@ -34,3 +34,9 @@ Approved Take 9 is unchanged. No new generation, provider, model, reference, pro
 ## Release boundary
 
 Draft PR and isolated review preview only. No merge or replacement of the approved production edition. Use the existing permitted review branch; do not broaden the GitHub Pages branch policy. Untracked duplicate files present at the start are untouched.
+
+## Final bounded editorial polish
+
+Ownership’s closed-section synopsis now states the meaning of the evidence in three observations. Mel’s locked recommendation remains unchanged. The quick read’s separate “Three to revisit” block is removed. Its learning, newcomer and public-commitment details appear in the Camp cards, including every former watchpoint source ID. The public-commitment card explicitly follows both standards and spending. The validator checks that consolidation preserves all former watchpoint sources.
+
+Fresh `review:check` passes, including all 18 tests, locked-text/audio/media/source checks, TypeScript and static export. Browser checks of the exact rebuilt artifact at 390×844 and 1440×1000 confirm the replacement synopsis, absence of the duplicate block, all four Camp questions and their sources, no overflow and no browser console errors. Full-page captures were visually inspected: 390×5748 mobile and 1440×4314 desktop. These are full-page fallback captures, not compact viewport screenshots. The transcript, locked note, approved audio and both resonance datasets are unchanged from approved main. Production release remains held.

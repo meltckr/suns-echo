@@ -690,8 +690,9 @@ export const recoveryReport = {
   ],
   camp: [
     {title:"When can Williams be assessed?",body:"Gregory said several months are needed before a reliable return assessment. The return date remains unknown. An attributed update would change the starting conditions described at Media Day.",sourceIds:["official-gregory-2026","nba-williams"]},
-    {title:"What are the young centers learning?",body:"Follow specific camp accounts of Maluach and Ighodaro’s preparation, communication and readiness. Their interviews gave us a starting point; formal team work will add the next evidence.",sourceIds:["official-maluach-2026","official-ighodaro-2026"]},
-    {title:"Does the newcomer experience hold up?",body:"Revisit Kennard, Peat and Fleming after formal practices begin. What help are they getting? What can they explain more clearly now? Their answers will make the continuity story easier to judge.",sourceIds:["official-kennard-2026","official-peat-2026","official-fleming-2026"]}
+    {title:"What are the young centers learning?",body:"Follow specific camp accounts of Maluach and Ighodaro’s preparation, communication and readiness. What do they describe learning, and what does current reporting establish? Their interviews gave us a starting point; formal team work will add the next evidence.",sourceIds:["official-maluach-2026","official-ighodaro-2026","official-gregory-2026"]},
+    {title:"Does the newcomer experience hold up?",body:"Follow Kennard, Peat and Fleming’s accounts of communication, guidance and preparation as formal practices begin. What help are they getting? What can they explain more clearly now? Their answers will make the continuity story easier to judge.",sourceIds:["official-kennard-2026","official-peat-2026","official-fleming-2026"]},
+    {title:"What follows the public commitments?",body:"Follow what happens after Mat’s statements about standards and spending. Current reporting can show whether later decisions support those commitments.",sourceIds:["morning-rankin-bridges","ap-resources","morning-duffy-ownership"]}
   ]
 };
 
