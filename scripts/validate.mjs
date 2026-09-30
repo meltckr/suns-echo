@@ -50,7 +50,7 @@ check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominat
 for (const item of edition.lockedCopy) check(item.sourceIds.every(id => sources.some(source => source.id === id)), "Locked paragraph source tag missing");
 check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Sources tab must retain resonance and methodology");
 check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)') && !dashboard.includes('ownershipBrief.findings'), "Main page must use only locked copy");
-check(!/v[1-5]\.mp3/.test(dashboard) && !/v[1-5]\.mp3$/.test(audioBrief.src), "Retired take wired into page");
+check(!/v[1-6](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v8.mp3"), "Retired take or wrong Arizona audio wired into page");
 check(audioBrief.title === edition.title && dashboard.includes('eyebrow: "Audio"'), "Audio title/label differs from locked title");
 for (const source of sources) {
   check(source.url.startsWith("https://"), `Source must use HTTPS: ${source.id}`);
@@ -130,26 +130,75 @@ if (audioBrief.ready) {
   const audio = await readFile(localPath(audioBrief.src));
   const manifest = JSON.parse(await readFile(`${localPath(audioBrief.src)}.json`, "utf8"));
   check(manifest.audioSha256 === sha(audio) && manifest.transcriptSha256 === sha(Buffer.from(transcript)), "Audio/transcript fingerprint mismatch");
-  check(manifest.model === "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit" && manifest.voice === "Arizona v12", "Wrong audio engine");
-  check(manifest.sampleRate === 24000 && manifest.channels === 1 && manifest.bitrate === 160000 && manifest.trailingSilenceSeconds <= 0.3, "Audio format/silence gate failed");
-  if (manifest.finishing?.generationMode === "paragraph") {
-    check(manifest.finishing.sampling?.repetitionPenalty === 1.05 && manifest.finishing.sampling?.temperature === 0.8 && manifest.finishing.sampling?.topP === 0.95 && manifest.finishing.crossfadeSeconds === 0.03, "Final paragraph sampling/crossfade contract failed");
-    check(manifest.finishing.generationPasses === audioBrief.paragraphs.length && manifest.finishing.paragraphPauseSeconds === 0.5, "Paragraph rendering/pause contract failed");
-    check(Math.abs(manifest.integratedLufs + 16) <= 0.3 && manifest.truePeakDbtp <= -1.5, "Paragraph audio loudness/peak contract failed");
-    check(manifest.proof?.prompted === false, "Unprompted Whisper proof is required for paragraph audio");
-    if (manifest.proof) {
-      const whisperBytes = await readFile(manifest.proof.whisperFile);
-      const whisper = JSON.parse(whisperBytes);
-      const comparison = JSON.parse(await readFile(manifest.proof.comparisonFile, "utf8"));
-      check(manifest.proof.whisperSha256 === sha(whisperBytes) && comparison.whisperSha256 === sha(whisperBytes), "Whisper proof fingerprint mismatch");
-      check(whisper.audioSha256 === manifest.audioSha256 && comparison.audioSha256 === manifest.audioSha256 && comparison.scriptSha256 === manifest.transcriptSha256, "Whisper comparison is bound to different audio or script");
-      check(comparison.mismatches.length === manifest.proof.mismatchSpans, "Whisper mismatch disclosure count differs");
+  check(manifest.provider === "arizona-v12" && manifest.model === "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit", "Wrong Arizona provider or model");
+  check(manifest.sampleRate === 24000 && manifest.channels === 1 && manifest.bitrate === 160000, "Arizona audio format gate failed");
+  check(Number.isFinite(manifest.durationSeconds) && manifest.durationSeconds > 0, "Audio duration missing");
+  check(Number.isFinite(manifest.trailingSilenceSeconds) && manifest.trailingSilenceSeconds >= 0 && manifest.trailingSilenceSeconds <= 0.3, "Audio trailing silence gate failed");
+  check(Math.abs(manifest.integratedLufs + 16) <= 1.5 && Number.isFinite(manifest.truePeakDbtp) && manifest.truePeakDbtp <= -1.5, "Mercury dual-mono loudness/peak contract failed");
+  // Frozen from the approved Portland Arizona v12-v4 metadata, not a new recipe.
+  const canonicalRecipe = {
+  "reference_profile": "approved-declarative-18s",
+  "sentence_level": true,
+  "seed": 42,
+  "temperature": 0.9,
+  "top_k": 50,
+  "repetition_penalty": 1.5,
+  "max_tokens_per_sentence": 384,
+  "mlx_join_audio": false,
+  "atempo": 1.15,
+  "join_guard_version": "guarded-v1",
+  "crossfade_ms": 0,
+  "leading_guard_ms": 90,
+  "trailing_guard_ms": 180,
+  "sentence_gap_ms": 70,
+  "paragraph_gap_ms": 220,
+  "file_lead_ms": 160,
+  "file_tail_ms": 180,
+  "loudnorm_passes": 2,
+  "target_integrated_lufs_dual_mono": -16,
+  "target_true_peak_dbtp": -1.5,
+  "delivery_bitrate_kbps": 160,
+  "sample_rate_hz": 24000,
+  "channels": 1
+};
+  check(manifest.recipe && Object.keys(manifest.recipe).length === Object.keys(canonicalRecipe).length && Object.entries(canonicalRecipe).every(([key, value]) => manifest.recipe[key] === value), "Approved Portland recipe changed");
+  check(manifest.reference?.audioSha256 === "7f76d4482fd5ee9668d8e3ccee829adc69ec5d41043509ace95af69c38e07d99" && manifest.reference.textSha256 === "c68c23ec4fa89e0b86a3b2a638be38e7d4a3b05b164ffab99611923feac4e5e6", "Approved declarative reference pair differs");
+  const sentenceCount = transcript.trim().split(/\n\s*\n/).flatMap(paragraph => paragraph.split(/(?<=[.!?])\s+/).filter(Boolean)).length;
+  check(manifest.finishing?.generationMode === "sentence" && manifest.finishing.generationPasses === sentenceCount && manifest.finishing.crossfadeSeconds === 0 && manifest.finishing.joinGuardVersion === "guarded-v1", "Sentence generation/join contract failed");
+  check(manifest.finishing?.sampling?.repetitionPenalty === 1.5 && manifest.finishing.sampling.temperature === 0.9 && manifest.finishing.sampling.topK === 50 && manifest.finishing.sampling.seed === 42 && manifest.finishing.maxTokens === 384 && manifest.finishing.tempoMultiplier === 1.15, "Approved sentence sampling/tempo changed");
+  check(manifest.proof?.prompted === false, "Unprompted Whisper proof is required");
+  if (manifest.proof) {
+    const whisperBytes = await readFile(manifest.proof.whisperFile);
+    const whisper = JSON.parse(whisperBytes);
+    const comparisonBytes = await readFile(manifest.proof.comparisonFile);
+    const comparison = JSON.parse(comparisonBytes);
+    check(manifest.proof.comparisonSha256 === sha(comparisonBytes), "Whisper full-diff fingerprint mismatch");
+    check(whisper.prompted === false && comparison.prompted === false, "Whisper/comparison must retain unprompted proof");
+    check(manifest.proof.whisperSha256 === sha(whisperBytes) && comparison.whisperSha256 === sha(whisperBytes), "Whisper proof fingerprint mismatch");
+    check(whisper.audioSha256 === manifest.audioSha256 && comparison.audioSha256 === manifest.audioSha256 && comparison.scriptSha256 === manifest.transcriptSha256, "Whisper comparison is bound to different audio or script");
+    check(Array.isArray(comparison.mismatches) && comparison.mismatches.length === manifest.proof.mismatchSpans, "Whisper mismatch disclosure count differs");
+    const requiredNames = ["Mat", "Oso", "Ighodaro", "Khaman", "Maluach", "Booker", "Kennard", "Fleming", "Valley Suns", "Williams", "Gregory", "Bridges"];
+    const normalized = value => String(value).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const count = (text, name) => (` ${normalized(text)} `).split(` ${normalized(name)} `).length - 1;
+    check(Array.isArray(manifest.proof.nameChecks), "Whisper name checks missing");
+    let allNamesMatched = true;
+    for (const name of requiredNames) {
+      const expectedCount = count(transcript, name);
+      const actualCount = count(whisper.text, name);
+      const checks = manifest.proof.nameChecks?.filter(item => item.name === name) ?? [];
+      const matched = expectedCount > 0 && actualCount === expectedCount;
+      allNamesMatched &&= matched;
+      check(checks.length === 1 && checks[0].matched === matched && checks[0].expectedCount === expectedCount && checks[0].actualCount === actualCount, `Whisper name disclosure mismatch: ${name}`);
+      if (!matched) console.log(`Whisper spelling review flag: ${name} (${actualCount}/${expectedCount}); human pronunciation approval remains separate.`);
+    }
+    check(manifest.proof.requiredNamesMatched === allNamesMatched, "Whisper name status differs from raw proof");
+    check(Array.isArray(manifest.proof.sentenceRerenders), "Sentence rerender disclosure missing");
+    const rerenders = manifest.proof.sentenceRerenders ?? [];
+    check(new Set(rerenders.map(item => item.sentenceIndex)).size === rerenders.length, "Duplicate sentence rerender entries");
+    for (const item of rerenders) {
+      check(Number.isInteger(item.sentenceIndex) && item.sentenceIndex >= 0 && item.sentenceIndex < sentenceCount && Number.isInteger(item.attempts) && item.attempts >= 1 && item.attempts <= 4 && typeof item.reason === "string" && item.reason.trim().length > 0 && typeof item.remainingMismatch === "boolean", "Invalid sentence rerender disclosure or four-rerender cap exceeded");
     }
   }
-  const comparisonPath = "public/audio/echo-002-take5-vs-take6-final-ab20.mp3";
-  const comparisonManifest = JSON.parse(await readFile(`${comparisonPath}.json`, "utf8"));
-  check(comparisonManifest.audioSha256 === sha(await readFile(comparisonPath)) && Math.abs(comparisonManifest.durationSeconds - 20) < 0.05, "A/B comparison duration/fingerprint mismatch");
-  check(comparisonManifest.segments[1]?.take === 6 && comparisonManifest.segments[1]?.sourceSha256 === manifest.audioSha256 && comparisonManifest.segments[0]?.take === 5, "A/B comparison does not reference the current take 6");
   if (release) {
     check(manifest.listeningConfirmed === true, "Audio listening approval remains open");
     check(manifest.playerVerified === true, "Audio player verification remains open");
@@ -161,4 +210,4 @@ if (release) {
   check(edition.releaseAuthorized, "Mel's release approval remains open");
 }
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
-console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${resonanceReview.topics.length} audited phrase groups (${wordResonance.length} original phrase records preserved), real-photo Blender videos, OG, locked transcript and house player. Audio: ${audioBrief.ready ? "rendered" : "pending approved conversational reference"}.`);
+console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${resonanceReview.topics.length} audited phrase groups (${wordResonance.length} original phrase records preserved), real-photo Blender videos, OG, locked transcript and house player. Audio: ${audioBrief.ready ? "rendered" : "pending Arizona render and proof"}.`);

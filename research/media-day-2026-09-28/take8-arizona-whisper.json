@@ -1,0 +1,93 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "audioSha256": "76affad0317d92feadc36b725caeb1a321a83c40ba68cff646c38187c77e23ec",
+  "text": " Matt, the best moment for media day wasn't at a podium. It was Oso Iyigodaro talking about pickup games with Kahaman Luach. They were on opposite teams fighting for the same minutes and Oso kept giving him pointers anyway. Mahal Luach said he'd go to Oso after plays and ask what he saw. That's what continuity actually looks like. 12 of the 15 players from the end of last season are back, and so is every coach. The young guys know who to ask. Mahal Luach goes to Booker. Canard works with Oso. Fleming credits film study and his time with the Valley Suns. Fans noticed they loved what they heard about Ma Luech. What they didn't love was trying to watch. People went looking for a stream and couldn't find one. Three things to watch in camp. First, Williams Gregory says it'll be months before there's a real read on his return. Second, how fast the young sinners grow into that gap. Third, the Bridges decision because people will keep measuring it against the standards you laid out. My one call, next media day, one official stream pinned everywhere. The fans showed up, Make it easy for them to get in. Dominate.",
+  "segments": [
+    {
+      "text": " Matt, the best moment for media day wasn't at a podium.",
+      "start": 0.0,
+      "end": 2.56
+    },
+    {
+      "text": " It was Oso Iyigodaro talking about pickup games with Kahaman Luach.",
+      "start": 2.92,
+      "end": 7.1000000000000005
+    },
+    {
+      "text": " They were on opposite teams fighting for the same minutes and Oso kept giving him pointers anyway.",
+      "start": 7.32,
+      "end": 11.96
+    },
+    {
+      "text": " Mahal Luach said he'd go to Oso after plays and ask what he saw.",
+      "start": 12.32,
+      "end": 15.68
+    },
+    {
+      "text": " That's what continuity actually looks like.",
+      "start": 16.12,
+      "end": 17.72
+    },
+    {
+      "text": " 12 of the 15 players from the end of last season are back, and so is every coach.",
+      "start": 17.96,
+      "end": 22.04
+    },
+    {
+      "text": " The young guys know who to ask.",
+      "start": 22.26,
+      "end": 23.52
+    },
+    {
+      "text": " Mahal Luach goes to Booker.",
+      "start": 23.78,
+      "end": 25.580000000000002
+    },
+    {
+      "text": " Canard works with Oso.",
+      "start": 25.86,
+      "end": 26.98
+    },
+    {
+      "text": " Fleming credits film study and his time with the Valley Suns. Fans noticed they loved what they",
+      "start": 26.98,
+      "end": 32.26
+    },
+    {
+      "text": " heard about Ma Luech. What they didn't love was trying to watch. People went looking for a stream",
+      "start": 32.26,
+      "end": 36.9
+    },
+    {
+      "text": " and couldn't find one. Three things to watch in camp. First, Williams Gregory says it'll be months",
+      "start": 36.9,
+      "end": 41.64
+    },
+    {
+      "text": " before there's a real read on his return. Second, how fast the young sinners grow into that gap.",
+      "start": 41.64,
+      "end": 46.24
+    },
+    {
+      "text": " Third, the Bridges decision because people will keep measuring it against the standards you laid",
+      "start": 46.44,
+      "end": 51.24
+    },
+    {
+      "text": " out. My one call, next media day, one official stream pinned everywhere. The fans showed up,",
+      "start": 51.24,
+      "end": 56.24
+    },
+    {
+      "text": " Make it easy for them to get in.",
+      "start": 56.24,
+      "end": 57.56
+    },
+    {
+      "text": " Dominate.",
+      "start": 57.92,
+      "end": 58.32
+    }
+  ]
+}

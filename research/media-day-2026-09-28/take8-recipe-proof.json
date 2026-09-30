@@ -1,0 +1,32 @@
+{
+  "baseline": "Mercury Portland 2026-09-17 Arizona v12-v4",
+  "baselineMetadataSha256": "d08061e6ecea8157f9509fdea9b90aef0f017d1b649897e21764ffd290f439be",
+  "originalScriptHashes": {
+    "generate_arizona_v12.mjs": "73d98457d8ce509857c47a4195fbfb05413137c8efd3042e341752227635c65d",
+    "avc_arizona_v12_factory.sh": "f43f2aee4c6f2bed9613fab6e11170a30921e806585b254c2c32433017c4b696",
+    "qa_arizona_v12.py": "f62ca202c9a3898795bd97b649adedd62b1ed0d86cbc5b9ef04af21d07811a36"
+  },
+  "adaptations": [
+    "Echo paths, title, locked transcript and Dominate. closing",
+    "Private plain respellings; declarative reference pair selected explicitly",
+    "Raw sentence cache retained privately; selected sentence retry control only",
+    "Echo duration check permits the unchanged 200-word script; no tempo or voice tuning"
+  ],
+  "recipeUnchanged": true,
+  "attempts": [
+    {
+      "pass": 1,
+      "rerenderedSentenceNumbers": [
+        2,
+        4,
+        8,
+        9,
+        12
+      ],
+      "waveformsIdenticalToInitial": true,
+      "otherSentencesReused": 17
+    }
+  ],
+  "listeningApproval": false,
+  "publicationApproval": false
+}

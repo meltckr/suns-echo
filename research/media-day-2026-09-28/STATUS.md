@@ -74,3 +74,9 @@ Final audio is marked pending. The requested conversational reference pair was n
 ## Latest — approved reference, locked-copy take 6 pronunciation review
 
 Mel approved the twelve-second Arizona reference pair, then rejected the player-name delivery. The locked page and public script remain exact. Pronunciation candidates were tested against official NBA guidance and unprompted Whisper. The current cache-safe take 6 and twenty-second A/B comparison are technically verified for listening review; every remaining ASR mismatch is disclosed in TAKE6-NAMES-WHISPER-DIFF.md. The names are not marked perceptually approved. See LOCKED-COPY-REVIEW.md for current fingerprints, settings, finishing and verification. Counts, Word Resonance and source lists remain on Sources only. Only the draft PR and isolated review preview are authorized; merge and production release remain held.
+
+## Latest — Take 8, Portland Arizona v12-v4 recipe restored
+
+ElevenLabs is stopped. The current review file is `the-echo-suns-002-media-day-2026-09-29-v8.mp3`, using the exact Portland sentence recipe and declarative 18-second reference. Locked public copy is unchanged. Duration 58.580208 seconds; -16.49 LUFS in the original dual-mono measurement, -1.92 dBTP, 0.227667-second tail. Only v8 is wired/exported. The identical Desktop copy is `Take8-Echo-002.mp3`.
+
+Whisper discloses eleven differences. Five name-flagged sentences were re-rendered once each; their WAV bytes were identical under the prescribed seed and inputs, so further identical retries were stopped. Names remain listening-review flags; no perceptual pronunciation approval is claimed. See AUDIO-V8-QA.md, TAKE8-ARIZONA-WHISPER-DIFF.md and take8-recipe-proof.json. Review checks and desktop/phone player verification pass. Only the draft PR and isolated preview update are authorized; merge and production release remain held.

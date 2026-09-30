@@ -26,6 +26,7 @@ def main():
     parser.add_argument('--whisper', type=Path, required=True)
     parser.add_argument('--audio', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--label', default='Take 6')
     args = parser.parse_args()
     expected = args.script.read_text()
     result = json.loads(args.whisper.read_text())
@@ -45,7 +46,7 @@ def main():
               'limitation': 'Whisper differences may be recognition errors or delivery errors; they do not establish perceptual listening approval.'}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.with_suffix('.json').write_text(json.dumps(report, indent=2) + '\n')
-    lines = ['# Take 6 — Whisper comparison', '', report['comparison'], '',
+    lines = [f'# {args.label} — Whisper comparison', '', report['comparison'], '',
              f"Audio SHA-256: `{report['audioSha256']}`", '',
              f"Script SHA-256: `{report['scriptSha256']}`", '',
              f"Unprompted Whisper model: `{report['model']}`. {len(mismatches)} word-difference spans.", '',
