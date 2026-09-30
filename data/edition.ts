@@ -941,7 +941,7 @@ export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
   "label": "Audio",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v8.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v9.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
     "Mat, the best moment from Media Day wasn't at a podium. It was Oso Ighodaro talking about pickup games with Khaman Maluach. They were on opposite teams, fighting for the same minutes, and Oso kept giving him pointers anyway. Maluach said he'd go to Oso after plays and ask what he saw.",

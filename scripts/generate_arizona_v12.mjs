@@ -43,9 +43,8 @@ if (mode === '--transcribe') {
 } else {
   const privateSpeech = transcript
     .replace(/\bMat\b/g, 'Matt')
-    .replace(/\bIghodaro\b/g, 'Ee go dah roh')
-    .replace(/\bMaluach\b/g, 'Mah loo ahch')
-    .replace(/\bKhaman\b/g, 'Kah mahn');
+    .replace(/\bMaluach\b/g, 'Maluach')
+    .replace(/\bKhaman\b/g, 'Kamahn');
   const calibration = `${privateSpeech.split(/(?<=[.!?])\s+/).slice(0, 4).join(' ')} ${signoff}\n`;
   const script = join(privateJob, 'speech.txt');
   writeFileSync(script, mode === '--calibrate' ? calibration : privateSpeech, { mode: 0o600 });

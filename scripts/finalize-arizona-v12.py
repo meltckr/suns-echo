@@ -12,7 +12,7 @@ import re
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v8.mp3'
+AUDIO = ROOT / 'public/audio/the-echo-suns-002-media-day-2026-09-29-v9.mp3'
 NAMES = ['Mat', 'Oso', 'Ighodaro', 'Khaman', 'Maluach', 'Booker', 'Kennard',
          'Fleming', 'Valley Suns', 'Williams', 'Gregory', 'Bridges']
 
@@ -64,8 +64,8 @@ def main():
            for item in rerenders):
         raise SystemExit('Sentence retry cap failed')
     proofdir = ROOT / 'research/media-day-2026-09-28'
-    whisper_target = proofdir / 'take8-arizona-whisper.json'
-    comparison_target = proofdir / 'TAKE8-ARIZONA-WHISPER-DIFF.json'
+    whisper_target = proofdir / 'take9-arizona-whisper.json'
+    comparison_target = proofdir / 'TAKE9-ARIZONA-WHISPER-DIFF.json'
     shutil.copyfile(args.whisper, whisper_target)
     shutil.copyfile(args.comparison, comparison_target)
     shutil.copyfile(args.comparison.with_suffix('.md'), comparison_target.with_suffix('.md'))

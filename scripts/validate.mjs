@@ -50,7 +50,7 @@ check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominat
 for (const item of edition.lockedCopy) check(item.sourceIds.every(id => sources.some(source => source.id === id)), "Locked paragraph source tag missing");
 check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Sources tab must retain resonance and methodology");
 check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)') && !dashboard.includes('ownershipBrief.findings'), "Main page must use only locked copy");
-check(!/v[1-6](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v8.mp3"), "Retired take or wrong Arizona audio wired into page");
+check(!/v[1-8](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v9.mp3"), "Retired take or wrong Arizona audio wired into page");
 check(audioBrief.title === edition.title && dashboard.includes('eyebrow: "Audio"'), "Audio title/label differs from locked title");
 for (const source of sources) {
   check(source.url.startsWith("https://"), `Source must use HTTPS: ${source.id}`);
