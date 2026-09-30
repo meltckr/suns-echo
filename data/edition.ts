@@ -460,9 +460,9 @@ export const edition = {
     ]
   },
   {
-    "text": "Fans noticed. They loved what they heard about Maluach. What they didn't love was trying to watch. People went looking for a stream and couldn't find one.",
+    "text": "Peat described advice from Bridges on driving to the basket and handling contact. Younger teammates stayed after workouts to talk. The help kept going after the workout ended.",
     "sourceIds": [
-      "fan-media-day"
+      "official-peat-2026"
     ]
   },
   {
@@ -473,13 +473,15 @@ export const edition = {
     ]
   },
   {
-    "text": "My one call: next Media Day, one official stream, pinned everywhere. The fans showed up. Make it easy for them to get in.",
+    "text": "That's the value I see in this returning group. Players can name the people helping them and explain what they're learning. Camp will show how that work carries over.",
     "sourceIds": [
-      "fan-media-day"
+      "official-peat-2026",
+      "official-fleming-2026",
+      "official-kennard-2026"
     ]
   },
   {
-    "text": "Dominate.",
+    "text": "Dominate!",
     "sourceIds": []
   }
 ],
@@ -512,8 +514,8 @@ export const edition = {
     "Maluach gave another example. He went to Booker for help handling defensive pressure. Ott’s account of summer gym participation adds the coach’s view. Together, these accounts describe players using the summer to prepare, with experienced teammates available to help.",
     "The wider coverage asked different questions. Hayden Cilley reported on Booker’s work with Maluach. Duane Rankin examined the Bridges decision and the standards Mat described. David Brandt’s AP report emphasized spending commitment. Luke Duffy welcomed that commitment while questioning basketball judgment. Each tells ownership something different about how the day was heard."
   ],
-  "readout": "The players described how they are helping each other. Camp will show how that preparation holds up. Fans also gave ownership a clear access problem to fix.",
-  "bottomLine": "The strongest story was the help players could name. Camp now gives those accounts a test. The clearest ownership action is simpler: make the next Media Day easy for fans to watch."
+  "readout": "The players described how they are helping each other. Camp will show how that preparation holds up.",
+  "bottomLine": "The strongest story was the help players could name. Camp now gives those accounts a test."
 
 };
 
@@ -696,11 +698,10 @@ export const recoveryReport = {
   ],
   fans: [
     {title:"Maluach drew enthusiasm",body:"The comments we collected about Maluach leaned positive. Fans liked what they heard about his development and wanted to see him play. In the articles, teammates supplied some of the praise.",topicId:"maluach",evidenceIds:["indexed-1wsm1rd-0fc5fff30f0bb79d"]},
-    {title:"Finding the coverage drew frustration",body:"People asked where to watch, complained about the missing YouTube stream and helped each other find interviews. Some appreciated the recaps. The practical problem is clear: fans who wanted to follow the day had trouble finding the coverage.",topicId:"broadcast",evidenceIds:["indexed-1wsj8c9-9adb80b2fcdcd359"]},
+    {title:"A few comments asked where to find interviews",body:"Some captured comments asked where to watch Media Day interviews; others shared links. These comments describe those participants’ experience finding the coverage.",topicId:"broadcast",evidenceIds:["indexed-1wsj8c9-9adb80b2fcdcd359"]},
     {title:"Fans disagreed about the roster",body:"Some comments welcomed the additions. Others questioned the team’s size, health and chances this season. A fan could be excited about Maluach and still have doubts about the team.",topicId:"roster",evidenceIds:["indexed-1wsj8c9-bd60a35ee8c8316a","fan_seed_005-comment-2"]}
   ],
   ownership: [
-    {title:"Make it easy to watch",body:"People were asking where to watch and helping each other find interviews. They wanted to hear from the team. Making those interviews easy to find is part of taking care of the fans who showed up.",sourceIds:["fan-media-day"]},
     {title:"Players could explain how the help worked",body:"Peat named the advice he received. Fleming described what film study changed. Kennard explained his work with Ighodaro. For ownership, those accounts are a useful way to see what players are getting out of the people and time available to them.",sourceIds:["official-peat-2026","official-fleming-2026","official-kennard-2026"]},
     {title:"The Bridges questions will follow the team",body:"Reporters connected the Bridges decision to what Mat said about accountability. Future decisions will be judged against that explanation. People can like the basketball fit and still question the decision.",sourceIds:["morning-rankin-bridges","bridges-clutchpoints"]}
   ],
@@ -887,17 +888,19 @@ export const methodology = {
 
 export const audioBrief = {
   "ready": true,
+  "durationSeconds": 60.046042,
+  "durationLabel": "1:00",
   "title": "In the Same Building",
   "label": "Audio",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v9.mp3`,
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v10.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
     "Mat, the best moment from Media Day wasn't at a podium. It was Oso Ighodaro talking about pickup games with Khaman Maluach. They were on opposite teams, fighting for the same minutes, and Oso kept giving him pointers anyway. Maluach said he'd go to Oso after plays and ask what he saw.",
     "That's what continuity actually looks like. Twelve of the fifteen players from the end of last season are back, and so is every coach. The young guys know who to ask. Maluach goes to Booker. Kennard works with Oso. Fleming credits film study and his time with the Valley Suns.",
-    "Fans noticed. They loved what they heard about Maluach. What they didn't love was trying to watch. People went looking for a stream and couldn't find one.",
+    "Peat described advice from Bridges on driving to the basket and handling contact. Younger teammates stayed after workouts to talk. The help kept going after the workout ended.",
     "Three things to watch in camp. First, Williams: Gregory says it'll be months before there's a real read on his return. Second, how fast the young centers grow into that gap. Third, the Bridges decision, because people will keep measuring it against the standards you laid out.",
-    "My one call: next Media Day, one official stream, pinned everywhere. The fans showed up. Make it easy for them to get in.",
-    "Dominate."
+    "That's the value I see in this returning group. Players can name the people helping them and explain what they're learning. Camp will show how that work carries over.",
+    "Dominate!"
   ]
 };
 

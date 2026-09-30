@@ -1,0 +1,79 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "comparison": "Case and punctuation ignored; apostrophes standardized. Words and contractions remain distinct.",
+  "audioSha256": "7e0e2a255aa2559a571f51e1675f00e6b412f7c98e44c8847fbc7bfb8beb1a18",
+  "scriptSha256": "4c3d2deee9ff25caef7aa2b7c5e0c26c80a19f14baf6add2433d46866e9a08eb",
+  "whisperSha256": "35b76e6896ed6d5966852dc17d7254b2b01ba3268a0475b2167aa2d064abc4b2",
+  "scriptWords": 207,
+  "recognizedWords": 207,
+  "mismatches": [
+    {
+      "operation": "replace",
+      "scriptWord": 1,
+      "expected": "mat",
+      "recognized": "matt"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 5,
+      "expected": "from",
+      "recognized": "for"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 15,
+      "expected": "ighodaro",
+      "recognized": "iguodaro"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 21,
+      "expected": "khaman maluach",
+      "recognized": "kamal malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 40,
+      "expected": "maluach",
+      "recognized": "malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 59,
+      "expected": "twelve",
+      "recognized": "12"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 62,
+      "expected": "fifteen",
+      "recognized": "15"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 84,
+      "expected": "maluach",
+      "recognized": "malouak"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 88,
+      "expected": "kennard",
+      "recognized": "canard"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 91,
+      "expected": "oso",
+      "recognized": "also"
+    },
+    {
+      "operation": "replace",
+      "scriptWord": 103,
+      "expected": "peat",
+      "recognized": "pete"
+    }
+  ],
+  "limitation": "Whisper differences may be recognition errors or delivery errors; they do not establish perceptual listening approval."
+}

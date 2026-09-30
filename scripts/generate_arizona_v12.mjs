@@ -18,7 +18,7 @@ if (!mode || briefIndex < 0 || !args[briefIndex + 1]) {
 const briefPath = resolve(root, args[briefIndex + 1]);
 const brief = JSON.parse(readFileSync(briefPath, 'utf8'));
 const transcript = String(brief.audio?.transcript || '').trim();
-const signoff = 'Dominate.';
+const signoff = 'Dominate!';
 if (!transcript.startsWith('Mat, ')) throw new Error('Opening must address Mat within the first sentence');
 if (!transcript.endsWith(signoff)) throw new Error('Pregame sign-off missing');
 if (/\bMatt\b/.test(transcript)) throw new Error('Public transcript must use Mat with one T');
@@ -64,6 +64,7 @@ if (mode === '--transcribe') {
     AVC_TRAIL_KEEP_MS: '180',
     AVC_SENTENCE_GAP_MS: '70',
     AVC_PARAGRAPH_GAP_MS: '220',
+    AVC_SIGNOFF_GAP_MS: '400',
     AVC_FILE_LEAD_MS: '160',
     AVC_FILE_TAIL_MS: '180',
     PYTHONUNBUFFERED: '1',

@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SIGNOFF = "Dominate."
+SIGNOFF = "Dominate!"
 MODEL = "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit"
 FACTORY = ROOT / "scripts" / "avc_arizona_v12_factory.sh"
 

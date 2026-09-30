@@ -161,6 +161,9 @@ for i, chunk in enumerate(chunks):
     acc += chunk
     if i < len(chunks) - 1:
         gap = paragraph_gap if gap_kinds[i] == "paragraph" else sentence_gap
+        if i == len(chunks) - 2 and parts[-1].strip() == "Dominate!":
+            gap = int(float(os.environ.get("AVC_SIGNOFF_GAP_MS", "220")) / 1000.0 * sr)
+            print(f"SIGNOFF_GAP_MS={gap / sr * 1000:.0f}")
         acc += [0.0] * gap
 acc += [0.0] * file_tail
 print(f"guarded_concat {len(acc)/sr:.3f}s")

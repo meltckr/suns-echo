@@ -1,0 +1,73 @@
+{
+  "model": "mlx-community/whisper-large-v3-turbo",
+  "prompted": false,
+  "audioSha256": "7e0e2a255aa2559a571f51e1675f00e6b412f7c98e44c8847fbc7bfb8beb1a18",
+  "text": " Matt, the best moment for media day wasn't at a podium. It was Oso Iguodaro talking about pickup games with Kamal Malouak. They were on opposite teams fighting for the same minutes and Oso kept giving him pointers anyway. Malouak said he'd go to Oso after plays and ask what he saw. That's what continuity actually looks like. 12 of the 15 players from the end of last season are back, and so is every coach. The young guys know who to ask. Malouak goes to Booker. Canard works with also. Fleming credits film study and his time with the Valley Suns. Pete described advice from Bridges on driving to the basket and handling contact. Younger teammates stayed after workouts to talk. The help kept going after the workout ended. Three things to watch in camp. First, Williams Gregory says it'll be months before there's a real read on his return. Second, how fast the young centers grow into that gap. Third, the Bridges decision because people will keep measuring it against the standards you laid out. That's the value I see in this returning group. Players can name the people helping them and explain what they're learning. Camp will show how that work carries over. Dominate.",
+  "segments": [
+    {
+      "text": " Matt, the best moment for media day wasn't at a podium. It was Oso Iguodaro talking about pickup",
+      "start": 0.0,
+      "end": 4.86
+    },
+    {
+      "text": " games with Kamal Malouak. They were on opposite teams fighting for the same minutes and Oso kept",
+      "start": 4.86,
+      "end": 9.38
+    },
+    {
+      "text": " giving him pointers anyway. Malouak said he'd go to Oso after plays and ask what he saw. That's",
+      "start": 9.38,
+      "end": 15.4
+    },
+    {
+      "text": " what continuity actually looks like. 12 of the 15 players from the end of last season are back,",
+      "start": 15.4,
+      "end": 19.92
+    },
+    {
+      "text": " and so is every coach. The young guys know who to ask. Malouak goes to Booker. Canard works with",
+      "start": 20.26,
+      "end": 25.04
+    },
+    {
+      "text": " also. Fleming credits film study and his time with the Valley Suns. Pete described advice from",
+      "start": 25.04,
+      "end": 30.32
+    },
+    {
+      "text": " Bridges on driving to the basket and handling contact. Younger teammates stayed after workouts",
+      "start": 30.32,
+      "end": 35.32
+    },
+    {
+      "text": " to talk. The help kept going after the workout ended. Three things to watch in camp. First,",
+      "start": 35.32,
+      "end": 40.2
+    },
+    {
+      "text": " Williams Gregory says it'll be months before there's a real read on his return. Second,",
+      "start": 40.519999999999996,
+      "end": 44.54
+    },
+    {
+      "text": " how fast the young centers grow into that gap. Third, the Bridges decision because people will",
+      "start": 44.7,
+      "end": 49.739999999999995
+    },
+    {
+      "text": " keep measuring it against the standards you laid out. That's the value I see in this returning",
+      "start": 49.739999999999995,
+      "end": 54.04
+    },
+    {
+      "text": " group. Players can name the people helping them and explain what they're learning.",
+      "start": 54.04,
+      "end": 57.0
+    },
+    {
+      "text": " Camp will show how that work carries over. Dominate.",
+      "start": 57.3,
+      "end": 59.78
+    }
+  ]
+}

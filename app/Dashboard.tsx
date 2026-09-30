@@ -44,6 +44,7 @@ function AudioBrief() {
   return <section className="audio-brief" aria-label="Audio brief">
     {audioBrief.ready ? <>
       <Script type="module" src={`${basePath}/assets/mel-audio-player/mel-audio-player.js`} strategy="afterInteractive" />
+      <p className="audio-length">{audioBrief.durationLabel} audio</p>
       <div className="signal-audio">{createElement("mel-audio-player", {
         src: audioBrief.src,
         title: audioBrief.title,
@@ -230,17 +231,15 @@ export default function Dashboard() {
           <h1>{edition.title}</h1>
           <p className="hero-date">Phoenix Suns · September 28, 2026 Media Day</p>
           <p className="hero-purpose">{edition.subtitle}</p>
-          <p className="hero-thesis locked-paragraph">{edition.lockedCopy[0].text}</p>
-          <EvidenceTags sourceIds={edition.lockedCopy[0].sourceIds} />
         </div>
       </section>
+      <AudioBrief />
       <article className="report-section locked-copy" aria-label={edition.title}>
-        {edition.lockedCopy.slice(1).map((paragraph, index) => <section className="locked-passage" key={index}>
+        {edition.lockedCopy.map((paragraph, index) => <section className="locked-passage" key={index}>
           <p className="locked-paragraph">{paragraph.text}</p>
           <EvidenceTags sourceIds={paragraph.sourceIds} />
         </section>)}
       </article>
-      <AudioBrief />
       <CollapsibleSection id="readout" n="01" title="The quick read" copy="Players described useful help. Williams’ absence and the Bridges decision give ownership different questions to follow." defaultOpen>
         <div className="ownership-findings">{ownershipBrief.findings.map((finding, index) => <article key={finding.title}>
           <span>{String(index + 1).padStart(2, "0")}</span><h3>{finding.title}</h3><p>{finding.body}</p><EvidenceTags sourceIds={finding.sourceIds} />
@@ -260,10 +259,10 @@ export default function Dashboard() {
         <AttributedQuote source={sources.find(source => source.id === "ap-resources")!} />
         <AttributedQuote source={sources.find(source => source.id === "si-roundup")!} />
       </CollapsibleSection>
-      <CollapsibleSection id="fan-response" n="05" title="What fans responded to" copy="Maluach drew enthusiasm. Finding the coverage drew frustration. Roster questions stayed mixed.">
+      <CollapsibleSection id="fan-response" n="05" title="What fans responded to" copy="Maluach drew enthusiasm. Fans disagreed about the roster and the season ahead.">
         <FanReading />
       </CollapsibleSection>
-      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Fans wanted to watch. Players could name the help they received. Reporters kept asking about the Bridges decision.">
+      <CollapsibleSection id="ownership" n="06" title="What this means for ownership" copy="Players could name the help they received. Reporters kept asking about the Bridges decision.">
         <ReadingCards items={recoveryReport.ownership} />
       </CollapsibleSection>
       <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Watch for news on Williams, how the younger players are learning and what follows Mat’s Media Day promises.">

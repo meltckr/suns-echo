@@ -48,3 +48,9 @@ After the plain-language revision at `96b501f`, a 59-word September 29 first-pra
 The existing photographic Blender hero now carries a clear THE ECHO / 2026–27 identity and the edition’s existing purpose line. No new render or title was introduced. Phone accordion controls retain visible Read/Close text. Source links have 44px minimum heights and visible keyboard focus. The existing Edition control becomes Back to report on Sources and restores the saved report scroll position.
 
 Fresh `review:check` passed: lint, all 18 tests, source/population/date/word-count validation, unchanged locked copy and Take 9 hashes, TypeScript, and static export. `release:check` remains blocked by `edition.releaseAuthorized = false`. No fresh mobile/desktop visual or browser interaction claim is made for this pass: the local browser connection failed. Earlier captures do not prove this revised layout. The final deployed preview remains subject to an independent browser check.
+
+## September 30 — support-story finishing revision
+
+The stream/access recommendation is removed from the opening, audio and ownership section. The opening now connects the young players' accounts of help, with Peat's veteran advice replacing the access paragraph. One small qualified fan detail and all source data remain. Take 10 is the sole wired review take, ending in `Dominate!` with a brief beat; Take 9 and its exact text are preserved. See TAKE10-REVIEW.md for hashes, technical proof, the raw Whisper flags and the open human-listening gate.
+
+The house player moves directly after the compact hero identity/purpose, before the complete written opening. Duration is 1:00. The versioned v4 share card adds AVC to the approved photographic/title composition; review metadata describes player support and the dated first-practice update. Header/footer AVC remains intact. Review tests/build pass; release remains held. No new perceptual browser or iMessage rendering claim is made.

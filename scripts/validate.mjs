@@ -47,14 +47,15 @@ try {
   validateResonanceReview(resonanceReview, JSON.parse(await readFile("research/media-day-2026-09-28/resonance-review-source-texts.json", "utf8")));
 } catch (error) { check(false, `Audience comparison audit failed: ${error.message}`); }
 const lockedCopy = await readFile("content/locked-copy.txt", "utf8");
-check(sha(Buffer.from(lockedCopy)) === "d216c0dcacba767a01f2df9d9331c6ff022454b2a5a59242ea7728e774617ff5", "Mel's locked wording changed");
+check(sha(Buffer.from(lockedCopy)) === "848f747686a3e810304cc719fb2e2aaf01f7d7f4c314e0cb008cff8f13f7c711", "Authorized opening wording changed");
 check(lockedCopy === `${edition.title}\n\n${transcript}`, "Page/script differ from Mel's locked copy");
 check(edition.lockedCopy.map(item => item.text).join("\n\n") === transcript.trim(), "Locked page paragraphs differ from transcript");
 check(audioBrief.paragraphs.join("\n\n") === transcript.trim() && publicTranscript === transcript, "Audio/public transcript differ from locked copy");
-check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominate."), "Locked paragraph structure/close changed");
+check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominate!"), "Locked paragraph structure/close changed");
 for (const item of edition.lockedCopy) check(item.sourceIds.every(id => sources.some(source => source.id === id)), "Locked paragraph source tag missing");
 check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Sources tab must retain resonance and methodology");
-check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)'), "Recovery must preserve Mel's locked opening");
+check(dashboard.includes("edition.lockedCopy.map"), "Full authorized opening must remain on the page");
+check(dashboard.indexOf("<AudioBrief />") < dashboard.indexOf('<article className="report-section locked-copy"'), "Player must precede the written opening");
 check(dashboard.includes('ownershipBrief.findings') && dashboard.includes('<AlignmentEvidence />') && dashboard.includes('<FanReading />'), "Full ownership report missing");
 for (const id of ["readout", "alignment", "development", "coverage", "fan-response", "ownership", "camp"]) check(dashboard.includes(`id="${id}"`), `Report section missing: ${id}`);
 const campSourceIds = new Set(recoveryReport.camp.flatMap(item => item.sourceIds));
@@ -69,7 +70,7 @@ for (const item of recoveryReport.fans) {
   check(topic && item.evidenceIds.length > 0 && item.evidenceIds.every(id => topic.fans.evidence.some(evidence => evidence.id === id)), `Fan finding has missing captured evidence: ${item.title}`);
 }
 check(dashboard.includes("source.evidence") && dashboard.includes("ledger-evidence"), "Source ledger must expose the original evidence and interview timestamps");
-check(!/v[1-8](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v9.mp3"), "Retired take or wrong Arizona audio wired into page");
+check(!/v[1-8](?:[-.])/.test(dashboard) && audioBrief.src.endsWith("/the-echo-suns-002-media-day-2026-09-29-v10.mp3"), "Retired take or wrong Arizona audio wired into page");
 check(audioBrief.title === edition.title && dashboard.includes('eyebrow: "Audio"'), "Audio title/label differs from locked title");
 for (const source of sources) {
   check(source.url.startsWith("https://"), `Source must use HTTPS: ${source.id}`);
@@ -86,7 +87,7 @@ for (const item of alignment) {
 for (const id of edition.readoutSourceIds) check(sources.some(source => source.id === id), `Readout source missing: ${id}`);
 check(transcript.trim() === audioBrief.paragraphs.join("\n\n"), "Editor transcript differs from page transcript");
 check(transcript === publicTranscript, "Public transcript differs from Editor transcript");
-check(transcript.trim().endsWith("\n\nDominate."), "Required standalone audio closing missing");
+check(transcript.trim().endsWith("\n\nDominate!"), "Required standalone audio closing missing");
 check(audioBrief.title === edition.title, "Audio title differs from edition title");
 check(dashboard.includes('eyebrow: "Audio"'), "Player label must be Audio");
 check(styles.includes("prefers-reduced-motion") && dashboard.includes("Pause background motion"), "Motion accessibility missing");
@@ -97,9 +98,9 @@ const playerHashes = {
 for (const [file, expected] of Object.entries(playerHashes)) check(sha(await readFile(`public/assets/mel-audio-player/${file}`)) === expected, `Approved player changed: ${file}`);
 await access("public/assets/brand/AVC-logo-horizontal-dark.svg");
 await access("public/assets/teams/suns-logo.svg");
-const og = await sharp("public/og-media-day-2026-09-28-v3.png").metadata();
+const og = await sharp("public/og-media-day-2026-09-28-v4.png").metadata();
 check(og.width === 1200 && og.height === 630 && og.format === "png", "OG must be a 1200x630 PNG");
-for (const token of ["https://meltckr.github.io", "summary_large_image", "siteName", "1200", "630", "og-media-day-2026-09-28-v3.png"]) check(layout.includes(token), `Social metadata incomplete: ${token}`);
+for (const token of ["https://meltckr.github.io", "summary_large_image", "siteName", "1200", "630", "og-media-day-2026-09-28-v4.png"]) check(layout.includes(token), `Social metadata incomplete: ${token}`);
 const photos = JSON.parse(await readFile("research/media-day-2026-09-28/photo-ledger.json", "utf8"));
 check(photos.eventDate === "2026-09-28", "Photos must be from current Media Day");
 check(Array.isArray(photos.photos) && photos.photos.length > 0, "Real photo ledger missing");
@@ -152,6 +153,7 @@ if (audioBrief.ready) {
   check(manifest.provider === "arizona-v12" && manifest.model === "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit", "Wrong Arizona provider or model");
   check(manifest.sampleRate === 24000 && manifest.channels === 1 && manifest.bitrate === 160000, "Arizona audio format gate failed");
   check(Number.isFinite(manifest.durationSeconds) && manifest.durationSeconds > 0, "Audio duration missing");
+  check(audioBrief.durationSeconds === manifest.durationSeconds && audioBrief.durationLabel === "1:00", "Visible audio duration differs from Take 10");
   check(Number.isFinite(manifest.trailingSilenceSeconds) && manifest.trailingSilenceSeconds >= 0 && manifest.trailingSilenceSeconds <= 0.3, "Audio trailing silence gate failed");
   check(Math.abs(manifest.integratedLufs + 16) <= 1.5 && Number.isFinite(manifest.truePeakDbtp) && manifest.truePeakDbtp <= -1.5, "Mercury dual-mono loudness/peak contract failed");
   // Frozen from the approved Portland Arizona v12-v4 metadata, not a new recipe.
@@ -196,7 +198,7 @@ if (audioBrief.ready) {
     check(manifest.proof.whisperSha256 === sha(whisperBytes) && comparison.whisperSha256 === sha(whisperBytes), "Whisper proof fingerprint mismatch");
     check(whisper.audioSha256 === manifest.audioSha256 && comparison.audioSha256 === manifest.audioSha256 && comparison.scriptSha256 === manifest.transcriptSha256, "Whisper comparison is bound to different audio or script");
     check(Array.isArray(comparison.mismatches) && comparison.mismatches.length === manifest.proof.mismatchSpans, "Whisper mismatch disclosure count differs");
-    const requiredNames = ["Mat", "Oso", "Ighodaro", "Khaman", "Maluach", "Booker", "Kennard", "Fleming", "Valley Suns", "Williams", "Gregory", "Bridges"];
+    const requiredNames = ["Mat", "Oso", "Ighodaro", "Khaman", "Maluach", "Booker", "Kennard", "Fleming", "Valley Suns", "Peat", "Williams", "Gregory", "Bridges"];
     const normalized = value => String(value).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
     const count = (text, name) => (` ${normalized(text)} `).split(` ${normalized(name)} `).length - 1;
     check(Array.isArray(manifest.proof.nameChecks), "Whisper name checks missing");
