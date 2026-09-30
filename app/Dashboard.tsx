@@ -243,7 +243,7 @@ export default function Dashboard() {
         <p className="edition-status">{edition.statusLabel}</p>
         <h1>{edition.title}</h1>
         <p className="subtitle">{edition.subtitle}</p>
-        <div className="hero-meta"><span>Event<br /><strong>{edition.eventDate}</strong></span><span>Coverage<br /><strong>September 28–29, 2026</strong></span><span>Evidence<br /><strong>{edition.sourceCount} source records · eight official interviews</strong></span></div>
+        <div className="hero-meta"><span>Event<br /><strong>{edition.eventDate}</strong></span><span>Coverage<br /><strong>September 28–29, 2026</strong></span><span>Evidence<br /><strong>{edition.sourceCount} Media Day review records + {ledgerSources.length - sources.length} supplementary Word Resonance records · eight official interviews</strong></span></div>
         <p className="hero-thesis">{edition.thesis}</p>
         <p className="hero-note">Directional evidence sample · Photography: <a href="https://x.com/Suns/status/2104734231326814483" target="_blank" rel="noreferrer">Phoenix Suns</a></p>
       </div>

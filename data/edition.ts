@@ -775,9 +775,9 @@ export const audienceSignals: {label:string;direction:string;score:number|null;n
   },
   {
     "label": "Public discussion",
-    "direction": "Mixed in one thread",
+    "direction": "Mixed sampled discussion",
     "score": null,
-    "note": "Indicative comments supply no estimate of wider fan opinion."
+    "note": "The review uses its original megathread; Word Resonance combines two r/suns threads with five supplied social posts."
   }
 ];
 
