@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
-import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, ownershipBrief, resonanceReview, ledgerSources } from "../data/edition.ts";
+import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, resonanceReview, ledgerSources } from "../data/edition.ts";
 
 import { validateResonanceReview } from "./validate-resonance-review.mjs";
 
@@ -15,7 +15,7 @@ const [dashboard, layout, styles, data, transcript, publicTranscript] = await Pr
   ["app/Dashboard.tsx", "app/layout.tsx", "app/globals.css", "data/edition.ts", "content/audio-brief-transcript.txt", "public/content/audio-brief-transcript.txt"].map(path => readFile(path, "utf8"))
 );
 const allText = [dashboard, layout, styles, data, transcript].join("\n");
-for (const token of ["THE ECHO", edition.title, "Ownership readout", "Source ledger", "Where the voices align", "#DOMINATE", "Mat"]) check(allText.includes(token), `Missing edition element: ${token}`);
+for (const token of ["THE ECHO", edition.title, "Source ledger", "#DOMINATE", "Mat"]) check(allText.includes(token), `Missing edition element: ${token}`);
 for (const token of ["Matt Ishbia", "Aligned and Extended", "The Plum Effect", "Kelsey Plum", "Phoenix Mercury", "dillon-brooks-hero-v2", "suns-echo.netlify.app"]) check(!allText.includes(token), `Stale or forbidden content: ${token}`);
 check(sources.length === edition.sourceCount, "Source count mismatch");
 check(new Set(sources.map(source => source.id)).size === sources.length, "Duplicate source IDs");
@@ -41,17 +41,17 @@ for (const token of ['id="word-resonance"', 'id="resonance-detail"', "aria-press
 try {
   validateResonanceReview(resonanceReview, JSON.parse(await readFile("research/media-day-2026-09-28/resonance-review-source-texts.json", "utf8")));
 } catch (error) { check(false, `Audience comparison audit failed: ${error.message}`); }
-const firstMinuteMarkup = dashboard.slice(dashboard.indexOf('    <section id="readout"'), dashboard.indexOf('\n    </section>', dashboard.indexOf('    <section id="readout"')) + '\n    </section>'.length);
-check(sha(Buffer.from(firstMinuteMarkup)) === "4966264f05d5526a90a165cf7e1f71ed255e1f1de61d6e5902d37a18370524ab", "First-minute markup changed");
-const firstMinuteData = data.slice(data.indexOf("export const ownershipBrief:"), data.indexOf("\nexport type ResonanceAudience"));
-check(sha(Buffer.from(firstMinuteData + "\nexport type ResonanceAudience")) === "8461acc0fcbd3733d6eceaa88a0beee5c2f08e19df98ff9ca244f78018fc7d2a", "First-minute editorial data changed");
-check(dashboard.includes('n="08"') && dashboard.includes("10 · Methodology") && resonanceComponent.includes("09 · Part 02"), "Ten-section numbering incomplete");
-check(!dashboard.includes('n="11"') && !dashboard.includes('n="16"'), "Old section numbering remains");
-check(ownershipBrief.findings.length === 3 && ownershipBrief.next.length === 3, "First-minute ownership structure incomplete");
-for (const item of [...ownershipBrief.findings, ownershipBrief.tension, ...ownershipBrief.next]) {
-  check(item.sourceIds.length > 0 && item.sourceIds.every(id => sources.some(source => source.id === id)), `Ownership brief attribution missing: ${item.title}`);
-}
-check(dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Resonance must be mounted with methodology disclosure");
+const lockedCopy = await readFile("content/locked-copy.txt", "utf8");
+check(sha(Buffer.from(lockedCopy)) === "d216c0dcacba767a01f2df9d9331c6ff022454b2a5a59242ea7728e774617ff5", "Mel's locked wording changed");
+check(lockedCopy === `${edition.title}\n\n${transcript}`, "Page/script differ from Mel's locked copy");
+check(edition.lockedCopy.map(item => item.text).join("\n\n") === transcript.trim(), "Locked page paragraphs differ from transcript");
+check(audioBrief.paragraphs.join("\n\n") === transcript.trim() && publicTranscript === transcript, "Audio/public transcript differ from locked copy");
+check(edition.lockedCopy.length === 6 && transcript.trim().endsWith("\n\nDominate."), "Locked paragraph structure/close changed");
+for (const item of edition.lockedCopy) check(item.sourceIds.every(id => sources.some(source => source.id === id)), "Locked paragraph source tag missing");
+check(dashboard.includes('hidden={view !== "sources"}') && dashboard.includes("<WordResonance />") && dashboard.includes("methodology.resonance"), "Sources tab must retain resonance and methodology");
+check(dashboard.includes('edition.lockedCopy[0].text') && dashboard.includes('edition.lockedCopy.slice(1)') && !dashboard.includes('ownershipBrief.findings'), "Main page must use only locked copy");
+check(!/v[1-5]\.mp3/.test(dashboard) && !/v[1-5]\.mp3$/.test(audioBrief.src), "Retired take wired into page");
+check(audioBrief.title === edition.title && dashboard.includes('eyebrow: "Audio"'), "Audio title/label differs from locked title");
 for (const source of sources) {
   check(source.url.startsWith("https://"), `Source must use HTTPS: ${source.id}`);
   check(["Event", "Preview", "Background"].includes(source.phase), `Missing reporting phase: ${source.id}`);
@@ -133,6 +133,7 @@ if (audioBrief.ready) {
   check(manifest.model === "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit" && manifest.voice === "Arizona v12", "Wrong audio engine");
   check(manifest.sampleRate === 24000 && manifest.channels === 1 && manifest.bitrate === 160000 && manifest.trailingSilenceSeconds <= 0.3, "Audio format/silence gate failed");
   if (manifest.finishing?.generationMode === "paragraph") {
+    check(manifest.finishing.sampling?.repetitionPenalty === 1.05 && manifest.finishing.sampling?.temperature === 0.8 && manifest.finishing.sampling?.topP === 0.95 && manifest.finishing.crossfadeSeconds === 0.03, "Final paragraph sampling/crossfade contract failed");
     check(manifest.finishing.generationPasses === audioBrief.paragraphs.length && manifest.finishing.paragraphPauseSeconds === 0.5, "Paragraph rendering/pause contract failed");
     check(Math.abs(manifest.integratedLufs + 16) <= 0.3 && manifest.truePeakDbtp <= -1.5, "Paragraph audio loudness/peak contract failed");
     check(manifest.proof?.prompted === false, "Unprompted Whisper proof is required for paragraph audio");
@@ -145,6 +146,10 @@ if (audioBrief.ready) {
       check(comparison.mismatches.length === manifest.proof.mismatchSpans, "Whisper mismatch disclosure count differs");
     }
   }
+  const comparisonPath = "public/audio/echo-002-take5-vs-take6-final-ab20.mp3";
+  const comparisonManifest = JSON.parse(await readFile(`${comparisonPath}.json`, "utf8"));
+  check(comparisonManifest.audioSha256 === sha(await readFile(comparisonPath)) && Math.abs(comparisonManifest.durationSeconds - 20) < 0.05, "A/B comparison duration/fingerprint mismatch");
+  check(comparisonManifest.segments[1]?.take === 6 && comparisonManifest.segments[1]?.sourceSha256 === manifest.audioSha256 && comparisonManifest.segments[0]?.take === 5, "A/B comparison does not reference the current take 6");
   if (release) {
     check(manifest.listeningConfirmed === true, "Audio listening approval remains open");
     check(manifest.playerVerified === true, "Audio player verification remains open");
@@ -156,4 +161,4 @@ if (release) {
   check(edition.releaseAuthorized, "Mel's release approval remains open");
 }
 if (failures.length) { console.error(failures.join("\n")); process.exit(1); }
-console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${resonanceReview.topics.length} audited phrase groups (${wordResonance.length} original phrase records preserved), real-photo Blender videos, OG, transcript and approved player. Audio: ${audioBrief.ready ? "rendered" : "pending final Editor script"}.`);
+console.log(`Verified ${release ? "release" : "review draft"}: ${sources.length} sources, ${alignment.length} alignment themes, ${resonanceReview.topics.length} audited phrase groups (${wordResonance.length} original phrase records preserved), real-photo Blender videos, OG, locked transcript and house player. Audio: ${audioBrief.ready ? "rendered" : "pending approved conversational reference"}.`);

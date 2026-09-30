@@ -1,0 +1,109 @@
+{
+  "voice": "Arizona v12",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit",
+  "generatedAt": "2026-09-30T04:10:49.123Z",
+  "title": "In the Same Building",
+  "file": "the-echo-suns-002-media-day-2026-09-29-v6-names-r4.mp3",
+  "transcript": "content/audio-brief-transcript.txt",
+  "reference": {
+    "audioSha256": "a91de753197e37285910b9804c2d83a593a5d8a71f50537544619171d196ceed",
+    "textSha256": "cd051dc1f0adcc44d335c3350efc6065e383b59fc0d8acca89d86dbee2f9e983"
+  },
+  "transcriptSha256": "9928d7cea83e41626a15337f57db6497a44def4f7cf2a05d20bd196d8deaa6e7",
+  "audioSha256": "5843d91d72c6f7cbedcce8086cb83199ea48c0a50d125cfd4a5f3aa25f467e92",
+  "sampleRate": 24000,
+  "channels": 1,
+  "bitrate": 160000,
+  "durationSeconds": 63.99,
+  "integratedLufs": -16.22,
+  "truePeakDbtp": -1.71,
+  "trailingSilenceSeconds": 0.04,
+  "silenceScanPassed": true,
+  "digitalBlackHoleScanPassed": true,
+  "finishing": {
+    "renderer": "echo-audio-render.py",
+    "generationMode": "paragraph",
+    "resumedRawGeneration": false,
+    "generationPasses": 6,
+    "normalization": {
+      "targetIntegratedLufs": -16,
+      "truePeakCeilingDbtp": -1.5,
+      "dualMono": false,
+      "toleranceLu": 0.3,
+      "attempts": [
+        {
+          "targetLufs": -16,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -17.09,
+          "truePeakDbtp": -1.79
+        },
+        {
+          "targetLufs": -14.91,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.55,
+          "truePeakDbtp": -1.69
+        },
+        {
+          "targetLufs": -14.36,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.36,
+          "truePeakDbtp": -1.69
+        },
+        {
+          "targetLufs": -14,
+          "encoderCeilingDbtp": -1.5,
+          "integratedLufs": -16.22,
+          "truePeakDbtp": -1.71
+        }
+      ]
+    },
+    "sampling": {
+      "repetitionPenalty": 1.05,
+      "temperature": 0.8,
+      "topP": 0.95,
+      "seed": 42
+    },
+    "rendererSha256": "2dd7ba4db9de40ef2892eb31c7e52bb49c89c173ac60bc5929aa4b2e9b318107",
+    "spokenInputSha256": "0a36c0de4020b9f606a84e8563e3082955334599a905b96407115f0e86350880",
+    "pronunciationConfigSha256": "245a12731cfe9430a0230ef418385dd660bc6e031917538f6790e1844e6b2968",
+    "maxTokens": 1536,
+    "trailingPaddingSeconds": 0.2,
+    "sentencePauseSeconds": null,
+    "paragraphPauseSeconds": 0.5,
+    "maximumBoundaryPauseSeconds": 0.5,
+    "tempoMultiplier": 1,
+    "crossfadeSeconds": 0.03,
+    "globalPauseCollapse": false,
+    "endpointRmsThresholdDb": -65,
+    "endpointWindowMilliseconds": 10,
+    "unexpectedSilenceThresholdSeconds": 1.2
+  },
+  "listeningConfirmed": false,
+  "playerVerified": true,
+  "proof": {
+    "prompted": false,
+    "whisperFile": "research/media-day-2026-09-28/take6-names-whisper.json",
+    "whisperSha256": "547f385a5d3bcd9d0433368532defccc2855cf584305056079a64f41a6dadbdd",
+    "comparisonFile": "research/media-day-2026-09-28/TAKE6-NAMES-WHISPER-DIFF.json",
+    "mismatchSpans": 10
+  },
+  "playerVerification": {
+    "origin": "Local rebuilt review export",
+    "widths": [
+      1440,
+      390
+    ],
+    "controls": [
+      "play",
+      "pause",
+      "seek",
+      "back15",
+      "forward15",
+      "speed1",
+      "speed1.5",
+      "transcriptLink",
+      "downloadLink"
+    ],
+    "horizontalOverflow": false
+  }
+}

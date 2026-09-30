@@ -64,3 +64,13 @@ Review build, 18 resonance regressions, eight finishing regressions, source/scor
 Take 5 is rejected. Take 6 is the current review narration: a 291-word spoken brief addressed to Mat, rendered in seven paragraph passes with 0.5-second gaps using the same approved Arizona v12/Qwen3-TTS model on the Studio. Duration 104.11 seconds; −16.23 LUFS integrated and −1.74 dBTP. Methodology language is removed from the narration; “the Valley Suns” and the final “Dominate.” are preserved.
 
 Full-file unprompted Whisper proof and a SHA-bound word comparison disclose ten difference spans. All are listed in TAKE6-WHISPER-DIFF.md; names and two ordinary-word differences remain listening-review flags. Human listening remains open. Local desktop/phone player checks and twelve finishing regressions pass. See AUDIO-V6-QA.md. Only the draft PR and isolated review preview are authorized to update; merge and production release remain held.
+
+## Latest locked revision — prepared locally, replacement reference pending
+
+Mel supplied the final six-paragraph copy word for word. It is now the sole main-page body and the exact title-free audio script; source tags remain beneath each passage. Counts, Word Resonance and methodology live in the Sources tab. The earlier rewrite is superseded. LOCKED-COPY-REVIEW.md records the text fingerprints, passing build/tests and desktop/phone checks.
+
+Final audio is marked pending. The requested conversational reference pair was not verified; Mel has been asked to select or approve it. The renderer settings and quiet-padding crossfades are prepared and regression-tested, but no new synthesis or Whisper/A-B proof has run. Nothing from this locked revision has been committed, pushed or deployed. Merge and production release remain held.
+
+## Latest — approved reference, locked-copy take 6 pronunciation review
+
+Mel approved the twelve-second Arizona reference pair, then rejected the player-name delivery. The locked page and public script remain exact. Pronunciation candidates were tested against official NBA guidance and unprompted Whisper. The current cache-safe take 6 and twenty-second A/B comparison are technically verified for listening review; every remaining ASR mismatch is disclosed in TAKE6-NAMES-WHISPER-DIFF.md. The names are not marked perceptually approved. See LOCKED-COPY-REVIEW.md for current fingerprints, settings, finishing and verification. Counts, Word Resonance and source lists remain on Sources only. Only the draft PR and isolated review preview are authorized; merge and production release remain held.

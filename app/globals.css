@@ -69,3 +69,6 @@
 .coverage-group { margin-top: 1.5rem; scroll-margin-top: 5rem; }
 .coverage-group + .coverage-group { border-top: 1px solid var(--line, #d8d4ce); padding-top: 1.5rem; }
 .additional-evidence{border-top:1px solid #d7d1c8;margin-top:12px}.additional-evidence>summary{font-weight:650}.resonance-method a{color:#813814;overflow-wrap:anywhere}
+
+/* Locked edition copy; supporting material is confined to Sources. */
+[hidden]{display:none!important}.locked-copy{max-width:960px;margin:auto}.locked-passage{margin-bottom:36px}.locked-paragraph{font-size:19px;line-height:1.8}.locked-source-tags{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:14px}.locked-source-tags .source-link{font-size:11px;line-height:1.6}.hero .locked-source-tags .source-link{color:#ffc190}.section-nav a[aria-current="page"]{color:var(--orange);border-bottom:2px solid var(--orange)}@media(max-width:800px){.locked-paragraph{font-size:17px;line-height:1.8}.locked-passage{margin-bottom:30px}}

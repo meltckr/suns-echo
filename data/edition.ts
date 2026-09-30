@@ -149,7 +149,7 @@ export const sources: Source[] = [
     ],
     "confidence": "High",
     "url": "https://www.azfamily.com/2026/09/28/suns-owner-mat-ishbia-says-mortgage-company-woes-will-have-no-effect-basketball/",
-    "evidence": "Mat said mortgage-company performance would have no effect on Suns spending or fan experience. AP also reported his intention to buy an additional 14% of the team; completion is unverified.",
+    "evidence": "Mat said mortgage-company performance would have no effect on Suns spending or fan experience.",
     "quote": "It affects zero. Absolutely zero.",
     "quoteType": "Direct quote",
     "speaker": "Mat Ishbia",
@@ -442,6 +442,47 @@ export const edition = {
   "generatedLabel": "Review edition · September 29, 2026 · America/Phoenix",
   "statusLabel": "Two-part review edition · release held for approval",
   "thesis": "The clearest sign of continuity was one player helping another compete. Media Day made those relationships visible, while coverage of Bridges and ownership commitments brought a second set of expectations into view.",
+  "lockedCopy": [
+  {
+    "text": "Mat, the best moment from Media Day wasn't at a podium. It was Oso Ighodaro talking about pickup games with Khaman Maluach. They were on opposite teams, fighting for the same minutes, and Oso kept giving him pointers anyway. Maluach said he'd go to Oso after plays and ask what he saw.",
+    "sourceIds": [
+      "official-ighodaro-2026",
+      "official-maluach-2026"
+    ]
+  },
+  {
+    "text": "That's what continuity actually looks like. Twelve of the fifteen players from the end of last season are back, and so is every coach. The young guys know who to ask. Maluach goes to Booker. Kennard works with Oso. Fleming credits film study and his time with the Valley Suns.",
+    "sourceIds": [
+      "official-gregory-2026",
+      "official-maluach-2026",
+      "official-kennard-2026",
+      "official-fleming-2026"
+    ]
+  },
+  {
+    "text": "Fans noticed. They loved what they heard about Maluach. What they didn't love was trying to watch. People went looking for a stream and couldn't find one.",
+    "sourceIds": [
+      "fan-media-day"
+    ]
+  },
+  {
+    "text": "Three things to watch in camp. First, Williams: Gregory says it'll be months before there's a real read on his return. Second, how fast the young centers grow into that gap. Third, the Bridges decision, because people will keep measuring it against the standards you laid out.",
+    "sourceIds": [
+      "official-gregory-2026",
+      "morning-rankin-bridges"
+    ]
+  },
+  {
+    "text": "My one call: next Media Day, one official stream, pinned everywhere. The fans showed up. Make it easy for them to get in.",
+    "sourceIds": [
+      "fan-media-day"
+    ]
+  },
+  {
+    "text": "Dominate.",
+    "sourceIds": []
+  }
+],
   "sourceCount": 25,
   "includedCount": 25,
   "reviewedCount": 25,
@@ -535,7 +576,7 @@ export const ownershipBrief: { findings: OwnershipBriefItem[]; tension: Ownershi
     },
     {
       "title": "Actions following ownership’s public commitments",
-      "body": "Track attributed developments in the standards discussion and resource commitments. Completion of the proposed ownership acquisition remains unverified.",
+      "body": "Track attributed developments in the standards discussion and resource commitments.",
       "sourceIds": [
         "morning-rankin-bridges",
         "ap-resources",
@@ -861,8 +902,7 @@ export const watchColumns = {
   ],
   "questions": [
     "Williams’ eventual return date remains unknown.",
-    "Camp and games have yet to establish the effect of summer preparation.",
-    "Completion of the planned ownership acquisition is unverified."
+    "Camp and games have yet to establish the effect of summer preparation."
   ],
   "watch": [
     "Whether newcomer integration remains visible in camp reporting.",
@@ -894,24 +934,23 @@ export const methodology = {
   "selection": "25 source records are included: 21 event records and four preview/background records. Eight are official player or leadership interviews. AP syndications count once; Yahoo-hosted originals retain their author. Separate articles can describe the same exchange and do not become independent confirmations of that event. Duffy’s two pieces remain one commentator’s perspective.",
   "sentiment": "Labels describe the framing of each record. Qualitative audience readings are editorial interpretations. No numeric approval score or representative fan percentage is estimated.",
   "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Fan volume counts distinct captured comments: 1–4 low, 5–14 medium, 15+ high. Media volume counts articles: 1 low, 2 medium, 3+ high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
-  "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. The review’s original fan thread is indicative; Word Resonance adds partial indexed captures from two threads and supplied posts, with access limits disclosed. Williams’ return date and completion of the proposed ownership acquisition remain unknown. The hero uses current official Media Day photographs with rendered camera movement."
+  "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. The review’s original fan thread is indicative; Word Resonance adds partial indexed captures from two threads and supplied posts, with access limits disclosed. Williams’ return date remains unknown. The hero uses current official Media Day photographs with rendered camera movement."
 };
 
 export const audioBrief = {
   "ready": true,
   "title": "In the Same Building",
-  "label": "Two-minute ownership brief",
-  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v6.mp3`,
+  "label": "Audio",
+  "src": `${edition.basePath}/audio/the-echo-suns-002-media-day-2026-09-29-v6-names-r4.mp3`,
   "transcript": `${edition.basePath}/content/audio-brief-transcript.txt`,
   "paragraphs": [
-  "Mat, the most useful detail from Media Day was Oso Ighodaro helping Khaman Maluach during pickup games. They were on opposite teams. Oso still gave him pointers. Maluach described asking Oso what he saw. That gives you a concrete example of how experience is being shared.",
-  "Other players described the same kind of help. Maluach sought Booker's guidance. Kennard described his work with Oso. Fleming credited film study and his time with the Valley Suns. Those relationships give newcomers people they can turn to. Camp will show how that preparation carries into their work.",
-  "The fan comments were direct. Some fans loved what they heard about Maluach's development. Others hated how hard it was to watch Media Day. People were looking for a stream and dealing with signal problems. The interest was there. Getting to the coverage was the frustration.",
-  "That matters to you because access shapes how people experience the team. The players gave fans plenty to be interested in. Fans wanted to see and hear them. Some of that attention went into finding the broadcast instead. It is a practical part of the day worth keeping in view.",
-  "The coverage also brought your public commitments back into focus. Booker explained the basketball case for Bridges. You addressed his prior conduct and the organization's standards. Spending commitments received national attention. Those stories carry their own expectations. People will keep evaluating the decisions alongside what happens on the court.",
-  "Williams' absence adds an immediate question. Gregory said several months are needed before a reliable return assessment. The return date remains unknown. As camp begins, I'd follow what the younger centers are learning and what newcomers say about the help they receive. Those accounts will give you something specific to revisit.",
-  "Dominate."
-]
+    "Mat, the best moment from Media Day wasn't at a podium. It was Oso Ighodaro talking about pickup games with Khaman Maluach. They were on opposite teams, fighting for the same minutes, and Oso kept giving him pointers anyway. Maluach said he'd go to Oso after plays and ask what he saw.",
+    "That's what continuity actually looks like. Twelve of the fifteen players from the end of last season are back, and so is every coach. The young guys know who to ask. Maluach goes to Booker. Kennard works with Oso. Fleming credits film study and his time with the Valley Suns.",
+    "Fans noticed. They loved what they heard about Maluach. What they didn't love was trying to watch. People went looking for a stream and couldn't find one.",
+    "Three things to watch in camp. First, Williams: Gregory says it'll be months before there's a real read on his return. Second, how fast the young centers grow into that gap. Third, the Bridges decision, because people will keep measuring it against the standards you laid out.",
+    "My one call: next Media Day, one official stream, pinned everywhere. The fans showed up. Make it easy for them to get in.",
+    "Dominate."
+  ]
 };
 
 export const heroMedia = {

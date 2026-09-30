@@ -67,21 +67,42 @@ def join_sentences(chunks, paragraph_ends, sentence_pause=.22, paragraph_pause=.
     return result, joins
 
 
+def crossfade_boundary(left, right, samples):
+    """Blend quiet boundary padding; never overlap active speech."""
+    if len(left) < samples or len(right) < samples:
+        raise ValueError('Crossfade needs complete quiet boundary padding')
+    joined = left[:-samples]
+    for index in range(samples):
+        weight = (index + 1) / (samples + 1)
+        joined.append(round(left[-samples + index] * (1 - weight) + right[index] * weight))
+    joined.extend(right[samples:])
+    return joined
+
+
 def join_paragraphs(chunks, pause=.5):
-    """Keep every active window; replace only verified boundary silence."""
+    """Keep active windows intact; crossfade padding around a 0.5s gap."""
     if not chunks or pause != .5:
         raise ValueError('Paragraph mode requires chunks and exactly 0.5s spacing')
     result = array.array('h')
     joins = []
+    fade = round(.03 * RATE)
     for index, chunk in enumerate(chunks):
         onset, end = speech_bounds(chunk)
-        # Keep first onset; subsequent leading silence is part of the join.
-        start = 0 if index == 0 else onset
-        result.extend(chunk[start:end])
+        # The crossfade operates on padding outside the detected active windows.
+        leading = chunk[max(0, onset - fade):onset]
+        if index:
+            leading = array.array('h', [0] * (fade - len(leading))) + leading
+            result = crossfade_boundary(result, leading + chunk[onset:end], fade)
+        else:
+            result.extend(chunk[:end])
         if index < len(chunks) - 1:
-            result.extend([0] * round(pause * RATE))
+            tail = chunk[end:end + fade]
+            tail.extend([0] * (fade - len(tail)))
+            result.extend(tail)
+            result = crossfade_boundary(result, array.array('h', [0] * round(pause * RATE)), fade)
             joins.append({'afterParagraph': index, 'paragraph': True,
-                          'pauseSeconds': pause, 'addedSilenceSeconds': pause})
+                          'pauseSeconds': pause, 'addedSilenceSeconds': pause,
+                          'crossfadeSeconds': .03})
         else:
             result.extend(chunk[end:end + round(.2 * RATE)])
             result.extend([0] * max(0, round(.2 * RATE) - (len(chunk) - end)))
@@ -157,6 +178,22 @@ def prepare_sentences(transcript, config=None, mode="sentence"):
     return sentences, ends
 
 
+def configure_icl_sampling(model):
+    """Keep the same Qwen ICL engine while honoring the requested penalty.
+
+    This installed mlx-audio version floors its public ICL argument at 1.5.
+    Override that argument at the instance's ICL entry point, leaving the
+    installed package and all reference/model inputs unchanged.
+    """
+    original = model._generate_icl
+
+    def generate_icl(*args, **kwargs):
+        kwargs['repetition_penalty'] = 1.05
+        return original(*args, **kwargs)
+
+    model._generate_icl = generate_icl
+
+
 def command(args):
     return subprocess.run(args, capture_output=True, check=True)
 
@@ -215,6 +252,7 @@ def main():
         import mlx.core as mx
         model_id = os.environ['AVC_MODEL']
         model = load_model(model_path=model_id)
+        configure_icl_sampling(model)
         ref_text = Path(os.environ['AVC_REF_TXT']).read_text().strip()
     chunks, raw_records = [], []
     for index, text in enumerate(sentences):
@@ -223,8 +261,8 @@ def main():
             mx.random.seed(42)
             generate_audio(model=model, text=text, voice=None,
                            ref_audio=os.environ['AVC_REF_WAV'], ref_text=ref_text,
-                           lang_code='english', temperature=.9, top_k=50,
-                           repetition_penalty=1.5, max_tokens=args.max_tokens,
+                           lang_code='english', temperature=.8, top_k=50, top_p=.95,
+                           repetition_penalty=1.05, max_tokens=args.max_tokens,
                            output_path=str(args.workdir), file_prefix=prefix,
                            audio_format='wav', join_audio=False, verbose=True)
         files = sorted(args.workdir.glob(f'{prefix}*.wav'))
@@ -251,9 +289,11 @@ def main():
                 'spokenInputSha256': sha(private_input.encode()),
                 'pronunciationConfigSha256': sha(config_bytes) if config_bytes else None,
                 'resumedRawGeneration': args.resume, 'generationMode': args.generation_mode, 'generationPasses': len(sentences),
-                'normalization': normalization, 'maxTokens': args.max_tokens, 'trailingPaddingSeconds': .2,
+                'normalization': normalization,
+                'sampling': {'repetitionPenalty': 1.05, 'temperature': .8, 'topP': .95, 'seed': 42},
+                'maxTokens': args.max_tokens, 'trailingPaddingSeconds': .2,
                 'sentencePauseSeconds': args.sentence_pause if args.generation_mode == 'sentence' else None, 'paragraphPauseSeconds': args.paragraph_pause,
-                'tempoMultiplier': 1, 'crossfadeSeconds': 0, 'globalPauseCollapse': False,
+                'tempoMultiplier': 1, 'crossfadeSeconds': .03 if args.generation_mode == 'paragraph' else 0, 'globalPauseCollapse': False,
                 'endpointRmsThresholdDb': -65, 'endpointWindowMilliseconds': 10,
                 'joins': joins, 'rawGenerations': raw_records}
     if args.generation_mode == 'sentence':

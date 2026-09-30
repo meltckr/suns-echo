@@ -21,6 +21,19 @@ def pcm(*runs):
 
 
 class FinishingTests(unittest.TestCase):
+    def test_icl_penalty_override_preserves_reference_and_sampling(self):
+        class Model:
+            def _generate_icl(self, **kwargs):
+                return kwargs
+        model = Model()
+        renderer.configure_icl_sampling(model)
+        result = model._generate_icl(repetition_penalty=1.5, temperature=.8,
+                                     top_p=.95, ref_audio='private.wav')
+        self.assertEqual(result['repetition_penalty'], 1.05)
+        self.assertEqual(result['temperature'], .8)
+        self.assertEqual(result['top_p'], .95)
+        self.assertEqual(result['ref_audio'], 'private.wav')
+
     def test_quiet_final_consonant_survives(self):
         # -60dB consonant was below the former samplewise -50dB cutoff.
         speech = pcm((1000, .2), (33, .08))
@@ -80,6 +93,7 @@ class FinishingTests(unittest.TestCase):
                        (0, .5), (2000, .3), (33, .08), (0, .2))
         self.assertEqual(result, expected)
         self.assertEqual(joins[0]['pauseSeconds'], .5)
+        self.assertEqual(joins[0]['crossfadeSeconds'], .03)
         self.assertEqual(joins[0]['afterParagraph'], 0)
         with self.assertRaisesRegex(ValueError, 'exactly 0.5'):
             renderer.join_paragraphs([first, second], .4)

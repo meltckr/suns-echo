@@ -12,11 +12,13 @@ const environment = {
   ...process.env,
   AVC_VENV: "/Users/meltucker/.local/venvs/mlx8080",
   AVC_MODEL: model,
-  AVC_REF_WAV: "/Users/meltucker/avc-tools/breeze-proof/mel-az-2026-decl-18s.wav",
-  AVC_REF_TXT: "/Users/meltucker/avc-tools/breeze-proof/mel-az-2026-decl-18s.txt",
+  AVC_REF_WAV: process.env.AVC_REF_WAV,
+  AVC_REF_TXT: process.env.AVC_REF_TXT,
   HF_HUB_DISABLE_XET: "1",
   AVC_GENERATE: "1",
 };
+if (!environment.AVC_REF_WAV || !environment.AVC_REF_TXT) throw new Error("An explicitly approved conversational Arizona WAV and matching TXT are required. Rendering is stopped; no reference fallback.");
+if (environment.AVC_REF_WAV.endsWith("mel-az-2026-decl-18s.wav")) throw new Error("The final pass requires the approved conversational replacement reference.");
 const input = resolve("content/audio-brief-transcript.txt");
 const output = resolve(`public${audioBrief.src.slice(edition.basePath.length)}`);
 const transcript = await readFile(input, "utf8");
@@ -96,6 +98,10 @@ if (renderMetadata.transcriptSha256 !== transcriptSha256) throw new Error("Rende
 const manifest = {
   voice: "Arizona v12", model, generatedAt: new Date().toISOString(),
   title: edition.title, file: output.split("/").at(-1), transcript: "content/audio-brief-transcript.txt",
+  reference: {
+    audioSha256: createHash("sha256").update(await readFile(environment.AVC_REF_WAV)).digest("hex"),
+    textSha256: createHash("sha256").update(await readFile(environment.AVC_REF_TXT)).digest("hex"),
+  },
   transcriptSha256, audioSha256: createHash("sha256").update(await readFile(output)).digest("hex"),
   sampleRate: 24000, channels: 1, bitrate: 160000, durationSeconds: Number(finished.format.duration),
   integratedLufs: Number(measured.input_i), truePeakDbtp: Number(measured.input_tp),
@@ -106,6 +112,7 @@ const manifest = {
     resumedRawGeneration: renderMetadata.resumedRawGeneration,
     generationPasses: renderMetadata.generationPasses,
     normalization: renderMetadata.normalization,
+    sampling: renderMetadata.sampling,
     rendererSha256: createHash("sha256").update(await readFile(renderer)).digest("hex"),
     spokenInputSha256: renderMetadata.spokenInputSha256,
     pronunciationConfigSha256: renderMetadata.pronunciationConfigSha256,
@@ -114,7 +121,7 @@ const manifest = {
     sentencePauseSeconds: renderMetadata.sentencePauseSeconds,
     paragraphPauseSeconds: renderMetadata.paragraphPauseSeconds,
     maximumBoundaryPauseSeconds: Math.max(0, ...renderMetadata.joins.map(value => value.pauseSeconds)),
-    tempoMultiplier: 1, crossfadeSeconds: 0, globalPauseCollapse: false,
+    tempoMultiplier: 1, crossfadeSeconds: renderMetadata.crossfadeSeconds, globalPauseCollapse: false,
     endpointRmsThresholdDb: -65, endpointWindowMilliseconds: 10,
     unexpectedSilenceThresholdSeconds: 1.2,
   },
