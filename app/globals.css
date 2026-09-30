@@ -96,4 +96,4 @@
 
 /* Listen first: compact identity, house player, then the full written opening. */
 .hero{min-height:380px;align-items:center}.hero-copy{padding:36px clamp(20px,7vw,92px)}.hero-marks{margin-bottom:18px}.hero-marks img{width:38px;height:38px}.hero h1{font-size:clamp(44px,5.5vw,70px);letter-spacing:-2px}.hero-purpose{margin-bottom:0}.audio-brief{gap:12px 26px}
-@media(max-width:800px){.hero{min-height:0}.hero-copy{padding:28px 20px 26px}.hero-marks{display:none}.hero h1{max-width:12ch;font-size:44px;line-height:1.05}.hero-media{height:100%}.hero:before{background:linear-gradient(90deg,rgba(9,6,24,.94),rgba(9,6,24,.76))}.hero-series{margin-bottom:12px}.hero-purpose{font-size:16px;line-height:1.5;margin-top:12px}.audio-brief{padding-top:16px;padding-bottom:16px}}
+@media(max-width:800px){.hero{min-height:0}.hero-copy{padding:28px 20px 76px}.hero-marks{display:none}.hero h1{max-width:12ch;font-size:44px;line-height:1.05}.hero-media{height:100%}.hero:before{background:linear-gradient(90deg,rgba(9,6,24,.94),rgba(9,6,24,.76))}.hero-series{margin-bottom:12px}.hero-purpose{font-size:16px;line-height:1.5;margin-top:12px}.audio-brief{padding-top:16px;padding-bottom:16px}}

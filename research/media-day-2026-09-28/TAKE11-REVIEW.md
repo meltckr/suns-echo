@@ -13,3 +13,5 @@ The revised 185-word opening is also the exact public transcript. This is a new 
 - Only Take 11 is wired into the player and exported. Takes 9/10 and their scripts remain preserved in the repository.
 
 Technical checks pass. Fresh browser interaction/hosted-byte checks follow deployment. Complete human listening, pronunciation acceptance and production approval remain open. No claim of a perfect read or perceptual listening is made.
+
+Hosted bytes and browser interaction verified on ec280cf at the isolated review URL. Player starts paused; play, pause, skip, speed and timeline ending/home controls pass. The manifest records this technical player proof. This does not close human pronunciation or listening approval.

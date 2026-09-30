@@ -83,7 +83,7 @@
     "perceptual_listening_completed": false,
     "full_listen_status": "pending",
     "spoken_word_alignment_verified": false,
-    "hosted_audio_verified": false,
+    "hosted_audio_verified": true,
     "publication_authorized": false,
     "note": "Technical file checks only. A complete human listen remains required before approval or publication.",
     "automated_word_check": {

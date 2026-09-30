@@ -156,5 +156,20 @@
     "sentenceRerenders": []
   },
   "listeningConfirmed": false,
-  "playerVerified": false
+  "playerVerified": true,
+  "playerVerification": {
+    "preview": "https://meltckr.github.io/suns-echo/review/media-day-2026-09-28/",
+    "verifiedCommit": "ec280cf29dbd71e3ff2f2272385767f2dd877f59",
+    "audioSha256": "75fd71418ffdd7d2f347d25332f284726910e7dce04eee2ac91bbb644417b7fa",
+    "checks": [
+      "no autoplay",
+      "play advances time",
+      "pause",
+      "15-second skip",
+      "1.5x and 1x speed",
+      "end/home timeline seek",
+      "hosted bytes match"
+    ],
+    "perceptualListening": false
+  }
 }
