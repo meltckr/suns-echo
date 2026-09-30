@@ -3,7 +3,7 @@
 import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import Script from "next/script";
 import WordResonance from "./WordResonance";
-import { alignment, audioBrief, edition, heroMedia, methodology, ownershipBrief, recoveryReport, resonanceReview, sources, ledgerSources, type Source } from "@/data/edition";
+import { alignment, audioBrief, campUpdate, campUpdateSources, edition, heroMedia, methodology, ownershipBrief, recoveryReport, resonanceFanLedger, resonanceReview, sources, ledgerSources, type Source } from "@/data/edition";
 
 const basePath = edition.basePath;
 const toneClass = (value: string) => value.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-");
@@ -133,7 +133,7 @@ function SourceLedger() {
 
 function EvidenceTags({ sourceIds }: { sourceIds: string[] }) {
   return <div className="locked-source-tags">{sourceIds.map(id => {
-    const source = sources.find(item => item.id === id);
+    const source = ledgerSources.find(item => item.id === id);
     return source ? <SourceLink key={id} source={source}>{source.id.startsWith("official-") ? source.outlet.replace("Phoenix Suns · ", "").replace(" official interview", " · interview") : source.outlet.split(" / ")[0]}</SourceLink> : null;
   })}</div>;
 }
@@ -186,15 +186,21 @@ function FanReading() {
 
 export default function Dashboard() {
   const [view, setView] = useState<"edition" | "sources">("edition");
+  const currentView = useRef<"edition" | "sources">("edition");
+  const reportScroll = useRef(0);
   useEffect(() => {
     const sync = () => {
       const hash = window.location.hash;
-      setView(["#ledger", "#word-resonance", "#resonance-detail"].includes(hash) ? "sources" : "edition");
+      const nextView = ["#ledger", "#word-resonance", "#resonance-detail"].includes(hash) ? "sources" : "edition";
+      if (nextView === "sources" && currentView.current === "edition") reportScroll.current = window.scrollY;
+      currentView.current = nextView;
+      setView(nextView);
       // Wait for the view to become visible before following a deep link.
       requestAnimationFrame(() => {
         const target = document.getElementById(hash.slice(1));
         if (target instanceof HTMLDetailsElement) target.open = true;
-        if (target && hash !== "#edition") target.scrollIntoView({ block: "start" });
+        if (nextView === "edition" && hash === "#edition") window.scrollTo({ top: reportScroll.current, behavior: "instant" });
+        else if (target) target.scrollIntoView({ block: "start" });
       });
     };
     sync();
@@ -211,8 +217,8 @@ export default function Dashboard() {
   return <main>
     <header className="topbar"><Brand compact /><span>Ownership Intelligence</span><div><button onClick={() => window.print()}>Print</button><button onClick={share}>Share</button></div></header>
     <nav className="section-nav" aria-label="Edition views">
-      <a href="#edition" aria-current={view === "edition" ? "page" : undefined} onClick={() => setView("edition")}>Edition</a>
-      <a href="#ledger" aria-current={view === "sources" ? "page" : undefined} onClick={() => setView("sources")}>Sources</a>
+      <a href="#edition" aria-current={view === "edition" ? "page" : undefined}>{view === "sources" ? "← Back to report" : "Edition"}</a>
+      <a href="#ledger" aria-current={view === "sources" ? "page" : undefined}>Sources</a>
     </nav>
     <div id="edition" hidden={view !== "edition"}>
       <section className="hero" style={{ "--hero-poster": `url("${heroMedia.poster}")`, "--hero-portrait-poster": `url("${heroMedia.portraitPoster}")` } as CSSProperties}>
@@ -220,9 +226,10 @@ export default function Dashboard() {
         <div className="hero-art" aria-hidden="true"><span>THE</span><strong>ECHO</strong><i /></div>
         <div className="hero-copy">
           <div className="hero-marks"><img src={`${basePath}/assets/teams/suns-logo.svg`} alt="Phoenix Suns" /><span>AVC · OWNERSHIP INTELLIGENCE</span></div>
-          <p className="eyebrow">{edition.series} · EDITION {edition.number}</p>
+          <p className="hero-series"><strong>{edition.series}</strong><span>2026–27 · Edition {edition.number}</span></p>
           <h1>{edition.title}</h1>
           <p className="hero-date">Phoenix Suns · September 28, 2026 Media Day</p>
+          <p className="hero-purpose">{edition.subtitle}</p>
           <p className="hero-thesis locked-paragraph">{edition.lockedCopy[0].text}</p>
           <EvidenceTags sourceIds={edition.lockedCopy[0].sourceIds} />
         </div>
@@ -260,12 +267,15 @@ export default function Dashboard() {
         <ReadingCards items={recoveryReport.ownership} />
       </CollapsibleSection>
       <CollapsibleSection id="camp" n="07" title="What camp needs to answer" copy="Watch for news on Williams, how the younger players are learning and what follows Mat’s Media Day promises.">
+        <article className="camp-update" aria-label="September 29 first-practice update">
+          <span>{campUpdate.date}</span><p>{campUpdate.body}</p><EvidenceTags sourceIds={campUpdate.sourceIds} />
+        </article>
         <ReadingCards items={recoveryReport.camp} />
       </CollapsibleSection>
     </div>
     <div hidden={view !== "sources"}>
       <section id="ledger" className="report-section ledger-section">
-        <SectionHead eyebrow="Sources" title="Source ledger" copy={`${edition.sourceCount} Media Day review records + ${ledgerSources.length - sources.length} supplementary Word Resonance records · eight official interviews.`} />
+        <SectionHead eyebrow="Sources" title="Source ledger" copy={`${edition.sourceCount} Media Day review records + ${resonanceFanLedger.length} Word Resonance records + ${campUpdateSources.length} first-practice record · eight official interviews.`} />
         <SourceLedger />
         <details className="methodology"><summary>How to read this report</summary><div className="method-grid">
           <article><span>Window</span><p>{edition.reportingWindow}</p></article>
@@ -273,6 +283,7 @@ export default function Dashboard() {
           <article><span>Search</span><p>{methodology.searched}</p></article>
           <article><span>Classification</span><p>{methodology.sentiment}</p></article>
           <article><span>Word Resonance</span><p>{methodology.resonance}</p></article>
+          <article><span>September 29 update</span><p>{methodology.campUpdate}</p></article>
           <article><span>Access limitations</span><p>{methodology.limitations}</p></article>
         </div></details>
       </section>

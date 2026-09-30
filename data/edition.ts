@@ -438,7 +438,7 @@ export const edition = {
   "title": "In the Same Building",
   "subtitle": "What the Suns said, what people heard and what camp needs to answer.",
   "eventDate": "September 28, 2026",
-  "reportingWindow": "September 28 event · review completed September 29 · word sample September 28–29",
+  "reportingWindow": "September 28 Media Day · September 29 first-practice update · word sample September 28–29",
   "generatedLabel": "Review edition · September 29, 2026 · America/Phoenix",
   "statusLabel": "Two-part review edition · release held for approval",
   "thesis": "The clearest sign of continuity was one player helping another compete. Media Day made those relationships visible, while coverage of Bridges and ownership commitments brought a second set of expectations into view.",
@@ -612,10 +612,26 @@ export const resonanceFanLedger: Source[] = resonanceReview.sources.filter(sourc
   evidence: `${source.commentCount} distinct comment texts; ${source.collection === "supplied" ? "supplied sample" : "public indexed capture"}.`,
   samplePurpose: `Word Resonance input · ${source.commentCount} comments · ${source.collection === "supplied" ? "supplied; not independently retrieved" : "indexed text; no platform comment IDs"}. The row classifies the captured source language; per-topic scores appear in the map.`,
 }));
+export const campUpdateSources: Source[] = [{
+  id: "practice-rankin-2026-09-29",
+  source: "Suns make move to hit roster limit, report Mark Williams injury update",
+  outlet: "Duane Rankin / Arizona Republic via Yahoo Sports",
+  category: "Local Media", date: "Sept. 29 · First practice", phase: "Event",
+  sentiment: "Neutral", themes: ["First practice", "Availability"], confidence: "High",
+  url: "https://sports.yahoo.com/articles/suns-move-hit-roster-limit-234357744.html",
+  evidence: "Published September 29, 2026 at 23:43 UTC (4:43 p.m. Arizona). Ott described basics and installing the team’s approach, with no live play. Brooks described good focus and quick learning; that is his appraisal. Everyone except Williams participated. Rankin reported Williams riding a stationary bike after practice during media viewing.",
+  samplePurpose: "September 29 Camp update only; excluded from the Media Day review and Word Resonance sample."
+}];
+export const campUpdate = {
+  date: "September 29, 2026 · First practice",
+  publishedAt: "2026-09-29T23:43:00Z",
+  body: "Ott said the first practice focused on basics and installing the team’s approach, with no live play. Brooks described good focus and players learning quickly. Everyone except Williams participated. Rankin saw Williams riding a stationary bike after practice during media viewing. Camp’s next step is live work, when we’ll get a clearer look at what players are learning together.",
+  sourceIds: ["practice-rankin-2026-09-29"]
+};
 export const ledgerSources: Source[] = [...sources.map(source => {
   const fanSource = resonanceReview.sources.find(record => record.kind === "fans" && record.url === source.url);
   return fanSource ? { ...source, samplePurpose: `Also feeds Word Resonance · ${fanSource.commentCount} indexed comments; no platform comment IDs.` } : source;
-}), ...resonanceFanLedger];
+}), ...resonanceFanLedger, ...campUpdateSources];
 export const reportParts = [
   { id: "readout", title: "Media Day review", description: "September 28, 2026 · 25 source records · eight official interviews" },
   { id: "word-resonance", title: "Word Resonance", description: `${resonanceReview.topics.length} phrase groups · separate fan and media readings` },
@@ -864,7 +880,8 @@ export const methodology = {
   "searched": "Official Suns interview recordings and caption exports, original local reporting, AP wire coverage, nationally distributed digital reporting, completed specialist commentary, dated preview listings and one public Suns discussion. Morning discovery-only episode leads remain excluded.",
   "selection": "25 source records are included: 21 event records and four preview/background records. Eight are official player or leadership interviews. AP syndications count once; Yahoo-hosted originals retain their author. Separate articles can describe the same exchange and do not become independent confirmations of that event. Duffy’s two pieces remain one commentator’s perspective.",
   "sentiment": "Labels describe the framing of each record. Qualitative audience readings are editorial interpretations. No numeric approval score or representative fan percentage is estimated.",
-  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Fan volume counts distinct captured comments: 1–4 low, 5–14 medium, 15+ high. Media volume counts articles: 1 low, 2 medium, 3+ high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the 25-record Media Day source ledger.`,
+  "resonance": `${resonanceCopy.caveat} ${resonanceCopy.sample} ${resonanceCopy.filters} Green indicates positive language, red negative and gray neutral or mixed. Unscored opinions are labeled separately. Fan volume counts distinct captured comments: 1–4 low, 5–14 medium, 15+ high. Media volume counts articles: 1 low, 2 medium, 3+ high. Scores average coded excerpts within each unit, then average scored units per audience. Topic selection is editorial; articles may mention multiple topics and are not independent confirmation. This separate phrase dataset does not change the original 25-record Media Day review.`,
+  "campUpdate": "One additional article supplies the dated September 29 first-practice note. Duane Rankin’s Arizona Republic report, hosted by Yahoo Sports, was published at 4:43 p.m. Arizona. Brooks’ comments describe his own assessment. This article is separate from the original 25 review records and six supplementary Word Resonance records; it does not enter resonance scores.",
   "limitations": "Official newcomer evidence is attributed paraphrase of automated captions, with timestamps and links. Workouts are participants’ accounts. Completed PHNX/Bourguet reaction and a broader national basketball assessment were not retrieved; indexed-only sources are identified. The review’s original fan thread is indicative; Word Resonance adds partial indexed captures from two threads and supplied posts, with access limits disclosed. Williams’ return date remains unknown. The hero uses current official Media Day photographs with rendered camera movement."
 };
 

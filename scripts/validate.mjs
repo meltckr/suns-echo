@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
-import { sources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, resonanceReview, ledgerSources, recoveryReport, ownershipBrief } from "../data/edition.ts";
+import { sources, campUpdate, campUpdateSources, edition, alignment, audioBrief, heroMedia, cinematicDivider, wordResonance, resonanceThemes, resonanceCopy, resonanceSourceLinks, reportParts, resonanceReview, ledgerSources, resonanceFanLedger, recoveryReport, ownershipBrief } from "../data/edition.ts";
 
 import { validateResonanceReview } from "./validate-resonance-review.mjs";
 
@@ -36,6 +36,11 @@ for (const item of wordResonance) {
 }
 check(resonanceCopy.caveat === resonanceReview.caveat && resonanceCopy.caveat.includes(`${resonanceReview.denominators.verbatimFanComments} fan comment texts`), "Resonance caveat must disclose the current sample count");
 check(new Set(ledgerSources.map(source => source.id)).size === ledgerSources.length, "Duplicate ledger ID");
+check(ledgerSources.length === sources.length + resonanceFanLedger.length + campUpdateSources.length, "Ledger populations must stay separate");
+check(campUpdateSources.length === 1 && campUpdate.sourceIds.every(id => ledgerSources.some(source => source.id === id)), "Dated Camp update missing its ledger source");
+check(!sources.some(source => campUpdate.sourceIds.includes(source.id)) && !resonanceReview.sources.some(source => source.url === campUpdateSources[0].url), "First-practice source must stay outside Media Day and resonance samples");
+check(campUpdate.date.includes("September 29, 2026") && campUpdate.publishedAt === "2026-09-29T23:43:00Z", "First-practice date/publication provenance changed");
+check(campUpdate.body.split(/\s+/).length >= 50 && campUpdate.body.split(/\s+/).length <= 70, "Camp addition must remain about 60 words");
 for (const source of resonanceReview.sources.filter(source => source.kind === "fans")) check(ledgerSources.some(record => record.category === "Fans" && record.url === source.url), `Fan input missing from visible ledger: ${source.url}`);
 for (const token of ['id="word-resonance"', 'id="resonance-detail"', "aria-pressed", "resonanceThemes", "selected.fans", "selected.media", "AudienceEvidence", "resonanceReview", "resonanceCopy.caveat"]) check(resonanceComponent.includes(token), `Missing resonance behavior: ${token}`);
 try {
